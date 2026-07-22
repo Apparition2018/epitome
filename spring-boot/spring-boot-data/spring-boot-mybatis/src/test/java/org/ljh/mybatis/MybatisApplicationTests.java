@@ -1,6 +1,9 @@
 package org.ljh.mybatis;
 
 import org.junit.jupiter.api.Test;
+import org.ljh.mybatis.entity.CityExample;
+import org.ljh.mybatis.entity.CountryExample;
+import org.ljh.mybatis.entity.CountryLanguageExample;
 import org.ljh.mybatis.mapper.CityMapper;
 import org.ljh.mybatis.mapper.CountryLanguageMapper;
 import org.ljh.mybatis.mapper.CountryMapper;
@@ -35,17 +38,17 @@ public class MybatisApplicationTests {
     }
 
     @Test
-    void testFindAllCities() {
-        assertThat(cityMapper.findAll()).isNotEmpty();
+    void testSelectAllCities() {
+        assertThat(cityMapper.selectByExample(new CityExample())).isNotEmpty();
     }
 
     @Test
-    void testFindAllCountries() {
-        assertThat(countryMapper.findAll()).isNotEmpty();
+    void testSelectAllCountries() {
+        assertThat(countryMapper.selectByExample(new CountryExample())).isNotEmpty();
     }
 
     @Test
-    void testFindAllLanguages() {
-        assertThat(countryLanguageMapper.findAll()).isNotEmpty();
+    void testSelectAllLanguages() {
+        assertThat(countryLanguageMapper.selectByExample(new CountryLanguageExample())).isNotEmpty();
     }
 }

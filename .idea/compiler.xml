@@ -14,9 +14,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
-          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
-          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
         <module name="spring-boot-mybatis" />
         <module name="spring-boot-flyway" />

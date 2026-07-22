@@ -60,6 +60,8 @@
         <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot4-starter -->
         <mybatis-plus-spring-boot4-starter.version>3.5.17</mybatis-plus-spring-boot4-starter.version>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <h2.version>2.4.240</h2.version>
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter &ndash;&gt; -->
         <!-- <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils &ndash;&gt; -->
@@ -589,16 +591,16 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.ljh</groupId>
+                <artifactId>commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.ljh</groupId>
-                <artifactId>commons</artifactId>
-                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>

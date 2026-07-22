@@ -1,20 +1,1924 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.ljh.mybatis.mapper.CountryLanguageMapper">
-
-    <resultMap id="countryLanguageMap" type="CountryLanguage">
-        <id property="countryCode" column="CountryCode"/>
-        <id property="language" column="Language"/>
-        <result property="isOfficial" column="IsOfficial"/>
-        <result property="percentage" column="Percentage"/>
-    </resultMap>
-
-    <select id="findAll" resultMap="countryLanguageMap">
-        SELECT CountryCode, Language, IsOfficial, Percentage FROM countrylanguage
-    </select>
-
-    <select id="findByCountryCode" resultMap="countryLanguageMap">
-        SELECT CountryCode, Language, IsOfficial, Percentage FROM countrylanguage WHERE CountryCode = #{countryCode}
-    </select>
-
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+    <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
+    <id column="Language" jdbcType="CHAR" property="language" />
+    <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
+    <result column="Percentage" jdbcType="DECIMAL" property="percentage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CountryCode, Language, IsOfficial, Percentage
+  </sql>
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+    delete from countrylanguage
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+    delete from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+      Percentage)
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+      #{percentage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    insert into countrylanguage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        CountryCode,
+      </if>
+      <if test="language != null">
+        Language,
+      </if>
+      <if test="isOfficial != null">
+        IsOfficial,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="isOfficial != null">
+        #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+    select count(*) from countrylanguage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update countrylanguage
+    <set>
+      <if test="row.countryCode != null">
+        CountryCode = #{row.countryCode,jdbcType=CHAR},
+      </if>
+      <if test="row.language != null">
+        Language = #{row.language,jdbcType=CHAR},
+      </if>
+      <if test="row.isOfficial != null">
+        IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="row.percentage != null">
+        Percentage = #{row.percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update countrylanguage
+    set CountryCode = #{row.countryCode,jdbcType=CHAR},
+      Language = #{row.language,jdbcType=CHAR},
+      IsOfficial = #{row.isOfficial,jdbcType=CHAR},
+      Percentage = #{row.percentage,jdbcType=DECIMAL}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    <set>
+      <if test="isOfficial != null">
+        IsOfficial = #{isOfficial,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+    update countrylanguage
+    set IsOfficial = #{isOfficial,jdbcType=CHAR},
+      Percentage = #{percentage,jdbcType=DECIMAL}
+    where CountryCode = #{countryCode,jdbcType=CHAR}
+      and Language = #{language,jdbcType=CHAR}
+  </update>
 </mapper>

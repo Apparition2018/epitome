@@ -1,21 +1,31 @@
 package org.ljh.mybatis.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.ljh.mybatis.entity.CountryLanguage;
+import org.ljh.mybatis.entity.CountryLanguageExample;
+import org.ljh.mybatis.entity.CountryLanguageKey;
 
-import java.util.List;
-
-/**
- * CountryLanguageMapper
- *
- * @author ljh
- * @since 2026/7/20
- */
-@Mapper
 public interface CountryLanguageMapper {
+    long countByExample(CountryLanguageExample example);
 
-    List<CountryLanguage> findAll();
+    int deleteByExample(CountryLanguageExample example);
 
-    List<CountryLanguage> findByCountryCode(@Param("countryCode") String countryCode);
+    int deleteByPrimaryKey(CountryLanguageKey key);
+
+    int insert(CountryLanguage row);
+
+    int insertSelective(CountryLanguage row);
+
+    List<CountryLanguage> selectByExample(CountryLanguageExample example);
+
+    CountryLanguage selectByPrimaryKey(CountryLanguageKey key);
+
+    int updateByExampleSelective(@Param("row") CountryLanguage row, @Param("example") CountryLanguageExample example);
+
+    int updateByExample(@Param("row") CountryLanguage row, @Param("example") CountryLanguageExample example);
+
+    int updateByPrimaryKeySelective(CountryLanguage row);
+
+    int updateByPrimaryKey(CountryLanguage row);
 }

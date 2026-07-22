@@ -25,11 +25,16 @@
 ## Appearance & Behavior
 ### Appearance （-j)
     1 UI Options → Main menu: Merge with Main Toolbar
+### Path Variables
+    1 MAVEN_REPOSITORY: D:\dev\.maven\repository
 ---
 ## Build, Execution, Deployment
 ### Build Tools
     1 Maven
         1.1 User settings file: D:\dev\.maven\settings.xml
+        1.2 Win + R → CMD
+            1.2.1 del D:\dev\apache-maven-3.8.5\conf\settings.xml
+            1.2.2 mklink D:\dev\apache-maven-3.8.5\conf\settings.xml D:\dev\.maven\settings.xml
     2 Gradle (-n)
         2.1 Gradle user home: D:\dev\.gradle
         2.2 Build and run using: IntelliJ IDEA

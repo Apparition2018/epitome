@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- <classPathEntry>：用于将类路径位置添加到 MyBatis Generator (MGB) 运行的类路径中
+            ①可选
+            ②如果在 MBG 外部设置了类路径则无需使用此元素
+                ①通过 java 命令的 -cp 参数
+                ②mybatis-generator-maven-plugin 加入了数据库依赖
+           http://mybatis.org/generator/configreference/classPathEntry.html -->
+    <!-- <classPathEntry location="D:\dev\.maven\repository\mysql\mysql-connector-java\8.0.29\mysql-connector-java-8.0.29.jar"/> -->
+
+    <!-- <context>：用于指定生成一组对象的环境
+                ①其子元素用于指定要连接的数据库、要生成的对象类型以及要检查的表
+                ②可以多个，以便从不同的数据库或使用不同的生成参数来生成对象
+            targetRuntime：用于定生成代码的运行时目标
+                    ①MyBatis3DynamicSql（默认）
+                    ②MyBatis3Kotlin
+                    ③MyBatis3
+                    ④MyBatis3Simple
+            defaultModelType：用于设置生成模型类型的默认值。模型类型定义了 MBG 生成领域类的方式
+                    ①conditional：默认，类似 hierarchical。但只有一个主键字段时，该主键字段合并到基础 class 中
+                    ②flat：仅生成一个 domain class
+                    ③hierarchical：生成三个 class
+                        ①primary key class
+                        ②BLOB 列 class
+                        ③其余字段 clas
+            http://mybatis.org/generator/configreference/context.html -->
+    <context id="world" targetRuntime="MyBatis3" defaultModelType="conditional">
+        <!-- <plugin>：用于定义插件
+                http://mybatis.org/generator/configreference/plugin.html
+                http://mybatis.org/generator/reference/plugins.html -->
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+            <property name="allArgsConstructor" value="true"/>
+            <property name="accessors" value="true"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- <commentGenerator>：用于定义注释生成器的属性
+                http://mybatis.org/generator/configreference/commentGenerator.html -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- <jdbcConnection>：每个 <context> 都需要一个 <connectionFactory> 或 <jdbcConnection>
+                http://mybatis.org/generator/configreference/jdbcConnection.html -->
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;INIT=runscript from 'd:/Liang/git/epitome/commons/src/main/resources/db/world-db/world-schema.sql'"
+                        userId="sa" password="">
+        </jdbcConnection>
+
+        <!-- <javaTypeResolver>：用于定义 Java 类型解析器的属性
+                http://mybatis.org/generator/configreference/javaTypeResolver.html -->
+        <javaTypeResolver>
+            <!-- 开启对 JSR-310 日期时间类型的支持 -->
+            <property name="useJSR310Types" value="true"/>
+            <!-- true: DECIMAL or NUMERIC           →   java.math.BigDecimal
+                 false: scale>0 or length>18        →   java.math.BigDecimal
+                        scale=0 and 10<=length<=18  →   java.lang.Long
+                        scale=0 and 5<=length<=9    →   java.lang.Integer
+                        scale=0 and length<5        →   java.lang.Short -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- <modelGenerator>：用于定义模型生成器的属性（生成实体类、条件类）
+                https://mybatis.org/generator/configreference/modelGenerator.html -->
+        <modelGenerator targetPackage="org.ljh.mybatis.entity" targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </modelGenerator>
+
+        <!-- <sqlMapGenerator>：用于定义 SQL 映射生成器的属性（生成 XML 映射文件）
+                    ①<clientGenerator> 需要 XML 时必需
+                http://mybatis.org/generator/configreference/sqlMapGenerator.html -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- <clientGenerator>：用于定义客户端生成器的属性（生成 Mapper 接口）
+                type：用于指定应生成的映射器类型
+                    ①ANNOTATEDMAPPER：生成基于 注解 和 SqlProviders 的 Mapper
+                    ②MIXEDMAPPER：生成基于 注解 和 XML 混合的 Mapper
+                    ③XMLMAPPER：生成依基于 XML 的 Mapper
+                https://mybatis.org/generator/configreference/clientGenerator.html -->
+        <clientGenerator type="XMLMAPPER"
+                         targetPackage="org.ljh.mybatis.mapper" targetProject="src/main/java"/>
+
+        <!-- <table>：http://mybatis.org/generator/configreference/table.html -->
+        <table tableName="city" domainObjectName="City">
+            <!-- useActualColumnNames：使用实际列名
+                    false：默认，驼峰命名法，START_DATE → startDate
+                    true：START_DATE → START_DATE，Name → name -->
+            <property name="useActualColumnNames" value="true"/>
+            <!-- 自动生成键 -->
+            <generatedKey column="ID" sqlStatement="JDBC" identity="true"/>
+            <!-- 重写列映射 -->
+            <columnOverride column="ID" property="id"/>
+        </table>
+
+        <table tableName="country" domainObjectName="Country">
+            <property name="useActualColumnNames" value="true"/>
+            <columnOverride column="Continent"
+                            javaType="org.ljh.mybatis.entity.Continent"
+                            typeHandler="org.ljh.mybatis.entity.handler.ContinentTypeHandler"/>
+        </table>
+
+        <table tableName="countrylanguage" domainObjectName="CountryLanguage">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

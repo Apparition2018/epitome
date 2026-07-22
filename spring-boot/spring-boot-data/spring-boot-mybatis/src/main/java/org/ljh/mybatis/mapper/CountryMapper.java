@@ -1,21 +1,30 @@
 package org.ljh.mybatis.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.ljh.mybatis.entity.Country;
+import org.ljh.mybatis.entity.CountryExample;
 
-import java.util.List;
-
-/**
- * CountryMapper
- *
- * @author ljh
- * @since 2026/7/20
- */
-@Mapper
 public interface CountryMapper {
+    long countByExample(CountryExample example);
 
-    List<Country> findAll();
+    int deleteByExample(CountryExample example);
 
-    Country findByCode(@Param("code") String code);
+    int deleteByPrimaryKey(String code);
+
+    int insert(Country row);
+
+    int insertSelective(Country row);
+
+    List<Country> selectByExample(CountryExample example);
+
+    Country selectByPrimaryKey(String code);
+
+    int updateByExampleSelective(@Param("row") Country row, @Param("example") CountryExample example);
+
+    int updateByExample(@Param("row") Country row, @Param("example") CountryExample example);
+
+    int updateByPrimaryKeySelective(Country row);
+
+    int updateByPrimaryKey(Country row);
 }

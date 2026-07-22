@@ -2,26 +2,23 @@ package org.ljh.mybatis.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 
+import java.io.Serial;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
-/**
- * CountryLanguage
- *
- * @author ljh
- * @since 2026/7/20 16:19
- */
 @Data
-@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
-@Accessors(chain = true)
-public class CountryLanguage implements Serializable {
+@NoArgsConstructor
+public class CountryLanguage extends CountryLanguageKey implements Serializable {
 
-    private String countryCode;
-    private String language;
-    /** 'T' = 官方语言, 'F' = 非官方 */
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String isOfficial;
-    private Double percentage;
+
+    private BigDecimal percentage;
 }

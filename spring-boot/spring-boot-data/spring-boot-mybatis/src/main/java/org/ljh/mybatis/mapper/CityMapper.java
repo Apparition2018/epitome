@@ -1,23 +1,30 @@
 package org.ljh.mybatis.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.ljh.mybatis.entity.City;
+import org.ljh.mybatis.entity.CityExample;
 
-import java.util.List;
-
-/**
- * CityMapper
- *
- * @author ljh
- * @since 2026/7/20
- */
-@Mapper
 public interface CityMapper {
+    long countByExample(CityExample example);
 
-    List<City> findAll();
+    int deleteByExample(CityExample example);
 
-    City findById(@Param("id") Integer id);
+    int deleteByPrimaryKey(Integer id);
 
-    List<City> findByCountryCode(@Param("countryCode") String countryCode);
+    int insert(City row);
+
+    int insertSelective(City row);
+
+    List<City> selectByExample(CityExample example);
+
+    City selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("row") City row, @Param("example") CityExample example);
+
+    int updateByExample(@Param("row") City row, @Param("example") CityExample example);
+
+    int updateByPrimaryKeySelective(City row);
+
+    int updateByPrimaryKey(City row);
 }

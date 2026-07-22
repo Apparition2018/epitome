@@ -111,11 +111,8 @@ F2                              Next Highlighted Error              下一条错
 Shift + F2                      Previous Highlighted Error          上一条错误
 Ctrl + Shift + Backspace        Last Edit Location                  最近编辑位置
 Alt + F1 +                      Select In…
-    0                           Navigation Bar
-    B                           Web Browser
-    C                           Show in Explorer                    ★
-    D                           Terminal
-    G                           Maven                               ★
+    8                           Navigation Bar
+    0                           Web Browser
 Alt + Home                      Jump to Navigation Bar              跳到导航栏
 Ctrl + B                        Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
 Ctrl + Alt + B                  Go to Implemention(s)               定位到实现的位置
@@ -282,8 +279,8 @@ Ctrl + K                        Commit…                             提交
 Alt + H                         Show History (user)                 显示历史
 Alt + Shift + A                 Show All Affected Files             显示所有受影响的文件
 --------------------
-Ctrl + Alt + Shift + ↑          Next Change                         上一个改变   ★
-Ctrl + Alt + Shift + ↓          Previous Change                     下一个改变   ★
+Ctrl + Alt + Shift + ↑          Next Change                         上一个改变
+Ctrl + Alt + Shift + ↓          Previous Change                     下一个改变
 --------------------
 Alt + `                         VCS Operations                      VCS操作弹窗
 Ctrl + T                        Update Project                      更新项目
