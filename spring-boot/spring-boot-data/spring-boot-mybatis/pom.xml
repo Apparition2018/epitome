@@ -51,6 +51,7 @@
                 <version>${mybatis-generator-maven-plugin.version}</version>
                 <configuration>
                     <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
+                    <!-- 生成重写 Java 文件 -->
                     <overwrite>true</overwrite>
                     <verbose>true</verbose>
                 </configuration>

@@ -17,12 +17,9 @@
 3. cmd → `ipconfig /flushdns`
 ---
 ## 配置
-1. TortoiseGit
+- TortoiseGit
     - Settings → Network
         - SSH client: D:\Git\usr\bin\ssh.exe
-2. JetBrains
-    - Settings → Version Control → Git
-        - Path to Git executable: D:\Git\cmd\git.exe
 ---
 ## [配置多个 git 账号](https://blog.csdn.net/qq_33254766/article/details/122941664)
 1. 生成多个 SSH key
@@ -99,6 +96,7 @@ config                                          获取和设置 repository 或�
 	name = Apparition2018
 	email = 88850180@163.com
 [core]
+    autocrlf = input
 	excludesfile = D:/Liang/git/epitome/.gitignore
 ```
 ---

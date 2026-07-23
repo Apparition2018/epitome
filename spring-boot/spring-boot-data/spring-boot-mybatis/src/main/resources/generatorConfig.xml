@@ -35,12 +35,13 @@
             <property name="accessors" value="true"/>
         </plugin>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 生成重写 XML 文件 -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
 
         <!-- <commentGenerator>：用于定义注释生成器的属性
                 http://mybatis.org/generator/configreference/commentGenerator.html -->
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
-            <property name="addRemarkComments" value="true"/>
         </commentGenerator>
 
         <!-- <jdbcConnection>：每个 <context> 都需要一个 <connectionFactory> 或 <jdbcConnection>
@@ -53,8 +54,6 @@
         <!-- <javaTypeResolver>：用于定义 Java 类型解析器的属性
                 http://mybatis.org/generator/configreference/javaTypeResolver.html -->
         <javaTypeResolver>
-            <!-- 开启对 JSR-310 日期时间类型的支持 -->
-            <property name="useJSR310Types" value="true"/>
             <!-- true: DECIMAL or NUMERIC           →   java.math.BigDecimal
                  false: scale>0 or length>18        →   java.math.BigDecimal
                         scale=0 and 10<=length<=18  →   java.lang.Long
