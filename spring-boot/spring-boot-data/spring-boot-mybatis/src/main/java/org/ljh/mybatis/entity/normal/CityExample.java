@@ -1,4 +1,4 @@
-package org.ljh.mybatis.entity;
+package org.ljh.mybatis.entity.normal;
 
 import lombok.Getter;
 import lombok.Setter;

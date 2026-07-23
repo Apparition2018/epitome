@@ -64,14 +64,14 @@
 
         <!-- <modelGenerator>：用于定义模型生成器的属性（生成实体类、条件类）
                 https://mybatis.org/generator/configreference/modelGenerator.html -->
-        <modelGenerator targetPackage="org.ljh.mybatis.entity" targetProject="src/main/java">
+        <modelGenerator targetPackage="org.ljh.mybatis.entity.normal" targetProject="src/main/java">
             <property name="trimStrings" value="true"/>
         </modelGenerator>
 
         <!-- <sqlMapGenerator>：用于定义 SQL 映射生成器的属性（生成 XML 映射文件）
                     ①<clientGenerator> 需要 XML 时必需
                 http://mybatis.org/generator/configreference/sqlMapGenerator.html -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <sqlMapGenerator targetPackage="mapper/normal" targetProject="src/main/resources"/>
 
         <!-- <clientGenerator>：用于定义客户端生成器的属性（生成 Mapper 接口）
                 type：用于指定应生成的映射器类型
@@ -80,7 +80,7 @@
                     ③XMLMAPPER：生成依基于 XML 的 Mapper
                 https://mybatis.org/generator/configreference/clientGenerator.html -->
         <clientGenerator type="XMLMAPPER"
-                         targetPackage="org.ljh.mybatis.mapper" targetProject="src/main/java"/>
+                         targetPackage="org.ljh.mybatis.mapper.normal" targetProject="src/main/java"/>
 
         <!-- <table>：http://mybatis.org/generator/configreference/table.html -->
         <table tableName="city" domainObjectName="City">
@@ -91,6 +91,51 @@
             <!-- 自动生成键 -->
             <generatedKey column="ID" sqlStatement="JDBC" identity="true"/>
             <!-- 重写列映射 -->
+            <columnOverride column="ID" property="id"/>
+        </table>
+
+        <table tableName="country" domainObjectName="Country">
+            <property name="useActualColumnNames" value="true"/>
+            <columnOverride column="Continent"
+                            javaType="org.ljh.mybatis.entity.Continent"
+                            typeHandler="org.ljh.mybatis.entity.handler.ContinentTypeHandler"/>
+        </table>
+
+        <table tableName="countrylanguage" domainObjectName="CountryLanguage">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+
+    <!-- ========== MyBatis3DynamicSql ========== -->
+    <context id="world-dynamic" targetRuntime="MyBatis3DynamicSql">
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+            <property name="allArgsConstructor" value="true"/>
+            <property name="accessors" value="true"/>
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;INIT=runscript from 'd:/Liang/git/epitome/commons/src/main/resources/db/world-db/world-schema.sql'"
+                        userId="sa" password="">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <modelGenerator targetPackage="org.ljh.mybatis.entity.dynamic" targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </modelGenerator>
+
+        <clientGenerator targetPackage="org.ljh.mybatis.mapper.dynamic" targetProject="src/main/java"/>
+
+        <table tableName="city" domainObjectName="City">
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="ID" sqlStatement="JDBC" identity="true"/>
             <columnOverride column="ID" property="id"/>
         </table>
 

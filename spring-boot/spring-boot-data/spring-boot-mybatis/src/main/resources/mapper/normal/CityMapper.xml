@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.ljh.mybatis.mapper.CityMapper">
-  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.City">
+<mapper namespace="org.ljh.mybatis.mapper.normal.CityMapper">
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.normal.City">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="Name" jdbcType="CHAR" property="name" />
     <result column="CountryCode" jdbcType="CHAR" property="countryCode" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     ID, Name, CountryCode, District, Population
   </sql>
-  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CityExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.normal.CityExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -84,7 +84,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from city
     where ID = #{id,jdbcType=INTEGER}
@@ -93,19 +93,19 @@
     delete from city
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CityExample">
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.normal.CityExample">
     delete from city
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="org.ljh.mybatis.entity.City" useGeneratedKeys="true">
-    insert into city (Name, CountryCode, District, 
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="org.ljh.mybatis.entity.normal.City" useGeneratedKeys="true">
+    insert into city (Name, CountryCode, District,
       Population)
-    values (#{name,jdbcType=CHAR}, #{countryCode,jdbcType=CHAR}, #{district,jdbcType=CHAR}, 
+    values (#{name,jdbcType=CHAR}, #{countryCode,jdbcType=CHAR}, #{district,jdbcType=CHAR},
       #{population,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="org.ljh.mybatis.entity.City" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="org.ljh.mybatis.entity.normal.City" useGeneratedKeys="true">
     insert into city
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CityExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.normal.CityExample" resultType="java.lang.Long">
     select count(*) from city
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -176,7 +176,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.City">
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.normal.City">
     update city
     <set>
       <if test="name != null">
@@ -194,7 +194,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.City">
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.normal.City">
     update city
     set Name = #{name,jdbcType=CHAR},
       CountryCode = #{countryCode,jdbcType=CHAR},

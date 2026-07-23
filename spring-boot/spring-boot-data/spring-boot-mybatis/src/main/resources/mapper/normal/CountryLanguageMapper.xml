@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.ljh.mybatis.mapper.CountryLanguageMapper">
-  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.CountryLanguage">
+<mapper namespace="org.ljh.mybatis.mapper.normal.CountryLanguageMapper">
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.normal.CountryLanguage">
     <id column="CountryCode" jdbcType="CHAR" property="countryCode" />
     <id column="Language" jdbcType="CHAR" property="language" />
     <result column="IsOfficial" jdbcType="CHAR" property="isOfficial" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     CountryCode, Language, IsOfficial, Percentage
   </sql>
-  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.normal.CountryLanguageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -82,31 +82,31 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey" resultMap="BaseResultMap">
-    select 
+  <select id="selectByPrimaryKey" parameterType="org.ljh.mybatis.entity.normal.CountryLanguageKey" resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
     from countrylanguage
     where CountryCode = #{countryCode,jdbcType=CHAR}
       and Language = #{language,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguageKey">
+  <delete id="deleteByPrimaryKey" parameterType="org.ljh.mybatis.entity.normal.CountryLanguageKey">
     delete from countrylanguage
     where CountryCode = #{countryCode,jdbcType=CHAR}
       and Language = #{language,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample">
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.normal.CountryLanguageExample">
     delete from countrylanguage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.ljh.mybatis.entity.CountryLanguage">
-    insert into countrylanguage (CountryCode, Language, IsOfficial, 
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.normal.CountryLanguage">
+    insert into countrylanguage (CountryCode, Language, IsOfficial,
       Percentage)
-    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR}, 
+    values (#{countryCode,jdbcType=CHAR}, #{language,jdbcType=CHAR}, #{isOfficial,jdbcType=CHAR},
       #{percentage,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.normal.CountryLanguage">
     insert into countrylanguage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="countryCode != null">
@@ -137,7 +137,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryLanguageExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.normal.CountryLanguageExample" resultType="java.lang.Long">
     select count(*) from countrylanguage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -173,7 +173,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.normal.CountryLanguage">
     update countrylanguage
     <set>
       <if test="isOfficial != null">
@@ -186,7 +186,7 @@
     where CountryCode = #{countryCode,jdbcType=CHAR}
       and Language = #{language,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.CountryLanguage">
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.normal.CountryLanguage">
     update countrylanguage
     set IsOfficial = #{isOfficial,jdbcType=CHAR},
       Percentage = #{percentage,jdbcType=DECIMAL}

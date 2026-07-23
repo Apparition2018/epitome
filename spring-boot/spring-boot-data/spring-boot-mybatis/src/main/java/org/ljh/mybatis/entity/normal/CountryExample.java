@@ -1,7 +1,8 @@
-package org.ljh.mybatis.entity;
+package org.ljh.mybatis.entity.normal;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.ljh.mybatis.entity.Continent;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,10 +1,11 @@
-package org.ljh.mybatis.mapper;
+package org.ljh.mybatis.mapper.normal;
+
+import org.apache.ibatis.annotations.Param;
+import org.ljh.mybatis.entity.normal.CountryLanguage;
+import org.ljh.mybatis.entity.normal.CountryLanguageExample;
+import org.ljh.mybatis.entity.normal.CountryLanguageKey;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import org.ljh.mybatis.entity.CountryLanguage;
-import org.ljh.mybatis.entity.CountryLanguageExample;
-import org.ljh.mybatis.entity.CountryLanguageKey;
 
 public interface CountryLanguageMapper {
     long countByExample(CountryLanguageExample example);

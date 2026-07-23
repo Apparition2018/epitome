@@ -1,8 +1,9 @@
-package org.ljh.mybatis.entity;
+package org.ljh.mybatis.entity.normal;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ljh.mybatis.entity.Continent;
 
 import java.io.Serial;
 import java.io.Serializable;

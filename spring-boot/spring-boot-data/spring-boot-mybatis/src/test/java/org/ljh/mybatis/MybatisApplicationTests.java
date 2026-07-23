@@ -1,12 +1,12 @@
 package org.ljh.mybatis;
 
 import org.junit.jupiter.api.Test;
-import org.ljh.mybatis.entity.CityExample;
-import org.ljh.mybatis.entity.CountryExample;
-import org.ljh.mybatis.entity.CountryLanguageExample;
-import org.ljh.mybatis.mapper.CityMapper;
-import org.ljh.mybatis.mapper.CountryLanguageMapper;
-import org.ljh.mybatis.mapper.CountryMapper;
+import org.ljh.mybatis.entity.normal.CityExample;
+import org.ljh.mybatis.entity.normal.CountryExample;
+import org.ljh.mybatis.entity.normal.CountryLanguageExample;
+import org.ljh.mybatis.mapper.normal.CityMapper;
+import org.ljh.mybatis.mapper.normal.CountryLanguageMapper;
+import org.ljh.mybatis.mapper.normal.CountryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

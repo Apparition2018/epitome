@@ -1,9 +1,10 @@
-package org.ljh.mybatis.mapper;
+package org.ljh.mybatis.mapper.normal;
+
+import org.apache.ibatis.annotations.Param;
+import org.ljh.mybatis.entity.normal.City;
+import org.ljh.mybatis.entity.normal.CityExample;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
-import org.ljh.mybatis.entity.City;
-import org.ljh.mybatis.entity.CityExample;
 
 public interface CityMapper {
     long countByExample(CityExample example);

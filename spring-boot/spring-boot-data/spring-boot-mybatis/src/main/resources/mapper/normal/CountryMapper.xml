@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.ljh.mybatis.mapper.CountryMapper">
-  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.Country">
+<mapper namespace="org.ljh.mybatis.mapper.normal.CountryMapper">
+  <resultMap id="BaseResultMap" type="org.ljh.mybatis.entity.normal.Country">
     <id column="Code" jdbcType="CHAR" property="code" />
     <result column="Name" jdbcType="CHAR" property="name" />
     <result column="Continent" jdbcType="VARCHAR" property="continent" typeHandler="org.ljh.mybatis.entity.handler.ContinentTypeHandler" />
@@ -115,10 +115,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, 
+    Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy,
     GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2
   </sql>
-  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.CountryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.ljh.mybatis.entity.normal.CountryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -133,7 +133,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from country
     where Code = #{code,jdbcType=CHAR}
@@ -142,27 +142,27 @@
     delete from country
     where Code = #{code,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.CountryExample">
+  <delete id="deleteByExample" parameterType="org.ljh.mybatis.entity.normal.CountryExample">
     delete from country
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.ljh.mybatis.entity.Country">
-    insert into country (Code, Name, Continent, 
-      Region, SurfaceArea, IndepYear, 
-      Population, LifeExpectancy, GNP, 
-      GNPOld, LocalName, GovernmentForm, 
+  <insert id="insert" parameterType="org.ljh.mybatis.entity.normal.Country">
+    insert into country (Code, Name, Continent,
+      Region, SurfaceArea, IndepYear,
+      Population, LifeExpectancy, GNP,
+      GNPOld, LocalName, GovernmentForm,
       HeadOfState, Capital, Code2
       )
-    values (#{code,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{continent,jdbcType=VARCHAR,typeHandler=org.ljh.mybatis.entity.handler.ContinentTypeHandler}, 
-      #{region,jdbcType=CHAR}, #{surfaceArea,jdbcType=DECIMAL}, #{indepYear,jdbcType=SMALLINT}, 
-      #{population,jdbcType=INTEGER}, #{lifeExpectancy,jdbcType=DECIMAL}, #{GNP,jdbcType=DECIMAL}, 
-      #{GNPOld,jdbcType=DECIMAL}, #{localName,jdbcType=CHAR}, #{governmentForm,jdbcType=CHAR}, 
+    values (#{code,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{continent,jdbcType=VARCHAR,typeHandler=org.ljh.mybatis.entity.handler.ContinentTypeHandler},
+      #{region,jdbcType=CHAR}, #{surfaceArea,jdbcType=DECIMAL}, #{indepYear,jdbcType=SMALLINT},
+      #{population,jdbcType=INTEGER}, #{lifeExpectancy,jdbcType=DECIMAL}, #{GNP,jdbcType=DECIMAL},
+      #{GNPOld,jdbcType=DECIMAL}, #{localName,jdbcType=CHAR}, #{governmentForm,jdbcType=CHAR},
       #{headOfState,jdbcType=CHAR}, #{capital,jdbcType=INTEGER}, #{code2,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.Country">
+  <insert id="insertSelective" parameterType="org.ljh.mybatis.entity.normal.Country">
     insert into country
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="code != null">
@@ -259,7 +259,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.ljh.mybatis.entity.CountryExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.ljh.mybatis.entity.normal.CountryExample" resultType="java.lang.Long">
     select count(*) from country
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -339,7 +339,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.Country">
+  <update id="updateByPrimaryKeySelective" parameterType="org.ljh.mybatis.entity.normal.Country">
     update country
     <set>
       <if test="name != null">
@@ -387,7 +387,7 @@
     </set>
     where Code = #{code,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.Country">
+  <update id="updateByPrimaryKey" parameterType="org.ljh.mybatis.entity.normal.Country">
     update country
     set Name = #{name,jdbcType=CHAR},
       Continent = #{continent,jdbcType=VARCHAR,typeHandler=org.ljh.mybatis.entity.handler.ContinentTypeHandler},
