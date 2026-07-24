@@ -8,6 +8,7 @@ import org.ljh.mybatis.entity.Continent;
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -46,4 +47,8 @@ public class Country implements Serializable {
     private Integer capital;
 
     private String code2;
+
+    private List<City> cities;
+
+    private List<CountryLanguage> countryLanguages;
 }

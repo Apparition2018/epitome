@@ -21,4 +21,6 @@ public class CountryLanguage extends CountryLanguageKey implements Serializable 
     private String isOfficial;
 
     private BigDecimal percentage;
+
+    private Country country;
 }

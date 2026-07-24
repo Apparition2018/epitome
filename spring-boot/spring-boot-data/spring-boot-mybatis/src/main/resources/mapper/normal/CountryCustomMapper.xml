@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ljh.mybatis.mapper.normal.CountryCustomMapper">
+
+    <!--
+        ResultMap：Country + City + CountryLanguage（两个 collection，JOIN 方式）
+        注意：两个 1:N 同时 JOIN 会产生笛卡尔积，MyBatis 根据 <id> 自动去重
+        也兼容只 JOIN City 的场景（lang_ 列为 null 时 MyBatis 不创建 Language 对象）
+    -->
+    <resultMap id="CountryWithAllResult"
+               extends="org.ljh.mybatis.mapper.normal.CountryMapper.BaseResultMap"
+               type="org.ljh.mybatis.entity.normal.Country">
+        <collection property="cities"
+                    javaType="java.util.List"
+                    ofType="org.ljh.mybatis.entity.normal.City"
+                    resultMap="org.ljh.mybatis.mapper.normal.CityMapper.BaseResultMap"
+                    columnPrefix="city_"/>
+        <collection property="countryLanguages"
+                    javaType="java.util.List"
+                    ofType="org.ljh.mybatis.entity.normal.CountryLanguage"
+                    resultMap="org.ljh.mybatis.mapper.normal.CountryLanguageMapper.BaseResultMap"
+                    columnPrefix="lang_"/>
+    </resultMap>
+
+    <!-- Country LEFT JOIN City -->
+    <select id="selectCountryWithCities" resultMap="CountryWithAllResult">
+        select
+            co.Code,
+            co.Name,
+            co.Continent,
+            co.Region,
+            co.SurfaceArea,
+            co.IndepYear,
+            co.Population,
+            co.LifeExpectancy,
+            co.GNP,
+            co.GNPOld,
+            co.LocalName,
+            co.GovernmentForm,
+            co.HeadOfState,
+            co.Capital,
+            co.Code2,
+            ci.ID          as city_ID,
+            ci.Name        as city_Name,
+            ci.CountryCode as city_CountryCode,
+            ci.District    as city_District,
+            ci.Population  as city_Population
+        from country co
+        left join city ci on co.Code = ci.CountryCode
+        where co.Code = #{code}
+    </select>
+
+    <!-- Country LEFT JOIN City + CountryLanguage（两个 collection） -->
+    <select id="selectCountryWithAll" resultMap="CountryWithAllResult">
+        select
+            co.Code,
+            co.Name,
+            co.Continent,
+            co.Region,
+            co.SurfaceArea,
+            co.IndepYear,
+            co.Population,
+            co.LifeExpectancy,
+            co.GNP,
+            co.GNPOld,
+            co.LocalName,
+            co.GovernmentForm,
+            co.HeadOfState,
+            co.Capital,
+            co.Code2,
+            ci.ID             as city_ID,
+            ci.Name           as city_Name,
+            ci.CountryCode    as city_CountryCode,
+            ci.District       as city_District,
+            ci.Population     as city_Population,
+            cl.CountryCode    as lang_CountryCode,
+            cl.Language       as lang_Language,
+            cl.IsOfficial     as lang_IsOfficial,
+            cl.Percentage     as lang_Percentage
+        from country co
+        left join city ci on co.Code = ci.CountryCode
+        left join countrylanguage cl on co.Code = cl.CountryCode
+        where co.Code = #{code}
+    </select>
+
+</mapper>

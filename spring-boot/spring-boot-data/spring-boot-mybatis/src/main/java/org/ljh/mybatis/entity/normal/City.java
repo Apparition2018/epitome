@@ -24,4 +24,6 @@ public class City implements Serializable {
     private String district;
 
     private Integer population;
+
+    private Country country;
 }

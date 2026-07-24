@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ljh.mybatis.mapper.normal.CityCustomMapper">
+
+    <!--
+        扩展 ResultMap：City + Country（JOIN 方式）
+        extends CityMapper.BaseResultMap 继承 city 字段映射
+        association 引用 CountryMapper.BaseResultMap 并加 columnPrefix
+    -->
+    <resultMap id="CityWithCountryResult"
+               extends="org.ljh.mybatis.mapper.normal.CityMapper.BaseResultMap"
+               type="org.ljh.mybatis.entity.normal.City">
+        <association property="country"
+                     javaType="org.ljh.mybatis.entity.normal.Country"
+                     resultMap="org.ljh.mybatis.mapper.normal.CountryMapper.BaseResultMap"
+                     columnPrefix="country_"/>
+    </resultMap>
+
+    <!-- City LEFT JOIN Country 一次性查出 -->
+    <select id="selectCityWithCountry" resultMap="CityWithCountryResult">
+        select
+            c.ID,
+            c.Name,
+            c.CountryCode,
+            c.District,
+            c.Population,
+            co.Code       as country_Code,
+            co.Name       as country_Name,
+            co.Continent  as country_Continent,
+            co.Region     as country_Region,
+            co.SurfaceArea as country_SurfaceArea,
+            co.IndepYear  as country_IndepYear,
+            co.Population as country_Population,
+            co.LifeExpectancy as country_LifeExpectancy,
+            co.GNP        as country_GNP,
+            co.GNPOld     as country_GNPOld,
+            co.LocalName  as country_LocalName,
+            co.GovernmentForm as country_GovernmentForm,
+            co.HeadOfState as country_HeadOfState,
+            co.Capital    as country_Capital,
+            co.Code2      as country_Code2
+        from city c
+        left join country co on c.CountryCode = co.Code
+        where c.ID = #{id}
+    </select>
+
+</mapper>
