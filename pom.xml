@@ -184,10 +184,6 @@
         <!--     <groupId>org.springframework.boot</groupId> -->
         <!--     <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
         <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!--     <groupId>org.springframework.boot</groupId> -->
-        <!--     <artifactId>spring-boot-starter-integration</artifactId> -->
-        <!-- </dependency> -->
         <!-- &lt;!&ndash; devtools：https://blog.csdn.net/Martin_chen2/article/details/116198924 &ndash;&gt; -->
         <!-- <dependency> -->
         <!--     <groupId>org.springframework.boot</groupId> -->

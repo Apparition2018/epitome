@@ -107,6 +107,7 @@
     </context>
 
     <!-- ========== MyBatis3DynamicSql ========== -->
+    <!-- MyBatis Dynamic SQL：https://mybatis.org/mybatis-dynamic-sql/docs/introduction.html -->
     <context id="world-dynamic" targetRuntime="MyBatis3DynamicSql">
         <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
             <property name="allArgsConstructor" value="true"/>

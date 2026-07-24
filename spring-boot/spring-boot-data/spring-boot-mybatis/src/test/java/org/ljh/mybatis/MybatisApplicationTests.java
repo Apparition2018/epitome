@@ -58,6 +58,22 @@ public class MybatisApplicationTests {
         assertThat(countryLanguageMapper.selectByExample(new CountryLanguageExample())).isNotEmpty();
     }
 
+    // ==================== @MapKey 演示 ====================
+
+    /**
+     * {@code @MapKey("id")} — 将 List&lt;City&gt; 转为 Map&lt;Integer, City&gt;
+     */
+    @Test
+    void testSelectAllCityMap() {
+        var cityMap = cityCustomMapper.selectAllCityMap();
+        assertThat(cityMap).isNotEmpty();
+        // 验证 key 是 city.id
+        cityMap.forEach((id, city) -> {
+            assertThat(id).isEqualTo(city.getId());
+            System.out.printf("MapKey[%d] → %s (%s)%n", id, city.getName(), city.getDistrict());
+        });
+    }
+
     // ==================== custom JOIN 关联查询 ====================
 
     /**

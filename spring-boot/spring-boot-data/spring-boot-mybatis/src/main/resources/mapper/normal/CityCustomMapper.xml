@@ -16,6 +16,12 @@
                      columnPrefix="country_"/>
     </resultMap>
 
+    <!-- @MapKey 演示：查询全部 City，返回 Map<Integer, City> -->
+    <select id="selectAllCityMap" resultType="org.ljh.mybatis.entity.normal.City">
+        select ID, Name, CountryCode, District, Population
+        from city
+    </select>
+
     <!-- City LEFT JOIN Country 一次性查出 -->
     <select id="selectCityWithCountry" resultMap="CityWithCountryResult">
         select
@@ -42,6 +48,17 @@
         from city c
         left join country co on c.CountryCode = co.Code
         where c.ID = #{id}
+    </select>
+
+    <!--
+        演示：通过 Mapper 方法参数自动分页
+        pageNum/pageSize 自动注入分页 SQL，无需 PageHelper.startPage()
+        可选的 count 参数控制是否跳过 COUNT(*) 查询
+    -->
+    <select id="selectByPage" resultType="org.ljh.mybatis.entity.normal.City">
+        select ID, Name, CountryCode, District, Population
+        from city
+        order by ID
     </select>
 
 </mapper>
