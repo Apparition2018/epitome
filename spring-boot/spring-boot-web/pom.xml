@@ -9,4 +9,8 @@
     </parent>
     <artifactId>spring-boot-web</artifactId>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>spring-boot-web-core</module>
+    </modules>
 </project>

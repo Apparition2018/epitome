@@ -155,7 +155,6 @@
     </modules>
 
     <dependencies>
-        <!-- Starters：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters -->
         <!-- <dependency> -->
         <!--     <groupId>org.springframework.boot</groupId> -->
         <!--     <artifactId>spring-boot-starter-aspectj</artifactId> -->

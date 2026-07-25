@@ -9,25 +9,17 @@ Ctrl + [                        Move Caret to Code Block Start      移动到块
 Ctrl + ]                        Move Caret to Code Block End        移动到块末尾位置
 Ctrl + Shift + [                Move Caret to Code Block Start with Selection
 Ctrl + Shift + ]                Move Caret to Code Block End with Selection
-Ctrl + Shift + Enter            Complete Current Statement          补全当前语句
-Ctrl + D                        Duplicate Line or Selection         复制行
-Ctrl + Shift + J                Join Lines                          合并行
 Ctrl + Y                        Delete Line                         删除行
 Ctrl + Delete                   Delete to Word End                  删除光标后面的单词
 Ctrl + Backspace                Delete to Word Start                删除光标前面的单词
 Ctrl + Shift + M                Move Caret to Matching Brace        移动到羁绊括号
-Ctrl + Alt + Shift + V          Paste as Plain Text                 粘贴为纯文本
 Ctrl + M                        Scroll to Center                    居中
-Ctrl + W                        Extend Selection                    扩大选中代码
-Ctrl + Shift + W                Shrink Selection                    收缩选中代码
 Ctrl + Enter                    Split Line                          下增加行
 Ctrl + Alt + Enter              Start New Line Before Current       上插入行
 Shift + Enter                   Start New Line                      下插入行
-Ctrl + Shift + U                Toggle Case                         切换大小写
-Alt + Shift + Insert            Column Selection Mode               列选择模式
 Ctrl + ↑                        Scroll Up                           滚动条向上滚动
 Ctrl + ↓                        Scroll Down                         滚动条向下滚动
-Alt + Shit + O                  Show Options Popup for In-place Refactoring                     ???
+Alt + Shift + O                  Show Options Popup for In-place Refactoring                     ???
 ```
 ---
 ## Main Menu
@@ -38,7 +30,7 @@ Alt + S                         Settings for New Projects… (user)
 Ctrl + Alt + S                  Settings…
 Ctrl + Alt + Shift + S          Project Structure…
 Ctrl + Alt + Y                  Synchronize                         同步
-Alt + Shit + P                  Power Save Mode                     省电模式
+Alt + Shift + P                  Power Save Mode                     省电模式
 ```
 ### Edit
 ```
@@ -46,7 +38,7 @@ Ctrl + Z                        Undo                                撤销
 Ctrl + Shift + Z                Redo                                重做
 Ctrl + Shift + C                Copy Paths                          复制当前文件磁盘路径到剪贴板
 Alt + Shift + Insert            Column Selection Mode               列选择模式
-Alt + Shift + G                 Add Carets to Ends of Selectd Lines 选中行行尾添加光标
+Alt + Shift + G                 Add Carets to Ends of Selected Lines选中行行尾添加光标
 Ctrl + W                        Extend Selection                    扩大选中代码
 Ctrl + Shift + W                Shrink Selection                    收缩选中代码
 Ctrl + Shift + U                Toggle Case                         切换大小写
@@ -362,6 +354,8 @@ Alt + Shift + U                 Unittest
 ---
 ### Tencent Cloud CodeBuddy
 ```
+Alt + P                         completions.trigger
+Ctrl + Alt + I                  添加到 CodeBuddy 对话
 ```
 ### Translation
 ```
@@ -370,35 +364,21 @@ Ctrl + Shift + Y                Translate                           翻译
 ---
 ## Other
 ```
-Alt + Shift + F                 Add to Favorites                    添加到 Favorites
 Ctrl + Alt + E                  Browse Query History                                            ???
-Alt + F1                        Change View…                                                  ???
 Ctrl + Alt + Shift + W          Dump Lookup Element Weights to Log                              ???
-Alt + O                         Export to Text File                                             ???
 NumPad *                        Fully Expand Tree Node                                          ???
 Alt + Shift + I                 Inspect Code with Editor Settings   检查代码
-Ctrl + Shift + O                Load Changes                        加载变动
-Ctrl + Shfit + Alt + /          Maintenance                                                     ???
+Ctrl + Shift + O                Sync Changes                        同步变动
 Ctrl + Alt + Insert             New in This Directory…              在当前文件新建
-Shift + F4                      Open source in new window           在新窗口中打开
-Ctrl + F5                       Refresh                             刷新
 Ctrl + Shift + F5               Force Refresh                       强制刷新
-Ctrl + F5                       Rerun                               重新运行
 Alt + Shift + R                 Rerun Tests                         重新运行测试
 Ctrl + Shift + F10              Run context configuration                                       ???
-Alt + ↓                         Search History                                                  ???
+Alt + ↓                         Search History
 Ctrl + Alt + Space              Second Basic Completion             第二基本补全
-Ctrl + Alt + T                  Services Type                                                   ???
 Alt + Enter                     Show Context Actions                显示内容动作
-Ctrl + Alt + F                  Show Filter Popup                                               ???
 Ctrl + Alt + Enter              Show Quick Actions Popup            显示快捷动作弹窗
-Ctrl + P                        Show/Hide path text                                             ???
 Ctrl + Alt + J                  Surround with Live Template…        使用 Live 模板包围代码
 Ctrl + Alt + Q                  Toggle Rendered View                                            ???
-```
-### Switcher (RecentFiles) Actions
-```
-Ctrl + Tab                      Switcher
 ```
 ### Bookmarks
 ```
@@ -408,18 +388,28 @@ Shift + F11                     Show Bookmark                       显示书签
 Ctrl + 1~9                      Go to Bookmark 1~9                  定位到书签
 Ctrl + Shift + 1~9              Toggle Bookmark 1~9                 开关书签
 ```
----
+### Emmet
+```
+Alt + Shift + [                 Previous Emmet Edit Point
+Alt + Shift + ]                 Next Emmet Edit Point
+```
+### File Chooser Settings
+```
+Ctrl + P                        Show/Hide path text                                             ???
+```
+### Remote Servers
+```
+Shift + F4                      Open source in new window           在新窗口中打开
+```
+### Switcher (RecentFiles) Actions
+```
+Ctrl + Tab                      Switcher
+```
 ### XPath
 ```
 Ctrl + Alt + X, E               Evaluate Xpath…
 Ctrl + Alt + X, F               Find by Xpath…
 Ctrl + Alt + X, P               Show Unique XPath
-```
----
-### Emmet
-```
-Alt + Shift + [                 Previous Emmet Edit Point
-Alt + Shift + ]                 Next Emmet Edit Point
 ```
 ---
 ## Live Templates
@@ -439,7 +429,7 @@ soutv                           System.out.println("$EXPR_COPY$ = " + $EXPR$);
 ```
 fori                            for(int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
 iter                            for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
-itar   arrary                   for(int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { $ELEMENT_TYPE$ $VAR$ = $ARRAY$[$INDEX$]; $END$ }
+itar   array                    for(int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { $ELEMENT_TYPE$ $VAR$ = $ARRAY$[$INDEX$]; $END$ }
 ritar                           for(int $INDEX$ = $ARRAY$.length - 1; $INDEX$ >= 0; $INDEX$--) { $ELEMENT_TYPE$ $VAR$ = $ARRAY$[$INDEX$]; $END$ }
 itli   List                     for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { $ELEMENT_TYPE$ $VAR$ = $CAST$ $LIST$.get($INDEX$); $END$ }
 itco   Collection               for($ITER_TYPE$ $ITER$ = $COLLECTION$.iterator(); $ITER$.hasNext(); ) { $ELEMENT_TYPE$ $VAR$ =$CAST$ $ITER$.next(); $END$ }
@@ -482,11 +472,6 @@ thr                             throw new
 - user
 ```
 todoljh                         // TODO(LJH) (user)
-pri                             private Integer (user)
-prl                             private Long (user)
-prs                             private String (user)
-psc                             public static class (user)
-pvt                             public void test (user)
 ```
 ### Mybatis/SQL
 ```
@@ -506,7 +491,7 @@ fori                            for (int i = 0; i < expr.length; i++)
 forr                            for (int i = expr.length - 1; i >= 0; i--)
 while                           while (expr) {}
 serr                            System.err.println(expr)
-souf                            System.out.printlf("", expr)
+souf                            System.out.printf("", expr)
 sout                            System.out.println(expr)
 soutv                           System.out.println(expr)
 arg                             functionCall(expr)
@@ -530,15 +515,15 @@ try                             try { expr } catch (Exeception e)
 twr                             try (Type f = new Type()) catch (Exception e)
 var                             T name = expr
 
-test                            StepVerifier.create(expr)                                       ???
-testN                           StepVerifier.create(expr, 10)                                   ???
+test                            StepVerifier.create(expr)           创建一个响应式流（Flux/Mono）的测试验证器
+testN                           StepVerifier.create(expr, 10)
 
-toCompletable                   Completable.from*/just()                                        ???
-toFlowable                      Flowable.from*/just(iter)                                       ???
-toFlux                          Flux.from*/just(iter)                                           ???
-toMaybe                         Maybe.from*/just()                                              ???
-toMono                          Mono.from*/just(expr)                                           ???
-toObservable                    Observable.from*/just()                                         ???
-toSingle                        Single.from*/just                                               ???
+toCompletable                   Completable.from*/just()
+toFlowable                      Flowable.from*/just(iter)
+toFlux                          Flux.from*/just(iter)
+toMaybe                         Maybe.from*/just()
+toMono                          Mono.from*/just(expr)
+toObservable                    Observable.from*/just()
+toSingle                        Single.from*/just
 ```
 ---
