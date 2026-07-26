@@ -94,7 +94,6 @@
         5.1 Keep single-line blocks 勾选
     6 JavaScript → Set from… → JavaScript Standard Style
     7 HTML → Set from… → JavaScript
-    8 Markdown → Blank Lines → 全部设为0
 ### Inspections
     1 Java
         1.1 Naming conventions → Class → Class naming convention → Highlighting in editor: Weak Warning
@@ -163,6 +162,8 @@
 > - [JavaScript Standard Style](https://standardjs.com/)
 > - [Google Style Guides | styleguide](https://github.com/google/styleguide)
 > - [Google developer documentation style guide](https://developers.google.com/style)
+### Markdown
+    1 Show problems in code fences 取消勾选
 ---
 ## JRebel & XRebel
     1 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases
