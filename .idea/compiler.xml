@@ -4,11 +4,6 @@
     <option name="BUILD_PROCESS_ADDITIONAL_VM_OPTIONS" value="-javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.46\lombok-1.18.46.jar" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
       <profile name="Annotation profile for epitome" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -21,6 +16,7 @@
         <module name="spring-boot-flyway" />
         <module name="spring-boot-redis" />
         <module name="spring-boot-rocketmq" />
+        <module name="spring-boot-core" />
         <module name="spring-boot-mybatis" />
         <module name="spring-boot-web-core" />
         <module name="commons" />
@@ -31,6 +27,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="commons" options="-parameters" />
+      <module name="spring-boot-core" options="-parameters" />
       <module name="spring-boot-flyway" options="-parameters" />
       <module name="spring-boot-mqtt" options="-parameters" />
       <module name="spring-boot-mybatis" options="-parameters" />

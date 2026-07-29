@@ -634,6 +634,7 @@
     <!-- Build Settings：https://maven.apache.org/pom.html#Build_Settings -->
     <build>
         <finalName>${project.artifactId}</finalName>
+        <directory>target</directory>
 
         <!-- Available Plugins：https://maven.apache.org/plugins/index.html -->
         <plugins>
@@ -645,23 +646,6 @@
             <!--         <argLine> -->
             <!--             -javaagent:${settings.localRepository}/net/bytebuddy/byte-buddy-agent/${byte-buddy.version}/byte-buddy-agent-${byte-buddy.version}.jar -->
             <!--         </argLine> -->
-            <!--     </configuration> -->
-            <!-- </plugin> -->
-
-            <!-- &lt;!&ndash; maven-compiler-plugin -->
-            <!--     http://maven.apache.org/plugins/maven-compiler-plugin/ &ndash;&gt; -->
-            <!-- <plugin> -->
-            <!--     <groupId>org.apache.maven.plugins</groupId> -->
-            <!--     <artifactId>maven-compiler-plugin</artifactId> -->
-            <!--     <configuration> -->
-            <!--         &lt;!&ndash; http://maven.apache.org/general.html#Compiling-Java-7 &ndash;&gt; -->
-            <!--         <source>${maven.compiler.source}</source> -->
-            <!--         <target>${maven.compiler.target}</target> -->
-            <!--         <fork>true</fork> -->
-            <!--         <encoding>${project.build.sourceEncoding}</encoding> -->
-            <!--         <compilerArgs> -->
-            <!--             <arg>-Xlint:unchecked</arg> -->
-            <!--         </compilerArgs> -->
             <!--     </configuration> -->
             <!-- </plugin> -->
 
