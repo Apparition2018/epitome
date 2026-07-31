@@ -21,8 +21,6 @@ import springboot.controller.DemoController;
  * <pre>
  * <a href="https://site.mockito.org">Mockito framework site</a>
  * <a href="https://github.com/mockito/mockito">Mockito | GitHub</a>
- * <a href="https://www.cnblogs.com/jpfss/p/10950904.html">MockMvc 详解</a>
- * <a href="https://www.cnblogs.com/xumBlog/p/12679134.html">SpringBoot2 + Junit5 测试案例</a>
  * </pre>
  *
  * @author ljh

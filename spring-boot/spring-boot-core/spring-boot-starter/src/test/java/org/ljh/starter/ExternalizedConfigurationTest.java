@@ -1,4 +1,4 @@
-package org.ljh.core;
+package org.ljh.starter;
 
 import lombok.Data;
 import org.junit.jupiter.api.Test;
