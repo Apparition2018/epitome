@@ -2,8 +2,8 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/commons/src/main/resources/db/epitome.sql" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/knowledge/concurrent/Concurrent.md" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/knowledge/bash/Ubuntu.md" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/legacy/src/main/java/knowledge/concurrent/Concurrent.md" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/legacy/src/main/resources/knowledge/bash/Ubuntu.md" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
