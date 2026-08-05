@@ -20,6 +20,7 @@
         <module name="spring-boot-cache" />
         <module name="spring-boot-quartz" />
         <module name="spring-boot-mybatis" />
+        <module name="spring-boot-validation" />
         <module name="spring-boot-web-core" />
         <module name="commons" />
         <module name="spring-boot-test" />
@@ -40,6 +41,7 @@
       <module name="spring-boot-rocketmq" options="-parameters" />
       <module name="spring-boot-starter" options="-parameters" />
       <module name="spring-boot-test" options="-parameters" />
+      <module name="spring-boot-validation" options="-parameters" />
       <module name="spring-boot-web-core" options="-parameters" />
     </option>
   </component>
