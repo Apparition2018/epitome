@@ -20,12 +20,10 @@ import java.util.stream.IntStream;
  */
 public class RedisList {
 
-    /**
-     * 最近浏览商品
-     */
+    /** 最近浏览商品 */
     private static class RecentlyViewedGoods {
         private static final String RECENTLY_VIEWED_GOODS_KEY = "recently_viewed:goods:%s";
-        private static Jedis jedis = jedis = JedisUtils.getResource();
+        private static final Jedis jedis = JedisUtils.getResource();
 
         public static void main(String[] args) {
             String userKey = String.format(RECENTLY_VIEWED_GOODS_KEY, "Jack");
@@ -37,6 +35,7 @@ public class RedisList {
             viewGoods(userKey, 5);
             // Jack 最近浏览商品 id 为：[5, 8, 4, 10, 9, 7, 6, 3, 2, 1]
             System.out.println("Jack 最近浏览商品 id 为：" + getRecentlyViewedGoods(userKey));
+            jedis.close();
         }
 
         /**

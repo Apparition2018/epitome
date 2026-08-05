@@ -11,8 +11,12 @@
     <packaging>jar</packaging>
 
     <properties>
+        <java.version>21</java.version>
+
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client -->
+        <org.eclipse.paho.mqttv5.client.version>1.2.5</org.eclipse.paho.mqttv5.client.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <commons-beanutils.version>1.11.0</commons-beanutils.version>
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
@@ -70,6 +74,8 @@
         <hutool.version>5.8.46</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
+        <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
+        <byte-buddy.version>1.17.8</byte-buddy.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
         <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
@@ -108,10 +114,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+        <!-- </dependency> -->
         <!-- devtools：https://blog.csdn.net/Martin_chen2/article/details/116198924 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -133,6 +139,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
+            <version>${org.eclipse.paho.mqttv5.client.version}</version>
         </dependency>
 
         <dependency>

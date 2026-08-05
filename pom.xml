@@ -126,6 +126,7 @@
 
         <!-- Available Plugins：https://maven.apache.org/plugins/index.html -->
         <!-- <plugins></plugins> -->
+
         <pluginManagement>
             <plugins>
                 <plugin>
