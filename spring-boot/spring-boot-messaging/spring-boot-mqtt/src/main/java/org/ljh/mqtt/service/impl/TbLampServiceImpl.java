@@ -16,21 +16,22 @@ import java.util.Map;
 /**
  * @author ljh
  * @since 2026/7/14 3:31
-*/
+ */
 @Service
 public class TbLampServiceImpl extends ServiceImpl<TbLampMapper, TbLamp> implements TbLampService {
 
     @SneakyThrows
     @Override
     public void updateStatus(String payload) {
-        Map<String, Object> data = new ObjectMapper().readValue(payload, new TypeReference<>() {});
+        Map<String, Object> data = new ObjectMapper().readValue(payload, new TypeReference<>() {
+        });
         String deviceId = data.get("deviceId").toString();
         Integer status = Integer.parseInt(data.get("status").toString());
 
         LambdaQueryWrapper<TbLamp> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(TbLamp::getDeviceId, deviceId);
         TbLamp tbLamp = this.getOne(lambdaQueryWrapper);
-        if(tbLamp == null) {
+        if (tbLamp == null) {
             tbLamp = new TbLamp();
             tbLamp.setDeviceId(deviceId);
             tbLamp.setStatus(status);

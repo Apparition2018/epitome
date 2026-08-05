@@ -99,7 +99,7 @@ public class MybatisApplicationTests {
         assertThat(country.getName()).isEqualTo("China");
         assertThat(country.getCities()).isNotEmpty();
         country.getCities().forEach(city ->
-            System.out.printf("  City: %s (Population: %d)%n", city.getName(), city.getPopulation()));
+                System.out.printf("  City: %s (Population: %d)%n", city.getName(), city.getPopulation()));
     }
 
     /**
@@ -112,6 +112,6 @@ public class MybatisApplicationTests {
         assertThat(country.getCities()).isNotEmpty();
         assertThat(country.getCountryLanguages()).isNotEmpty();
         System.out.printf("Country: %s, cities: %d, languages: %d%n",
-            country.getName(), country.getCities().size(), country.getCountryLanguages().size());
+                country.getName(), country.getCities().size(), country.getCountryLanguages().size());
     }
 }

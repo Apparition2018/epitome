@@ -41,7 +41,7 @@ public class MqttInboundConfig {
     @Bean
     public MessageProducer messageProducer() {
         MqttPahoMessageDrivenChannelAdapter messageDrivenChannelAdapter = new MqttPahoMessageDrivenChannelAdapter(
-            mqttProperties.getUrl(), mqttProperties.getSubscribeClientId(), mqttPahoClientFactory, mqttProperties.getSubscribeTopics().split(","));
+                mqttProperties.getUrl(), mqttProperties.getSubscribeClientId(), mqttPahoClientFactory, mqttProperties.getSubscribeTopics().split(","));
         messageDrivenChannelAdapter.setQos(1);
         messageDrivenChannelAdapter.setConverter(new DefaultPahoMessageConverter());
         messageDrivenChannelAdapter.setOutputChannel(messageInboundChannel());

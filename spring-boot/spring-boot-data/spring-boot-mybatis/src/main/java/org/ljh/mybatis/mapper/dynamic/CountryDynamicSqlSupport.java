@@ -1,10 +1,11 @@
 package org.ljh.mybatis.mapper.dynamic;
 
-import java.math.BigDecimal;
-import java.sql.JDBCType;
 import org.ljh.mybatis.entity.Continent;
 import org.mybatis.dynamic.sql.AliasableSqlTable;
 import org.mybatis.dynamic.sql.SqlColumn;
+
+import java.math.BigDecimal;
+import java.sql.JDBCType;
 
 public final class CountryDynamicSqlSupport {
     public static final Country country = new Country();
@@ -44,7 +45,8 @@ public final class CountryDynamicSqlSupport {
 
         public final SqlColumn<String> name = column("Name", JDBCType.CHAR).withJavaProperty("name");
 
-        public final SqlColumn<Continent> continent = column("Continent", JDBCType.VARCHAR, "org.ljh.mybatis.entity.handler.ContinentTypeHandler").withJavaProperty("continent");
+        public final SqlColumn<Continent> continent =
+                column("Continent", JDBCType.VARCHAR, "org.ljh.mybatis.entity.handler.ContinentTypeHandler").withJavaProperty("continent");
 
         public final SqlColumn<String> region = column("Region", JDBCType.CHAR).withJavaProperty("region");
 

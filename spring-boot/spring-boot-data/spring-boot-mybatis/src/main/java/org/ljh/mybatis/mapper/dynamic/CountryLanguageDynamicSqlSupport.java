@@ -1,9 +1,10 @@
 package org.ljh.mybatis.mapper.dynamic;
 
-import java.math.BigDecimal;
-import java.sql.JDBCType;
 import org.mybatis.dynamic.sql.AliasableSqlTable;
 import org.mybatis.dynamic.sql.SqlColumn;
+
+import java.math.BigDecimal;
+import java.sql.JDBCType;
 
 public final class CountryLanguageDynamicSqlSupport {
     public static final CountryLanguage countryLanguage = new CountryLanguage();

@@ -35,20 +35,20 @@ public class RedisStreamListenerConfig {
     @Bean
     public StreamMessageListenerContainer<String, MapRecord<String, String, String>> streamMessageListenerContainer(RedisConnectionFactory connectionFactory) {
         var containerOptions = StreamMessageListenerContainer.StreamMessageListenerContainerOptions
-            .builder()
-            .batchSize(100)
-            // .executor(Executors.newCachedThreadPool())
-            // .errorHandler(e -> log.error("stream messaging error: {}", e.getMessage(), e))
-            .pollTimeout(Duration.ofSeconds(2))
-            .build();
+                .builder()
+                .batchSize(100)
+                // .executor(Executors.newCachedThreadPool())
+                // .errorHandler(e -> log.error("stream messaging error: {}", e.getMessage(), e))
+                .pollTimeout(Duration.ofSeconds(2))
+                .build();
 
         var container = StreamMessageListenerContainer.create(connectionFactory, containerOptions);
         // group-a，不自动 ack
         container.receive(Consumer.from(RedisStreamConstants.GROUP_A, RedisStreamConstants.CONSUMER_A),
-            StreamOffset.create(RedisStreamConstants.KEY, ReadOffset.lastConsumed()), nonAutoAckStreamListener);
+                StreamOffset.create(RedisStreamConstants.KEY, ReadOffset.lastConsumed()), nonAutoAckStreamListener);
         // group-b，自动 ack
         container.receiveAutoAck(Consumer.from(RedisStreamConstants.GROUP_B, RedisStreamConstants.CONSUMER_A),
-            StreamOffset.create(RedisStreamConstants.KEY, ReadOffset.lastConsumed()), autoAckStreamListener);
+                StreamOffset.create(RedisStreamConstants.KEY, ReadOffset.lastConsumed()), autoAckStreamListener);
         return container;
     }
 }

@@ -1,46 +1,35 @@
 package org.ljh.mybatis.mapper.dynamic;
 
-import static org.ljh.mybatis.mapper.dynamic.CountryLanguageDynamicSqlSupport.*;
-import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
+import org.ljh.mybatis.entity.dynamic.CountryLanguage;
+import org.mybatis.dynamic.sql.BasicColumn;
+import org.mybatis.dynamic.sql.dsl.*;
+import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
+import org.mybatis.dynamic.sql.util.SqlProviderAdapter;
+import org.mybatis.dynamic.sql.util.mybatis3.*;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.type.JdbcType;
-import org.ljh.mybatis.entity.dynamic.CountryLanguage;
-import org.mybatis.dynamic.sql.BasicColumn;
-import org.mybatis.dynamic.sql.dsl.CountDSLCompleter;
-import org.mybatis.dynamic.sql.dsl.DeleteDSLCompleter;
-import org.mybatis.dynamic.sql.dsl.SelectDSLCompleter;
-import org.mybatis.dynamic.sql.dsl.UpdateDSL;
-import org.mybatis.dynamic.sql.dsl.UpdateDSLCompleter;
-import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
-import org.mybatis.dynamic.sql.util.SqlProviderAdapter;
-import org.mybatis.dynamic.sql.util.mybatis3.CommonCountMapper;
-import org.mybatis.dynamic.sql.util.mybatis3.CommonDeleteMapper;
-import org.mybatis.dynamic.sql.util.mybatis3.CommonInsertMapper;
-import org.mybatis.dynamic.sql.util.mybatis3.CommonUpdateMapper;
-import org.mybatis.dynamic.sql.util.mybatis3.MyBatis3Utils;
+
+import static org.ljh.mybatis.mapper.dynamic.CountryLanguageDynamicSqlSupport.*;
+import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
 
 @Mapper
 public interface CountryLanguageMapper extends CommonCountMapper, CommonDeleteMapper, CommonInsertMapper<CountryLanguage>, CommonUpdateMapper {
     BasicColumn[] selectList = BasicColumn.columnList(countryCode, language, isOfficial, percentage);
 
-    @SelectProvider(type=SqlProviderAdapter.class, method="select")
-    @Results(id="CountryLanguageResult", value = {
-        @Result(column="CountryCode", property="countryCode", jdbcType=JdbcType.CHAR, id=true),
-        @Result(column="Language", property="language", jdbcType=JdbcType.CHAR, id=true),
-        @Result(column="IsOfficial", property="isOfficial", jdbcType=JdbcType.CHAR),
-        @Result(column="Percentage", property="percentage", jdbcType=JdbcType.DECIMAL)
+    @SelectProvider(type = SqlProviderAdapter.class, method = "select")
+    @Results(id = "CountryLanguageResult", value = {
+            @Result(column = "CountryCode", property = "countryCode", jdbcType = JdbcType.CHAR, id = true),
+            @Result(column = "Language", property = "language", jdbcType = JdbcType.CHAR, id = true),
+            @Result(column = "IsOfficial", property = "isOfficial", jdbcType = JdbcType.CHAR),
+            @Result(column = "Percentage", property = "percentage", jdbcType = JdbcType.DECIMAL)
     })
     List<CountryLanguage> selectMany(SelectStatementProvider selectStatement);
 
-    @SelectProvider(type=SqlProviderAdapter.class, method="select")
+    @SelectProvider(type = SqlProviderAdapter.class, method = "select")
     @ResultMap("CountryLanguageResult")
     Optional<CountryLanguage> selectOne(SelectStatementProvider selectStatement);
 
@@ -53,36 +42,36 @@ public interface CountryLanguageMapper extends CommonCountMapper, CommonDeleteMa
     }
 
     default int deleteByPrimaryKey(String countryCode_, String language_) {
-        return delete(c -> 
-            c.where(countryCode, isEqualTo(countryCode_))
-            .and(language, isEqualTo(language_))
+        return delete(c ->
+                c.where(countryCode, isEqualTo(countryCode_))
+                        .and(language, isEqualTo(language_))
         );
     }
 
     default int insert(CountryLanguage row) {
         return MyBatis3Utils.insert(this::insert, row, countryLanguage, c ->
-            c.withMappedColumn(countryCode)
-            .withMappedColumn(language)
-            .withMappedColumn(isOfficial)
-            .withMappedColumn(percentage)
+                c.withMappedColumn(countryCode)
+                        .withMappedColumn(language)
+                        .withMappedColumn(isOfficial)
+                        .withMappedColumn(percentage)
         );
     }
 
     default int insertMultiple(Collection<CountryLanguage> records) {
         return MyBatis3Utils.insertMultiple(this::insertMultiple, records, countryLanguage, c ->
-            c.withMappedColumn(countryCode)
-            .withMappedColumn(language)
-            .withMappedColumn(isOfficial)
-            .withMappedColumn(percentage)
+                c.withMappedColumn(countryCode)
+                        .withMappedColumn(language)
+                        .withMappedColumn(isOfficial)
+                        .withMappedColumn(percentage)
         );
     }
 
     default int insertSelective(CountryLanguage row) {
         return MyBatis3Utils.insert(this::insert, row, countryLanguage, c ->
-            c.withMappedColumnWhenPresent(countryCode, row::getCountryCode)
-            .withMappedColumnWhenPresent(language, row::getLanguage)
-            .withMappedColumnWhenPresent(isOfficial, row::getIsOfficial)
-            .withMappedColumnWhenPresent(percentage, row::getPercentage)
+                c.withMappedColumnWhenPresent(countryCode, row::getCountryCode)
+                        .withMappedColumnWhenPresent(language, row::getLanguage)
+                        .withMappedColumnWhenPresent(isOfficial, row::getIsOfficial)
+                        .withMappedColumnWhenPresent(percentage, row::getPercentage)
         );
     }
 
@@ -100,8 +89,8 @@ public interface CountryLanguageMapper extends CommonCountMapper, CommonDeleteMa
 
     default Optional<CountryLanguage> selectByPrimaryKey(String countryCode_, String language_) {
         return selectOne(c ->
-            c.where(countryCode, isEqualTo(countryCode_))
-            .and(language, isEqualTo(language_))
+                c.where(countryCode, isEqualTo(countryCode_))
+                        .and(language, isEqualTo(language_))
         );
     }
 
@@ -125,19 +114,19 @@ public interface CountryLanguageMapper extends CommonCountMapper, CommonDeleteMa
 
     default int updateByPrimaryKey(CountryLanguage row) {
         return update(c ->
-            c.set(isOfficial).equalTo(row::getIsOfficial)
-            .set(percentage).equalTo(row::getPercentage)
-            .where(countryCode, isEqualTo(row::getCountryCode))
-            .and(language, isEqualTo(row::getLanguage))
+                c.set(isOfficial).equalTo(row::getIsOfficial)
+                        .set(percentage).equalTo(row::getPercentage)
+                        .where(countryCode, isEqualTo(row::getCountryCode))
+                        .and(language, isEqualTo(row::getLanguage))
         );
     }
 
     default int updateByPrimaryKeySelective(CountryLanguage row) {
         return update(c ->
-            c.set(isOfficial).equalToWhenPresent(row::getIsOfficial)
-            .set(percentage).equalToWhenPresent(row::getPercentage)
-            .where(countryCode, isEqualTo(row::getCountryCode))
-            .and(language, isEqualTo(row::getLanguage))
+                c.set(isOfficial).equalToWhenPresent(row::getIsOfficial)
+                        .set(percentage).equalToWhenPresent(row::getPercentage)
+                        .where(countryCode, isEqualTo(row::getCountryCode))
+                        .and(language, isEqualTo(row::getLanguage))
         );
     }
 }

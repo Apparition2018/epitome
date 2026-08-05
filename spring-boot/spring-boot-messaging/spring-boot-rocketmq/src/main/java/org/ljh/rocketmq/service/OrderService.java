@@ -44,9 +44,9 @@ public class OrderService {
     public OrderMessage createOrder(Long userId, BigDecimal amount) {
         // 1. 构建订单消息（在事务消息发送前生成唯一标识）
         OrderMessage order = new OrderMessage(
-            ThreadLocalRandom.current().nextLong(100000, 999999),
-            "ORD" + System.currentTimeMillis(),
-            userId, amount, "CREATED", LocalDateTime.now());
+                ThreadLocalRandom.current().nextLong(100000, 999999),
+                "ORD" + System.currentTimeMillis(),
+                userId, amount, "CREATED", LocalDateTime.now());
 
         // 2. 发送事务消息（本地事务在 TransactionListener 中执行）
         orderProducer.sendOrderCreatedInTransaction(order);

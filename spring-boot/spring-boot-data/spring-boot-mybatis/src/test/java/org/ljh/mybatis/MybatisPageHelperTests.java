@@ -64,7 +64,7 @@ public class MybatisPageHelperTests {
         assertThat(pageInfo.getList()).hasSizeLessThanOrEqualTo(5);
         assertThat(pageInfo.getPageNum()).isEqualTo(1);
         System.out.printf("[方式一·传统] total: %d, page: %d/%d, size: %d%n",
-            pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPages(), pageInfo.getSize());
+                pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPages(), pageInfo.getSize());
     }
 
     /**
@@ -73,14 +73,14 @@ public class MybatisPageHelperTests {
     @Test
     void testLambdaDoSelectPage() {
         Page<Object> page = PageHelper.startPage(1, 5)
-            .doSelectPage(() -> cityMapper.selectByExample(new CityExample()));
+                .doSelectPage(() -> cityMapper.selectByExample(new CityExample()));
 
         assertThat(page.getTotal()).isPositive();
         assertThat(page.getResult()).hasSizeLessThanOrEqualTo(5);
         assertThat(page.getPageNum()).isEqualTo(1);
         assertThat(page.getPageSize()).isEqualTo(5);
         System.out.printf("[方式二·Page] total: %d, pageSize: %d, result: %d%n",
-            page.getTotal(), page.getPageSize(), page.getResult().size());
+                page.getTotal(), page.getPageSize(), page.getResult().size());
     }
 
     /**
@@ -89,14 +89,14 @@ public class MybatisPageHelperTests {
     @Test
     void testLambdaDoSelectPageInfo() {
         PageInfo<Object> pageInfo = PageHelper.startPage(2, 3)
-            .doSelectPageInfo(() -> countryMapper.selectByExample(new CountryExample()));
+                .doSelectPageInfo(() -> countryMapper.selectByExample(new CountryExample()));
 
         assertThat(pageInfo.getTotal()).isPositive();
         assertThat(pageInfo.getList()).hasSizeLessThanOrEqualTo(3);
         assertThat(pageInfo.getPageNum()).isEqualTo(2);
         assertThat(pageInfo.getPages()).isPositive();
         System.out.printf("[方式二·PageInfo] total: %d, pages: %d, current: %d%n",
-            pageInfo.getTotal(), pageInfo.getPages(), pageInfo.getPageNum());
+                pageInfo.getTotal(), pageInfo.getPages(), pageInfo.getPageNum());
     }
 
     /**
@@ -112,7 +112,7 @@ public class MybatisPageHelperTests {
         assertThat(pageInfo.getList()).hasSizeLessThanOrEqualTo(5);
         assertThat(pageInfo.getPageNum()).isEqualTo(1);
         System.out.printf("[方式三·声明式] total: %d, page: %d/%d, size: %d%n",
-            pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPages(), pageInfo.getSize());
+                pageInfo.getTotal(), pageInfo.getPageNum(), pageInfo.getPages(), pageInfo.getSize());
     }
 
     // ==================== 其他示例 ====================
@@ -139,7 +139,7 @@ public class MybatisPageHelperTests {
         assertThat(pageInfo.getTotal()).isEqualTo(0);
         assertThat(pageInfo.getList()).hasSizeLessThanOrEqualTo(5);
         System.out.printf("[跳过 count] total=%d, size=%d%n",
-            pageInfo.getTotal(), pageInfo.getList().size());
+                pageInfo.getTotal(), pageInfo.getList().size());
     }
 
     /**
@@ -150,15 +150,14 @@ public class MybatisPageHelperTests {
     @Test
     void testPageHelperThreadIsolation() {
         Page<Object> page1 = PageHelper.startPage(1, 2)
-            .doSelectPage(() -> cityMapper.selectByExample(new CityExample()));
+                .doSelectPage(() -> cityMapper.selectByExample(new CityExample()));
 
         Page<Object> page2 = PageHelper.startPage(1, 3)
-            .doSelectPage(() -> countryMapper.selectByExample(new CountryExample()));
+                .doSelectPage(() -> countryMapper.selectByExample(new CountryExample()));
 
         assertThat(page1.getResult()).hasSizeLessThanOrEqualTo(2);
         assertThat(page2.getResult()).hasSizeLessThanOrEqualTo(3);
         System.out.printf("Page1 size: %d, Page2 size: %d%n",
-            page1.getResult().size(), page2.getResult().size());
+                page1.getResult().size(), page2.getResult().size());
     }
-
 }

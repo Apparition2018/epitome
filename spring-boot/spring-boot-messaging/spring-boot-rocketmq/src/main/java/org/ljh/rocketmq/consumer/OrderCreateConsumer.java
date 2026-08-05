@@ -22,16 +22,16 @@ import tools.jackson.databind.ObjectMapper;
 @Component
 @RequiredArgsConstructor
 @RocketMQMessageListener(
-    consumerGroup = "order-created-consumer-group",
-    topic = "order-topic",
-    maxReconsumeTimes = 3,
-    selectorType = SelectorType.TAG,
-    selectorExpression = "order-created",
-    // 并发消费
-    consumeMode = ConsumeMode.CONCURRENTLY,
-    // 集群模式（每个消息只被消费一次）
-    messageModel = MessageModel.CLUSTERING)
-public class OrderCreateConsumer  implements RocketMQListener<MessageExt> {
+        consumerGroup = "order-created-consumer-group",
+        topic = "order-topic",
+        maxReconsumeTimes = 3,
+        selectorType = SelectorType.TAG,
+        selectorExpression = "order-created",
+        // 并发消费
+        consumeMode = ConsumeMode.CONCURRENTLY,
+        // 集群模式（每个消息只被消费一次）
+        messageModel = MessageModel.CLUSTERING)
+public class OrderCreateConsumer implements RocketMQListener<MessageExt> {
 
     private final ObjectMapper objectMapper;
 

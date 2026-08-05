@@ -17,7 +17,7 @@ import org.springframework.messaging.MessageHandler;
  * @since 2026/7/14 2:00
  */
 @Configuration
-public class MqttOutboundConfig{
+public class MqttOutboundConfig {
 
     private final MqttProperties mqttProperties;
     private final MqttPahoClientFactory mqttPahoClientFactory;

@@ -1,8 +1,9 @@
 package org.ljh.mybatis.mapper.dynamic;
 
-import java.sql.JDBCType;
 import org.mybatis.dynamic.sql.AliasableSqlTable;
 import org.mybatis.dynamic.sql.SqlColumn;
+
+import java.sql.JDBCType;
 
 public final class CityDynamicSqlSupport {
     public static final City city = new City();

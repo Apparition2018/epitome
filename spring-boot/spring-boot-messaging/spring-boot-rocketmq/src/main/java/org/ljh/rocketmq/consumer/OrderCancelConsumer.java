@@ -22,13 +22,13 @@ import tools.jackson.databind.ObjectMapper;
 @Component
 @RequiredArgsConstructor
 @RocketMQMessageListener(
-    consumerGroup = "order-cancel-consumer-group",
-    topic = "order-topic",
-    maxReconsumeTimes = 3,
-    selectorType = SelectorType.TAG,
-    selectorExpression = "order-cancel",
-    // 顺序消费
-    consumeMode = ConsumeMode.ORDERLY)
+        consumerGroup = "order-cancel-consumer-group",
+        topic = "order-topic",
+        maxReconsumeTimes = 3,
+        selectorType = SelectorType.TAG,
+        selectorExpression = "order-cancel",
+        // 顺序消费
+        consumeMode = ConsumeMode.ORDERLY)
 public class OrderCancelConsumer implements RocketMQListener<MessageExt> {
 
     private final ObjectMapper objectMapper;
