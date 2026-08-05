@@ -68,11 +68,13 @@
         1.1 Keep trailing spaces on caet line 取消勾选
         1.2 Remove trailing blank lines at the end of saved files 勾选
         1.3 Ensure every saved files ends with a line 勾选
-    2 Auto Import (-no) → Java
-        2.1 Add unambiguous imports on the fly 勾选
-        2.2 Optimize imports on the fly 勾选
-    3 Editor Tabs
-        3.1 Show tabs in: One row, and if tabs don't fit: Squeeze tabs
+    2 Code Folding (-o) → Fold by default → General
+        2.1 Imports 勾选
+    3 Auto Import (-no) → Java
+        3.1 Add unambiguous imports on the fly 勾选
+        3.2 Optimize imports on the fly 勾选
+    4 Editor Tabs
+        4.1 Show tabs in: One row, and if tabs don't fit: Squeeze tabs
 ### Font (-j)
     1 Size: 12.0
     2 Typography Settings → Fallback font: Microsoft YaHei
