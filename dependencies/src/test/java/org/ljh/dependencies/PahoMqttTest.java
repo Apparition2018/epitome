@@ -1,4 +1,4 @@
-package dependencies;
+package org.ljh.dependencies;
 
 import org.eclipse.paho.mqttv5.client.*;
 import org.eclipse.paho.mqttv5.client.persist.MemoryPersistence;
@@ -9,15 +9,13 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 
-import static l.demo.Demo.p;
-
 /**
  * Paho Mqtt
  *
  * @author ljh
  * @since 2026/7/12 18:37
  */
-public class PahoMqttDemo {
+public class PahoMqttTest {
 
     @Test
     public void receiveMsg() throws MqttException {
@@ -26,7 +24,7 @@ public class PahoMqttDemo {
 
             @Override
             public void disconnected(MqttDisconnectResponse disconnectResponse) {
-                p("disconnected");
+                System.out.println("disconnected");
             }
 
             @Override
@@ -36,14 +34,14 @@ public class PahoMqttDemo {
 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
-                p("topic ----> " + topic);
+                System.out.println("topic ----> " + topic);
                 byte[] payload = message.getPayload();
-                p("msg   ----> " + new String(payload, StandardCharsets.UTF_8));
+                System.out.println("msg   ----> " + new String(payload, StandardCharsets.UTF_8));
             }
 
             @Override
             public void deliveryComplete(IMqttToken token) {
-                p("deliveryComplete");
+                System.out.println("deliveryComplete");
             }
 
             @Override
@@ -80,7 +78,7 @@ public class PahoMqttDemo {
         mqttConnectionOptions.setPassword("123".getBytes(StandardCharsets.UTF_8));
         mqttConnectionOptions.setCleanStart(true);
         mqttClient.connect(mqttConnectionOptions);
-        p("已连接，clientId=" + clientId);
+        System.out.println("已连接，clientId=" + clientId);
         return mqttClient;
     }
 }
