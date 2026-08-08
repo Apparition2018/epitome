@@ -11,13 +11,20 @@ import lombok.Getter;
 @Getter
 public enum Continent {
 
+    /** 亚洲 */
     ASIA("Asia"),
+    /** 欧洲 */
     EUROPE("Europe"),
-    NORTH_AMERICA("North America"),
+    /** 非洲 */
     AFRICA("Africa"),
+    /** 北美洲 */
+    NORTH_AMERICA("North America"),
+    /** 南美洲 */
+    SOUTH_AMERICA("South America"),
+    /** 大洋洲 */
     OCEANIA("Oceania"),
-    ANTARCTICA("Antarctica"),
-    SOUTH_AMERICA("South America");
+    /** 南极洲 */
+    ANTARCTICA("Antarctica");
 
     private final String value;
 
@@ -25,6 +32,7 @@ public enum Continent {
         this.value = value;
     }
 
+    /** 由数据库字符串值反查枚举 */
     public static Continent fromValue(String value) {
         for (Continent c : values()) {
             if (c.value.equals(value)) {
