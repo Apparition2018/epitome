@@ -11,6 +11,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-boot-web-core</module>
+        <module>spring-boot-webmvc</module>
     </modules>
 </project>

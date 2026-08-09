@@ -16,8 +16,8 @@
 </dependency>
 ```
 
-> 注意：`spring-boot-starter-web` 2.3+ 不再自动包含校验能力，需要显式引入
-> `spring-boot-starter-validation`（内含 `jakarta.validation-api` + `hibernate-validator`）。
+> 注意：`spring-boot-starter-web` 2.3+ 不再自动包含校验能力，需要显式引入 `spring-boot-starter-validation`
+> （内含 `jakarta.validation-api` + `hibernate-validator`）。
 
 ## 2. 常用校验注解速查表
 

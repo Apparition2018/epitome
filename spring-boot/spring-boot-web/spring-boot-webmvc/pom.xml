@@ -7,12 +7,12 @@
         <artifactId>spring-boot-web</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>spring-boot-web-core</artifactId>
+    <artifactId>spring-boot-webmvc</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
     </dependencies>
 

@@ -13,23 +13,177 @@
           <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="spring-boot-flyway" />
-        <module name="legacy" />
-        <module name="spring-boot-redis" />
-        <module name="spring-boot-rocketmq" />
-        <module name="spring-boot-mybatis" />
-        <module name="spring-boot-web-core" />
-        <module name="commons" />
-        <module name="dependencies" />
-        <module name="spring-boot-mqtt" />
         <module name="spring-boot-jpa" />
-        <module name="spring-boot-starter" />
-        <module name="spring-boot-cache" />
+      </profile>
+      <profile name="Annotation profile for commons" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="commons" />
+      </profile>
+      <profile name="Annotation profile for dependencies" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="dependencies" />
+      </profile>
+      <profile name="Annotation profile for legacy" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="legacy" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-quartz" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
         <module name="spring-boot-quartz" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-cache" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-cache" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-starter" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-starter" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-validation" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
         <module name="spring-boot-validation" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-data-jpa" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-data-jpa" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-flyway" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-flyway" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-mybatis" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-mybatis" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-redis" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-redis" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-mqtt" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-mqtt" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-rocketmq" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-rocketmq" />
+      </profile>
+      <profile name="Annotation profile for spring-boot-test" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
         <module name="spring-boot-test" />
       </profile>
+      <profile name="Annotation profile for spring-boot-webmvc" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="spring-boot-webmvc" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-boot-web-core" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -38,6 +192,7 @@
       <module name="legacy" options="-parameters" />
       <module name="spring-boot-cache" options="-parameters" />
       <module name="spring-boot-core" options="" />
+      <module name="spring-boot-data-jpa" options="-parameters" />
       <module name="spring-boot-flyway" options="-parameters" />
       <module name="spring-boot-jpa" options="-parameters" />
       <module name="spring-boot-mqtt" options="-parameters" />
@@ -48,7 +203,7 @@
       <module name="spring-boot-starter" options="-parameters" />
       <module name="spring-boot-test" options="-parameters" />
       <module name="spring-boot-validation" options="-parameters" />
-      <module name="spring-boot-web-core" options="-parameters" />
+      <module name="spring-boot-webmvc" options="-parameters" />
     </option>
   </component>
 </project>
