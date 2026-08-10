@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * 编程式校验演示，不依赖 Spring 容器，直接使用 Bean Validation API。
  */
-class ValidationTest {
+class ValidationTests {
 
     // 默认校验器（收集全部错误）
     private final Validator validator = defaultValidator();

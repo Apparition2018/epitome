@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 @SpringBootTest
 @DisplayName("I18n 测试")
-class I18nTest {
+class I18nTests {
 
     @Autowired
     private MessageSource messageSource;

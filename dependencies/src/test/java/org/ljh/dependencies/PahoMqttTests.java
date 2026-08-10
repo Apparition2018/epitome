@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2026/7/12 18:37
  */
-public class PahoMqttTest {
+public class PahoMqttTests {
 
     @Test
     public void receiveMsg() throws MqttException {

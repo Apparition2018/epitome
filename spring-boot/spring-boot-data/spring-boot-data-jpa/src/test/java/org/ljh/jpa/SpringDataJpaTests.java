@@ -21,14 +21,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Spring Data JPA 演示测试
- * <p>按主题组织，覆盖：仓储声明、四种查询方式（派生/JPQL/Native/修改）、分页排序、
- * 动态查询、实体图、投影、关联与复合主键、并发控制（乐观锁/悲观锁）、审计。</p>
+ * <p>按主题组织，涵盖以下主题：</p>
+ * <ol>
+ *     <li>仓储声明</li>
+ *     <li>查询方式（派生 / JPQL / Native）与修改操作（{@code @Modifying}）</li>
+ *     <li>分页排序</li>
+ *     <li>动态查询（Specification / Query by Example）</li>
+ *     <li>实体图（{@code @EntityGraph} / JOIN FETCH）</li>
+ *     <li>投影</li>
+ *     <li>关联与复合主键</li>
+ *     <li>并发控制（乐观锁 / 悲观锁）</li>
+ *     <li>审计</li>
+ * </ol>
  *
  * @author ljh
  * @since 2026/8/8
  */
 @SpringBootTest(classes = JpaApplication.class)
-class JpaRepositoryTests {
+class SpringDataJpaTests {
 
     @Autowired
     private CountryRepository countryRepository;
@@ -515,7 +525,7 @@ class JpaRepositoryTests {
         c.setContinent(continent);
         c.setRegion("Test Region");
         c.setSurfaceArea(new BigDecimal("1000.00"));
-        c.setPopulation(1000000);
+        c.setPopulation(1_000_000);
         c.setLocalName(name);
         c.setGovernmentForm("Republic");
         c.setCode2(code.substring(0, 2));

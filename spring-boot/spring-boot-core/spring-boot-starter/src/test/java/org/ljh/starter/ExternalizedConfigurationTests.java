@@ -31,8 +31,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 // 加载自定义 .properties 文件到 Environment
 @PropertySource("classpath:app.properties")
-@EnableConfigurationProperties(ExternalizedConfigurationTest.AppProperties.class)
-public class ExternalizedConfigurationTest {
+@EnableConfigurationProperties(ExternalizedConfigurationTests.AppProperties.class)
+public class ExternalizedConfigurationTests {
 
     // ===================================================================
     // 1. @ConfigurationProperties — 类型安全，最推荐

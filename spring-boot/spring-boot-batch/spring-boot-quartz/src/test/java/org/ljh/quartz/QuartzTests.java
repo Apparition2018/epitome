@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 4) 通过 JobDataMap 给任务传参。
  */
 @SpringBootTest
-class QuartzTest {
+class QuartzTests {
 
     @Autowired
     private Scheduler scheduler;

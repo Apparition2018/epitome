@@ -16,7 +16,7 @@ import java.time.Duration;
  * 这里等待数秒后断言各任务已被触发。
  */
 @SpringBootTest
-class ScheduledTasksTest {
+class ScheduledTasksTests {
 
     @Autowired
     private TaskService taskService;

@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @SpringBootTest
 @DisplayName("WebApplicationContextUtils 测试")
-class WebApplicationContextUtilsTest {
+class WebApplicationContextUtilsTests {
 
     @Autowired
     private ApplicationContext applicationContext;

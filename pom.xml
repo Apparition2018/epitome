@@ -61,6 +61,8 @@
         <h2.version>2.4.240</h2.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
         <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version>
+        <!-- Caffeine：caffeine 与 caffeine:jcache 需同版本发布，统一管理避免 SPI 与核心版本不一致 -->
+        <caffeine.version>3.2.4</caffeine.version>
     </properties>
 
     <modules>
@@ -116,6 +118,16 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
                 <version>${mybatis-plus-spring-boot4-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>jcache</artifactId>
+                <version>${caffeine.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
