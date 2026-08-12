@@ -29,7 +29,11 @@ import java.util.List;
  * <ul>
  *     <li>{@code @NaturalId}：把业务唯一键（国家码 Code）声明为自然 ID，可用
  *         {@code session.byNaturalId()} 直接按自然键查询，无需自增主键。</li>
- *     <li>{@code @NaturalIdCache}：为自然 ID 建立二级缓存映射（配合 {@code @Cache} 二级缓存）。</li>
+ *     <li>{@code @NaturalIdCache(region = "countryNaturalId")}：为自然 ID 建立二级缓存映射
+ *         （配合 {@code @Cache} 二级缓存）。显式指定 region 是为避开默认的
+ *         {@code 实体##NaturalId} 区域名——Caffeine jcache 会把缓存名当作 HOCON 路径解析，
+ *         {@code ##} 是注释起始符会触发 BadPath 启动失败（该缺陷在 caffeine 3.2.4 仍存在，
+ *         且无更新版本可升级，故必须绕开默认区域名）。</li>
  *     <li>{@code @Cache(usage = READ_WRITE)}：开启二级缓存，跨 Session 共享实体实例。</li>
  *     <li>{@code @NamedQuery}：预定义 HQL 查询，按名字复用，避免字符串散落在代码各处。</li>
  * </ul>
@@ -41,7 +45,7 @@ import java.util.List;
 @Entity
 @Table(name = "country")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@NaturalIdCache
+@NaturalIdCache(region = "countryNaturalId")
 @NamedQuery(name = "Country.byContinent", query = "select c from Country c where c.continent = :continent order by c.population desc")
 @NamedQuery(name = "Country.count", query = "select count(c) from Country c")
 public class Country implements Serializable {

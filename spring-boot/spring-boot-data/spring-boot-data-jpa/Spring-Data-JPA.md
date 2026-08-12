@@ -101,7 +101,7 @@ public interface CityDefinitionRepository {
 
 继承 `JpaRepository<T, ID>` 即自动获得，无需写任何方法：
 
-- `save` / `saveAndFlush`（新增或更新）
+- `save` / `saveAndFlush` / `saveAll`
 - `findById` / `findAll` / `findAllById`
 - `count` / `existsById`
 - `deleteById` / `delete` / `deleteAll`

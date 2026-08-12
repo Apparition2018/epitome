@@ -23,8 +23,7 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- 二级缓存：hibernate-jcache 桥接 JCache 规范；
-             caffeine 提供缓存实例，caffeine:jcache 提供 JCache 的 CachingProvider SPI（与 caffeine 同版本） -->
+        <!-- 二级缓存：hibernate-jcache 桥接 JCache 规范；caffeine 提供缓存实例，caffeine:jcache 提供 JCache 的 CachingProvider SPI -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-jcache</artifactId>

@@ -29,8 +29,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * Hibernate 原生 API 演示测试
  * <p>直接操作 Hibernate 原生 {@code Session}/{@code SessionFactory}
- * （经 Spring 注入的 {@code EntityManager} 底层即 Hibernate Session）。按主题组织，
- * 划分为六个大方向，下方测试区块（一~六）的顺序与之完全一致：</p>
+ * （经 Spring 注入的 {@code EntityManager} 底层即 Hibernate Session）。
+ * 按主题组织，涵盖以下主题：</p>
  * <ol>
  *     <li><b>Session 核心</b>：基础 CRUD、实体生命周期、一级缓存与脏检查（含 FlushMode、refresh/clear）</li>
  *     <li><b>查询 API</b>：HQL（含 JOIN FETCH、Named Query、构造器投影）、Criteria、Native SQL</li>
@@ -654,7 +654,6 @@ class HibernateNativeTests {
     /**
      * getReference（旧称 load）：返回懒代理，真正访问字段时才发查询（避免无谓的 SELECT）。
      * get：立即查询，不存在返回 null。
-     * 用于「只想拿到主键建立关联」的场景，非常高效。
      */
     @Test
     @Transactional

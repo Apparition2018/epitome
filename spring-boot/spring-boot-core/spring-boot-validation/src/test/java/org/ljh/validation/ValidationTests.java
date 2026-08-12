@@ -6,6 +6,7 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.ljh.validation.dto.Address;
 import org.ljh.validation.dto.UserCreateRequest;
 import org.ljh.validation.dto.UserUpdateRequest;
 import org.ljh.validation.group.Create;
@@ -43,7 +44,7 @@ class ValidationTests {
                 LocalDate.of(1998, 5, 20),
                 "VIP",
                 List.of("篮球", "编程"),
-                new org.ljh.validation.dto.Address("广东", "深圳", "南山"),
+                new Address("广东", "深圳", "南山"),
                 true);
     }
 
@@ -66,7 +67,7 @@ class ValidationTests {
                 LocalDate.now().plusDays(1),
                 "SUPER",
                 List.of(""),
-                new org.ljh.validation.dto.Address("", "", null),
+                new Address("", "", null),
                 false);
 
         Set<ConstraintViolation<UserCreateRequest>> violations = validator.validate(bad);
