@@ -40,7 +40,7 @@ public class CountryLanguageDao {
     /** 某国家的所有语言 */
     public List<CountryLanguage> findByCountryCode(String countryCode) {
         return em.createQuery(
-                "select cl from CountryLanguage cl where cl.countryCode = :cc", CountryLanguage.class)
+                        "select cl from CountryLanguage cl where cl.countryCode = :cc", CountryLanguage.class)
                 .setParameter("cc", countryCode)
                 .getResultList();
     }

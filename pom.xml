@@ -44,13 +44,8 @@
     <!-- 项目插值和变量：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-interpolation-and-variables -->
     <!-- settings.xml 中 <profile/> 可设置 <properties/> -->
     <properties>
-        <!-- dependency -->
-        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter -->
-        <rocketmq-spring-boot-starter.version>2.3.6</rocketmq-spring-boot-starter.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-test -->
-        <rocketmq.version>5.5.0</rocketmq.version>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 -->
-        <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+        <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
@@ -63,11 +58,17 @@
         <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version>
         <!-- Caffeine：caffeine 与 caffeine:jcache 需同版本发布，统一管理避免 SPI 与核心版本不一致 -->
         <caffeine.version>3.2.4</caffeine.version>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 -->
+        <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter -->
+        <rocketmq-spring-boot-starter.version>2.3.6</rocketmq-spring-boot-starter.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-test -->
+        <rocketmq.version>5.5.0</rocketmq.version>
     </properties>
 
     <modules>
         <module>legacy</module>
-        <module>commons</module>
+        <module>db</module>
         <module>dependencies</module>
         <module>spring-boot</module>
         <module>spring-cloud</module>
@@ -78,7 +79,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.ljh</groupId>
-                <artifactId>commons</artifactId>
+                <artifactId>db</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -89,20 +90,9 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>${rocketmq-spring-boot-starter.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-test</artifactId>
-                <version>${rocketmq.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.paho</groupId>
-                <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-                <version>${org.eclipse.paho.client.mqttv3.version}</version>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-4-starter</artifactId>
+                <version>${druid-spring-boot-4-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
@@ -128,6 +118,22 @@
                 <groupId>com.github.ben-manes.caffeine</groupId>
                 <artifactId>jcache</artifactId>
                 <version>${caffeine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-test</artifactId>
+                <version>${rocketmq.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.paho</groupId>
+                <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+                <version>${org.eclipse.paho.client.mqttv3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -6,31 +6,10 @@ import jakarta.persistence.PersistenceException;
 import org.hibernate.SessionFactory;
 import org.hibernate.stat.Statistics;
 import org.junit.jupiter.api.Test;
-import org.ljh.jpa.dao.AdvancedDao;
-import org.ljh.jpa.dao.CountryDao;
-import org.ljh.jpa.dao.CountryLanguageDao;
-import org.ljh.jpa.dao.PersonDao;
-import org.ljh.jpa.dao.RelationshipDao;
-import org.ljh.jpa.entity.Address;
-import org.ljh.jpa.entity.Author;
-import org.ljh.jpa.entity.City;
-import org.ljh.jpa.entity.Continent;
-import org.ljh.jpa.entity.Country;
-import org.ljh.jpa.entity.CountryLanguage;
-import org.ljh.jpa.entity.Customer;
-import org.ljh.jpa.entity.Customer2;
-import org.ljh.jpa.entity.Customer3;
-import org.ljh.jpa.entity.CustomerStatus;
-import org.ljh.jpa.entity.Manager;
-import org.ljh.jpa.entity.Order;
-import org.ljh.jpa.entity.Order2;
-import org.ljh.jpa.entity.Passport;
-import org.ljh.jpa.entity.Person;
-import org.ljh.jpa.entity.Staff;
-import org.ljh.jpa.entity.Student;
-import org.ljh.jpa.entity.Teacher;
+import org.ljh.jpa.dao.*;
+import org.ljh.jpa.entity.*;
 import org.ljh.jpa.projection.CustomerProjection;
-import org.ljh.jpa.service.JpaDemoService;
+import org.ljh.jpa.service.JpaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -89,7 +68,7 @@ class JpaNativeTests {
     private RelationshipDao relationshipDao;
 
     @Autowired
-    private JpaDemoService demoService;
+    private JpaService demoService;
 
     /** 手动管理事务，用于演示乐观锁并发冲突 */
     @Autowired

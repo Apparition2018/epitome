@@ -1,15 +1,6 @@
 package org.ljh.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,10 +10,10 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * City — 城市实体（映射 world 库 {@code city} 表）。
- * <p>演示：自增主键（{@code @GeneratedValue IDENTITY}）、多对一外键关联（{@code @ManyToOne} +
- * {@code @JoinColumn}）、普通字段映射，以及 JPA 规范的生命周期回调注解
- * {@code @PrePersist}（持久化前自动补齐默认值）。</p>
+ * City — 城市实体
+ * <p>演示：自增主键（{@code @GeneratedValue IDENTITY}）、多对一外键关联
+ * （{@code @ManyToOne} + {@code @JoinColumn}）、普通字段映射，
+ * 以及 JPA 规范的生命周期回调注解 {@code @PrePersist}（持久化前自动补齐默认值）。</p>
  *
  * @author ljh
  * @since 2026/8/11

@@ -1,15 +1,6 @@
 package org.ljh.jpa.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OrderBy;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Country — 国家实体（映射 world 库 {@code country} 表）。
+ * Country — 国家实体
  * <p>JPA 标准映射演示：{@code @Entity}/{@code @Id}/{@code @Column}/{@code @OneToMany}、
  * {@code @NamedQuery}（预定义 JPQL）、{@code @Convert}（枚举转换）。所有注解均来自
  * {@code jakarta.persistence}，仅依赖 JPA 规范 API。</p>

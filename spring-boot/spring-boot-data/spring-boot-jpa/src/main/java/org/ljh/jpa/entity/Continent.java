@@ -1,30 +1,45 @@
 package org.ljh.jpa.entity;
 
+import lombok.Getter;
+
 /**
- * Continent — 大洲枚举（值类型，不映射表）。
- * <p>配合 {@link ContinentConverter} 在 Java 枚举与数据库字符串之间做转换，
- * 全部使用 JPA 规范 {@code @Converter}（{@code jakarta.persistence.Converter}）。</p>
+ * Continent — 大洲枚举
+ * <p>通过 {@link ContinentConverter} 在实体与数据库之间转换。</p>
  *
  * @author ljh
  * @since 2026/8/11
  */
+@Getter
 public enum Continent {
+
+    /** 亚洲 */
     ASIA("Asia"),
+    /** 欧洲 */
     EUROPE("Europe"),
-    NORTH_AMERICA("North America"),
+    /** 非洲 */
     AFRICA("Africa"),
+    /** 北美洲 */
+    NORTH_AMERICA("North America"),
+    /** 南美洲 */
+    SOUTH_AMERICA("South America"),
+    /** 大洋洲 */
     OCEANIA("Oceania"),
-    ANTARCTICA("Antarctica"),
-    SOUTH_AMERICA("South America");
+    /** 南极洲 */
+    ANTARCTICA("Antarctica");
 
-    /** 与 world 库 {@code country.Continent} 列一致的存储值 */
-    private final String code;
+    private final String value;
 
-    Continent(String code) {
-        this.code = code;
+    Continent(String value) {
+        this.value = value;
     }
 
-    public String getCode() {
-        return code;
+    /** 由数据库字符串值反查枚举 */
+    public static Continent fromValue(String value) {
+        for (Continent c : values()) {
+            if (c.value.equals(value)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("Unknown continent: " + value);
     }
 }

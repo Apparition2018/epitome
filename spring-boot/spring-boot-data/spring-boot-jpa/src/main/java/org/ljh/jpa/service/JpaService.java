@@ -4,16 +4,7 @@ import org.ljh.jpa.dao.CountryDao;
 import org.ljh.jpa.dao.CountryLanguageDao;
 import org.ljh.jpa.dao.PersonDao;
 import org.ljh.jpa.dao.RelationshipDao;
-import org.ljh.jpa.entity.Address;
-import org.ljh.jpa.entity.Author;
-import org.ljh.jpa.entity.Continent;
-import org.ljh.jpa.entity.Country;
-import org.ljh.jpa.entity.Manager;
-import org.ljh.jpa.entity.Passport;
-import org.ljh.jpa.entity.Person;
-import org.ljh.jpa.entity.Staff;
-import org.ljh.jpa.entity.Student;
-import org.ljh.jpa.entity.Teacher;
+import org.ljh.jpa.entity.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,17 +23,17 @@ import java.util.List;
  * @since 2026/8/11
  */
 @Service
-public class JpaDemoService {
+public class JpaService {
 
     private final CountryDao countryDao;
     private final CountryLanguageDao countryLanguageDao;
     private final PersonDao personDao;
     private final RelationshipDao relationshipDao;
 
-    public JpaDemoService(CountryDao countryDao,
-                          CountryLanguageDao countryLanguageDao,
-                          PersonDao personDao,
-                          RelationshipDao relationshipDao) {
+    public JpaService(CountryDao countryDao,
+                      CountryLanguageDao countryLanguageDao,
+                      PersonDao personDao,
+                      RelationshipDao relationshipDao) {
         this.countryDao = countryDao;
         this.countryLanguageDao = countryLanguageDao;
         this.personDao = personDao;

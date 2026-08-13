@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.ljh.jpa.entity.Author;
 import org.ljh.jpa.entity.Country;
-import org.ljh.jpa.entity.Passport;
 import org.ljh.jpa.entity.Student;
 import org.ljh.jpa.entity.Teacher;
 import org.springframework.stereotype.Repository;
@@ -36,7 +35,7 @@ public class RelationshipDao {
     /** 用 JOIN FETCH 预抓取多对多集合，避免事务外懒加载异常 */
     public Teacher findTeacherWithStudents(Long id) {
         return em.createQuery(
-                "select t from Teacher t left join fetch t.students where t.id = :id", Teacher.class)
+                        "select t from Teacher t left join fetch t.students where t.id = :id", Teacher.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
@@ -44,7 +43,7 @@ public class RelationshipDao {
     /** 学生反向读取其教师 */
     public Student findStudentWithTeachers(Long id) {
         return em.createQuery(
-                "select s from Student s left join fetch s.teachers where s.id = :id", Student.class)
+                        "select s from Student s left join fetch s.teachers where s.id = :id", Student.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
@@ -62,7 +61,7 @@ public class RelationshipDao {
     /** 用 JOIN FETCH 预抓取护照，避免懒加载异常 */
     public Author findAuthorWithPassport(Long id) {
         return em.createQuery(
-                "select a from Author a left join fetch a.passport where a.id = :id", Author.class)
+                        "select a from Author a left join fetch a.passport where a.id = :id", Author.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
@@ -77,7 +76,7 @@ public class RelationshipDao {
     /** 国家及其城市（JOIN FETCH 一次查出集合，避免 N+1 与懒加载异常） */
     public Country findCountryWithCities(String code) {
         return em.createQuery(
-                "select c from Country c left join fetch c.cities where c.code = :code", Country.class)
+                        "select c from Country c left join fetch c.cities where c.code = :code", Country.class)
                 .setParameter("code", code)
                 .getSingleResult();
     }
@@ -90,8 +89,8 @@ public class RelationshipDao {
     /** 查所有城市 */
     public List<Object[]> findCityJoinCountry() {
         return em.createQuery(
-                "select c.name, c.population, co.name from City c join c.country co order by c.population desc",
-                Object[].class)
+                        "select c.name, c.population, co.name from City c join c.country co order by c.population desc",
+                        Object[].class)
                 .setMaxResults(10)
                 .getResultList();
     }

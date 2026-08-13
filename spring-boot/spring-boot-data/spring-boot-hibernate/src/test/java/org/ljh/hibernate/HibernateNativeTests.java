@@ -13,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.MutationQuery;
 import org.hibernate.query.Query;
 import org.hibernate.stat.Statistics;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.ljh.hibernate.dto.CountryCityDTO;
 import org.ljh.hibernate.entity.*;
@@ -52,6 +53,13 @@ class HibernateNativeTests {
     @Autowired
     private EntityManager entityManager;
 
+    private Session session;
+
+    @BeforeEach
+    void setUp() {
+        session = entityManager.unwrap(Session.class);
+    }
+
     // ==================== 一、Session 核心 ====================
 
     // --- 1.1 Session / SessionFactory 基础 ---
@@ -62,7 +70,7 @@ class HibernateNativeTests {
         assertThat(entityManagerFactory).isNotNull();
         assertThat(entityManager).isNotNull();
         // EntityManager 的实现类实际上是 Hibernate 的 SessionImpl（Session 接口的实现）
-        Session session = entityManager.unwrap(Session.class);
+        // 字段 session 已在 @BeforeEach 中通过 unwrap 初始化
         assertThat(session).isNotNull();
         // 拿到 Hibernate 原生 SessionFactory
         SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
@@ -73,8 +81,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testBasicCrud() {
-        Session session = entityManager.unwrap(Session.class);
-
         // persist：新增（transient -> persistent）。注意：测试代码须避开 world 库已占用的国家码（如 TMP=东帝汶、USA）
         Country tmp = newCountry("XX1", "Temperor", Continent.OCEANIA);
         session.persist(tmp);
@@ -109,8 +115,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testEntityLifecycle() {
-        Session session = entityManager.unwrap(Session.class);
-
         // transient：new 出来但未被 Session 管理
         Country c = newCountry("XX2", "Lifecycle", Continent.EUROPE);
         assertThat(session.contains(c)).isFalse();
@@ -150,8 +154,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testFirstLevelCacheAndDirtyCheck() {
-        Session session = entityManager.unwrap(Session.class);
-
         // 第一次 get 发起查询
         Country china1 = session.find(Country.class, "CHN");
         assertThat(china1).isNotNull();
@@ -173,8 +175,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testFlushModes() {
-        Session session = entityManager.unwrap(Session.class);
-
         // COMMIT 模式：显式 setFlushMode，则查询前不自动 flush
         session.setHibernateFlushMode(FlushMode.COMMIT);
         Country tmp = newCountry("FLH", "Flush", Continent.AFRICA);
@@ -200,7 +200,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testRefreshAndClear() {
-        Session session = entityManager.unwrap(Session.class);
         Country c = newCountry("XX4", "RefreshDemo", Continent.SOUTH_AMERICA);
         session.persist(c);
         session.flush();
@@ -229,8 +228,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testHqlQueries() {
-        Session session = entityManager.unwrap(Session.class);
-
         // 位置参数 ?1 ?2
         Query<Country> q = session.createQuery(
                 "select c from Country c where c.continent = ?1 and c.population > ?2", Country.class);
@@ -264,7 +261,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testHqlPagination() {
-        Session session = entityManager.unwrap(Session.class);
         Query<Country> q = session.createQuery(
                 "select c from Country c order by c.population desc", Country.class);
         q.setFirstResult(0);
@@ -281,8 +277,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testNamedQuery() {
-        Session session = entityManager.unwrap(Session.class);
-
         // 按名称取预定义查询，传命名参数（Hibernate 6 推荐 createNamedQuery，带结果类型、非弃用）
         Query<Country> byContinent = session.createNamedQuery("Country.byContinent", Country.class);
         List<Country> asia = byContinent.setParameter("continent", Continent.ASIA).list();
@@ -301,7 +295,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testHqlJoinFetch() {
-        Session session = entityManager.unwrap(Session.class);
         // LEFT JOIN FETCH 迫切连接：查询国家时一次性带出城市列表（观察日志只有一条 SQL）
         Query<Country> q = session.createQuery(
                 "select distinct c from Country c left join fetch c.cities where c.code = :code", Country.class);
@@ -318,7 +311,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testHqlConstructorProjection() {
-        Session session = entityManager.unwrap(Session.class);
         // 隐式内连接：city 与 country 关联，投影国家码 + 城市名到 DTO
         Query<CountryCityDTO> q = session.createQuery(
                 "select new org.ljh.hibernate.dto.CountryCityDTO(c.code, ci.name) " +
@@ -335,7 +327,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testCriteria() {
-        Session session = entityManager.unwrap(Session.class);
         CriteriaBuilder cb = session.getCriteriaBuilder();
 
         // 单条件
@@ -369,7 +360,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testNativeSql() {
-        Session session = entityManager.unwrap(Session.class);
         Query<Country> q = session.createNativeQuery(
                 "select * from country where continent = :continent", Country.class);
         q.setParameter("continent", "Asia");
@@ -389,8 +379,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testBulkOperations() {
-        Session session = entityManager.unwrap(Session.class);
-
         // 造数：code 列是 CHAR(3)，故用三位码 BUA / BUB，都能被下方 like 'BU%' 命中
         // 用唯一 code 前缀（BU）隔离测试数据，避免批量语句耦合 world 库已有的非洲国家数据
         Country a = newCountry("BUA", "BulkA", Continent.AFRICA);
@@ -427,8 +415,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testDynamicUpdate() {
-        Session session = entityManager.unwrap(Session.class);
-
         Product p = new Product();
         p.setName("Caffeine");
         p.setPrice(new BigDecimal("29.90"));
@@ -453,7 +439,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testCascadeSave() {
-        Session session = entityManager.unwrap(Session.class);
         // 注意：USA 已被 world 库占用，测试用自造国家码 XX3
         Country c = newCountry("XX3", "Testland", Continent.NORTH_AMERICA);
         c.setPopulation(330_000_000);
@@ -466,7 +451,7 @@ class HibernateNativeTests {
 
         // 验证子实体已落库
         List<City> cities = session.createQuery(
-                "select c from City c where c.country.code = :code", City.class)
+                        "select c from City c where c.country.code = :code", City.class)
                 .setParameter("code", "XX3")
                 .list();
         assertThat(cities).hasSize(2);
@@ -479,7 +464,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testCompositeId() {
-        Session session = entityManager.unwrap(Session.class);
         CountryLanguageId id = new CountryLanguageId("CHN", "Chinese");
         CountryLanguage cl = session.find(CountryLanguage.class, id);
         assertThat(cl).isNotNull();
@@ -495,8 +479,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testEmbeddable() {
-        Session session = entityManager.unwrap(Session.class);
-
         Staff s = new Staff();
         s.setName("Alice");
         s.setDepartment("HR");
@@ -510,7 +492,7 @@ class HibernateNativeTests {
 
         // 内嵌字段已展开为同表三列，可按路径查询
         Staff reloaded = session.createQuery(
-                "from Staff s where s.address.city = :city", Staff.class)
+                        "from Staff s where s.address.city = :city", Staff.class)
                 .setParameter("city", "Beijing")
                 .uniqueResult();
         assertThat(reloaded).isNotNull();
@@ -530,8 +512,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testInheritanceSingleTable() {
-        Session session = entityManager.unwrap(Session.class);
-
         Staff s = new Staff();
         s.setName("Bob");
         s.setDepartment("IT");
@@ -568,8 +548,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testManyToMany() {
-        Session session = entityManager.unwrap(Session.class);
-
         Student s1 = new Student();
         s1.setName("Dave");
         Student s2 = new Student();
@@ -585,7 +563,7 @@ class HibernateNativeTests {
 
         // 从维护端查询：能取到关联的学生集合
         Teacher reloaded = session.createQuery(
-                "from Teacher t where t.name = :name", Teacher.class)
+                        "from Teacher t where t.name = :name", Teacher.class)
                 .setParameter("name", "Frank")
                 .uniqueResult();
         assertThat(reloaded.getStudents()).hasSize(2);
@@ -609,8 +587,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testOneToOne() {
-        Session session = entityManager.unwrap(Session.class);
-
         Passport pp = new Passport();
         pp.setNumber("E12345678");
         session.persist(pp);
@@ -623,7 +599,7 @@ class HibernateNativeTests {
 
         // 从维护端取到护照
         Author reloaded = session.createQuery(
-                "from Author a where a.name = :name", Author.class)
+                        "from Author a where a.name = :name", Author.class)
                 .setParameter("name", "Grace")
                 .uniqueResult();
         assertThat(reloaded.getPassport().getNumber()).isEqualTo("E12345678");
@@ -633,11 +609,11 @@ class HibernateNativeTests {
         // 为其反向 one-to-one 生成懒代理（会退化为需显式加载）。这里用显式 join 验证反向关联，
         // 从护照出发按关联条件找到持有该护照的作者。
         Passport passport = session.createQuery(
-                "from Passport p where p.number = :number", Passport.class)
+                        "from Passport p where p.number = :number", Passport.class)
                 .setParameter("number", "E12345678")
                 .uniqueResult();
         Author back = session.createQuery(
-                "select a from Author a where a.passport = :pp", Author.class)
+                        "select a from Author a where a.passport = :pp", Author.class)
                 .setParameter("pp", passport)
                 .uniqueResult();
         assertThat(back).isNotNull();
@@ -658,8 +634,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testGetReferenceLazyProxy() {
-        Session session = entityManager.unwrap(Session.class);
-
         // 造一个全新国家（不在二级缓存中），用 getReference 拿到代理
         Country tmp = newCountry("XX9", "ProxyDemo", Continent.OCEANIA);
         session.persist(tmp);
@@ -674,7 +648,7 @@ class HibernateNativeTests {
 
         // 城市多对一关联默认懒加载：取一个非二级缓存国家的城市，其 country 一开始是懒代理
         City city = session.createQuery(
-                "from City c where c.country.code = :code", City.class)
+                        "from City c where c.country.code = :code", City.class)
                 .setParameter("code", "TMP") // 东帝汶的首都 Dili，未做二级缓存
                 .setMaxResults(1)
                 .uniqueResult();
@@ -691,7 +665,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testNaturalId() {
-        Session session = entityManager.unwrap(Session.class);
         // 按自然键 Name = "China" 查询，无需知道主键 Code
         Country china = session.byNaturalId(Country.class)
                 .using("name", "China")
@@ -749,7 +722,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testQueryCache() {
-        Session session = entityManager.unwrap(Session.class);
         Statistics stats = entityManagerFactory.unwrap(SessionFactory.class).getStatistics();
         long hitsBefore = stats.getQueryCacheHitCount();
 
@@ -864,7 +836,6 @@ class HibernateNativeTests {
     @Test
     @Transactional
     void testPessimisticLock() {
-        Session session = entityManager.unwrap(Session.class);
         Product p = new Product();
         p.setName("Kindle");
         p.setPrice(new BigDecimal("998.00"));

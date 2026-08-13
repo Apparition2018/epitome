@@ -6,10 +6,10 @@ import org.ljh.starter.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Duration;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
-
-import java.time.Duration;
 
 /**
  * 定时任务演示：应用启动后 {@code @Scheduled} 任务会自动开始调度，

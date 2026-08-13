@@ -12,16 +12,11 @@
     <dependencies>
         <dependency>
             <groupId>org.ljh</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>db</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <!-- 二级缓存：hibernate-jcache 桥接 JCache 规范；caffeine 提供缓存实例，caffeine:jcache 提供 JCache 的 CachingProvider SPI -->
         <dependency>

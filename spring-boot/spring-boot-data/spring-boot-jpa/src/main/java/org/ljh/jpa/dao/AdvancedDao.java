@@ -3,11 +3,7 @@ package org.ljh.jpa.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import org.ljh.jpa.entity.Customer;
-import org.ljh.jpa.entity.Customer2;
-import org.ljh.jpa.entity.Customer3;
-import org.ljh.jpa.entity.Order;
-import org.ljh.jpa.entity.Order2;
+import org.ljh.jpa.entity.*;
 import org.ljh.jpa.projection.CustomerProjection;
 import org.springframework.stereotype.Repository;
 

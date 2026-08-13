@@ -1,10 +1,6 @@
 package org.ljh.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +10,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * CountryLanguage — 国家语言实体（映射 world 库 {@code countrylanguage} 表）。
+ * CountryLanguage — 国家语言实体
  * <p>演示复合主键的 {@code @IdClass} 方式：主键类为 {@link CountryLanguageId}，
  * 实体上通过 {@code @IdClass} 声明，并给两个主键字段分别标 {@code @Id}。
  * JPA 据此把 {@code (CountryCode, Language)} 组合成持久化标识。</p>

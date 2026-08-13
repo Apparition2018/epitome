@@ -2,12 +2,8 @@ package org.ljh.jpa.runner;
 
 import org.ljh.jpa.dao.CountryDao;
 import org.ljh.jpa.dao.PersonDao;
-import org.ljh.jpa.entity.Address;
-import org.ljh.jpa.entity.Author;
-import org.ljh.jpa.entity.Continent;
-import org.ljh.jpa.entity.Country;
-import org.ljh.jpa.entity.Passport;
-import org.ljh.jpa.service.JpaDemoService;
+import org.ljh.jpa.entity.*;
+import org.ljh.jpa.service.JpaService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -24,15 +20,15 @@ import java.util.List;
  * @since 2026/8/11
  */
 @Component
-public class JpaDemoRunner implements ApplicationRunner {
+public class JpaRunner implements ApplicationRunner {
 
-    private final JpaDemoService demoService;
+    private final JpaService demoService;
     private final CountryDao countryDao;
     private final PersonDao personDao;
 
-    public JpaDemoRunner(JpaDemoService demoService,
-                         CountryDao countryDao,
-                         PersonDao personDao) {
+    public JpaRunner(JpaService demoService,
+                     CountryDao countryDao,
+                     PersonDao personDao) {
         this.demoService = demoService;
         this.countryDao = countryDao;
         this.personDao = personDao;

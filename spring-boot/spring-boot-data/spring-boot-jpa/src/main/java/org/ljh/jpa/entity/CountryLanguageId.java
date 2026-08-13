@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * CountryLanguageId — 复合主键载体（配合 {@code @IdClass} 使用）。
+ * CountryLanguageId — 复合主键（配合 {@code @IdClass} 使用）。
  * <p>JPA 规范要求：主键类必须 {@code public}、无参构造、实现 {@code Serializable}，
  * 且须正确重写 {@code equals}/{@code hashCode}。本类对应 world 库
  * {@code countrylanguage} 表的主键（CountryCode, Language）两列。</p>

@@ -9,6 +9,19 @@
     </parent>
     <artifactId>spring-boot-starter</artifactId>
 
+    <dependencies>
+        <!-- 多数据源演示：提供 HikariCP 连接池 + JdbcTemplate（版本由 spring-boot-dependencies BOM 管理） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
