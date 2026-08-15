@@ -1,6 +1,5 @@
-package jar.jedis;
+package org.ljh.dependencies.jedis;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -15,7 +14,7 @@ import java.util.Map;
  * @author ljh
  * @since 2021/4/30 22:49
  */
-public class JedisDemo extends Demo {
+public class JedisTests {
 
     @Test
     public void singleton() {
@@ -25,7 +24,7 @@ public class JedisDemo extends Demo {
         jedis.set("name", MY_NAME);
         // 3.获取数据
         String value = jedis.get("name");
-        p("value = " + value);
+        System.out.println("value = " + value);
         // 4.释放资源
         jedis.close();
     }
@@ -42,7 +41,7 @@ public class JedisDemo extends Demo {
              Jedis jedis = jedisPool.getResource()) {
             jedis.set("name", MY_NAME);
             String value = jedis.get("name");
-            p("value = " + value);
+            System.out.println("value = " + value);
         }
     }
 
@@ -57,9 +56,9 @@ public class JedisDemo extends Demo {
         jedis.hmset("Hash:2", map);
 
         // hget
-        p("Hash:1 = [" + jedis.hget("Hash:1", "id") + ", " + jedis.hget("Hash:1", "name") + "]");
+        System.out.println("Hash:1 = [" + jedis.hget("Hash:1", "id") + ", " + jedis.hget("Hash:1", "name") + "]");
         // hmget
-        p("Hash:2 = " + jedis.hmget("Hash:2", "id", "name"));
+        System.out.println("Hash:2 = " + jedis.hmget("Hash:2", "id", "name"));
 
         jedis.close();
     }
@@ -103,7 +102,7 @@ public class JedisDemo extends Demo {
         pipeline.syncAndReturnAll();
         stopWatch.stop();
 
-        p(stopWatch.prettyPrint());
+        System.out.println(stopWatch.prettyPrint());
         // ---------------------------------------------
         // ns         %     Task name
         // ---------------------------------------------

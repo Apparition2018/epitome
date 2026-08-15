@@ -1,4 +1,4 @@
-package jar.jedis;
+package org.ljh.dependencies.jedis;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,8 +12,6 @@ import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import static l.demo.Demo.p;
-
 /**
  * Redis 实现分布式锁
  * <p><a href="https://www.cnblogs.com/moxiaotao/p/10829799.html">Redis 分布式锁的正确实现方式</a>：SETNX + Lua 脚本
@@ -25,6 +23,7 @@ import static l.demo.Demo.p;
 public class JedisDistributedLocks {
 
     private static final String MONEY = "MONEY";
+
     private static final String MONEY_LOCK = "MONEY_LOCK";
     private static final String LOCK_SUCCESS = "OK";
     private static final long RELEASE_SUCCESS = 1L;
@@ -43,7 +42,7 @@ public class JedisDistributedLocks {
         }
         latch.await();
         try (Jedis jedis = JedisUtils.getResource()) {
-            p(Integer.parseInt(jedis.get(MONEY)));
+            System.out.println(Integer.parseInt(jedis.get(MONEY)));
         }
     }
 
@@ -87,7 +86,7 @@ public class JedisDistributedLocks {
 
     private void deduct(Jedis jedis) {
         jedis.decrBy(MONEY, 100);
-        p("计算" + Thread.currentThread().getName());
+        System.out.println("计算" + Thread.currentThread().getName());
     }
 
     private static class DistributedLockManager {

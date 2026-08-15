@@ -11,21 +11,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.ljh</groupId>
-            <artifactId>db</artifactId>
-        </dependency>
-        <!-- Druid 连接池（Spring Boot 4 / Jakarta 命名空间专属 Starter）
-             自动装配 DruidDataSource、Druid 监控 StatFilter 等 -->
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-4-starter</artifactId>
         </dependency>
-        <!-- 提供 Servlet 容器，支撑 Druid 内置 StatViewServlet 监控台 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
-        <!-- 提供 JdbcTemplate，演示通过连接池执行真实业务 SQL -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>

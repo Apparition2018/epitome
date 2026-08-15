@@ -1,8 +1,7 @@
-package jar.jedis.data.type;
+package org.ljh.dependencies.jedis.data.type;
 
-import jar.jedis.JedisUtils;
-import l.demo.Demo;
 import lombok.Getter;
+import org.ljh.dependencies.jedis.JedisUtils;
 import redis.clients.jedis.Jedis;
 
 import java.util.Map;
@@ -20,7 +19,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2021/5/28 16:30
  */
-public class RedisSortedSet extends Demo {
+public class RedisSortedSet {
 
     /**
      * 热门书籍
@@ -34,10 +33,10 @@ public class RedisSortedSet extends Demo {
         public static void main(String[] args) {
             Jedis jedis = JedisUtils.getResource();
             Map<String, Double> bookMap = Map.of(
-                BookEnum.SG.getName(), 0D,
-                BookEnum.XY.getName(), 0D,
-                BookEnum.HL.getName(), 0D,
-                BookEnum.SH.getName(), 0D
+                    BookEnum.SG.getName(), 0D,
+                    BookEnum.XY.getName(), 0D,
+                    BookEnum.HL.getName(), 0D,
+                    BookEnum.SH.getName(), 0D
             );
             jedis.zadd(HOT_BOOKS_20210501, bookMap);
             jedis.zadd(HOT_BOOKS_20210502, bookMap);
@@ -46,11 +45,11 @@ public class RedisSortedSet extends Demo {
             IntStream.rangeClosed(1, 1000).forEach(i -> readBook(jedis, HOT_BOOKS_20210502));
             IntStream.rangeClosed(1, 1000).forEach(i -> readBook(jedis, HOT_BOOKS_20210503));
             // 20210521 四大名著排名：[[红楼梦,271.0], [水浒传,257.0], [三国演义,240.0], [西游记,232.0]]
-            p("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
+            System.out.println("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
             // 统计总排名
             jedis.zunionstore(HOT_BOOKS_KEY, HOT_BOOKS_20210501, HOT_BOOKS_20210502, HOT_BOOKS_20210503);
             // 四大名著总排名：[[红楼梦,761.0], [三国演义,755.0], [西游记,751.0], [水浒传,733.0]]
-            p("四大名著总排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_KEY, 0, 3));
+            System.out.println("四大名著总排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_KEY, 0, 3));
         }
 
         private static void readBook(Jedis jedis, String key) {

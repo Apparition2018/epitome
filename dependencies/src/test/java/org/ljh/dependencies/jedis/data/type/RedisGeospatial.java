@@ -1,8 +1,7 @@
-package jar.jedis.data.type;
+package org.ljh.dependencies.jedis.data.type;
 
-import com.google.common.collect.Maps;
-import jar.jedis.JedisUtils;
 import lombok.Getter;
+import org.ljh.dependencies.jedis.JedisUtils;
 import redis.clients.jedis.GeoCoordinate;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.args.GeoUnit;
@@ -10,8 +9,6 @@ import redis.clients.jedis.params.GeoAddParams;
 import redis.clients.jedis.params.GeoRadiusParam;
 
 import java.util.HashMap;
-
-import static l.demo.Demo.p;
 
 /**
  * <a href="https://redis.io/docs/data-types/geospatial/">Redis Geospatial</a>
@@ -30,7 +27,7 @@ public class RedisGeospatial {
             // 添加地理空间项（经度、维度、名称）
             jedis.geoadd(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getGeoCoordinate().getLongitude(),
                     GdEnum.ZHONG_SHAN.getGeoCoordinate().getLatitude(), GdEnum.ZHONG_SHAN.getName());
-            HashMap<String, GeoCoordinate> memberCoordinateMap = Maps.newHashMap();
+            HashMap<String, GeoCoordinate> memberCoordinateMap = new HashMap<>();
             memberCoordinateMap.put(GdEnum.GUANG_ZHOU.getName(), GdEnum.GUANG_ZHOU.getGeoCoordinate());
             memberCoordinateMap.put(GdEnum.SHEN_ZHEN.getName(), GdEnum.SHEN_ZHEN.getGeoCoordinate());
             memberCoordinateMap.put(GdEnum.FO_SHAN.getName(), GdEnum.FO_SHAN.getGeoCoordinate());
@@ -40,15 +37,18 @@ public class RedisGeospatial {
             // 返回经纬度
             jedis.geopos(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), GdEnum.GUANG_ZHOU.getName()).forEach(System.out::println);
             // 返回距离
-            p(jedis.geodist(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), GdEnum.GUANG_ZHOU.getName(), GeoUnit.KM));
+            System.out.println(jedis.geodist(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), GdEnum.GUANG_ZHOU.getName(), GeoUnit.KM));
             // 返回 GeoHash
-            p(jedis.geohash(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), GdEnum.GUANG_ZHOU.getName()));
+            System.out.println(jedis.geohash(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), GdEnum.GUANG_ZHOU.getName()));
             // 返回指定经纬度半径内成员
             jedis.georadius(MAP_GD_KEY, 113.5D, 22.5D, 100D, GeoUnit.KM, GeoRadiusParam.geoRadiusParam().withDist().withCoord().sortAscending())
-                    .forEach(geoRadiusResponse -> System.out.printf("地点：%s，坐标：%s，距离：%s%n", new String(geoRadiusResponse.getMember()), geoRadiusResponse.getCoordinate(), geoRadiusResponse.getDistance()));
+                    .forEach(geoRadiusResponse -> System.out.printf("地点：%s，坐标：%s，距离：%s%n", new String(geoRadiusResponse.getMember()),
+                            geoRadiusResponse.getCoordinate(), geoRadiusResponse.getDistance()));
             // 返回指定成员半径内成员
-            jedis.georadiusByMember(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), 100D, GeoUnit.KM, GeoRadiusParam.geoRadiusParam().withDist().withCoord().sortAscending())
-                    .forEach(geoRadiusResponse -> System.out.printf("地点：%s，坐标：%s，距离：%s%n", new String(geoRadiusResponse.getMember()), geoRadiusResponse.getCoordinate(), geoRadiusResponse.getDistance()));
+            jedis.georadiusByMember(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getName(), 100D, GeoUnit.KM,
+                            GeoRadiusParam.geoRadiusParam().withDist().withCoord().sortAscending())
+                    .forEach(geoRadiusResponse -> System.out.printf("地点：%s，坐标：%s，距离：%s%n", new String(geoRadiusResponse.getMember()),
+                            geoRadiusResponse.getCoordinate(), geoRadiusResponse.getDistance()));
         }
     }
 

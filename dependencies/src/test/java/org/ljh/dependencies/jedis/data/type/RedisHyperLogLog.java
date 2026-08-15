@@ -1,7 +1,6 @@
-package jar.jedis.data.type;
+package org.ljh.dependencies.jedis.data.type;
 
-import jar.jedis.JedisUtils;
-import l.demo.Demo;
+import org.ljh.dependencies.jedis.JedisUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 
@@ -14,7 +13,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2022/8/12 0:12
  */
-public class RedisHyperLogLog extends Demo {
+public class RedisHyperLogLog {
 
     /**
      * 独立访客：一天访问网站的访客数
@@ -31,9 +30,9 @@ public class RedisHyperLogLog extends Demo {
             pipeline.sync();
             long uv = jedis.pfcount(UV_KEY);
             // 访客数：1001788
-            p(String.format("访客数：%s", uv));
+            System.out.println(String.format("访客数：%s", uv));
             // 误差率：-0.001788
-            p(String.format("误差率：%s", (1_000_000 - uv) * 1F / 1_000_000));
+            System.out.println(String.format("误差率：%s", (1_000_000 - uv) * 1F / 1_000_000));
         }
     }
 }

@@ -1,4 +1,4 @@
-package jar.jedis;
+package org.ljh.dependencies.jedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

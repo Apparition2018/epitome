@@ -1,4 +1,4 @@
-package jar.jedis.data.type;
+package org.ljh.dependencies.jedis.data.type;
 
 /**
  * RedisDataType

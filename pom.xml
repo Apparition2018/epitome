@@ -65,9 +65,13 @@
         <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-test -->
         <rocketmq.version>5.5.0</rocketmq.version>
 
-        <!-- dependencies -->
+        <!-- commons -->
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <hutool.version>5.8.46</hutool.version>
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+        <springdoc-openapi-starter.version>3.0.3</springdoc-openapi-starter.version>
+
+        <!-- dependencies -->
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
         <fastjson.version>2.0.62</fastjson.version>
@@ -79,20 +83,23 @@
 
     <modules>
         <module>legacy</module>
-        <module>db</module>
+        <module>commons</module>
         <module>dependencies</module>
         <module>spring-boot</module>
         <module>spring-cloud</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.ljh</groupId>
+            <artifactId>commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
     <!-- 依赖管理：https://maven.apache.org/pom.html#dependency-management -->
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.ljh</groupId>
-                <artifactId>db</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>

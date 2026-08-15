@@ -1,6 +1,6 @@
-package jar.jedis.data.type;
+package org.ljh.dependencies.jedis.data.type;
 
-import jar.jedis.JedisUtils;
+import org.ljh.dependencies.jedis.JedisUtils;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;

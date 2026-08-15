@@ -21,6 +21,7 @@
         <module name="spring-boot-mybatis" />
         <module name="spring-boot-hibernate" />
         <module name="spring-boot-webmvc" />
+        <module name="commons" />
         <module name="dependencies" />
         <module name="spring-boot-mqtt" />
         <module name="spring-boot-jpa" />
@@ -29,7 +30,6 @@
         <module name="spring-boot-quartz" />
         <module name="spring-boot-data-jpa" />
         <module name="spring-boot-validation" />
-        <module name="db" />
         <module name="spring-boot-test" />
       </profile>
     </annotationProcessing>
@@ -39,7 +39,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="db" options="-parameters" />
+      <module name="commons" options="-parameters" />
       <module name="dependencies" options="-parameters" />
       <module name="legacy" options="-parameters" />
       <module name="spring-boot-cache" options="-parameters" />
