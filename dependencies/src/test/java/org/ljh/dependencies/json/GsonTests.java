@@ -1,11 +1,7 @@
-package jar.google.gson;
+package org.ljh.dependencies.json;
 
-import com.google.common.collect.Maps;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import l.demo.Demo;
-import l.demo.JsonDemo;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -19,7 +15,7 @@ import java.util.Map.Entry;
  * @author ljh
  * @since 2020/10/25 2:16
  */
-public class GsonDemo extends Demo implements JsonDemo {
+public class GsonTests implements JsonDemo {
 
     Gson gson = new Gson();
     JsonObject jsonObject;
@@ -37,25 +33,25 @@ public class GsonDemo extends Demo implements JsonDemo {
         jsonObject = JsonParser.parseString(COMPLEX_JSON).getAsJsonObject();
         courseJsonObject = jsonObject.getAsJsonObject("course");
         studentsJsonArray = jsonObject.getAsJsonArray("students");
-        p(jsonObject);
+        System.out.println(jsonObject);
         // JsonObject → 复杂对象JSON
         jsonStr = gson.toJson(jsonObject);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr + "\r");
 
         // 复杂对象JSON → JavaBean
         teacher = gson.fromJson(COMPLEX_JSON, Teacher.class);
-        p(teacher);
+        System.out.println(teacher);
         // JavaBean → 复杂对象JSON
         jsonStr = gson.toJson(teacher);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr + "\r");
 
         // JsonObject → JavaBean
         teacher = gson.fromJson(jsonObject, Teacher.class);
-        p(teacher);
+        System.out.println(teacher);
 
         // JavaBean → JsonObject
         jsonObject = (JsonObject) gson.toJsonTree(teacher);
-        p(jsonObject + StringUtils.CR);
+        System.out.println(jsonObject + "\r");
     }
 
     /** 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean> */
@@ -63,43 +59,43 @@ public class GsonDemo extends Demo implements JsonDemo {
     public void testJSONArray() {
         // 数组对象JSON → JSONArray
         jsonArray = JsonParser.parseString(ARRAY_JSON).getAsJsonArray();
-        p(jsonArray);
+        System.out.println(jsonArray);
         // JSONArray → 数组对象JSON
         jsonStr = gson.toJson(jsonArray);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr + "\r");
 
         // 数组对象JSON → List<JavaBean>
         students = gson.fromJson(ARRAY_JSON, new TypeToken<List<Student>>() {
         }.getType());
-        p(students);
+        System.out.println(students);
         // List<JavaBean> → 数组对象JSON
         jsonStr = gson.toJson(students);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr + "\r");
 
         // JSONArray → List<JavaBean>
         students = gson.fromJson(jsonArray, new TypeToken<List<Student>>() {
         }.getType());
-        p(students);
+        System.out.println(students);
         // List<JavaBean> → JSONArray
         jsonArray = (JsonArray) gson.toJsonTree(students);
-        p(jsonArray + StringUtils.CR);
+        System.out.println(jsonArray + "\r");
     }
 
     /** {@code @SerializedName} 字段别名 */
     @Test
     public void testSerializedName() {
-        p(gson.fromJson(JSON_PLAIN, Student.class));
+        System.out.println(gson.fromJson(JSON_PLAIN, Student.class));
     }
 
     @Test
     public void testJsonObjectToMap() {
         jsonObject = JsonParser.parseString(COMPLEX_JSON).getAsJsonObject();
-        p(jsonObject2Map(jsonObject));
+        System.out.println(jsonObject2Map(jsonObject));
     }
 
     /** JsonObject → Map */
     private HashMap<String, Object> jsonObject2Map(JsonObject jo) {
-        HashMap<String, Object> map = Maps.newHashMap();
+        HashMap<String, Object> map = new HashMap<>();
         for (Entry<String, JsonElement> entry : jo.entrySet()) {
             if (entry.getValue().isJsonArray()) {
                 JsonArray array = (JsonArray) entry.getValue();

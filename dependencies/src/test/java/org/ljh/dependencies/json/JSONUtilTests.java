@@ -1,17 +1,13 @@
-package jar.hutool.json;
+package org.ljh.dependencies.json;
 
 import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import l.demo.JsonDemo;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static l.demo.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/JSONUtil/">JSONUtil</a>
@@ -25,7 +21,7 @@ import static l.demo.Demo.p;
  * @author ljh
  * @since 2020/11/20 8:43
  */
-public class JSONUtilDemo implements JsonDemo {
+public class JSONUtilTests implements JsonDemo {
     JSONObject jsonObject;
     JSONArray jsonArray;
     String jsonStr;
@@ -41,30 +37,30 @@ public class JSONUtilDemo implements JsonDemo {
         jsonObject = JSONUtil.parseObj(COMPLEX_JSON);
         courseJsonObject = jsonObject.getJSONObject("course");
         studentsJsonArray = jsonObject.getJSONArray("students");
-        p(jsonObject);
+        System.out.println(jsonObject);
         // JSONObject → 复杂对象JSON
         jsonStr = JSONUtil.toJsonStr(jsonObject);
         jsonStr = jsonObject.toJSONString(0);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr);
 
         // 复杂对象JSON → JavaBean
         teacher = JSONUtil.toBean(COMPLEX_JSON, Teacher.class);
         teacher = JSONUtil.toBean(COMPLEX_JSON, new TypeReference<Teacher>() {
         }, false);
-        p(teacher);
+        System.out.println(teacher);
         // JavaBean → 复杂对象JSON
         jsonStr = JSONUtil.toJsonStr(teacher);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr);
 
         // JSONObject → JavaBean
         teacher = JSONUtil.toBean(jsonObject, Teacher.class);
         teacher = JSONUtil.toBean(jsonObject, new TypeReference<>() {
         }, false);
-        p(teacher);
+        System.out.println(teacher);
 
         // JavaBean → JSONObject
         jsonObject = JSONUtil.parseObj(teacher);
-        p(jsonObject + StringUtils.CR);
+        System.out.println(jsonObject);
     }
 
     /** 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean> */
@@ -72,25 +68,25 @@ public class JSONUtilDemo implements JsonDemo {
     public void testJSONArray() {
         // 数组对象JSON → JSONArray
         jsonArray = JSONUtil.parseArray(ARRAY_JSON);
-        p(jsonArray);
+        System.out.println(jsonArray);
         // JSONArray → 数组对象JSON
         jsonStr = JSONUtil.toJsonStr(jsonArray);
         jsonStr = jsonArray.toJSONString(0);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr);
 
         // 数组对象JSON → List<JavaBean>
         students = JSONUtil.toBean(ARRAY_JSON, new TypeReference<ArrayList<Student>>() {
         }, false);
-        p(students);
+        System.out.println(students);
         // List<JavaBean> → 数组对象JSON
         jsonStr = JSONUtil.toJsonStr(students);
-        p(jsonStr + StringUtils.CR);
+        System.out.println(jsonStr);
 
         // JSONArray → List<JavaBean>
         students = JSONUtil.toList(jsonArray, Student.class);
-        p(students);
+        System.out.println(students);
         // List<JavaBean> → JSONArray
         jsonArray = JSONUtil.parseArray(students);
-        p(jsonArray + StringUtils.CR);
+        System.out.println(jsonArray);
     }
 }

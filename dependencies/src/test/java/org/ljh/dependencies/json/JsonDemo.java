@@ -1,4 +1,4 @@
-package l.demo;
+package org.ljh.dependencies.json;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

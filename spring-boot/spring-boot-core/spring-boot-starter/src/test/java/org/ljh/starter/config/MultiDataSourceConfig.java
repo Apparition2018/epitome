@@ -2,12 +2,13 @@ package org.ljh.starter.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.jdbc.autoconfigure.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.autoconfigure.DataSourceProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -46,6 +47,18 @@ public class MultiDataSourceConfig {
     }
 
     @Bean
+    @Primary
+    public DataSourceTransactionManager primaryTxManager(
+            @Qualifier("primaryDataSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
+    @Bean
+    public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
+
+    @Bean
     @ConfigurationProperties("app.datasource.secondary")
     public DataSourceProperties secondaryDataSourceProperties() {
         return new DataSourceProperties();
@@ -61,8 +74,9 @@ public class MultiDataSourceConfig {
     }
 
     @Bean
-    public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
+    public DataSourceTransactionManager secondaryTxManager(
+            @Qualifier("secondaryDataSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean

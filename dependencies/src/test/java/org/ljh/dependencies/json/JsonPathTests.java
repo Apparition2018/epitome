@@ -1,17 +1,15 @@
-package jar.jsonpath;
+package org.ljh.dependencies.json;
 
 import com.jayway.jsonpath.*;
 import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
-import l.demo.JsonDemo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static l.demo.Demo.ae;
-import static l.demo.Demo.p;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * JsonPath
@@ -20,54 +18,54 @@ import static l.demo.Demo.p;
  * @see <a href="https://github.com/json-path/JsonPath">JsonPath</a>
  * @since 2021/8/31 15:42
  */
-public class JsonPathDemo implements JsonDemo {
+public class JsonPathTests implements JsonDemo {
 
     @Test
     public void test() {
         ReadContext context = JsonPath.parse(COMPLEX_JSON);
         // 所有学生的名字；.. 深度扫描
-        ae(context.read("$..studentName"), context.read("$.students[*].studentName"));
+        assertEquals(context.read("$.students[*].studentName"), (Object) context.read("$..studentName"));
         // 最后一个学生的名字
-        ae(context.read("$.students[-1].studentName"), "lucy");
+        assertEquals("lucy", context.read("$.students[-1].studentName"));
         // 第一个和第二个学生
-        ae(context.read("$.students[0, 1]"), context.read("$.students[0:2]"));
+        assertEquals(context.read("$.students[0:2]"), (Object) context.read("$.students[0, 1]"));
         // 年龄大于13的学生的名字
-        ae(context.read("$.students[?(@.studentAge > 13)].studentName"), List.of("lucy"));
+        assertEquals(List.of("lucy"), context.read("$.students[?(@.studentAge > 13)].studentName"));
         // 匹配名字（忽略大小写）的学生
-        ae(context.read("$.students[?(@.studentName =~ /.*CY/i)].studentName"), List.of("lucy"));
+        assertEquals(List.of("lucy"), context.read("$.students[?(@.studentName =~ /.*CY/i)].studentName"));
         // 学生数量
-        ae(context.read("$.students.length()"), 2);
+        assertEquals(2, (Object) context.read("$.students.length()"));
         // 学生平均年龄
-        ae(context.read("$..studentAge.avg()"), 13.5);
+        assertEquals(13.5, context.read("$..studentAge.avg()"));
     }
 
     @Test
     public void testReadingDocument() {
         // 1.
-        ae(JsonPath.read(JSON_PLAIN, "$.name"), "lily");
+        assertEquals("lily", JsonPath.read(JSON_PLAIN, "$.name"));
         // 2.
         Object document = Configuration.defaultConfiguration().jsonProvider().parse(JSON_PLAIN);
-        ae(JsonPath.read(document, "$.name"), "lily");
+        assertEquals("lily", JsonPath.read(document, "$.name"));
         // 3.
         ReadContext context = JsonPath.parse(JSON_PLAIN);
-        ae(context.read("$.name"), "lily");
+        assertEquals("lily", context.read("$.name"));
         // 4.
-        ae(JsonPath.parse(JSON_PLAIN).read("$.name"), "lily");
+        assertEquals("lily", JsonPath.parse(JSON_PLAIN).read("$.name"));
     }
 
     @Test
     public void testReturn() {
         // 1.
-        p(JsonPath.parse("{\"date_as_long\" : 1411455611975}").read("$.date_as_long", Date.class));
-        p(JsonPath.parse(COMPLEX_JSON).read("$", Teacher.class));
+        System.out.println(JsonPath.parse("{\"date_as_long\" : 1411455611975}").read("$.date_as_long", Date.class));
+        System.out.println(JsonPath.parse(COMPLEX_JSON).read("$", Teacher.class));
         // 2.
         Configuration config = Configuration.builder()
-            .jsonProvider(new JacksonJsonProvider())
-            .mappingProvider(new JacksonMappingProvider())
-            .build();
+                .jsonProvider(new JacksonJsonProvider())
+                .mappingProvider(new JacksonMappingProvider())
+                .build();
         List<Student> studentList = JsonPath.using(config).parse(COMPLEX_JSON).read("$.students", new TypeRef<>() {
         });
-        p(studentList);
+        System.out.println(studentList);
     }
 
     @Test
@@ -76,7 +74,7 @@ public class JsonPathDemo implements JsonDemo {
         List<Map<String, Object>> students = JsonPath.read(COMPLEX_JSON, "$.students[?(@.studentName == 'lily' || !(@.studentAge < 14))]");
         // 2. Filter Predicates
         Filter filter = Filter.filter(Criteria.where("studentName").is("lily")).or(Criteria.where("studentAge").gte(14));
-        ae(JsonPath.parse(COMPLEX_JSON).read("$.students[?]", filter), students);
+        assertEquals(students, JsonPath.parse(COMPLEX_JSON).read("$.students[?]", filter));
         // 3. Roll Your Own
         Predicate predicate = ctx -> {
             @SuppressWarnings("unchecked")
@@ -85,7 +83,7 @@ public class JsonPathDemo implements JsonDemo {
             Integer age = (Integer) student.get("studentAge");
             return "lily".equals(name) || (age != null && age >= 14);
         };
-        ae(JsonPath.parse(COMPLEX_JSON).read("$.students[?]", predicate), students);
+        assertEquals(students, JsonPath.parse(COMPLEX_JSON).read("$.students[?]", predicate));
     }
 
     /**
@@ -95,11 +93,11 @@ public class JsonPathDemo implements JsonDemo {
     public void testReturnPath() {
         Configuration conf = Configuration.builder().options(Option.AS_PATH_LIST).build();
         List<String> pathList = JsonPath.using(conf).parse(COMPLEX_JSON).read("$..studentName");
-        ae(pathList, List.of("$['students'][0]['studentName']", "$['students'][1]['studentName']"));
+        assertEquals(List.of("$['students'][0]['studentName']", "$['students'][1]['studentName']"), pathList);
     }
 
     @Test
     public void testSetValue() {
-        ae(JsonPath.parse(JSON_PLAIN).set("$.age", 13).jsonString(), "{\"name\":\"lily\",\"age\":13}");
+        assertEquals("{\"name\":\"lily\",\"age\":13}", JsonPath.parse(JSON_PLAIN).set("$.age", 13).jsonString());
     }
 }
