@@ -2,7 +2,7 @@ package knowledge.api.swing;
 
 import javax.swing.filechooser.FileSystemView;
 
-import static l.demo.Demo.ae;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * FileSystemView
@@ -14,6 +14,6 @@ public class FileSystemViewDemo {
 
     public static void main(String[] args) {
         FileSystemView fileSystemView = FileSystemView.getFileSystemView();
-        ae(fileSystemView.getHomeDirectory().getPath(), "C:\\Users\\Administrator\\Desktop");
+        assertThat(fileSystemView.getHomeDirectory().getPath()).isEqualTo("C:\\Users\\Administrator\\Desktop");
     }
 }

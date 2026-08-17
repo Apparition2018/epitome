@@ -1,7 +1,9 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.pinyin.PinyinUtil;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.MY_CY;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/PinyinUtil/">PinyinUtil</a>   拼音工具
@@ -11,7 +13,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/5 16:10
  */
-public class PinyinUtilDemo extends Demo {
+public class PinyinUtilDemo {
 
     public static void main(String[] args) {
         // static boolean	isChinese(char c)

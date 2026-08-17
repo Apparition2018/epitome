@@ -1,8 +1,8 @@
 package knowledge.api.util.stream;
 
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import knowledge.api.util.FunctionDemo;
-import l.demo.Demo;
-import l.demo.Person;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.jupiter.api.Test;
@@ -17,6 +17,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">Stream</a>
@@ -88,19 +90,19 @@ public class StreamDemo extends Demo {
         // flatMap()        元素一对一执行，返回元素的 Stream
         // peek()           元素一对一执行，无返回
         List<Integer> list = Stream.of(3, 2, 2, 3, 7, 3, 5)
-            .distinct()
-            .map(i -> i * i)
-            .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
-            // 3 2 7 5
-            .peek(i -> System.out.print(i + StringUtils.SPACE)).toList();
+                .distinct()
+                .map(i -> i * i)
+                .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
+                // 3 2 7 5
+                .peek(i -> System.out.print(i + StringUtils.SPACE)).toList();
         p();
 
         // filter()         过滤
         // sorted()         排序
         // limit()          限数
         Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
-            .filter(n -> n % 2 == 0).sorted()
-            .forEach(n -> System.out.print(n + StringUtils.SPACE)); // 4 6 8
+                .filter(n -> n % 2 == 0).sorted()
+                .forEach(n -> System.out.print(n + StringUtils.SPACE)); // 4 6 8
         p();
 
         // sequential()     串行
@@ -124,7 +126,7 @@ public class StreamDemo extends Demo {
     @Test
     public void terminal() {
         // count()          返回元素的个数
-        ae(Stream.of(9, 7, 5, 3, 1).count(), 5L);
+        assertThat(Stream.of(9, 7, 5, 3, 1).count()).isEqualTo(5L);
 
         // forEach()        迭代所有元素
         Stream.of(9, 7, 5, 3, 1).forEach(n -> System.out.print(n + StringUtils.SPACE));
@@ -135,7 +137,7 @@ public class StreamDemo extends Demo {
         p();
 
         // isParallel       判断当前 Stream 是否并行
-        ae(Stream.of(9, 7, 5, 3, 1).isParallel(), false);
+        assertThat(Stream.of(9, 7, 5, 3, 1).isParallel()).isFalse();
 
         // toArray()        返回所有元素的数组
         p(Stream.of(9, 7, 5, 3, 1).toArray());
@@ -143,13 +145,13 @@ public class StreamDemo extends Demo {
         // max()            返回元素中最大的 Optional 对象
         // min()            返回元素中最小的 Optional 对象
         // findFirst()      返回第一个元素的 Optional 对象
-        ae(Stream.of(3, 1, -1, -3).max(Integer::compare).get(), 3);
-        ae(Stream.of(3, 1, -1, -3).min(Integer::compare).get(), -3);
-        ae(Stream.of(3, 1, -1, -3).findFirst().get(), 3);
+        assertThat(Stream.of(3, 1, -1, -3).max(Integer::compare).get()).isEqualTo(3);
+        assertThat(Stream.of(3, 1, -1, -3).min(Integer::compare).get()).isEqualTo(-3);
+        assertThat(Stream.of(3, 1, -1, -3).findFirst().get()).isEqualTo(3);
 
         // reduce()
-        ae(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get(), 11);
-        ae(Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2), 19);
+        assertThat(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get()).isEqualTo(11);
+        assertThat(Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2)).isEqualTo(19);
 
         // collect()
         List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
@@ -164,16 +166,16 @@ public class StreamDemo extends Demo {
     @Test
     public void other() {
         // Optional<T>	    findFirst()                 返回 Optional(first)，空 Stream 返回 Optional.empty()
-        ae(Stream.of(arr).findFirst().orElse(null), 1);
+        assertThat(Stream.of(arr).findFirst().orElse(null)).isEqualTo(1);
         // Optional<T>	    findAny()                   串行返回 Optional(first)，并行返回 Optional(any)，空 Stream 返回 Optional.empty()
-        ae(Stream.of(arr).findAny().orElse(null), 1);
+        assertThat(Stream.of(arr).findAny().orElse(null)).isEqualTo(1);
 
         // boolean          allMatch(IntPredicate)      全匹配
-        ae(Stream.of(arr).allMatch(i -> i > 5), false);
+        assertThat(Stream.of(arr).allMatch(i -> i > 5)).isFalse();
         // boolean          anyMatch(IntPredicate)      任意一个匹配
-        ae(Stream.of(arr).anyMatch(i -> i > 5), true);
+        assertThat(Stream.of(arr).anyMatch(i -> i > 5)).isTrue();
         // boolean          noneMatch(IntPredicate)     全不匹配
-        ae(Stream.of(arr).noneMatch(i -> i > 10), true);
+        assertThat(Stream.of(arr).noneMatch(i -> i > 10)).isTrue();
 
         // XxxStream        mapToXxx(XxxFunction<? super T>)                        经过 XxxFunction Stream → XxxStream
         // 当流操作均为数值操作时，将普通流转换成数值流，能获得较高的效率
@@ -183,10 +185,10 @@ public class StreamDemo extends Demo {
     }
 
     private final List<Person> personList = List.of(
-        new Person("王五", 22, "男"),
-        new Person("李四", 21, "女"),
-        new Person("张三", 20, "男"),
-        new Person("张三", 23, "男")
+            new Person("王五", 22, "男"),
+            new Person("李四", 21, "女"),
+            new Person("张三", 20, "男"),
+            new Person("张三", 23, "男")
     );
 
     /** 对象集合按属性去重 */

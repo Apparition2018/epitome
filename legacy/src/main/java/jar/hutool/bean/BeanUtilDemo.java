@@ -3,11 +3,13 @@ package jar.hutool.bean;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.collection.ListUtil;
-import l.demo.Demo;
-import l.demo.Person;
-import l.demo.Person.Home;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Home;
 
 import java.util.Map;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
 
 /**
  * <a href="https://doc.hutool.cn/pages/BeanUtil/">BeanUtil</a> Bean工具
@@ -31,14 +33,14 @@ import java.util.Map;
  * @author ljh
  * @since 2020/11/9 14:54
  */
-public class BeanUtilDemo extends Demo {
+public class BeanUtilDemo {
 
     public static void main(String[] args) {
         // static void	    descForEach(Class<?>, Consumer<? super PropDesc>)
         // 遍历 Bean 的属性，进行 Consumer 操作
         BeanUtil.descForEach(Person.class, propDesc -> p(propDesc.getFieldName()));
 
-        Person person = personList.get(0);
+        Person person = personList.getFirst();
         person.setOtherInfo(ListUtil.toList("医生", "爸爸"));
         person.setHome(new Home().setAddress("北京").setTel("010"));
         p(person); // Person{id=1, name='张三', otherInfo=[医生, 爸爸], home=Home(address='GD', tel='123')}

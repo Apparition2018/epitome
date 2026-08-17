@@ -1,6 +1,6 @@
 package knowledge.concurrent.lock;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

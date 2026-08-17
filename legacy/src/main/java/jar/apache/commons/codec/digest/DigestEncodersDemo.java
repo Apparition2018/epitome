@@ -1,11 +1,13 @@
 package jar.apache.commons.codec.digest;
 
-import l.demo.Demo;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Digest_Encoders">Digest Encoders</a>
@@ -13,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class DigestEncodersDemo extends Demo {
+public class DigestEncodersDemo {
 
     @Test
     public void testDigestUtils() {

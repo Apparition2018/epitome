@@ -12,7 +12,7 @@ Session session = entityManager.unwrap(Session.class);          // 原生 Sessio
 SessionFactory sf = entityManagerFactory.unwrap(SessionFactory.class); // 原生工厂
 ```
 
-按主题组织为六个大方向，与 `HibernateNativeTests.java` 的六个测试区块一一对应。
+按主题组织为六个大方向，与 `HibernateTests.java` 的六个测试区块一一对应。
 
 ## 一、Session 核心
 
@@ -303,5 +303,5 @@ List<Country> asia = q.list();
 
 ## 关联阅读
 
-- 完整测试：本模块 `src/test/java/.../HibernateNativeTests.java`
+- 完整测试：本模块 `src/test/java/.../HibernateTests.java`
 - 官方文档：<https://hibernate.org/orm/documentation/6.2/>

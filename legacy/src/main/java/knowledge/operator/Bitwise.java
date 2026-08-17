@@ -2,7 +2,7 @@ package knowledge.operator;
 
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Bitwise  位运算

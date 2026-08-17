@@ -1,7 +1,8 @@
 package jar.hutool.bean;
 
 import cn.hutool.core.bean.BeanPath;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.personList;
 
 /**
  * <a href="https://doc.hutool.cn/pages/BeanPath/">BeanPath</a> 表达式解析
@@ -11,10 +12,10 @@ import l.demo.Demo;
  * @author ljh
  * @since 2022/1/19 8:49
  */
-public class BeanPathDemo extends Demo {
+public class BeanPathDemo {
 
     public static void main(String[] args) {
         BeanPath beanPath = new BeanPath("home.address");
-        p("address = " + beanPath.get(personList.get(0))); // gd
+        System.out.println("address = " + beanPath.get(personList.getFirst())); // gd
     }
 }

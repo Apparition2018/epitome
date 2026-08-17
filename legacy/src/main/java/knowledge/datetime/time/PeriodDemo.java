@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Period.html">Period</a>

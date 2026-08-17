@@ -1,7 +1,6 @@
 package jar.hutool.date;
 
 import cn.hutool.core.date.LocalDateTimeUtil;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
@@ -10,6 +9,9 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import static com.ljh.commons.Demo.DATE_TIME_FORMAT;
+import static com.ljh.commons.Demo.p;
+
 /**
  * <a href="https://doc.hutool.cn/pages/LocalDateTimeUtil/">LocalDateTimeUtil</a>
  * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/LocalDateTimeUtil.html">LocalDateTimeUtil api</a>
@@ -17,7 +19,7 @@ import java.util.Date;
  * @author ljh
  * @since 2020/10/27 11:45
  */
-public class LocalDateTimeUtilDemo extends Demo {
+public class LocalDateTimeUtilDemo {
 
     private final Date DATE = DATE_TIME_FORMAT.get().parse("2008-08-08 20:08:08");
     private final LocalDateTime NOW_LDT = LocalDateTime.now();

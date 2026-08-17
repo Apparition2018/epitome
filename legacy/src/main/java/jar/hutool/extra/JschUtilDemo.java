@@ -3,7 +3,7 @@ package jar.hutool.extra;
 import cn.hutool.extra.ssh.JschUtil;
 import com.jcraft.jsch.Session;
 
-import static l.demo.Demo.MY_SERVER_IP;
+import static com.ljh.commons.Demo.MY_SERVER_IP;
 
 /**
  * <a href="https://doc.hutool.cn/pages/JschUtil/">JschUtil</a>

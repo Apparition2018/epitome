@@ -1,7 +1,6 @@
 package knowledge.api.util;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +14,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_FILE_PATH;
+
 /**
  * ZipUtils
  * <pre>
@@ -26,7 +28,7 @@ import java.util.zip.ZipOutputStream;
  * @author ljh
  * @since 2020/11/8 16:44
  */
-public final class ZipUtils extends Demo {
+public final class ZipUtils {
 
     @Test
     public void testZip() throws IOException {

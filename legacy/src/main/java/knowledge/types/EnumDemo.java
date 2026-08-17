@@ -1,12 +1,12 @@
 package knowledge.types;
 
-import l.demo.CompanyEnum;
+import com.ljh.commons.CompanyEnum;
 import org.junit.jupiter.api.Test;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html">Enum</a>
@@ -33,15 +33,6 @@ import static l.demo.Demo.p;
  * @since 2020/11/2 19:39
  */
 public class EnumDemo {
-
-    @Test
-    public void companyEnum() {
-        p(CompanyEnum.SF.getCode());                // 1001
-        p(CompanyEnum.SF.getCompany());             // 顺丰速运
-
-        p(CompanyEnum.getCodeByCompany("顺丰速运")); // 1001
-        p(CompanyEnum.getCompanyByCode(1001));      // 顺丰速运
-    }
 
     /**
      * 一些其它用法

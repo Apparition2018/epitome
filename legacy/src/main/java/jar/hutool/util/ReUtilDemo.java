@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.regex.Pattern;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ReUtil/">ReUtil</a> 正则工具

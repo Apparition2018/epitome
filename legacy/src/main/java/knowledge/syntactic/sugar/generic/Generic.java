@@ -6,7 +6,7 @@ import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Generics 泛型

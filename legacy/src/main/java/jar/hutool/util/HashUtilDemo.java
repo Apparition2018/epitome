@@ -1,7 +1,9 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.HashUtil;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/HashUtil/">HashUtil</a> Hash算法
@@ -10,7 +12,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/19 10:22
  */
-public class HashUtilDemo extends Demo {
+public class HashUtilDemo {
 
     public static void main(String[] args) {
         // Java 默认 Hash

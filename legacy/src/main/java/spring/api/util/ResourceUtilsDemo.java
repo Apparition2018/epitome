@@ -1,11 +1,13 @@
 package spring.api.util;
 
-import l.demo.Demo;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+
+import static com.ljh.commons.Demo.APP_PROPS_FILENAME;
+import static com.ljh.commons.Demo.p;
 
 /**
  * ResourceUtils
@@ -13,7 +15,7 @@ import java.net.URL;
  * @author ljh
  * @since 2021/9/8 16:24
  */
-public class ResourceUtilsDemo extends Demo {
+public class ResourceUtilsDemo {
 
     public static void main(String[] args) throws FileNotFoundException {
         File file = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + APP_PROPS_FILENAME);

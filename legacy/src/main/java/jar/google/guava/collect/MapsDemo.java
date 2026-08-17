@@ -4,9 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
-import l.demo.Demo;
-import l.demo.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;

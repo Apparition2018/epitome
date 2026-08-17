@@ -5,7 +5,7 @@ import com.google.common.collect.Multimap;
 
 import java.util.List;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap">Multimap</a>

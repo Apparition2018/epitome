@@ -3,7 +3,7 @@
 纯 JPA（Jakarta Persistence 规范）演示模块：**不使用 Spring Data JPA 的 Repository 抽象**，数据访问完全基于标准 `EntityManager` / `EntityManagerFactory`（`jakarta.persistence.*`）。
 
 - 启动类：`JpaApplication`（通过 `@SpringBootApplication(exclude = DataJpaRepositoriesAutoConfiguration.class)` 显式关闭 Repository 自动装配，确保整个应用不创建任何 Repository 代理）
-- 测试：`src/test/java/org/ljh/jpa/JpaNativeTests.java`
+- 测试：`src/test/java/org/ljh/jpa/JpaTests.java`
 
 ---
 
@@ -175,7 +175,7 @@ spring.jpa.properties.hibernate.generate_statistics=true
 
 ---
 
-## 五、Service 层（JpaDemoService，@Transactional）
+## 五、Service 层（JpaService，@Transactional）
 
 在 DAO 之上再包一层 `@Transactional` 服务，演示 Spring 声明式事务与 JPA 的关系：
 
@@ -193,7 +193,7 @@ spring.jpa.properties.hibernate.generate_statistics=true
 | `listPersons`             | 多态查询                            |
 | `updatePersonName`        | 乐观锁更新姓名                         |
 
-`JpaDemoRunner` 实现 `ApplicationRunner`，应用启动后自动执行 7 步典型 JPA 演示并把结果打印到控制台，便于直接观察效果：
+`JpaRunner` 实现 `ApplicationRunner`，应用启动后自动执行 7 步典型 JPA 演示并把结果打印到控制台，便于直接观察效果：
 
 1. **JPQL + 命名查询 + 聚合**：`listByContinent(ASIA)` 与 `countAll()`。
 2. **Criteria 动态查询**：`searchByCriteria("C", ASIA, 5)`。
@@ -215,7 +215,7 @@ spring.jpa.properties.hibernate.generate_statistics=true
 
 ## 六·补、序号 1–6 补充特性（纯 JPA）
 
-`AdvancedDao` + `JpaNativeTests` 中新增的分区补充演示六类 JPA 规范特性（对应参考教程的 Customer/Order/Customer2/Customer3 示例）：
+`AdvancedDao` + `JpaTests` 中新增的分区补充演示六类 JPA 规范特性（对应参考教程的 Customer/Order/Customer2/Customer3 示例）：
 
 ### 序号 1：主键生成策略（TABLE / SEQUENCE / AUTO 对照）
 
@@ -260,9 +260,9 @@ spring.jpa.properties.hibernate.generate_statistics=true
 
 ---
 
-## 七、测试覆盖（JpaNativeTests）
+## 七、测试覆盖（JpaTests）
 
-测试类 `org.ljh.jpa.JpaNativeTests` 按主题分为六大分区（与 `HibernateNativeTests` / `SpringDataJpaTests` 同构）：
+测试类 `org.ljh.jpa.JpaTests` 按主题分为六大分区（与 `HibernateTests` / `SpringDataJpaTests` 同构）：
 
 1. **一、实体映射与生命周期**
    - EntityManager 生命周期：`contextLoads` / `entityLifecycle`（find、persist、detach、merge、remove）/ `getReferenceLazyProxy`。
@@ -296,7 +296,7 @@ cd spring-boot/spring-boot-data/spring-boot-jpa
 # 运行测试（内存 H2，SQL 自动初始化 world + demo 表）
 mvn test
 
-# 启动应用（JpaDemoRunner 自动打印演示结果）
+# 启动应用（JpaRunner 自动打印演示结果）
 mvn spring-boot:run
 ```
 

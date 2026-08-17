@@ -1,6 +1,6 @@
 package org.ljh.jpa.repository;
 
-import org.ljh.jpa.entity.Continent;
+import com.ljh.commons.Continent;
 import org.ljh.jpa.entity.Country;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

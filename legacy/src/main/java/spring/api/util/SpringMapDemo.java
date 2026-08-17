@@ -1,6 +1,5 @@
 package spring.api.util;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.ConcurrentReferenceHashMap;
 import org.springframework.util.LinkedCaseInsensitiveMap;
@@ -9,13 +8,15 @@ import org.springframework.util.LinkedMultiValueMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static com.ljh.commons.Demo.p;
+
 /**
  * Spring Map
  *
  * @author ljh
  * @since 2021/9/8 10:25
  */
-public class SpringMapDemo extends Demo {
+public class SpringMapDemo {
 
     /** LinkedCaseInsensitiveMap    键不区分大小写 */
     @Test

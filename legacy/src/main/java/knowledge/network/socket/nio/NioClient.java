@@ -1,7 +1,5 @@
 package knowledge.network.socket.nio;
 
-import l.demo.Demo;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,13 +11,16 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
+
 /**
  * 客户端
  *
  * @author NioClient
  * @since 2020/9/22 15:36
  */
-public class NioClient extends Demo {
+public class NioClient {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         new NioClient().init("127.0.0.1", 9981).listen();

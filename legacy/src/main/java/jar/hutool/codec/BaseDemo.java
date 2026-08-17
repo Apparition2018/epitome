@@ -6,7 +6,7 @@ import cn.hutool.core.codec.Base64;
 import cn.hutool.core.lang.Console;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.BAIDU_URL;
+import static com.ljh.commons.Demo.BAIDU_URL;
 
 /**
  * Base

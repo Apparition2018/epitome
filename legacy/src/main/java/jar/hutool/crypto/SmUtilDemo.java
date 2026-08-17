@@ -7,7 +7,7 @@ import cn.hutool.crypto.SmUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.SM2;
 import cn.hutool.crypto.symmetric.SM4;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

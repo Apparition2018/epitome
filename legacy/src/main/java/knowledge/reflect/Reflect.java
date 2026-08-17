@@ -1,11 +1,11 @@
 package knowledge.reflect;
 
-import l.demo.Animal.Cat;
+import com.ljh.commons.Animal.Cat;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.*;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 反射

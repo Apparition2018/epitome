@@ -2,12 +2,12 @@ package springboot.controller;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.common.net.HttpHeaders;
+import com.ljh.commons.Person;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jar.apache.poi.ExcelUtils;
-import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -39,7 +39,7 @@ import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import static l.demo.Demo.*;
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD">RuoYi 上传下载 (CommonController)</a>

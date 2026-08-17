@@ -1,11 +1,13 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Set.html">Set</a>
@@ -21,7 +23,7 @@ import java.util.*;
  * @author ljh
  * @since 2020/9/4 17:14
  */
-public class SetDemo extends Demo {
+public class SetDemo {
 
     @Test
     public void testOf() {

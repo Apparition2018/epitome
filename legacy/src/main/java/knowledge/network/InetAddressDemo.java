@@ -1,9 +1,10 @@
 package knowledge.network;
 
-import l.demo.Demo;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import static com.ljh.commons.Demo.BAIDU_HOST;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/InetAddress.html">InetAddress</a>
@@ -15,7 +16,7 @@ import java.net.UnknownHostException;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class InetAddressDemo extends Demo {
+public class InetAddressDemo {
 
     public static void main(String[] args) throws UnknownHostException {
         // static InetAddress	getLocalHost()          获取本地主机

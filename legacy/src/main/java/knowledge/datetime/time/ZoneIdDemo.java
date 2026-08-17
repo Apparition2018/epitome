@@ -1,6 +1,6 @@
 package knowledge.datetime.time;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -9,7 +9,7 @@ import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.Set;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html">ZoneId</a>

@@ -1,8 +1,10 @@
 package jar.hutool.lang;
 
 import cn.hutool.core.lang.Dict;
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Person;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
 
 /**
  * <a href="https://doc.hutool.cn/pages/Dict/">Dict</a>
@@ -18,7 +20,7 @@ import l.demo.Person;
  * @author ljh
  * @since 2020/11/19 19:29
  */
-public class DictDemo extends Demo {
+public class DictDemo {
 
     public static void main(String[] args) {
         // static Dict	    of(Object... keysAndValues)

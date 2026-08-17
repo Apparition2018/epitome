@@ -2,7 +2,7 @@ package jar.hutool.aop;
 
 import cn.hutool.aop.ProxyUtil;
 import cn.hutool.aop.aspects.TimeIntervalAspect;
-import l.demo.Animal.Cat;
+import com.ljh.commons.Animal.Cat;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ProxyUtil/">ProxyUtil</a>   切面代理工具

@@ -2,7 +2,7 @@ package jar.hutool.map;
 
 import cn.hutool.core.map.TableMap;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/TableMap/">TableMap</a> 可重复键 Map

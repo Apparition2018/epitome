@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static l.demo.Demo.DEMO_FILE_PATH;
+import static com.ljh.commons.Demo.DEMO_FILE_PATH;
 
 /**
  * BZip2 文件压缩/解压工具

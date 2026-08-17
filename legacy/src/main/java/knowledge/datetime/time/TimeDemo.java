@@ -9,7 +9,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html">Time</a> 包下的类都是不可变的、线程安全的

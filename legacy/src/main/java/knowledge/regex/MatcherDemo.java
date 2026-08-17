@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static l.demo.Demo.ae;
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Matcher.html">Matcher</a>
@@ -28,22 +28,22 @@ public class MatcherDemo {
         // 1. find()：重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
         if (matcher.find(4)) {
             // 整个正则匹配的内容，相当于 group()
-            ae(matcher.group(0), "234bcd");
+            assertThat(matcher.group(0)).isEqualTo("234bcd");
             // 第1个捕获组匹配的内容
-            ae(matcher.group(1), "234");
+            assertThat(matcher.group(1)).isEqualTo("234");
             // 第2个捕获组匹配的内容
-            ae(matcher.group(2), "bcd");
+            assertThat(matcher.group(2)).isEqualTo("bcd");
         }
 
         // 2. lookingAt()：尝试将从区域开头开始的输入序列与该模式匹配
-        ae(matcher.lookingAt(), true);
+        assertThat(matcher.lookingAt()).isTrue();
         matcher = pattern.matcher("abc123");
-        ae(matcher.lookingAt(), false);
+        assertThat(matcher.lookingAt()).isFalse();
 
         // 3. matches()：尝试将整个区域与模式匹配
-        ae(matcher.matches(), false);
+        assertThat(matcher.matches()).isFalse();
         matcher = pattern.matcher("123abc");
-        ae(matcher.matches(), true);
+        assertThat(matcher.matches()).isTrue();
     }
 
     /** 索引方法：索引方法提供了有用的索引值，精确表明输入字符串中在哪能找到匹配 */
@@ -76,8 +76,8 @@ public class MatcherDemo {
 
         // 1. replaceFirst()：替换模式与给定替换字符串匹配的输入序列的第一个子序列
         //    replaceAll()：替换模式与给定替换字符串相匹配的输入序列的每个子序列
-        ae(matcher.replaceFirst("LOL"), "Laugh: LOL, haa!");
-        ae(matcher.replaceAll("LOL"), "Laugh: LOL, LOL!");
+        assertThat(matcher.replaceFirst("LOL")).isEqualTo("Laugh: LOL, haa!");
+        assertThat(matcher.replaceAll("LOL")).isEqualTo("Laugh: LOL, LOL!");
 
         // 2. appendReplacement()：实现非终端添加和替换步骤
         //    appendTail()：实现终端添加和替换步骤
@@ -90,7 +90,7 @@ public class MatcherDemo {
             // Laugh: LOL, LOL
         }
         matcher.appendTail(sb);
-        ae(sb.toString(), "Laugh: LOL, LOL!");
+        assertThat(sb.toString()).isEqualTo("Laugh: LOL, LOL!");
 
         // 3. quoteReplacement()：返回指定 String 的字面值替换 String
         pattern = Pattern.compile("(the\\s)?USD");
@@ -98,9 +98,9 @@ public class MatcherDemo {
         try {
             p(matcher.replaceAll("$"));
         } catch (Exception e) {
-            ae(e.getMessage(), "Illegal group reference: group index is missing");
+            assertThat(e.getMessage()).isEqualTo("Illegal group reference: group index is missing");
         }
-        ae(matcher.replaceAll(Matcher.quoteReplacement("$")), "I love $");
+        assertThat(matcher.replaceAll(Matcher.quoteReplacement("$"))).isEqualTo("I love $");
     }
 
     /** 计算有多少个英文单词 */
@@ -108,8 +108,8 @@ public class MatcherDemo {
     public void results() {
         Pattern pattern = Pattern.compile("\\b\\w+\\b");
         // results()：返回与模式匹配的输入序列的每个子序列的匹配结果流
-        ae(pattern.matcher("This is a Cat").results().count(), 4L);
-        ae(pattern.matcher("This is a Cat? No!").results().count(), 5L);
-        ae(pattern.matcher("I'm OK").results().count(), 3L);
+        assertThat(pattern.matcher("This is a Cat").results().count()).isEqualTo(4L);
+        assertThat(pattern.matcher("This is a Cat? No!").results().count()).isEqualTo(5L);
+        assertThat(pattern.matcher("I'm OK").results().count()).isEqualTo(3L);
     }
 }

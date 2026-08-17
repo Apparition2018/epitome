@@ -1,6 +1,6 @@
 package knowledge.api.util;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.util.Arrays;
 import java.util.Spliterator;

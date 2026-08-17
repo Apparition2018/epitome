@@ -1,6 +1,6 @@
 package knowledge.design.pattern.other.concurrency;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 

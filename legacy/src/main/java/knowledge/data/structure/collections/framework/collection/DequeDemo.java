@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Deque.html">Deque</a> 双端队列  (double ended queue)

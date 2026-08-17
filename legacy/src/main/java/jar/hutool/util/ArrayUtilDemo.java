@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ArrayUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.nio.ByteBuffer;

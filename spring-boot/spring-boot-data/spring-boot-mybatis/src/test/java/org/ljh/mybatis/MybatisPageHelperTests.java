@@ -131,12 +131,14 @@ public class MybatisPageHelperTests {
     /**
      * 演示 {@code count=false} 跳过 {@code COUNT(*)} 查询
      * <p>适用于仅需加载更多、不需要总记录数的场景。</p>
+     * <p>PageHelper 跳过 count 时不会执行 {@code COUNT(*)}，
+     * 此时 {@code total} 保持初始值 {@code -1}（表示“未查询总记录数”）。</p>
      */
     @Test
     void testDeclarativeSkipCount() {
         List<City> cities = cityCustomMapper.selectByPage(1, 5, false);
         PageInfo<City> pageInfo = new PageInfo<>(cities);
-        assertThat(pageInfo.getTotal()).isEqualTo(0);
+        assertThat(pageInfo.getTotal()).isEqualTo(-1);
         assertThat(pageInfo.getList()).hasSizeLessThanOrEqualTo(5);
         System.out.printf("[跳过 count] total=%d, size=%d%n",
                 pageInfo.getTotal(), pageInfo.getList().size());

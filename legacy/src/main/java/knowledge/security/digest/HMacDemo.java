@@ -1,7 +1,5 @@
 package knowledge.security.digest;
 
-import l.demo.Demo;
-
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -17,6 +15,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.HELLO_WORLD;
 
 /**
  * <pre>
@@ -43,11 +44,11 @@ import java.util.Objects;
  * @see <a href="https://www.cnblogs.com/fishou/p/4159092.html">HMAC 的 JAVA 实现和应用</a>
  * @since 2020/11/18 19:37
  */
-public class HMacDemo extends Demo {
+public class HMacDemo {
 
     public static void main(String[] args) {
         String inputStr = HELLO_WORLD;
-        p(Objects.equals(getResult1(inputStr), getResult2(inputStr)));
+        System.out.println(Objects.equals(getResult1(inputStr), getResult2(inputStr)));
     }
 
     /**

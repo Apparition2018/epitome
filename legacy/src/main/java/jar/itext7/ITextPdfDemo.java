@@ -7,7 +7,7 @@ import com.itextpdf.layout.element.Paragraph;
 
 import java.io.IOException;
 
-import static l.demo.Demo.DESKTOP;
+import static com.ljh.commons.Demo.DESKTOP;
 
 /**
  * <a href="https://github.com/itext/itext7">itext7</a>

@@ -1,7 +1,7 @@
 package knowledge.concurrent;
 
+import com.ljh.commons.Demo;
 import knowledge.suggestions.Suggestions;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;

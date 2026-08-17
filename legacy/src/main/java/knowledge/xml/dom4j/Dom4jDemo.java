@@ -1,6 +1,5 @@
 package knowledge.xml.dom4j;
 
-import l.demo.Demo;
 import org.dom4j.*;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
@@ -13,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+
 /**
  * Dom4j
  * Dom4j 是 JDOM 的一种智能分支，它合并了许多超出基本xml文档表示的功能。
@@ -20,7 +21,7 @@ import java.util.List;
  * @author ljh
  * @since 2020/11/10 11:40
  */
-public class Dom4jDemo extends Demo {
+public class Dom4jDemo {
 
     public static final String XML_PATH = DEMO_DIR_PATH + "demo.xml";
 
@@ -76,7 +77,7 @@ public class Dom4jDemo extends Demo {
             // 获取指定名的 Element 的 Text
             String age = student.elementText("age");
 
-            p(name + ": id " + id + "，年龄" + age + "岁");
+            System.out.println(name + ": id " + id + "，年龄" + age + "岁");
         }
     }
 
@@ -88,6 +89,6 @@ public class Dom4jDemo extends Demo {
         String xpath = "//student[@id='1' or age='19']/name";
         // 根据 XPath 表达式 select
         List<Node> nodeList = doc.selectNodes(xpath);
-        nodeList.forEach(node -> p(node.getText()));
+        nodeList.forEach(node -> System.out.println(node.getText()));
     }
 }

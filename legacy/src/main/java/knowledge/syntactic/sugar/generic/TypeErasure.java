@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Java 的泛型采用的是擦除法实现的伪泛型，因为 Java 开始是不支持泛型的，为了兼容以前的库不得不使用擦除法

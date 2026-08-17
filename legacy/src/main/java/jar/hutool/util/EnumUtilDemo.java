@@ -1,9 +1,9 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.EnumUtil;
-import l.demo.CompanyEnum;
+import com.ljh.commons.CompanyEnum;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/EnumUtil/">EnumUtil</a>

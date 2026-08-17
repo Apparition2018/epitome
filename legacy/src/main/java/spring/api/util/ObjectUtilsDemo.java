@@ -2,7 +2,7 @@ package spring.api.util;
 
 import org.springframework.util.ObjectUtils;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * ObjectUtils

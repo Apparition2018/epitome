@@ -16,7 +16,7 @@ import springboot.mapper.master.DemoMapper;
 import java.io.Serial;
 import java.sql.SQLException;
 
-import static l.demo.Demo.pe;
+import static com.ljh.commons.Demo.pe;
 
 /**
  * TransactionalService

@@ -1,7 +1,5 @@
 package knowledge.data.structure.collections.framework.map.properties;
 
-import l.demo.Demo;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,13 +9,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
+import static com.ljh.commons.Demo.APP_PROPS_FILENAME;
+
 /**
  * PropertiesUtil
  *
  * @author ljh
  * @since 2019/8/20 10:24
  */
-public class PropertiesUtil extends Demo {
+public class PropertiesUtil {
 
     public static Properties loadProps(String fileName) {
         Properties props = new Properties();
@@ -38,6 +38,6 @@ public class PropertiesUtil extends Demo {
     }
 
     public static void main(String[] args) {
-        p(PropertiesUtil.getProperty(APP_PROPS_FILENAME, "server.port"));
+        System.out.println(PropertiesUtil.getProperty(APP_PROPS_FILENAME, "server.port"));
     }
 }

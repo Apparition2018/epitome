@@ -1,5 +1,6 @@
 package org.ljh.jpa.service;
 
+import com.ljh.commons.Continent;
 import org.ljh.jpa.dao.CountryDao;
 import org.ljh.jpa.dao.CountryLanguageDao;
 import org.ljh.jpa.dao.PersonDao;
@@ -11,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * JpaDemoService — 面向业务的演示服务。
+ * JpaService — 面向业务的演示服务。
  * <p>在 DAO（仅用 {@code EntityManager}）之上再包一层 {@code @Transactional} 服务，
  * 演示 Spring 声明式事务与 JPA 的关系：事务边界由 {@code JpaTransactionManager} 管理，
  * 同一事务内共享同一个持久化上下文（一级缓存），提交时才统一 flush。</p>

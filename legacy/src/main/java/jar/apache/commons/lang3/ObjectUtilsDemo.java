@@ -1,10 +1,11 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html">ObjectUtils</a>
@@ -12,7 +13,7 @@ import java.util.List;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class ObjectUtilsDemo extends Demo {
+public class ObjectUtilsDemo {
 
     /**
      * getFirstNonNull

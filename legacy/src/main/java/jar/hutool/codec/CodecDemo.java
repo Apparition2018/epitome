@@ -3,8 +3,10 @@ package jar.hutool.codec;
 import cn.hutool.core.codec.Caesar;
 import cn.hutool.core.codec.Morse;
 import cn.hutool.core.codec.Rot;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Codec
@@ -12,7 +14,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2020/11/19 14:58
  */
-public class CodecDemo extends Demo {
+public class CodecDemo {
 
     private static String encode;
     private static String decode;

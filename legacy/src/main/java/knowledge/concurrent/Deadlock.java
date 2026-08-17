@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static l.demo.Demo.p;
-import static l.demo.Demo.sleep;
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.sleep;
 
 /**
  * 死锁

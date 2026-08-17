@@ -1,6 +1,6 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;

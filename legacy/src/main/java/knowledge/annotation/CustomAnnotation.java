@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 用户自定义注解

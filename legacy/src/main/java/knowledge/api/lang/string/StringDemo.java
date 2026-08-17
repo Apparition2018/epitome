@@ -1,13 +1,15 @@
 package knowledge.api.lang.string;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/String.html">String</a>
@@ -40,7 +42,7 @@ import java.util.stream.Stream;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class StringDemo extends Demo {
+public class StringDemo {
 
     @Test
     public void testString() {

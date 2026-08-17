@@ -3,14 +3,16 @@ package spring.api.util;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.extra.cglib.CglibUtil;
-import l.demo.Demo;
-import l.demo.User;
+import com.ljh.commons.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.core.Converter;
 import org.springframework.util.StopWatch;
 
 import java.util.Date;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.stopWatch;
 
 /**
  * BeanUtils
@@ -19,7 +21,7 @@ import java.util.Date;
  * @author ljh
  * @since 2022/1/19 11:17
  */
-public class BeanUtilsDemo extends Demo {
+public class BeanUtilsDemo {
 
     /** Cglib BeanCopier 和 Apache Beanutils 与 lombok 的 @Accessors(chain = true) 冲突 */
     public static void main(String[] args) {

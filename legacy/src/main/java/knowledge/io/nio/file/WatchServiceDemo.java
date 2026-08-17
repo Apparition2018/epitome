@@ -1,11 +1,13 @@
 package knowledge.io.nio.file;
 
 import com.sun.nio.file.SensitivityWatchEventModifier;
-import l.demo.Demo;
 
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.concurrent.TimeUnit;
+
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchService.html">WatchService</a>
@@ -22,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/6 10:32
  */
-public class WatchServiceDemo extends Demo {
+public class WatchServiceDemo {
 
     /** <a href="https://www.zhihu.com/question/264700166">WatchService，重复触发 Modify 事件</a> */
     public static void main(String[] args) throws InterruptedException, IOException {

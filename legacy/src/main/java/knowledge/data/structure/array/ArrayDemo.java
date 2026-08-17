@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Array

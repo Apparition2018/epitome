@@ -2,7 +2,7 @@ package jar.hutool.math;
 
 import cn.hutool.core.math.MathUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/MathUtil/">MathUtil</a>

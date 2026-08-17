@@ -1,6 +1,6 @@
 package jar.apache.httpcomponents.client4;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.junit.jupiter.api.Test;

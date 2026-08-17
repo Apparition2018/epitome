@@ -3,7 +3,7 @@ package jar.jackson.annotataion;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.Data;
 
 /**

@@ -1,10 +1,10 @@
 package spring.api.util;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * ClassUtils

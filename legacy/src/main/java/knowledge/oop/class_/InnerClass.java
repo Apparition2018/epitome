@@ -1,6 +1,6 @@
 package knowledge.oop.class_;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 内部类

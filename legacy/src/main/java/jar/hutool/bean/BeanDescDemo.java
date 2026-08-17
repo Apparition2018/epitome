@@ -3,12 +3,12 @@ package jar.hutool.bean;
 import cn.hutool.core.bean.BeanDesc;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.PropDesc;
-import l.demo.Person;
+import com.ljh.commons.Person;
 
 import java.util.Collection;
 import java.util.Map;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/BeanDesc/">BeanDesc</a> Bean描述

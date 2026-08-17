@@ -2,10 +2,12 @@ package jar.hutool.util;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.DEMO_DIR_ABSOLUTE_PATH;
+import static com.ljh.commons.Demo.DEMO_FILE_ABSOLUTE_PATH;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ZipUtil/">ZipUtil</a>   压缩工具
@@ -14,7 +16,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2020/11/7 17:56
  */
-public class ZipUtilDemo extends Demo {
+public class ZipUtilDemo {
 
     /**
      * static byte[]	    gzip(File file)

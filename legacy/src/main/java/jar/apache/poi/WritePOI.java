@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static l.demo.Demo.DESKTOP;
+import static com.ljh.commons.Demo.DESKTOP;
 
 /**
  * Write POI

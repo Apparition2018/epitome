@@ -2,13 +2,14 @@ package jar.hutool.io;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://doc.hutool.cn/pages/IoUtil/">IOUtil</a>
@@ -27,7 +28,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/10/29 17:45
  */
-public class IoUtilDemo extends Demo {
+public class IoUtilDemo {
 
     @Test
     public void testIoUtil() {
@@ -40,7 +41,7 @@ public class IoUtilDemo extends Demo {
 
         // 读取
         FileInputStream fis = IoUtil.toStream(file2);
-        p(IoUtil.readUtf8(fis));
+        System.out.println(IoUtil.readUtf8(fis));
 
         // 复制
         BufferedInputStream bis = FileUtil.getInputStream(file);

@@ -3,7 +3,7 @@ package jar.hutool.util;
 import cn.hutool.core.util.CharUtil;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/CharUtil.html">CharUtil</a>

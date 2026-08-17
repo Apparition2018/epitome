@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoField;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZoneOffset.html">ZoneOffset</a>

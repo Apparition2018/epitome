@@ -2,7 +2,7 @@ package jar.hutool.io;
 
 import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.io.FileUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.codec.digest.XXHash32;
 import org.junit.jupiter.api.Test;
 

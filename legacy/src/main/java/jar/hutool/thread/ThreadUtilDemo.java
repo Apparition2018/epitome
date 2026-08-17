@@ -1,12 +1,13 @@
 package jar.hutool.thread;
 
 import cn.hutool.core.thread.ThreadUtil;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ThreadUtil/">ThreadUtil</a> 线程工具
@@ -15,7 +16,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/10/26 9:30
  */
-public class ThreadUtilDemo extends Demo {
+public class ThreadUtilDemo {
 
     private final static int NUM_OF_TASK = 5;
 

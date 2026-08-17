@@ -1,6 +1,5 @@
 package jar.jsoup;
 
-import l.demo.Demo;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,6 +7,8 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.BAIDU_URL;
 
 /**
  * <a href="https://jsoup.org/apidocs/">Jsoup</a>
@@ -20,7 +21,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2020/11/12 10:43
  */
-public class JsoupDemo extends Demo {
+public class JsoupDemo {
 
     public static void main(String[] args) throws IOException {
         // static Connection	connect(String url)
@@ -36,6 +37,6 @@ public class JsoupDemo extends Demo {
         Element su = document.getElementById("su");
 
         // 获取一个表单元素的值 (input, textarea 等)
-        p(Objects.requireNonNull(su).val()); // 百度一下
+        System.out.println(Objects.requireNonNull(su).val()); // 百度一下
     }
 }

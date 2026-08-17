@@ -1,6 +1,5 @@
 package jar.apache.commons.codec.network;
 
-import l.demo.Demo;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
 import org.junit.jupiter.api.Test;
@@ -8,13 +7,16 @@ import org.junit.jupiter.api.Test;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
+import static com.ljh.commons.Demo.MY_CY;
+import static com.ljh.commons.Demo.p;
+
 /**
  * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Network_Encoders">Network Encoders</a>
  *
  * @author ljh
  * @since 2020/11/15 0:18
  */
-public class NetworkEncodersDemo extends Demo {
+public class NetworkEncodersDemo {
 
     @Test
     public void testURLCodec() throws UnsupportedEncodingException, DecoderException {

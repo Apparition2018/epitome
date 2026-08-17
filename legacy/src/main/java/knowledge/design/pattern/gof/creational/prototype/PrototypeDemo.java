@@ -1,13 +1,13 @@
 package knowledge.design.pattern.gof.creational.prototype;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import static l.demo.Demo.ae;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * 原型模式：用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象
@@ -48,14 +48,14 @@ public class PrototypeDemo {
         rectangle.height = 20;
         rectangle.color = "blue";
         Shape clone = rectangle.clone();
-        ae(rectangle == clone, false);
-        ae(Objects.equals(rectangle, clone), true);
+        assertThat(rectangle == clone).isFalse();
+        assertThat(Objects.equals(rectangle, clone)).isTrue();
 
         BundledShapeCache cache = new BundledShapeCache();
         Shape mediumBlueRectangle = cache.get("Medium blue rectangle");
         Shape mediumBlueRectangle2 = cache.get("Medium blue rectangle");
-        ae(mediumBlueRectangle == mediumBlueRectangle2, false);
-        ae(Objects.equals(mediumBlueRectangle, mediumBlueRectangle2), true);
+        assertThat(mediumBlueRectangle == mediumBlueRectangle2).isFalse();
+        assertThat(Objects.equals(mediumBlueRectangle, mediumBlueRectangle2)).isTrue();
     }
 
     /**

@@ -1,6 +1,6 @@
 package jar.apache.commons.configuration2;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.XMLConfiguration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;

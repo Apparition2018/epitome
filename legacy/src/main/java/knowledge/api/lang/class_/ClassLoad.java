@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://blog.csdn.net/u012426327/article/details/77160634">类加载</a>

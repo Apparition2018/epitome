@@ -1,7 +1,7 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.cglib.CglibUtil;
-import l.demo.User;
+import com.ljh.commons.User;
 
 import java.util.Date;
 import java.util.Objects;

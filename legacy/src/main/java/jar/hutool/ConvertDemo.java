@@ -2,8 +2,8 @@ package jar.hutool;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.TypeReference;
-import l.demo.CompanyEnum;
-import l.demo.Demo;
+import com.ljh.commons.CompanyEnum;
+import com.ljh.commons.Demo;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

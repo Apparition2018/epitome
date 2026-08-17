@@ -31,19 +31,19 @@ public class Demo {
     public static List<Integer> subList = list.subList(1, 6);
     public static List<Integer> subList2 = list.subList(3, 8);
     public static List<Person> personList = new ArrayList<>(List.of(
-        new Person(1, "张三"),
-        new Person(2, "李四"),
-        new Person(3, "王五")
+            new Person(1, "张三"),
+            new Person(2, "李四"),
+            new Person(3, "王五")
     ));
     public static Map<Integer, String> map = new HashMap<>(Map.of(1, "A", 2, "B", 3, "C"));
     public static Map<Integer, String> map2 = Map.of(
-        1, "A", 2, "B", 3, "C",
-        4, "D", 5, "E", 6, "F",
-        7, "G", 8, "H", 9, "I"
+            1, "A", 2, "B", 3, "C",
+            4, "D", 5, "E", 6, "F",
+            7, "G", 8, "H", 9, "I"
     );
-    public static StopWatch stopWatch = new StopWatch("demo");
-    public static JsonMapper jsonMapper = JsonMapper.builder().build();
     public static CountDownLatch countDownLatch;
+    public static final StopWatch stopWatch = new StopWatch("demo");
+    public static final JsonMapper jsonMapper = JsonMapper.builder().build();
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";
     public static final String MY_EMAIL = "88850180@163.com";
@@ -258,6 +258,7 @@ public class Demo {
             public static final String DOG = "https://dog.ceo/api/breeds/image/random";
             public static final String CAT = "https://api.thecatapi.com/v1/images/search";
         }
+
         public static class Json {
             public static final String TODOS = "https://jsonplaceholder.typicode.com/todos";
             public static final String TODO_BY_ID = "https://jsonplaceholder.typicode.com/todos/%s";
@@ -265,6 +266,7 @@ public class Demo {
             public static final String USERS_BY_PAGE = "https://reqres.in/api/users?page=%s";
             public static final String USER_BY_ID = "https://reqres.in/api/users/%s";
         }
+
         public static class XML {
             public static final String NOTE = "https://www.w3schools.com/xml/note.xml";
             public static final String BOOKS = "https://www.w3schools.com/xml/books.xml";

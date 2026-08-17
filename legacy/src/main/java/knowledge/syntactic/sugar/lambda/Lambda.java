@@ -2,7 +2,7 @@ package knowledge.syntactic.sugar.lambda;
 
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://www.runoob.com/java/java8-lambda-expressions.html">Lambda</a>

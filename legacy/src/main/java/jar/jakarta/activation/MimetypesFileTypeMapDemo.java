@@ -1,7 +1,7 @@
 package jar.jakarta.activation;
 
+import com.ljh.commons.Demo;
 import jakarta.activation.MimetypesFileTypeMap;
-import l.demo.Demo;
 
 import java.io.File;
 

@@ -1,7 +1,7 @@
 package jar.google.Thumbnailator;
 
 import cn.hutool.core.img.ImgUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import org.apache.commons.io.FilenameUtils;

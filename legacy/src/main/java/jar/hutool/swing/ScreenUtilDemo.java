@@ -1,10 +1,12 @@
 package jar.hutool.swing;
 
 import cn.hutool.core.swing.ScreenUtil;
-import l.demo.Demo;
 
 import java.awt.*;
 import java.io.File;
+
+import static com.ljh.commons.Demo.HU_DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/swing/ScreenUtil.html">ScreenUtil</a> 屏幕工具类
@@ -12,7 +14,7 @@ import java.io.File;
  * @author ljh
  * @since 2020/11/19 15:44
  */
-public class ScreenUtilDemo extends Demo {
+public class ScreenUtilDemo {
 
     public static void main(String[] args) {
         // 截图

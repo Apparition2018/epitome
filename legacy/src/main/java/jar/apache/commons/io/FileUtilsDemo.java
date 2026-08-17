@@ -1,6 +1,5 @@
 package jar.apache.commons.io;
 
-import l.demo.Demo;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.junit.jupiter.api.Test;
@@ -12,6 +11,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://commons.apache.org/proper/commons-io/description.html#FileUtils">FileUtils</a>
  *
@@ -20,7 +21,7 @@ import java.util.List;
  * @see <a href="https://www.cnblogs.com/xiaozu/p/4555942.html">Commons IO FileUtils</a>
  * @since 2019/8/8 19:39
  */
-public class FileUtilsDemo extends Demo {
+public class FileUtilsDemo {
 
     // 写
     @Test

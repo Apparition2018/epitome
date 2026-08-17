@@ -1,6 +1,6 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;

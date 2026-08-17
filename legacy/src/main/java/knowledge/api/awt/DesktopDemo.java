@@ -1,6 +1,6 @@
 package knowledge.api.awt;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.awt.*;
 import java.io.File;

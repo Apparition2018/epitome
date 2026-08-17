@@ -1,6 +1,7 @@
 package springboot.controller;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,9 +25,9 @@ public class JsonpController {
 
     @GetMapping("/json")
     @Operation(summary = "获取回调函数")
-    public String callbackJson(HttpServletRequest request) {
+    public String callbackJson(HttpServletRequest request) throws JsonProcessingException {
         Map<String, String> map = Map.of("result", "Arsenal");
-        String json = new Gson().toJson(map);
+        String json = new ObjectMapper().writeValueAsString(map);
         String callback = request.getParameter("callback");
         return String.format("%s(%s)", callback, json);
     }

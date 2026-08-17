@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.RandomUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 /**
  * <a href="https://doc.hutool.cn/pages/RandomUtil/">RandomUtil</a> 随机工具

@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html">WordUtils</a>

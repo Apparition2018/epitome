@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/DateFormat.html">DateFormat</a>

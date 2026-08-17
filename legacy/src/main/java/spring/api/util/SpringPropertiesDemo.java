@@ -13,7 +13,8 @@ import org.springframework.util.SystemPropertyUtils;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
-import static l.demo.Demo.ae;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * SpringProperties
@@ -35,7 +36,7 @@ public class SpringPropertiesDemo {
         Properties properties = PropertiesUtil.loadProps(PROPERTIES_NAME);
 
         PropertyPlaceholderHelper propertyPlaceholderHelper = new PropertyPlaceholderHelper("{", "}");
-        ae(propertyPlaceholderHelper.replacePlaceholders(s, properties), "Jack 18 100");
+        assertThat(propertyPlaceholderHelper.replacePlaceholders(s, properties)).isEqualTo("Jack 18 100");
     }
 
     /**
@@ -45,7 +46,7 @@ public class SpringPropertiesDemo {
     @Test
     public void testSystemPropertyUtils() {
         String s = "My computer os is ${user.name}";
-        ae(SystemPropertyUtils.resolvePlaceholders(s), "My computer os is Administrator");
+        assertThat(SystemPropertyUtils.resolvePlaceholders(s)).isEqualTo("My computer os is Administrator");
     }
 
     @Test

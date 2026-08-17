@@ -1,10 +1,10 @@
 package knowledge.io.file;
 
-import l.demo.Demo;
-
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.USER_DIR;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FilenameFilter.html">FilenameFilter</a>
@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2020/9/14 10:51
  */
-public class FilenameFilterDemo extends Demo {
+public class FilenameFilterDemo {
 
     public static void main(String[] args) {
         File file = new File(USER_DIR);
@@ -24,7 +24,7 @@ public class FilenameFilterDemo extends Demo {
 
         File[] subFiles = file.listFiles(filter);
         for (File subFile : Objects.requireNonNull(subFiles, "目录不存在或它不是一个目录")) {
-            p(subFile.getName());
+            System.out.println(subFile.getName());
         }
     }
 }

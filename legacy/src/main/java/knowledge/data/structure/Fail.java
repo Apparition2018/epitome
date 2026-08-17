@@ -1,6 +1,6 @@
 package knowledge.data.structure;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

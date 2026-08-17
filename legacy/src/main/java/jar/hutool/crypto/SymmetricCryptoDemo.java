@@ -3,9 +3,10 @@ package jar.hutool.crypto;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
-import l.demo.Demo;
 
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
 
 /**
  * <a href="https://doc.hutool.cn/pages/SymmetricCrypto/">SymmetricCrypto</a>  对称加密
@@ -14,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2020/11/9 9:30
  */
-public class SymmetricCryptoDemo extends Demo {
+public class SymmetricCryptoDemo {
 
     /**
      * SymmetricAlgorithm：
@@ -38,6 +39,6 @@ public class SymmetricCryptoDemo extends Demo {
         // 加密
         String encryptHex = aes.encryptHex(HELLO_WORLD);
         // 解密
-        p(aes.decryptStr(encryptHex, StandardCharsets.UTF_8));
+        System.out.println(aes.decryptStr(encryptHex, StandardCharsets.UTF_8));
     }
 }

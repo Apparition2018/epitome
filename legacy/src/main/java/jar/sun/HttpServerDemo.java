@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
-import static l.demo.Demo.HELLO_WORLD;
-import static l.demo.Demo.PORT;
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.PORT;
 
 /**
  * HttpServer

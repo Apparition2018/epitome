@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-math/userguide/stat.html">Statistics</a>

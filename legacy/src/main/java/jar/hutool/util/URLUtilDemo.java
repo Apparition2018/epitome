@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.URLUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.net.URL;
 

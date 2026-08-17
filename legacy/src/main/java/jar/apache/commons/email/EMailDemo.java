@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import static l.demo.Demo.BIRD_IMG;
+import static com.ljh.commons.Demo.BIRD_IMG;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-email/">Commons Email</a>

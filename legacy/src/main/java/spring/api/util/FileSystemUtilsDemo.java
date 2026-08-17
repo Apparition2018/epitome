@@ -1,10 +1,12 @@
 package spring.api.util;
 
-import l.demo.Demo;
 import org.springframework.util.FileSystemUtils;
 
 import java.io.File;
 import java.io.IOException;
+
+import static com.ljh.commons.Demo.DEMO_DIR_ABSOLUTE_PATH;
+import static com.ljh.commons.Demo.DESKTOP;
 
 /**
  * FileSystemUtils
@@ -12,7 +14,7 @@ import java.io.IOException;
  * @author ljh
  * @since 2021/9/8 1:33
  */
-public class FileSystemUtilsDemo extends Demo {
+public class FileSystemUtilsDemo {
 
     public static void main(String[] args) throws IOException {
         // 递归复制

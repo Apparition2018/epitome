@@ -1,10 +1,11 @@
 package jar.apache.curator;
 
-import l.demo.Demo;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.atomic.AtomicValue;
 import org.apache.curator.framework.recipes.atomic.DistributedAtomicLong;
 import org.apache.curator.retry.RetryNTimes;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * Curator 分布式计数器
@@ -13,7 +14,7 @@ import org.apache.curator.retry.RetryNTimes;
  * @author ljh
  * @since 2021/9/28 1:46
  */
-public class CuratorDistributedCounter extends Demo {
+public class CuratorDistributedCounter {
 
     private static final String COUNTER_PATH = "/counter";
 

@@ -1,9 +1,11 @@
 package jar.apache.commons.collections4;
 
 import com.google.common.collect.Lists;
-import l.demo.Demo;
 import org.apache.commons.collections4.list.*;
 import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.list;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/list/package-summary.html">List</a>
@@ -17,7 +19,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2020/11/14 11:55
  */
-public class ListDemo extends Demo {
+public class ListDemo {
 
     /**
      * FixedSizeList

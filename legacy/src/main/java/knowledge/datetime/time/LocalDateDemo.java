@@ -8,8 +8,8 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-import static l.demo.Demo.p;
-import static l.demo.Demo.pe;
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.pe;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a>

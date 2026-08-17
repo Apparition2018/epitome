@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import static l.demo.Demo.DESKTOP;
+import static com.ljh.commons.Demo.DESKTOP;
 
 /**
  * AudioVolumeDetector

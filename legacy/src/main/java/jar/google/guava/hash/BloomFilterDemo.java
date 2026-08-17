@@ -5,7 +5,7 @@ import com.google.common.hash.Funnels;
 
 import java.nio.charset.Charset;
 
-import static l.demo.Demo.ae;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://github.com/google/guava/wiki/HashingExplained#bloomfilter">BloomFilter</a>  布隆过滤器
@@ -23,8 +23,8 @@ public class BloomFilterDemo {
         }
         // 问布隆过滤器：这个数据存在吗？
         // true 表示大概存在
-        ae(bloomFilter.mightContain("9"), true);
+        assertThat(bloomFilter.mightContain("9")).isTrue();
         // false 表示100%不存在
-        ae(bloomFilter.mightContain("10"), false);
+        assertThat(bloomFilter.mightContain("10")).isFalse();
     }
 }

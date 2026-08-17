@@ -6,7 +6,7 @@ import cn.hutool.core.io.StreamProgress;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 

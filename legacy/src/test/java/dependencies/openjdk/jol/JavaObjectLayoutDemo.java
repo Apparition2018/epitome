@@ -2,7 +2,7 @@ package dependencies.openjdk.jol;
 
 import org.openjdk.jol.info.ClassLayout;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * JOL: Java Object Layout

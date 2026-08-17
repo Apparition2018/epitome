@@ -1,7 +1,7 @@
 package jar.hutool.lang;
 
 import cn.hutool.core.lang.Singleton;
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.junit.jupiter.api.Assertions;
 
 /**

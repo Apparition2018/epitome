@@ -1,7 +1,7 @@
 package spring.api.util;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
@@ -20,8 +20,8 @@ public class ReflectionUtilsDemo extends Demo {
         // Field handling
         Field field = ReflectionUtils.findField(Person.class, "name", String.class);
         ReflectionUtils.makeAccessible(Objects.requireNonNull(field));
-        ReflectionUtils.setField(field, personList.get(0), MY_NAME);
-        p(ReflectionUtils.getField(field, personList.get(0)));
+        ReflectionUtils.setField(field, personList.getFirst(), MY_NAME);
+        p(ReflectionUtils.getField(field, personList.getFirst()));
 
         // Method handling
         Method[] methods = ReflectionUtils.getDeclaredMethods(Person.class);
@@ -33,8 +33,8 @@ public class ReflectionUtilsDemo extends Demo {
 
         Method method = ReflectionUtils.findMethod(Person.class, "setName", String.class);
         ReflectionUtils.makeAccessible(Objects.requireNonNull(method));
-        ReflectionUtils.invokeMethod(method, personList.get(0), "ljh2");
-        p(personList.get(0).getName());
+        ReflectionUtils.invokeMethod(method, personList.getFirst(), "ljh2");
+        p(personList.getFirst().getName());
 
         ReflectionUtils.doWithMethods(Person.class, method1 -> {
             if (method1.getName().startsWith("set")) {

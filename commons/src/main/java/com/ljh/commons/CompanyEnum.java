@@ -2,8 +2,6 @@ package com.ljh.commons;
 
 import lombok.Getter;
 
-import java.util.Objects;
-
 /**
  * CompanyEnum
  *
@@ -11,7 +9,7 @@ import java.util.Objects;
  * @since 2020/11/2 14:04
  */
 @Getter
-public enum CompanyEnum implements BaseEnum {
+public enum CompanyEnum {
 
     SF("顺丰速运", 1001),
     YTO("圆通速递", 1002),
@@ -25,24 +23,6 @@ public enum CompanyEnum implements BaseEnum {
     CompanyEnum(String company, Integer code) {
         this.company = company;
         this.code = code;
-    }
-
-    /** 根据物流公司名字获取对应的编码 */
-    public static int getCodeByCompany(String company) {
-        for (CompanyEnum c : CompanyEnum.values()) {
-            if (Objects.equals(c.getCompany(), company.trim())) return c.code;
-        }
-        return 0;
-    }
-
-    /** 根据物流公司编码获取对应的名字 */
-    public static String getCompanyByCode(int code) {
-        for (CompanyEnum c : CompanyEnum.values()) {
-            if (c.getCode() == code) {
-                return c.getCompany();
-            }
-        }
-        return null;
     }
 
     /** 遍历 */

@@ -1,6 +1,5 @@
 package jar.apache.httpcomponents.client4;
 
-import l.demo.Demo;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -14,6 +13,9 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.BAIDU_URL;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fundamentals.html#d5e95">Entity</a>
@@ -29,7 +31,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class EntityDemo extends Demo {
+public class EntityDemo {
 
     public static void main(String[] args) throws ParseException, IOException {
         // 当为一个传出报文创建实体时，这个元数据不得不通过实体创建器来提供。

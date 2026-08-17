@@ -1,6 +1,6 @@
 package jar.apache.commons.io;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.apache.commons.io.serialization.ValidatingObjectInputStream;
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * ValidatingObjectInputStream

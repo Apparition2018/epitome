@@ -3,13 +3,15 @@ package jar.hutool.text;
 import cn.hutool.core.annotation.Alias;
 import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.text.csv.*;
-import l.demo.Demo;
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import static com.ljh.commons.Demo.DEMO_DIR_ABSOLUTE_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/CsvUtil/">CsvUtil</a>   CSV文件处理工具
@@ -25,7 +27,7 @@ import java.util.List;
  * @author ljh
  * @since 2020/11/5 9:08
  */
-public class CsvUtilDemo extends Demo {
+public class CsvUtilDemo {
 
     private static final String CSV_FILE_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + "demo.csv";
 

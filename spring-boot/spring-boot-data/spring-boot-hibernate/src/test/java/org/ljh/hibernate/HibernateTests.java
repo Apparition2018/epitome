@@ -1,5 +1,6 @@
 package org.ljh.hibernate;
 
+import com.ljh.commons.Continent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.LockModeType;
@@ -45,7 +46,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @since 2026/8/9
  */
 @SpringBootTest(classes = HibernateApplication.class)
-class HibernateNativeTests {
+class HibernateTests  {
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;

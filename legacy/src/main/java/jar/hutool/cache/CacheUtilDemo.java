@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://doc.hutool.cn/pages/CacheUtil/">CacheUtil</a>   缓存工具

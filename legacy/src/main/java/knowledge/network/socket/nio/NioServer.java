@@ -1,6 +1,5 @@
 package knowledge.network.socket.nio;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.FileInputStream;
@@ -10,6 +9,9 @@ import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.util.Iterator;
 
+import static com.ljh.commons.Demo.DEMO_FILE_PATH;
+import static com.ljh.commons.Demo.p;
+
 /**
  * 服务端
  *
@@ -17,7 +19,7 @@ import java.util.Iterator;
  * @see <a href="https://www.iteye.com/blog/mars914-1238353">Java 分布式开发 TCP/IP NIO 无阻塞 Socket</a>
  * @since 2020/9/22 15:36
  */
-public class NioServer extends Demo {
+public class NioServer {
 
     /** @see <a href="https://www.jianshu.com/p/84e57630b25b">NIO 实现 TCP 文件传输</a> */
     public static void main(String[] args) throws IOException {

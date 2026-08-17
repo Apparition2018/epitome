@@ -1,6 +1,6 @@
 package knowledge.io.nio.file;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

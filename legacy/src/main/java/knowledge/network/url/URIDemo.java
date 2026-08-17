@@ -1,6 +1,6 @@
 package knowledge.network.url;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -11,8 +11,8 @@ import java.util.Iterator;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import static l.demo.Demo.p;
-import static l.demo.Demo.phr;
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.phr;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html">DateUtils</a>

@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 /**
  * <a href="https://doc.hutool.cn/pages/StrUtil/">StrUtil</a>

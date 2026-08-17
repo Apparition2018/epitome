@@ -5,7 +5,7 @@ import org.springframework.util.StopWatch;
 
 import java.util.concurrent.TimeUnit;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * StopWatch

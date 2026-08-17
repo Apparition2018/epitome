@@ -3,7 +3,7 @@ package jar.hutool.date;
 import cn.hutool.core.date.ChineseDate;
 import cn.hutool.core.date.DateUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ChineseDate/">ChineseDate</a>   农历日期

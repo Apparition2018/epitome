@@ -1,14 +1,14 @@
 package springboot.controller;
 
+import com.ljh.commons.CompanyEnum;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Student;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import l.demo.CompanyEnum;
-import l.demo.Person;
-import l.demo.Person.Student;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ import springboot.util.formatter.BooleanFormat;
 
 import java.util.Date;
 
-import static l.demo.Demo.MY_NAME;
+import static com.ljh.commons.Demo.MY_NAME;
 
 /**
  * WebMvcConfigController

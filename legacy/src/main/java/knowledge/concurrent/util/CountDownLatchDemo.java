@@ -1,12 +1,13 @@
 package knowledge.concurrent.util;
 
-import l.demo.Demo;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.randomInt;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/CountDownLatch.html">CountDownLatch</a>
@@ -27,7 +28,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class CountDownLatchDemo extends Demo {
+public class CountDownLatchDemo {
 
     /**
      * 案例：百米赛跑，多个参加赛跑的人员在听到发令枪响后，开始跑步，到达终点后结束计时，然后统计平均成绩

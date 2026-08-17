@@ -2,7 +2,7 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 /**
  * <a href="https://github.com/google/guava/wiki/NewCollectionTypesExplained#bimap">BiMap</a>

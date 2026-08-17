@@ -1,7 +1,7 @@
 package spring.api.context;
 
-import l.demo.Person;
-import l.demo.Person.Student;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Student;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static l.demo.Demo.pe;
+import static com.ljh.commons.Demo.pe;
 
 /**
  * spring

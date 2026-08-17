@@ -1,6 +1,6 @@
 package jar.squareup.retrofit;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

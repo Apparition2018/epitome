@@ -3,7 +3,7 @@ package jar.hutool.http;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/UserAgentUtil/">UserAgentUtil</a>   User Agent 工具类

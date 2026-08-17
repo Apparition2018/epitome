@@ -1,8 +1,8 @@
 package spring.api.http;
 
-import l.demo.Demo;
-import l.demo.Person;
-import l.demo.Person.Student;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Student;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.config.RequestConfig;
@@ -42,13 +42,13 @@ public class RestTemplateDemo extends Demo {
     static {
         ConnectionConfig connectionConfig = ConnectionConfig.custom().setConnectTimeout(Timeout.ofSeconds(5)).build();
         RequestConfig requestConfig = RequestConfig.custom()
-            .setConnectionRequestTimeout(Timeout.of(5, TimeUnit.SECONDS))
-            .setResponseTimeout(Timeout.of(5, TimeUnit.SECONDS))
-            .build();
+                .setConnectionRequestTimeout(Timeout.of(5, TimeUnit.SECONDS))
+                .setResponseTimeout(Timeout.of(5, TimeUnit.SECONDS))
+                .build();
         try (CloseableHttpClient httpClient = HttpClientBuilder.create()
-            .setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create().setDefaultConnectionConfig(connectionConfig).build())
-            .setDefaultRequestConfig(requestConfig)
-            .build()) {
+                .setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create().setDefaultConnectionConfig(connectionConfig).build())
+                .setDefaultRequestConfig(requestConfig)
+                .build()) {
             HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
             restTemplate = new RestTemplate(requestFactory);
         } catch (IOException e) {

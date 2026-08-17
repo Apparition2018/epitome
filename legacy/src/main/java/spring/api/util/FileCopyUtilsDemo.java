@@ -1,6 +1,6 @@
 package spring.api.util;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.File;
@@ -20,6 +20,6 @@ public class FileCopyUtilsDemo extends Demo {
         FileCopyUtils.copy(new File(DEMO_FILE_ABSOLUTE_PATH), new File(DESKTOP + DEMO_FILE_NAME));
 
         // 读取
-        p(FileCopyUtils.copyToString(new FileReader(DEMO_FILE_ABSOLUTE_PATH)));
+        System.out.println(FileCopyUtils.copyToString(new FileReader(DEMO_FILE_ABSOLUTE_PATH)));
     }
 }

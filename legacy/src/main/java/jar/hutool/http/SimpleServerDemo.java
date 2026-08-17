@@ -5,7 +5,7 @@ import cn.hutool.http.ContentType;
 import cn.hutool.http.HttpUtil;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://doc.hutool.cn/pages/SimpleServer/">SimpleServer</a>   简易 Http 服务器

@@ -1,6 +1,6 @@
 package knowledge.concurrent.pool;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.concurrent.*;

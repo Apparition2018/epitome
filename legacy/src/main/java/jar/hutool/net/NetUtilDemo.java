@@ -1,8 +1,8 @@
 package jar.hutool.net;
 
 import cn.hutool.core.net.NetUtil;
-import l.demo.Demo;
-import l.demo.Person.Student;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person.Student;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;

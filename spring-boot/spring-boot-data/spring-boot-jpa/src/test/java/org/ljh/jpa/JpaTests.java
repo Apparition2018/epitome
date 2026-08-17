@@ -1,5 +1,6 @@
 package org.ljh.jpa;
 
+import com.ljh.commons.Continent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceException;
@@ -44,7 +45,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @since 2026/8/11
  */
 @SpringBootTest(classes = JpaApplication.class)
-class JpaNativeTests {
+class JpaTests {
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;

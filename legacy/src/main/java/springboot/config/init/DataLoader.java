@@ -1,6 +1,6 @@
 package springboot.config.init;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static l.demo.Demo.personList;
+import static com.ljh.commons.Demo.personList;
+
 
 /**
  * DataLoader

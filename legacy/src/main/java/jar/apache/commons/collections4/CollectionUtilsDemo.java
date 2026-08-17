@@ -1,6 +1,5 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.list.FixedSizeList;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
@@ -9,13 +8,15 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html">CollectionsUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class CollectionUtilsDemo extends Demo {
+public class CollectionUtilsDemo {
 
     @Test
     public void testCollectionUtils() {

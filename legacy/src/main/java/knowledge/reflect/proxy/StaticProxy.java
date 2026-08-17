@@ -3,7 +3,7 @@ package knowledge.reflect.proxy;
 import knowledge.reflect.proxy.domain.Man;
 import knowledge.reflect.proxy.domain.People;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * StaticProxy  静态代理

@@ -1,7 +1,7 @@
 package jar.hutool.map;
 
 import cn.hutool.core.map.BiMap;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 /**
  * <a href="https://doc.hutool.cn/pages/BiMap/">BiMap</a>   双向查找 Map

@@ -3,7 +3,7 @@ package org.ljh.mybatis.entity.handler;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedTypes;
-import org.ljh.mybatis.entity.Continent;
+import com.ljh.commons.Continent;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

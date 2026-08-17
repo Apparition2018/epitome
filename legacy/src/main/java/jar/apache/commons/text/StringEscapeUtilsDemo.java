@@ -3,7 +3,7 @@ package jar.apache.commons.text;
 import org.apache.commons.text.StringEscapeUtils;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/StringEscapeUtils.html">StringEscapeUtils</a>

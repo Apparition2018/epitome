@@ -1,6 +1,6 @@
 package knowledge.concurrent;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 
 import java.util.concurrent.TimeUnit;

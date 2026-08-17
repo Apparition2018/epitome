@@ -10,7 +10,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import static l.demo.Demo.MY_NAME;
+import static com.ljh.commons.Demo.MY_NAME;
 
 /**
  * Jaxb

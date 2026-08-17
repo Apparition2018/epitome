@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static l.demo.Demo.MY_NAME;
+import static com.ljh.commons.Demo.MY_NAME;
 
 /**
  * 变量

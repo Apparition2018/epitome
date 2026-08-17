@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.Serializable;
 import java.util.Objects;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 运算符

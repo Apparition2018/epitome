@@ -2,8 +2,8 @@ package dependencies.openjdk.nashorn;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import org.junit.jupiter.api.Test;
 
 import javax.script.*;

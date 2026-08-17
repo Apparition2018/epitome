@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import static l.demo.Demo.DESKTOP;
+import static com.ljh.commons.Demo.DESKTOP;
 
 /**
  * FFmpegFrame

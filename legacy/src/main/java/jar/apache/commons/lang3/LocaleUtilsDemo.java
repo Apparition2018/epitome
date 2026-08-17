@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/LocaleUtils.ht">LocaleUtils</a>ml

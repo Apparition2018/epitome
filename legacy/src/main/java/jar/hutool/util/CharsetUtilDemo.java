@@ -1,9 +1,11 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.CharsetUtil;
-import l.demo.Demo;
 
 import java.io.File;
+
+import static com.ljh.commons.Demo.DEMO_FILE_ABSOLUTE_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/CharsetUtil.html">CharsetUtil</a>
@@ -11,7 +13,7 @@ import java.io.File;
  * @author ljh
  * @since 2020/11/22 3:16
  */
-public class CharsetUtilDemo extends Demo {
+public class CharsetUtilDemo {
 
     public static void main(String[] args) {
         p(CharsetUtil.UTF_8);               // UTF-8

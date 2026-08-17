@@ -1,10 +1,12 @@
 package jar.apache.commons.codec.binary;
 
-import l.demo.Demo;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Binary_Encoders">Binary Encoders</a>
@@ -12,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class BinaryEncodersDemo extends Demo {
+public class BinaryEncodersDemo {
 
     @Test
     public void testBase64() {

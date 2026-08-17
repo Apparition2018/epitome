@@ -1,7 +1,9 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.PhoneUtil;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.MOBILE;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/PhoneUtil.html">PhoneUtil</a>
@@ -9,7 +11,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/22 4:04
  */
-public class PhoneUtilDemo extends Demo {
+public class PhoneUtilDemo {
 
     public static void main(String[] args) {
         // 座机号 或 手机号（中国）

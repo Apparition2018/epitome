@@ -2,10 +2,10 @@ package knowledge.api.incubator;
 
 // import jdk.incubator.vector.DoubleVector;
 
-import l.demo.Demo;
-
 import java.io.IOException;
 import java.util.stream.DoubleStream;
+
+import static com.ljh.commons.Demo.stopWatch;
 
 /**
  * <a href="https://achang.blog.csdn.net/article/details/126533134">矢量运算</a>
@@ -13,7 +13,7 @@ import java.util.stream.DoubleStream;
  * @author ljh
  * @since 2023/2/21 8:48
  */
-public class VectorDemo extends Demo {
+public class VectorDemo {
 
     private static final double[] a = new double[]{0.6F, 0.7F, 0.8F, 0.9F};
     private static final double[] x = new double[]{1.0F, 2.0F, 3.0F, 4.0F};
@@ -59,6 +59,6 @@ public class VectorDemo extends Demo {
         }
         stopWatch.stop();
 
-        p(stopWatch.prettyPrint());
+        System.out.println(stopWatch.prettyPrint());
     }
 }

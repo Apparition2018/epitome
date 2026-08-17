@@ -1,11 +1,13 @@
 package spring.api.beans;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.PropertyValue;
 
 import java.util.Map;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
 
 /**
  * BeanWrapper
@@ -14,10 +16,10 @@ import java.util.Map;
  * @see <a href="https://www.cnblogs.com/qlqwjy/p/16264681.html">Spring BeanWrapper 的使用</a>
  * @since 2023/1/19 15:14
  */
-public class BeanWrapperDemo extends Demo {
+public class BeanWrapperDemo {
 
     public static void main(String[] args) {
-        Person person = personList.get(0);
+        Person person = personList.getFirst();
         p(person);          // Person{id=1, name='张三'}
 
         BeanWrapperImpl beanWrapper = new BeanWrapperImpl(person);

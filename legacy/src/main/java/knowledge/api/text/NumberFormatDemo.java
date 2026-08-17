@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.util.Currency;
 import java.util.Locale;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/NumberFormat.html">NumberFormat</a>
@@ -120,4 +120,3 @@ public class NumberFormatDemo {
         p(PERCENT_FORMAT.isParseIntegerOnly()); // false
     }
 }
-

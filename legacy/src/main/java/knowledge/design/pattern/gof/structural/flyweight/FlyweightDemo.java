@@ -1,6 +1,5 @@
 package knowledge.design.pattern.gof.structural.flyweight;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.ljh.commons.Demo.p;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * 享元模式：运用共享技术复用大量细粒度对象
@@ -39,7 +41,7 @@ import java.util.Map;
  * @see <a href="">设计模式之美：享元模式（下）：剖析享元模式在JavaInteger、String中的应用</a>
  * @since 2020/9/26 2:51
  */
-public class FlyweightDemo extends Demo {
+public class FlyweightDemo {
 
     /** <a href="http://c.biancheng.net/view/8471.html">String 使用了享元模式</a> */
     @Test
@@ -53,12 +55,12 @@ public class FlyweightDemo extends Demo {
         String a = "he";
         String b = "llo";
         String s7 = a + b;
-        ae(s1 == s2, true);
-        ae(s1 == s3, false);
-        ae(s1 == s4, true);
-        ae(s1 == s5, true);
-        ae(s1 == s6, false);
-        ae(s1 == s7, false);
+        assertThat(s1 == s2).isTrue();
+        assertThat(s1 == s3).isFalse();
+        assertThat(s1 == s4).isTrue();
+        assertThat(s1 == s5).isTrue();
+        assertThat(s1 == s6).isFalse();
+        assertThat(s1 == s7).isFalse();
     }
 
     private static final int CANVAS_SIZE = 500;

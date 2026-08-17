@@ -1,5 +1,6 @@
 package org.ljh.jpa.entity;
 
+import com.ljh.commons.Continent;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
@@ -21,6 +22,6 @@ public class ContinentConverter implements AttributeConverter<Continent, String>
 
     @Override
     public Continent convertToEntityAttribute(String dbData) {
-        return Continent.fromValue(dbData);
+        return dbData == null ? null : Continent.fromValue(dbData);
     }
 }

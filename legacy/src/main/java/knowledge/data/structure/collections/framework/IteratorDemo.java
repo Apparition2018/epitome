@@ -1,6 +1,6 @@
 package knowledge.data.structure.collections.framework;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.util.Iterator;
 import java.util.Map;

@@ -3,7 +3,7 @@ package knowledge.api.awt;
 import javax.swing.*;
 import java.awt.*;
 
-import static l.demo.Demo.XIAO_XIN_PNG;
+import static com.ljh.commons.Demo.XIAO_XIN_PNG;
 
 /**
  * SystemTray   系统托盘

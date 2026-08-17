@@ -1,9 +1,11 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.IdcardUtil;
-import l.demo.Demo;
 
 import java.util.Date;
+
+import static com.ljh.commons.Demo.ID_CARD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/IdcardUtil/">IdcardUtil</a>   身份证工具
@@ -13,7 +15,7 @@ import java.util.Date;
  * @author ljh
  * @since 2020/11/13 17:39
  */
-public class IdcardUtilDemo extends Demo {
+public class IdcardUtilDemo {
 
     public static void main(String[] args) {
         // 是否合法

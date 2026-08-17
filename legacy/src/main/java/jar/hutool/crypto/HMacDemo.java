@@ -3,9 +3,10 @@ package jar.hutool.crypto;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.digest.HMac;
 import cn.hutool.crypto.digest.HmacAlgorithm;
-import l.demo.Demo;
 
 import javax.crypto.SecretKey;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
 
 /**
  * <a href="https://doc.hutool.cn/pages/HMac/">HMac</a>  消息认证码算法
@@ -15,7 +16,7 @@ import javax.crypto.SecretKey;
  * @author ljh
  * @since 2021/7/5 10:47
  */
-public class HMacDemo extends Demo {
+public class HMacDemo {
 
     public static void main(String[] args) {
         // static SecretKey	    generateKey(String algorithm[, byte[] key/int keySize/KeySpec keySpec])
@@ -23,6 +24,6 @@ public class HMacDemo extends Demo {
         SecretKey secretKey = SecureUtil.generateKey(HmacAlgorithm.HmacMD5.getValue());
 
         HMac hMac = new HMac(HmacAlgorithm.HmacMD5, secretKey);
-        p(hMac.digestHex(HELLO_WORLD)); // 5454f8afe497bc8bc050945389d78c63
+        System.out.println(hMac.digestHex(HELLO_WORLD)); // 5454f8afe497bc8bc050945389d78c63
     }
 }

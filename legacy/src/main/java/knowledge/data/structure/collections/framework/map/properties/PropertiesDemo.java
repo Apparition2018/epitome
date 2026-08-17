@@ -1,10 +1,10 @@
 package knowledge.data.structure.collections.framework.map.properties;
 
-import l.demo.Demo;
-
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Properties;
+
+import static com.ljh.commons.Demo.JDBC_PROPS_FILENAME;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Properties.html">Properties</a>
@@ -21,7 +21,7 @@ import java.util.Properties;
  * @see <a href="https://www.cnblogs.com/tonghun/p/7124245.html">Properties vs ResourceBundle</a>
  * @since 2020/9/7 19:43
  */
-public class PropertiesDemo extends Demo {
+public class PropertiesDemo {
 
     public static void main(String[] args) throws IOException {
         // Properties([Properties defaults])                创建一个带有指定默认值的空属性列表
@@ -37,7 +37,7 @@ public class PropertiesDemo extends Demo {
         while (keys.hasMoreElements()) {
             String key = (String) keys.nextElement();
             // String	    getProperty(String key[, String defaultValue])  用指定的键在属性列表中搜索属性
-            p(key + " = " + props.getProperty(key));
+            System.out.println(key + " = " + props.getProperty(key));
         }
 
         // Object	        setProperty(String key, String value)           调用 Hashtable 的方法 put

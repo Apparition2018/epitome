@@ -1,7 +1,7 @@
 package knowledge.data.structure.array;
 
 import com.google.common.primitives.Ints;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

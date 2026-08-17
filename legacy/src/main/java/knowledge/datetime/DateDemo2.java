@@ -1,6 +1,5 @@
 package knowledge.datetime;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 
@@ -8,13 +7,16 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
+import static com.ljh.commons.Demo.DATE_TIME_FORMAT;
+import static com.ljh.commons.Demo.p;
+
 /**
  * Date
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class DateDemo2 extends Demo {
+public class DateDemo2 {
 
     private Date date = new Date();
 

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.ljh.commons.Demo;
 import jar.jackson.custom.CustomFilter;
 import jar.jackson.entity.Person;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;

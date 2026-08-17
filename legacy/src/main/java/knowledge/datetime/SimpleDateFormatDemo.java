@@ -1,10 +1,12 @@
 package knowledge.datetime;
 
 import cn.hutool.core.date.DatePattern;
-import l.demo.Demo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static com.ljh.commons.Demo.DATE_TIME_FORMAT;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/SimpleDateFormat.html">SimpleDateFormat</a>
@@ -34,7 +36,7 @@ import java.util.Date;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class SimpleDateFormatDemo extends Demo {
+public class SimpleDateFormatDemo {
 
     public static void main(String[] args) {
         // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式

@@ -3,7 +3,7 @@ package jar.hutool.map;
 import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.map.MapBuilder;
 import cn.hutool.core.map.MapUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

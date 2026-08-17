@@ -1,5 +1,6 @@
 package org.ljh.hibernate.entity;
 
+import com.ljh.commons.Continent;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

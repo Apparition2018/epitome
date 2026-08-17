@@ -1,9 +1,9 @@
 package jar.hutool.bean;
 
 import cn.hutool.core.bean.DynaBean;
-import l.demo.Person;
+import com.ljh.commons.Person;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/DynaBean/">DynaBean</a>

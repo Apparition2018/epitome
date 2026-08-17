@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Lombok

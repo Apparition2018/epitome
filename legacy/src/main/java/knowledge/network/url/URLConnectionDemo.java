@@ -1,6 +1,5 @@
 package knowledge.network.url;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.Test;
@@ -17,13 +16,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import static com.ljh.commons.Demo.BAIDU_URL;
+import static com.ljh.commons.Demo.p;
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URLConnection.html">URLConnection</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class URLConnectionDemo extends Demo {
+public class URLConnectionDemo {
 
     @Test
     public void testURLConnection() throws IOException {
@@ -54,12 +57,12 @@ public class URLConnectionDemo extends Demo {
         }
 
         p("======== get ========");
-        ae(conn.getContentLengthLong(), 2443L);
-        ae(conn.getContentEncoding(), null);
-        ae(conn.getContentType(), "text/html");
-        ae(conn.getLastModified(), 0L);
+        assertThat(conn.getContentLengthLong()).isEqualTo(2443L);
+        assertThat(conn.getContentEncoding()).isNull();
+        assertThat(conn.getContentType()).isEqualTo("text/html");
+        assertThat(conn.getLastModified()).isEqualTo(0L);
         p("Date = " + conn.getDate());
-        ae(conn.getExpiration(), 0L);
+        assertThat(conn.getExpiration()).isEqualTo(0L);
     }
 
     /**

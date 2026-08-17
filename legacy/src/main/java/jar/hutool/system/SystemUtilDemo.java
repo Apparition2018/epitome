@@ -3,7 +3,7 @@ package jar.hutool.system;
 import cn.hutool.system.SystemUtil;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/SystemUtil/">SystemUtil</a> 系统属性调用

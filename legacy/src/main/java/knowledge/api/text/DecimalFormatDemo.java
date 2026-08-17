@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/DecimalFormat.html">DecimalFormat</a>

@@ -1,7 +1,7 @@
 package springboot.util.converter;
 
 import com.google.common.collect.Maps;
-import l.demo.BaseEnum;
+import com.ljh.commons.BaseEnum;
 import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
 

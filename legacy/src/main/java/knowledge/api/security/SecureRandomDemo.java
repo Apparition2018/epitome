@@ -1,10 +1,11 @@
 package knowledge.api.security;
 
-import l.demo.Demo;
-
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.randomBoolean;
 
 /**
  * SecureRandom
@@ -12,7 +13,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2023/1/9 11:41
  */
-public class SecureRandomDemo extends Demo {
+public class SecureRandomDemo {
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
         SecureRandom random;

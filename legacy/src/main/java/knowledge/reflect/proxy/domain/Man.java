@@ -1,6 +1,5 @@
 package knowledge.reflect.proxy.domain;
 
-import l.demo.Demo;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +9,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
+import static com.ljh.commons.Demo.p;
+
 /**
  * Man
  *
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2020/11/10 16:01
  */
 @Service
-public class Man extends Demo implements People {
+public class Man implements People {
 
     @SneakyThrows
     @Override

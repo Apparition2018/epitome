@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 算法

@@ -1,6 +1,5 @@
 package knowledge.xml;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -23,13 +22,16 @@ import java.io.IOException;
 import java.util.Stack;
 import java.util.stream.IntStream;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
+
 /**
  * XML
  *
  * @author ljh
  * @since 2020/11/10 9:38
  */
-public class XML extends Demo {
+public class XML {
 
     public static final String XML_PATH = DEMO_DIR_PATH + "demo.xml";
 

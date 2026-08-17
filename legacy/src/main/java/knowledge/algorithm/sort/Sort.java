@@ -1,8 +1,8 @@
 package knowledge.algorithm.sort;
 
-import l.demo.Demo;
-
 import java.util.Arrays;
+
+import static com.ljh.commons.Demo.p;
 
 /**
  * 排序
@@ -21,7 +21,7 @@ import java.util.Arrays;
  * @see <a href="https://www.cnblogs.com/end/archive/2011/10/22/2220995.html">排序算法性能和使用场景总结</a>
  * @since 2020/10/10 19:23
  */
-public class Sort extends Demo {
+public class Sort {
 
     private static final int[] arr = new int[]{88, 23, 97, 19, 85, 35, 81, 54, 75, 50};
 

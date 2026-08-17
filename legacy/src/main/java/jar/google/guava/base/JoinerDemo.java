@@ -3,7 +3,6 @@ package jar.google.guava.base;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -11,6 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://github.com/google/guava/wiki/StringsExplained#joiner">Joiner</a>
@@ -20,7 +22,7 @@ import java.util.stream.Collectors;
  * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html">Joiner api</a>
  * @since 2019/8/8 19:39
  */
-public class JoinerDemo extends Demo {
+public class JoinerDemo {
 
     private final List<String> list = List.of("A", "B", "C");
     private final List<String> listWithNull = Lists.newArrayList("A", "B", "C", null);

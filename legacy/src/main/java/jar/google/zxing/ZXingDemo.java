@@ -7,7 +7,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
@@ -18,13 +17,16 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
+
 /**
  * zxing
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class ZXingDemo extends Demo {
+public class ZXingDemo {
 
     private static final String FORMAT = ImgUtil.IMAGE_TYPE_PNG;
     private static final String CONTENT = "999999999999";

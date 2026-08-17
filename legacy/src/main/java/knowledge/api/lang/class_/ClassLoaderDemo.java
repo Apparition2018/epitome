@@ -1,7 +1,6 @@
 package knowledge.api.lang.class_;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.ClassUtils;
 
@@ -9,6 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.p;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/ClassLoader.html">ClassLoader</a>
@@ -29,7 +31,7 @@ import java.util.Objects;
  * @see <a href="https://blog.csdn.net/xiongyouqiang/article/details/79151903">可以自定义一个 Java.lang.String 吗？</a>
  * @since 2019/8/8 19:39
  */
-public class ClassLoaderDemo extends Demo {
+public class ClassLoaderDemo {
 
     /** 获得 ClassLoader 的三种途径 */
     @Test
@@ -41,10 +43,10 @@ public class ClassLoaderDemo extends Demo {
         // 返回系统类加载器
         ClassLoader classLoader4 = ClassLoader.getSystemClassLoader();
 
-        ae(classLoader1.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
-        ae(classLoader2.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
-        ae(classLoader3.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
-        ae(classLoader4.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
+        assertThat(classLoader1.getClass().getName()).isEqualTo("jdk.internal.loader.ClassLoaders$AppClassLoader");
+        assertThat(classLoader2.getClass().getName()).isEqualTo("jdk.internal.loader.ClassLoaders$AppClassLoader");
+        assertThat(classLoader3.getClass().getName()).isEqualTo("jdk.internal.loader.ClassLoaders$AppClassLoader");
+        assertThat(classLoader4.getClass().getName()).isEqualTo("jdk.internal.loader.ClassLoaders$AppClassLoader");
     }
 
     /**
@@ -60,33 +62,33 @@ public class ClassLoaderDemo extends Demo {
         final String clazzExt = ".class";
 
         String relativePath = this.getClass().getSimpleName() + clazzExt;
-        ae("ClassLoaderDemo.class", relativePath);
+        assertThat(relativePath).isEqualTo("ClassLoaderDemo.class");
         /* 相对路径（相对 clazz 所在包的路径） */
         try (InputStream is = clazz.getResourceAsStream(relativePath)) {
             p(Objects.requireNonNull(is).available());
             URL url = clazz.getResource(relativePath);
-            ann(url);
+            assertThat(url).isNotNull();
             p(url.getPath());
-            ae(url.getPath(), "/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/ClassLoaderDemo.class");
+            assertThat(url.getPath()).isEqualTo("/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/ClassLoaderDemo.class");
         }
 
         String absolutePath = StrUtil.SLASH + ClassUtils.convertClassNameToResourcePath(this.getClass().getName()) + clazzExt;
-        ae("/knowledge/api/lang/class_/ClassLoaderDemo.class", absolutePath);
+        assertThat(absolutePath).isEqualTo("/knowledge/api/lang/class_/ClassLoaderDemo.class");
         /* 绝对路径 */
         try (InputStream is = clazz.getResourceAsStream(absolutePath)) {
             p(Objects.requireNonNull(is).available());
             URL url = clazz.getResource(absolutePath);
-            ann(url);
-            ae(url.getPath(), "/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/ClassLoaderDemo.class");
+            assertThat(url).isNotNull();
+            assertThat(url.getPath()).isEqualTo("/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/ClassLoaderDemo.class");
         }
 
         String rootRelativePath = absolutePath.substring(1);
-        ae("knowledge/api/lang/class_/ClassLoaderDemo.class", rootRelativePath);
+        assertThat(rootRelativePath).isEqualTo("knowledge/api/lang/class_/ClassLoaderDemo.class");
         /* 根相对路径 */
         try (InputStream is = ClassLoader.getSystemResourceAsStream(rootRelativePath)) {
             p(Objects.requireNonNull(is).available());
             URL url = clazz.getResource(rootRelativePath);
-            an(url);
+            assertThat(url).isNotNull();
         }
     }
 }

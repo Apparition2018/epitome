@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static l.demo.Demo.PORT;
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.PORT;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 服务端

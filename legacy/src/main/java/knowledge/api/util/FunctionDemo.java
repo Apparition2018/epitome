@@ -1,7 +1,7 @@
 package knowledge.api.util;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,5 @@
 package jar.apache.tika;
 
-import l.demo.Demo;
 import org.apache.tika.Tika;
 import org.apache.tika.detect.AutoDetectReader;
 import org.apache.tika.exception.TikaException;
@@ -10,6 +9,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static com.ljh.commons.Demo.DEMO_FILE_PATH;
+import static com.ljh.commons.Demo.p;
+
 /**
  * Tika
  *
@@ -18,7 +20,7 @@ import java.nio.file.Paths;
  * @see <a href="https://blog.csdn.net/weixin_42184707/article/details/91045592">Apache Tika 介绍及使用</a>
  * @since 2020/10/25 1:06
  */
-public class TikaDemo extends Demo {
+public class TikaDemo {
 
     public static void main(String[] args) throws IOException, TikaException {
         Tika tika = new Tika();

@@ -1,7 +1,7 @@
 package jar.hutool.swing;
 
 import cn.hutool.core.swing.DesktopUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.io.File;
 

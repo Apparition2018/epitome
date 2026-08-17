@@ -3,7 +3,7 @@ package jar.apache.commons.lang3;
 import cn.hutool.core.img.ImgUtil;
 import org.apache.commons.lang3.EnumUtils;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/EnumUtils.html">EnumUtils</a>

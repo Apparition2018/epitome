@@ -1,8 +1,7 @@
 package knowledge.concurrent.util;
 
 import com.google.common.collect.Lists;
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Person;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.*;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Atomic
@@ -50,7 +53,7 @@ import java.util.stream.IntStream;
  * @see <a href="https://www.jianshu.com/p/492f1f5f7763">原子类（五）Adder 和 Accumulator</a>
  * @since 2020/11/17 0:52
  */
-public class AtomicDemo extends Demo {
+public class AtomicDemo {
 
     /**
      * AtomicReference      原子引用
@@ -180,6 +183,6 @@ public class AtomicDemo extends Demo {
             .mapToObj(i -> (Callable<Void>) () -> { accumulator.accumulate(i); return null; })
             .toList();
         threadPool.invokeAll(tasks);
-        ae(accumulator.getThenReset(), 500000500000L);
+        assertThat(accumulator.getThenReset()).isEqualTo(500000500000L);
     }
 }

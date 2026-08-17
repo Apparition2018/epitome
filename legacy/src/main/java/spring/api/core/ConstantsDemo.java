@@ -1,7 +1,8 @@
 package spring.api.core;
 
-import l.demo.Demo;
 import org.springframework.core.Constants;
+
+import static com.ljh.commons.Demo.MY_NAME;
 
 /**
  * Constants
@@ -14,7 +15,7 @@ public class ConstantsDemo {
 
     public static final int MAX = 999;
     public static final int MIN = 0;
-    public static final String NAME = Demo.MY_NAME;
+    public static final String NAME = MY_NAME;
 
     public static void main(String[] args) {
         // 请改用枚举、映射或类似的自定义解决方案

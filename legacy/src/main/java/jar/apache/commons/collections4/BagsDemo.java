@@ -3,7 +3,7 @@ package jar.apache.commons.collections4;
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.bag.HashBag;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-collections/userguide.html#Bags">Bags</a>

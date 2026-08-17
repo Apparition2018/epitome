@@ -1,10 +1,10 @@
 package knowledge.concurrent.lock;
 
-import l.demo.Demo;
-
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/locks/ReentrantLock.html">ReentrantLock</a>
@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class ReentrantLockDemo extends Demo {
+public class ReentrantLockDemo {
 
     public static void main(String[] args) throws InterruptedException {
         ReentrantLockDemo rdlDemo = new ReentrantLockDemo();

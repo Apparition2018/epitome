@@ -1,7 +1,7 @@
 package spring.api.data;
 
+import com.ljh.commons.Demo;
 import jakarta.annotation.Resource;
-import l.demo.Demo;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
@@ -54,8 +54,8 @@ public class RedisTemplateDemo extends Demo {
     @Test
     public void testHash() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
-        Map<String, Object> map = PropertyUtils.describe(personList.get(0));
-        String key = String.format(MAP_KEY, personList.get(0).getId());
+        Map<String, Object> map = PropertyUtils.describe(personList.getFirst());
+        String key = String.format(MAP_KEY, personList.getFirst().getId());
         // 设置多个键值对
         hashOperations.putAll(key, map);
         // 存在指定键，才设置值

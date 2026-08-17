@@ -1,12 +1,14 @@
 package jar.hutool.swing;
 
 import cn.hutool.core.swing.clipboard.ClipboardUtil;
-import l.demo.Demo;
 
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ClipboardUtil/">ClipboardUtil</a>   剪贴板工具
@@ -15,7 +17,7 @@ import java.awt.datatransfer.Transferable;
  * @author ljh
  * @since 2020/11/19 12:00
  */
-public class ClipboardUtilDemo extends Demo {
+public class ClipboardUtilDemo {
 
     public static void main(String[] args) {
         // 获取系统剪贴板

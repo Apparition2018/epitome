@@ -1,15 +1,15 @@
 package knowledge.api.lang.class_;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Animal;
-import l.demo.Animal.Chicken;
+import com.ljh.commons.Animal;
+import com.ljh.commons.Animal.Chicken;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.util.function.Predicate;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Class.html">Class</a>

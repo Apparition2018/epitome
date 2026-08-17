@@ -3,7 +3,7 @@ package jar.apache.commons.collections4;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/BidiMap.html">BidiMap</a>

@@ -3,8 +3,10 @@ package jar.hutool.crypto;
 import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.digest.Digester;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/Digester/">Digester</a> 摘要加密
@@ -16,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2020/11/9 2:07
  */
-public class DigesterDemo extends Demo {
+public class DigesterDemo {
 
     @Test
     public void testDigester() {

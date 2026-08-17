@@ -1,13 +1,13 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ReflectUtil;
-import l.demo.Animal.Cat;
+import com.ljh.commons.Animal.Cat;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ReflectUtil/">ReflectUtil</a> 反射工具

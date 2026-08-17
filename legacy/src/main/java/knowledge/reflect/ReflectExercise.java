@@ -1,7 +1,7 @@
 package knowledge.reflect;
 
-import l.demo.Person;
-import l.demo.Person.Home;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Home;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://www.cnblogs.com/dreammyle/p/5610906.html">通过反射实现 JavaBean 与 Map 对象互相转化</a>

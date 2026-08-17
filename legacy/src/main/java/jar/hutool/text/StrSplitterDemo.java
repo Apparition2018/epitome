@@ -3,7 +3,7 @@ package jar.hutool.text;
 import cn.hutool.core.text.StrSplitter;
 import cn.hutool.core.util.StrUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/StrSplitter/">StrSplitter</a>   字符串切割

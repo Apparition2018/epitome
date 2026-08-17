@@ -2,8 +2,9 @@ package jar.hutool.cron;
 
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://doc.hutool.cn/pages/CronUtil/">CronUtil</a> 全局定时任务
@@ -14,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/cron/CronUtil.html">CronUtil api</a>
  * @since 2020/11/20 13:34
  */
-public class CronUtilDemo extends Demo {
+public class CronUtilDemo {
 
     /**
      * 配置文件定时任务

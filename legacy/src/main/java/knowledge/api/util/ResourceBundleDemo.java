@@ -3,7 +3,7 @@ package knowledge.api.util;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ResourceBundle.html">ResourceBundle</a><br/>

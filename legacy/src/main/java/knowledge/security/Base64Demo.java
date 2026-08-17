@@ -1,11 +1,12 @@
 package knowledge.security;
 
-import l.demo.Demo;
-
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.UUID;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.BAIDU_URL;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html">Base64</a><br/>
@@ -22,7 +23,7 @@ import java.util.stream.IntStream;
  * @see <a href="https://www.imooc.com/learn/285">Java 实现 Base64 加密</a>
  * @since 2020/11/18 19:37
  */
-public class Base64Demo extends Demo {
+public class Base64Demo {
 
     /**
      * <a href="http://www.runoob.com/java/java8-base64.html">Base64</a>

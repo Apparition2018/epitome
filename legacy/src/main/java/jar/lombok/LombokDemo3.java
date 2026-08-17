@@ -1,6 +1,5 @@
 package jar.lombok;
 
-import l.demo.Demo;
 import lombok.Cleanup;
 import lombok.Getter;
 import lombok.Synchronized;
@@ -15,6 +14,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
+import static com.ljh.commons.Demo.p;
+
 /**
  * Lombok
  *
@@ -22,7 +23,7 @@ import java.util.stream.IntStream;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public class LombokDemo3 extends Demo {
+public class LombokDemo3 {
 
     /**
      * var （已过时）

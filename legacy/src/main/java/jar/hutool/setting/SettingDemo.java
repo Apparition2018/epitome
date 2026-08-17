@@ -1,7 +1,7 @@
 package jar.hutool.setting;
 
 import cn.hutool.setting.Setting;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

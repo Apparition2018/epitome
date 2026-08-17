@@ -2,7 +2,7 @@ package jar.hutool.lang;
 
 import cn.hutool.core.lang.Assert;
 
-import static l.demo.Demo.list;
+import static com.ljh.commons.Demo.list;
 
 /**
  * <a href="https://doc.hutool.cn/pages/Assert/">Assert</a>

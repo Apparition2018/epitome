@@ -1,7 +1,9 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.EscapeUtil;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.MY_CY;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/EscapeUtil/">EscapeUtil</a>
@@ -10,7 +12,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/19 9:31
  */
-public class EscapeUtilDemo extends Demo {
+public class EscapeUtilDemo {
 
     public static void main(String[] args) {
         // ISO Latin（Unicode 字符集的一个子集）字符串编码

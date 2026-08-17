@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.HexUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.awt.*;
 import java.math.BigInteger;

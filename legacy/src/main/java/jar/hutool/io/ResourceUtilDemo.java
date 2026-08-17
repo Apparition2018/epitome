@@ -1,10 +1,12 @@
 package jar.hutool.io;
 
 import cn.hutool.core.io.resource.ResourceUtil;
-import l.demo.Demo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+
+import static com.ljh.commons.Demo.JDBC_PROPS_FILENAME;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ResourceUtil/">ResourceUtil</a> 资源工具
@@ -13,7 +15,7 @@ import java.io.IOException;
  * @author ljh
  * @since 2020/10/30 16:45
  */
-public class ResourceUtilDemo extends Demo {
+public class ResourceUtilDemo {
 
     public static void main(String[] args) throws IOException {
         // static String	        readUtf8Str(String resource)

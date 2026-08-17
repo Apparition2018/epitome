@@ -3,9 +3,10 @@ package jar.hutool.crypto;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.Sign;
 import cn.hutool.crypto.asymmetric.SignAlgorithm;
-import l.demo.Demo;
 
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
 
 /**
  * <a href="https://doc.hutool.cn/pages/Sign/">Sign</a> 签名和验证
@@ -15,7 +16,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2021/7/5 10:51
  */
-public class SignDemo extends Demo {
+public class SignDemo {
 
     public static void main(String[] args) {
         // static Sign	        sign(SignAlgorithm algorithm)
@@ -26,6 +27,6 @@ public class SignDemo extends Demo {
         byte[] bytes = sign.sign(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
         // boolean	            verify(byte[] data, byte[] sign)
         // 用公钥检验数字签名的合法性
-        p(sign.verify(HELLO_WORLD.getBytes(StandardCharsets.UTF_8), bytes));
+        System.out.println(sign.verify(HELLO_WORLD.getBytes(StandardCharsets.UTF_8), bytes));
     }
 }

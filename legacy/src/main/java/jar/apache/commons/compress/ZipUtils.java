@@ -1,6 +1,5 @@
 package jar.apache.commons.compress;
 
-import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.Zip64Mode;
@@ -20,6 +19,8 @@ import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.stream.Stream;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+
 /**
  * Zip 压缩/解压工具
  *
@@ -29,7 +30,7 @@ import java.util.stream.Stream;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public final class ZipUtils extends Demo {
+public final class ZipUtils {
 
     @Test
     public void compress() {

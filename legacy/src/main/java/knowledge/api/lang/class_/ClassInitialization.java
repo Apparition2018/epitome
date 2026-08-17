@@ -1,6 +1,6 @@
 package knowledge.api.lang.class_;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 类的初始化初始化顺序：

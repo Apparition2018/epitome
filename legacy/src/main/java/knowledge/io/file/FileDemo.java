@@ -1,7 +1,7 @@
 package knowledge.io.file;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

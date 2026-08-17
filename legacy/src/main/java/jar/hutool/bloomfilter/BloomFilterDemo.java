@@ -4,7 +4,7 @@ import cn.hutool.bloomfilter.BitSetBloomFilter;
 
 import java.util.stream.IntStream;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/bloomFilter/">BloomFilter</a>   布隆过滤器

@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.util.List;
+
+import static com.ljh.commons.Demo.jsonMapper;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://www.jianshu.com/p/4003b9756952">@JsonTypeInfo</a>
@@ -17,7 +19,7 @@ import java.util.List;
  * @author ljh
  * @since 2021/7/24 17:09
  */
-public class JsonTypeInfoDemo extends Demo {
+public class JsonTypeInfoDemo {
 
     public static void main(String[] args) throws JsonProcessingException {
         Circle circle = new Circle().setRadius("12");

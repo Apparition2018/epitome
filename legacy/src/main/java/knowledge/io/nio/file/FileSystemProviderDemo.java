@@ -10,8 +10,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.spi.FileSystemProvider;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/spi/FileSystemProvider.html">FileSystemProvider</a>

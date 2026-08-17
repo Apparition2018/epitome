@@ -1,7 +1,7 @@
 package jar.hutool.collection;
 
 import cn.hutool.core.collection.ListUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.util.List;
 

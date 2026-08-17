@@ -1,6 +1,5 @@
 package knowledge.io.stream;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +8,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.p;
+
 /**
  * CharStream   字符流
  * <p><a href="https://blog.csdn.net/u012426327/article/details/77160400">IO 流详解</a>
@@ -16,7 +18,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/9/14 14:15
  */
-public class CharStream extends Demo {
+public class CharStream {
 
     /**
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/Reader.html">Reader</a>

@@ -2,7 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.TypeUtil;
-import l.demo.Person;
+import com.ljh.commons.Person;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;

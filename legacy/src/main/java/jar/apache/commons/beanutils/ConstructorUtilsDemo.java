@@ -1,6 +1,6 @@
 package jar.apache.commons.beanutils;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.apache.commons.beanutils.ConstructorUtils;
 
 import java.lang.reflect.Constructor;

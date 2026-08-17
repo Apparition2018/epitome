@@ -5,11 +5,12 @@ import jar.truelicense.create.LicenseCreatorParam;
 import jar.truelicense.extra.LicenseExtraContent;
 import jar.truelicense.extra.factory.RuntimeUtils;
 import knowledge.network.NetworkInterfaceUtils;
-import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.net.InetAddress;
 import java.util.Collections;
+
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://zhuanlan.zhihu.com/p/648911291">TrueLicense 实现 License 验证</a>
@@ -22,7 +23,7 @@ import java.util.Collections;
  * @author ljh
  * @since 2023/2/23 15:54
  */
-public class TrueLicenseDemo extends Demo {
+public class TrueLicenseDemo {
 
     public static void main(String[] args) throws Exception {
         InetAddress inetAddress = InetAddress.getLocalHost();

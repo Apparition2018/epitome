@@ -3,7 +3,7 @@ package jar.jackson.annotataion;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.assertj.core.util.Lists;

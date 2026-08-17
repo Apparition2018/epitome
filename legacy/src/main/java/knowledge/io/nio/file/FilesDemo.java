@@ -1,6 +1,6 @@
 package knowledge.io.nio.file;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,7 +72,8 @@ public class FilesDemo extends Demo {
         // Map<String,Object>   readAttributes(Path path, String attributes, LinkOption... options)
         // 读取文件属性，"*" 表示 读取所有属性
         p(Files.readAttributes(filePath, "*"));
-        // {lastAccessTime=2020-09-22T06:16:01.487644Z, lastModifiedTime=2020-09-22T06:16:01.487644Z, size=91, creationTime=2020-09-14T06:22:45.436145Z, isSymbolicLink=false, isRegularFile=true, fileKey=null, isOther=false, isDirectory=false}
+        // {lastAccessTime=2020-09-22T06:16:01.487644Z, lastModifiedTime=2020-09-22T06:16:01.487644Z, size=91, creationTime=2020-09-14T06:22:45.436145Z,
+        // isSymbolicLink=false, isRegularFile=true, fileKey=null, isOther=false, isDirectory=false}
     }
 
     @Test

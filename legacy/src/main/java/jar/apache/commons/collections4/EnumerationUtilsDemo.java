@@ -6,7 +6,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/EnumerationUtils.html">EnumerationUtils</a>

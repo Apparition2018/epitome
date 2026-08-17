@@ -1,6 +1,6 @@
 package spring.api.io;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://davidvlijmincx.com/posts/creating_context_specific_deserialization_filters/">ObjectInputFilter</a> 反序列化过滤器

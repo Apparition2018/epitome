@@ -1,6 +1,6 @@
 package knowledge.concurrent.util;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 

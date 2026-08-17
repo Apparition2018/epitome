@@ -44,7 +44,7 @@
 // Messaging | Spring Boot
 
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 public class Test extends Demo {
 

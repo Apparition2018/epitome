@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import static l.demo.Demo.arr;
+import static com.ljh.commons.Demo.arr;
 
 /**
  * StreamSupport

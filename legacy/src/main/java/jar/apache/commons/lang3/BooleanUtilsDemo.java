@@ -3,7 +3,7 @@ package jar.apache.commons.lang3;
 import org.apache.commons.lang3.BooleanUtils;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html">BooleanUtils</a>

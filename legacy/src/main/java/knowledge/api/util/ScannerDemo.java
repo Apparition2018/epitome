@@ -1,11 +1,13 @@
 package knowledge.api.util;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import static com.ljh.commons.Demo.DEMO_FILE_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Scanner.html">Scanner</a>
@@ -18,7 +20,7 @@ import java.util.Scanner;
  * @author ljh
  * @since 2020/10/23 20:09
  */
-public class ScannerDemo extends Demo {
+public class ScannerDemo {
 
     public static void main(String[] args) {
         testConstructorByInputStream();

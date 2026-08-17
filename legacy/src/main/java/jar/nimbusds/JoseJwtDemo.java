@@ -1,10 +1,10 @@
 package jar.nimbusds;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ljh.commons.Demo;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
-import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.time.DateUtils;

@@ -2,8 +2,8 @@ package jar.hutool;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 
-import static l.demo.Demo.ae;
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ExceptionUtil/">ExceptionUtil</a>   异常工具
@@ -19,11 +19,11 @@ public class ExceptionUtilDemo {
             p(1 / 0);
         } catch (Exception e) {
             // 完整消息
-            ae(ExceptionUtil.getMessage(e), "ArithmeticException: / by zero");
+            assertThat(ExceptionUtil.getMessage(e)).isEqualTo("ArithmeticException: / by zero");
             // 简单消息
-            ae(ExceptionUtil.getSimpleMessage(e), "/ by zero");
+            assertThat(ExceptionUtil.getSimpleMessage(e)).isEqualTo("/ by zero");
             // 异常链中最尾端的异常的消息
-            ae(ExceptionUtil.getRootCauseMessage(e), "ArithmeticException: / by zero");
+            assertThat(ExceptionUtil.getRootCauseMessage(e)).isEqualTo("ArithmeticException: / by zero");
 
             // 堆栈转为完整字符串
             p(ExceptionUtil.stacktraceToString(e));

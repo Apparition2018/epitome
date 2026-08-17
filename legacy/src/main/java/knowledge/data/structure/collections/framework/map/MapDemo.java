@@ -1,8 +1,8 @@
 package knowledge.data.structure.collections.framework.map;
 
 import com.google.common.collect.Maps;
+import com.ljh.commons.Demo;
 import knowledge.data.structure.collections.framework.collection.SetDemo;
-import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.junit.jupiter.api.Test;

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Date;
 import java.util.Objects;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/DateTime/">DateTime</a>

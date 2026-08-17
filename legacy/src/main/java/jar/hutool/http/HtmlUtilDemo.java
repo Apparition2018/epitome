@@ -2,7 +2,7 @@ package jar.hutool.http;
 
 import cn.hutool.http.HtmlUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/HtmlUtil/">HtmlUtil</a>

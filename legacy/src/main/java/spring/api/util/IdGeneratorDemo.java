@@ -1,11 +1,13 @@
 package spring.api.util;
 
-import l.demo.Demo;
 import org.springframework.util.AlternativeJdkIdGenerator;
 import org.springframework.util.JdkIdGenerator;
 import org.springframework.util.SimpleIdGenerator;
 
 import java.util.stream.LongStream;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.stopWatch;
 
 /**
  * IdGenerator
@@ -13,7 +15,7 @@ import java.util.stream.LongStream;
  * @author ljh
  * @since 2020/10/16 12:46
  */
-public class IdGeneratorDemo extends Demo {
+public class IdGeneratorDemo {
 
     public static void main(String[] args) {
         // JdkIdGenerator                           底层调用了 UUID.randomUUID()

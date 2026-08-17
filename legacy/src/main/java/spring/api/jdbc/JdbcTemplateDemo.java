@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 
-import static l.demo.Demo.pe;
+import static com.ljh.commons.Demo.pe;
 
 /**
  * JdbcTemplate

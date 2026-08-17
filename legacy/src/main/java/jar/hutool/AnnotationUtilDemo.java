@@ -4,7 +4,7 @@ import cn.hutool.core.annotation.AnnotationUtil;
 import knowledge.annotation.CustomAnnotation.Apple;
 import knowledge.annotation.CustomAnnotation.Description;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/AnnotationUtil/">AnnotationUtil</a> 注解工具

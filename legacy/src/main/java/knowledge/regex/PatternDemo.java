@@ -1,11 +1,14 @@
 package knowledge.regex;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+
+import static com.ljh.commons.Demo.MY_EMAIL;
+import static com.ljh.commons.Demo.p;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Pattern.html">Pattern</a>
@@ -14,7 +17,7 @@ import java.util.stream.Stream;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class PatternDemo extends Demo {
+public class PatternDemo {
 
     /**
      * 用法一：编译 → 匹配
@@ -25,7 +28,7 @@ public class PatternDemo extends Demo {
         Pattern pattern = Pattern.compile("a*b");
         // matcher()：创建匹配给定输入与此模式的匹配器
         Matcher matcher = pattern.matcher("aab");
-        ae(matcher.find(), true);
+        assertThat(matcher.find()).isTrue();
     }
 
     /**
@@ -34,15 +37,15 @@ public class PatternDemo extends Demo {
     @Test
     public void matches() {
         // 编译给定正则表达式并尝试将给定输入与其匹配
-        ae(Pattern.matches("a*b", "aab"), true);
+        assertThat(Pattern.matches("a*b", "aab")).isTrue();
     }
 
     /** 返回指定 String 的字面值模式 String */
     @Test
     public void quote() {
         String quote = Pattern.quote("a*b");
-        ae(Pattern.matches("a*b", "aab"), true);
-        ae(Pattern.matches(quote, "aab"), false);
+        assertThat(Pattern.matches("a*b", "aab")).isTrue();
+        assertThat(Pattern.matches(quote, "aab")).isFalse();
     }
 
     /** 围绕此模式的匹配拆分给定输入序列 */
@@ -67,10 +70,10 @@ public class PatternDemo extends Demo {
     public void regularExpressionConstruct() {
         // 1. Back references 反向引用
         // \n 引用第n个捕获组
-        ae(Pattern.matches("<(\\w+)>\\w*</\\1>", "<h1>Title</h1>"), true);
+        assertThat(Pattern.matches("<(\\w+)>\\w*</\\1>", "<h1>Title</h1>")).isTrue();
         // (?<name>X) 命名捕获组
         // \k<name> 引用<name>捕获组
-        ae(Pattern.matches("<(?<tag>\\w+)>\\w*</\\k<tag>>", "<h1>Title</h1>"), true);
+        assertThat(Pattern.matches("<(?<tag>\\w+)>\\w*</\\k<tag>>", "<h1>Title</h1>")).isTrue();
     }
 
     /**
@@ -85,14 +88,14 @@ public class PatternDemo extends Demo {
         Pattern greedyPattern = Pattern.compile("<a>.*</a>");
         Matcher greedyMatcher = greedyPattern.matcher(input);
         if (greedyMatcher.find()) {
-            ae(greedyMatcher.group(), input);
+            assertThat(greedyMatcher.group()).isEqualTo(input);
         }
 
         // 2. 非贪婪模式
         Pattern reluctantPattern = Pattern.compile("<a>.*?</a>");
         Matcher reluctantMatcher = reluctantPattern.matcher(input);
         if (reluctantMatcher.find()) {
-            ae(reluctantMatcher.group(), "<a>One</a>");
+            assertThat(reluctantMatcher.group()).isEqualTo("<a>One</a>");
         }
     }
 }

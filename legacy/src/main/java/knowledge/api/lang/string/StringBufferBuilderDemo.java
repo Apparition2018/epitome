@@ -2,7 +2,7 @@ package knowledge.api.lang.string;
 
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <pre>

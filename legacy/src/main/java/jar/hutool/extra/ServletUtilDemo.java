@@ -8,12 +8,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serial;
 import java.net.HttpCookie;
 import java.util.Map;
+
+import static com.ljh.commons.Demo.personList;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ServletUtil/">ServletUtil</a>
@@ -46,14 +47,11 @@ public class ServletUtilDemo extends HttpServlet {
     }
 
     public static void main(String[] args) {
-        Map<String, Object> params = BeanUtil.beanToMap(M.personList.get(0));
+        Map<String, Object> params = BeanUtil.beanToMap(personList.getFirst());
         HttpResponse httpResponse = HttpRequest.post("http://localhost:8080/ServletUtil")
                 .form(params)
                 .body(JSONUtil.toJsonStr(params))
                 .cookie(new HttpCookie("cookie", "zero"))
                 .execute();
-    }
-
-    private static class M extends Demo {
     }
 }

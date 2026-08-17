@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.List;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * LazyBean

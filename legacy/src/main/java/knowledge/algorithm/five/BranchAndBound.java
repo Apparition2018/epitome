@@ -3,8 +3,8 @@ package knowledge.algorithm.five;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-import static l.demo.Demo.p;
-import static l.demo.Demo.phr;
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.phr;
 
 /**
  * Branch and Bound

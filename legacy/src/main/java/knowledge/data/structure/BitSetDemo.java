@@ -2,7 +2,7 @@ package knowledge.data.structure;
 
 import java.util.BitSet;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/BitSet.html">BitSet</a>

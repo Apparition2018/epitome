@@ -1,7 +1,7 @@
 package knowledge.io.nio.file;
 
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.io.File;
 import java.net.URI;

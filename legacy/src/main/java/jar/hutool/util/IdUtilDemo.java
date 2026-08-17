@@ -4,7 +4,7 @@ import cn.hutool.core.lang.ObjectId;
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/IdUtil/">IdUtil</a> 唯一ID工具

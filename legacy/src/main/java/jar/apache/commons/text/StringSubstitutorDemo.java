@@ -5,7 +5,7 @@ import org.apache.commons.text.StringSubstitutor;
 import java.util.HashMap;
 import java.util.Map;
 
-import static l.demo.Demo.ae;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/StringSubstitutor.html">StringSubstitutor</a>
@@ -26,11 +26,11 @@ public class StringSubstitutorDemo {
         // 执行替换
         String template = "Hello, ${name}! You are ${age} years old. Welcome to ${site}.";
         String result = StringSubstitutor.replace(template, valuesMap);
-        ae(result, "Hello, Alice! You are 25 years old. Welcome to Alibaba Cloud.");
+        assertThat(result).isEqualTo("Hello, Alice! You are 25 years old. Welcome to Alibaba Cloud.");
 
         // 自定义前缀、后缀，替换
         template = "Hello, #name#! You are #age# years old. Welcome to #site#.";
         result = StringSubstitutor.replace(template, valuesMap, "#", "#");
-        ae(result, "Hello, Alice! You are 25 years old. Welcome to Alibaba Cloud.");
+        assertThat(result).isEqualTo("Hello, Alice! You are 25 years old. Welcome to Alibaba Cloud.");
     }
 }

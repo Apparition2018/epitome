@@ -1,5 +1,6 @@
 package org.ljh.jpa;
 
+import com.ljh.commons.Continent;
 import org.junit.jupiter.api.Test;
 import org.ljh.jpa.entity.*;
 import org.ljh.jpa.projection.CountryArea;
@@ -37,7 +38,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @author ljh
  * @since 2026/8/8
  */
-@SpringBootTest(classes = JpaApplication.class)
+@SpringBootTest(classes = SpringDataJpaApplication.class)
 class SpringDataJpaTests {
 
     @Autowired

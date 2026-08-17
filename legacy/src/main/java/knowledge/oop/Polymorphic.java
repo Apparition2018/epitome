@@ -1,7 +1,7 @@
 package knowledge.oop;
 
-import l.demo.Animal;
-import l.demo.Animal.Cat;
+import com.ljh.commons.Animal;
+import com.ljh.commons.Animal.Cat;
 
 /**
  * 多态

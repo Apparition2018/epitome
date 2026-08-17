@@ -1,7 +1,7 @@
 package knowledge.xml;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import org.junit.jupiter.api.Test;
 
 import java.beans.XMLDecoder;

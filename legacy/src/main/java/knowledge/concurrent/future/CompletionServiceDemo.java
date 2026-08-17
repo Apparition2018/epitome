@@ -1,6 +1,6 @@
 package knowledge.concurrent.future;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.util.Map;
 import java.util.concurrent.*;

@@ -1,6 +1,6 @@
 package spring.api.core;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;

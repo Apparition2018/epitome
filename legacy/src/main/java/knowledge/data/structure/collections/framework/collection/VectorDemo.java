@@ -7,7 +7,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Vector.html">Vector</a>   向量

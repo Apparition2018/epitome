@@ -1,8 +1,8 @@
 package knowledge.data.structure.collections.framework;
 
-import l.demo.Animal.Cat;
-import l.demo.Animal.Chicken;
-import l.demo.Demo;
+import com.ljh.commons.Animal.Cat;
+import com.ljh.commons.Animal.Chicken;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

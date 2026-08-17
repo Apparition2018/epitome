@@ -1,6 +1,6 @@
 package springboot.util.resolver;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.MethodParameter;
@@ -9,7 +9,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import static l.demo.Demo.personList;
+import static com.ljh.commons.Demo.personList;
 
 /**
  * ArgumentResolver 参数解析器

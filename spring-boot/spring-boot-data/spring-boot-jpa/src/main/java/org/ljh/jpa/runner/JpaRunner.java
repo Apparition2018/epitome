@@ -1,8 +1,12 @@
 package org.ljh.jpa.runner;
 
+import com.ljh.commons.Continent;
 import org.ljh.jpa.dao.CountryDao;
 import org.ljh.jpa.dao.PersonDao;
-import org.ljh.jpa.entity.*;
+import org.ljh.jpa.entity.Address;
+import org.ljh.jpa.entity.Author;
+import org.ljh.jpa.entity.Country;
+import org.ljh.jpa.entity.Passport;
 import org.ljh.jpa.service.JpaService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * JpaDemoRunner — 启动时自动执行的演示器。
+ * JpaRunner — 启动时自动执行的演示器。
  * <p>在应用启动后跑一组典型的 JPA 操作，把结果打印到控制台，便于直接观察效果
  * （表数据已在 SQL 初始化时导入 world 库真实数据）。演示内容包括：JPQL 查询、
  * 命名查询、原生 SQL、Criteria、级联持久化、继承 + 可嵌入、乐观锁、一对一等。</p>

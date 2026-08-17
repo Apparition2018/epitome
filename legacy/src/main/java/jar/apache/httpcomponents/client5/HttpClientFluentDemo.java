@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
-import static l.demo.Demo.COOKIE_URL;
+import static com.ljh.commons.Demo.COOKIE_URL;
 
 /**
  * fluent API

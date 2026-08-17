@@ -4,7 +4,7 @@ import org.jspecify.annotations.NonNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
-import static l.demo.Demo.pe;
+import static com.ljh.commons.Demo.pe;
 
 /**
  * MyBeanPostProcessor

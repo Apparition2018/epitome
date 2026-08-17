@@ -8,6 +8,9 @@ import redis.clients.jedis.Pipeline;
 
 import java.util.Map;
 
+import static com.ljh.commons.Demo.MY_NAME;
+import static com.ljh.commons.Demo.stopWatch;
+
 /**
  * Jedis
  *

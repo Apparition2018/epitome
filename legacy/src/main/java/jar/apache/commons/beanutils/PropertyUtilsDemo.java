@@ -1,11 +1,13 @@
 package jar.apache.commons.beanutils;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.apache.commons.beanutils.PropertyUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/PropertyUtils.html">PropertyUtils</a>
@@ -13,7 +15,7 @@ import java.util.Map;
  * @author ljh
  * @since 2020/11/14 21:29
  */
-public class PropertyUtilsDemo extends Demo {
+public class PropertyUtilsDemo {
 
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Person person = new Person();

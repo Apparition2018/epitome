@@ -2,7 +2,7 @@ package knowledge.api.lang;
 
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Math.html">Math</a>

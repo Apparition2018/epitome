@@ -1,13 +1,12 @@
-package org.ljh.jpa.entity;
+package com.ljh.commons;
 
 import lombok.Getter;
 
 /**
- * Continent — 大洲枚举
- * <p>通过 {@link ContinentConverter} 在实体与数据库之间转换。</p>
+ * 大洲枚举
  *
  * @author ljh
- * @since 2026/8/11
+ * @since 2026/7/20 16:15
  */
 @Getter
 public enum Continent {

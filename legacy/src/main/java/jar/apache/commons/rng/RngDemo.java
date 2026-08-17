@@ -1,8 +1,9 @@
 package jar.apache.commons.rng;
 
-import l.demo.Demo;
 import org.apache.commons.rng.RestorableUniformRandomProvider;
 import org.apache.commons.rng.simple.RandomSource;
+
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-rng/index.html">Random Numbers Generators</a> 随机数生成器
@@ -10,7 +11,7 @@ import org.apache.commons.rng.simple.RandomSource;
  * @author ljh
  * @since 2023/12/5 10:53
  */
-public class RngDemo extends Demo {
+public class RngDemo {
 
     public static void main(String[] args) {
         RestorableUniformRandomProvider rng = RandomSource.XO_RO_SHI_RO_128_PP.create();

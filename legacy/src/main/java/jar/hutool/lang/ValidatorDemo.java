@@ -2,7 +2,7 @@ package jar.hutool.lang;
 
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.IdUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 /**
  * <a href="https://doc.hutool.cn/pages/Validator/">Validator</a>   字段验证器

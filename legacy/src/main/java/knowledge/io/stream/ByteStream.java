@@ -1,6 +1,6 @@
 package knowledge.io.stream;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 

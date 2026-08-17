@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
-import static l.demo.Demo.pe;
+import static com.ljh.commons.Demo.pe;
 
 /**
  * Bean

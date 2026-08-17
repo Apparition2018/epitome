@@ -1,10 +1,11 @@
 package knowledge.io.file;
 
-import l.demo.Demo;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.USER_DIR;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileFilter.html">FileFilter</a>
@@ -13,7 +14,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2020/9/14 10:40
  */
-public class FileFilterDemo extends Demo {
+public class FileFilterDemo {
 
     public static void main(String[] args) {
         File file = new File(USER_DIR);

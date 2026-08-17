@@ -1,12 +1,14 @@
 package knowledge.network.socket.tcp;
 
-import l.demo.Demo;
-import l.demo.Person.Student;
+import com.ljh.commons.Person.Student;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+
+import static com.ljh.commons.Demo.PORT;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 客户端
@@ -20,7 +22,7 @@ import java.net.Socket;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class TCPClient extends Demo {
+public class TCPClient {
 
     public static void main(String[] args) throws IOException {
         // Socket(String host, int port[, InetAddress localAddr, int localPort])

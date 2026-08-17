@@ -2,7 +2,7 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.extra.qrcode.QrConfig;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.awt.*;
 import java.io.File;

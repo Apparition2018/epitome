@@ -1,7 +1,9 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.mail.MailUtil;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.MY_EMAIL;
 
 /**
  * <a href="https://doc.hutool.cn/pages/MailUtil/">MailUtil</a>  邮件工具
@@ -12,7 +14,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/13 17:31
  */
-public class MailUtilDemo extends Demo {
+public class MailUtilDemo {
 
     public static void main(String[] args) {
         MailUtil.send(MY_EMAIL, "测试", HELLO_WORLD, false);

@@ -1,6 +1,5 @@
 package jar.apache.httpcomponents.client4;
 
-import l.demo.Demo;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -10,13 +9,16 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import static com.ljh.commons.Demo.MOZILLA_DEMO_URL;
+import static com.ljh.commons.Demo.p;
+
 /**
  * URLEncodedUtils
  *
  * @author ljh
  * @since 2020/12/9 14:10
  */
-public class URLEncodedUtilsDemo extends Demo {
+public class URLEncodedUtilsDemo {
 
     public static void main(String[] args) throws URISyntaxException {
         URI uri = new URIBuilder(MOZILLA_DEMO_URL).build();

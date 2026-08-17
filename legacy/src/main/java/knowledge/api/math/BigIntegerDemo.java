@@ -1,10 +1,12 @@
 package knowledge.api.math;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/math/BigInteger.html">BigInteger</a>
@@ -51,7 +53,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class BigIntegerDemo extends Demo {
+public class BigIntegerDemo {
 
     @Test
     public void testBigInteger() {
@@ -62,11 +64,11 @@ public class BigIntegerDemo extends Demo {
         // BigInteger   nextProbablePrime()
         // 返回大于此 BigInteger 的可能为素数的第一个整数
         p(bi.nextProbablePrime()); // 11
-        // boolean	    isProbablePrime(int certainty)  
+        // boolean	    isProbablePrime(int certainty)
         // 如果此 BigInteger 可能为素数，则返回 true，如果它一定为合数，则返回 false
         p(bi.isProbablePrime(10)); // false
 
-        // boolean	    testBit(int n)                  
+        // boolean	    testBit(int n)
         // 当且仅当设置了指定的位时，返回 true
         p(bi.testBit(0)); // true
         p(bi.testBit(1)); // false

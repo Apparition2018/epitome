@@ -1,8 +1,9 @@
 package knowledge.api.lang;
 
-import l.demo.Demo;
-
 import java.util.stream.Collectors;
+
+import static com.ljh.commons.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.p;
 
 /**
  * CharSequence
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
  * @author ljh
  * @since 2021/8/19 15:35
  */
-public class CharSequenceDemo extends Demo {
+public class CharSequenceDemo {
 
     public static void main(String[] args) {
         // IntStream        chars()

@@ -1,8 +1,8 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
-import l.demo.Person;
-import l.demo.Person.Home;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Home;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,9 @@
 package springboot.controller;
 
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Student;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import l.demo.Person;
-import l.demo.Person.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import springboot.filter.HeaderMapFilter;
@@ -27,7 +27,7 @@ public class DemoController {
     @Operation(summary = "GET 请求")
     public Student get(@RequestParam(value = "id", required = false) Integer id,
                        @RequestParam(value = "name", required = false) String name) {
-        return new Student(id, name).setBirth(new Date());
+        return new Person.Student(id, name).setBirth(new Date());
     }
 
     /** <a href="http://localhost:3333/demo/post">demo/post</a> */

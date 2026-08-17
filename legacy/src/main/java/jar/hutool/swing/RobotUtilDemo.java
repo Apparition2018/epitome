@@ -5,7 +5,7 @@ import cn.hutool.core.swing.RobotUtil;
 import java.awt.*;
 import java.io.File;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/swing/RobotUtil.html">RobotUtil</a>   Robot 封装工具类

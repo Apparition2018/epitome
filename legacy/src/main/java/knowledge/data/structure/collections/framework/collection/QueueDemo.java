@@ -1,7 +1,7 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.time.DateFormatUtils;

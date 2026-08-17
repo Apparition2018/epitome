@@ -1,7 +1,7 @@
 package spring.api.util;
 
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import org.springframework.util.FastByteArrayOutputStream;
 
 import java.io.*;
@@ -21,11 +21,11 @@ public class FastByteArrayOutputStreamDemo extends Demo {
 
     public static void main(String[] args) {
         stopWatch.start("ByteArrayOutputStream");
-        IntStream.rangeClosed(1, 500).forEach(i -> clone(personList.get(0)));
+        IntStream.rangeClosed(1, 500).forEach(i -> clone(personList.getFirst()));
         stopWatch.stop();
 
         stopWatch.start("FastByteArrayOutputStream");
-        IntStream.rangeClosed(1, 500).forEach(i -> fastClone(personList.get(0)));
+        IntStream.rangeClosed(1, 500).forEach(i -> fastClone(personList.getFirst()));
         stopWatch.stop();
 
         p(stopWatch.prettyPrint());

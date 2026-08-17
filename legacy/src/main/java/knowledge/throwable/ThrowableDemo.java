@@ -1,10 +1,12 @@
 package knowledge.throwable;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import static com.ljh.commons.Demo.DEMO_FILE_PATH;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidojavacs/jdk-zh/java/lang/Throwable.html">Throwable</a>
@@ -43,7 +45,7 @@ import java.io.IOException;
  * @see <a href="https://www.cnblogs.com/jurendage/p/11255197.html">Java 生鲜电商平台-统一异常处理及架构实战</a>
  * @since 2019/8/8 19:39
  */
-public class ThrowableDemo extends Demo {
+public class ThrowableDemo {
 
     /**
      * try-catch 捕获异常

@@ -1,7 +1,6 @@
 package jar.hutool.date;
 
 import cn.hutool.core.date.*;
-import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://doc.hutool.cn/pages/DateUtil/">DateUtil</a>
@@ -22,7 +23,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/10/26 22:16
  */
-public class DateUtilDemo extends Demo {
+public class DateUtilDemo {
     private static final String DATE_STR = "2008-08-08";
     private static final String TIME_STR = "20:08:08";
     private static final String DATE_TIME_STR = DATE_STR + StringUtils.SPACE + TIME_STR;

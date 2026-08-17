@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ObjectUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 

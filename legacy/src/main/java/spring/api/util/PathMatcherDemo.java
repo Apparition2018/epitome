@@ -3,7 +3,7 @@ package spring.api.util;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * PathMatcher

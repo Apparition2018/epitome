@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Comparator;
 import java.util.Objects;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html">Objects</a>

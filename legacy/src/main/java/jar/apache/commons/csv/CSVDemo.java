@@ -1,6 +1,5 @@
 package jar.apache.commons.csv;
 
-import l.demo.Demo;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
@@ -10,13 +9,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+
 /**
  * <a href="https://commons.apache.org/proper/commons-csv/">Commons CSV</a>
  *
  * @author ljh
  * @since 2020/11/15 3:29
  */
-public class CSVDemo extends Demo {
+public class CSVDemo {
 
     @Test
     public void writeCSV() {

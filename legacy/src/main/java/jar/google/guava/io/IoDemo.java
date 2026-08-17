@@ -10,7 +10,7 @@ import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 import com.google.common.io.Files;
 import com.google.common.io.Resources;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 
 import java.io.File;
 import java.io.IOException;

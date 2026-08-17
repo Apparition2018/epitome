@@ -1,7 +1,7 @@
 package jar.hutool.collection;
 
 import cn.hutool.core.collection.IterUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;

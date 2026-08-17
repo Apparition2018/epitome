@@ -1,10 +1,10 @@
 package jar.squareup.retrofit;
 
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import com.squareup.moshi.FromJson;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.ToJson;
-import l.demo.Demo;
-import l.demo.Person;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;

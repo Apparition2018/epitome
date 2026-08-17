@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.time.Duration;
 import java.util.Properties;
 
-import static l.demo.Demo.JDBC_PROPS_FILENAME;
+import static com.ljh.commons.Demo.JDBC_PROPS_FILENAME;
 
 /**
  * DBUtil

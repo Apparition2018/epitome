@@ -1,6 +1,6 @@
 package knowledge.concurrent.future;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

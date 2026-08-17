@@ -1,7 +1,7 @@
 package jar.apache.commons.beanutils;
 
+import com.ljh.commons.User;
 import jakarta.servlet.http.HttpServletRequest;
-import l.demo.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Map;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-beanutils/">BeanUtils</a>

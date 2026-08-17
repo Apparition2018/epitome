@@ -2,7 +2,7 @@ package jar.apache.commons.io;
 
 import org.apache.commons.io.FilenameUtils;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-io/description.html#FilenameUtils">FilenameUtils</a>

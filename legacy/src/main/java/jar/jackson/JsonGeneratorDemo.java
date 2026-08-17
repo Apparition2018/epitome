@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
-import static l.demo.Demo.MY_NAME;
+import static com.ljh.commons.Demo.MY_NAME;
 
 /**
  * JsonGenerator

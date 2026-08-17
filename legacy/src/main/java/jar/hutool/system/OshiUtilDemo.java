@@ -2,7 +2,7 @@ package jar.hutool.system;
 
 import cn.hutool.system.oshi.OshiUtil;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/system/oshi/OshiUtil.html">OshiUtil</a>    获取系统和硬件信息工具

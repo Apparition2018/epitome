@@ -1,6 +1,6 @@
 package jar.apache.commons.beanutils;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
@@ -38,4 +38,3 @@ public class ConvertUtilsBeanDemo {
         System.out.println(beanUtils.getProperty(person, "name")); // prefix-张三
     }
 }
-

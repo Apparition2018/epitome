@@ -1,9 +1,9 @@
 package knowledge.suggestions;
 
+import com.ljh.commons.Demo;
+import com.ljh.commons.Person;
 import knowledge.suggestions.Family.Daughter;
 import knowledge.suggestions.Family.Son;
-import l.demo.Demo;
-import l.demo.Person;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

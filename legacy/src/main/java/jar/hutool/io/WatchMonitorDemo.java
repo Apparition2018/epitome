@@ -8,7 +8,7 @@ import cn.hutool.core.lang.Console;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 
-import static l.demo.Demo.DEMO_DIR_PATH;
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://doc.hutool.cn/pages/WatchMonitor/">WatchMonitor</a> 文件监听

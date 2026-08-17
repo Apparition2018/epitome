@@ -5,12 +5,13 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.generator.CodeGenerator;
 import cn.hutool.captcha.generator.MathGenerator;
 import cn.hutool.captcha.generator.RandomGenerator;
-import l.demo.Demo;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static com.ljh.commons.Demo.HU_DEMO_DIR_PATH;
 
 /**
  * <a href="https://doc.hutool.cn/pages/captcha/">Captcha</a>    图形验证码
@@ -23,7 +24,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/11/21 17:37
  */
-public class CaptchaDemo extends Demo {
+public class CaptchaDemo{
 
     private static final int WIDTH = 80;
     private static final int HEIGHT = 30;
@@ -48,7 +49,7 @@ public class CaptchaDemo extends Demo {
         try (OutputStream os = Files.newOutputStream(Paths.get(captchaPath))) {
             // 写到流，也可以写到文件
             captcha.write(os);
-            p(captcha.verify(captcha.getCode()));
+            System.out.println(captcha.verify(captcha.getCode()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

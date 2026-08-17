@@ -1,7 +1,7 @@
 package jar.jave;
 
 import cn.hutool.core.img.ImgUtil;
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 import ws.schild.jave.Encoder;
 import ws.schild.jave.EncoderException;

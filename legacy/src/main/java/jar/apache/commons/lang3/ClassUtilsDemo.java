@@ -5,7 +5,7 @@ import org.apache.commons.lang3.ClassUtils;
 
 import java.util.Collections;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassUtils.html">ClassUtils</a>

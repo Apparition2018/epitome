@@ -1,6 +1,6 @@
 package jar.google.protostuff;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 
 import java.util.List;
 

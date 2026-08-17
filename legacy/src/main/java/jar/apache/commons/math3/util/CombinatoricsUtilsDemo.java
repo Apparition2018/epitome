@@ -2,7 +2,7 @@ package jar.apache.commons.math3.util;
 
 import org.apache.commons.math3.util.CombinatoricsUtils;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/CombinatoricsUtils.html">CombinatoricsUtils</a>  组合学

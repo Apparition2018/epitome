@@ -1,13 +1,14 @@
 package jar.apache.commons.lang3.reflect;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import l.demo.Demo;
-import l.demo.Person;
+import com.ljh.commons.Person;
 import org.apache.commons.beanutils.ConstructorUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.p;
 
 /**
  * Reflect
@@ -18,7 +19,7 @@ import org.junit.jupiter.api.Test;
  * @see <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/MethodUtils.html">MethodUtils</a>
  * @since 2022/11/9 10:40
  */
-public class ReflectDemo extends Demo {
+public class ReflectDemo {
 
     private Person person;
 

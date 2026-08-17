@@ -2,14 +2,14 @@ package knowledge.annotation;
 
 // import jdk.internal.vm.annotation.Contended;
 
-import l.demo.Animal.Chicken;
+import com.ljh.commons.Animal.Chicken;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * JDKAnnotation

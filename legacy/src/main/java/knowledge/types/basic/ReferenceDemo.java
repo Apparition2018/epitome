@@ -1,6 +1,6 @@
 package knowledge.types.basic;
 
-import l.demo.Person;
+import com.ljh.commons.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-import static l.demo.Demo.p;
-import static l.demo.Demo.sleep;
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.sleep;
 
 /**
  * Reference    引用

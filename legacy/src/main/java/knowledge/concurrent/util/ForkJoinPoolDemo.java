@@ -1,12 +1,13 @@
 package knowledge.concurrent.util;
 
-import l.demo.Demo;
-
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.LongStream;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.stopWatch;
 
 /**
  * ForkJoinPool
@@ -26,7 +27,7 @@ import java.util.stream.LongStream;
  * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html">RecursiveAction api</a>
  * @since 2020/12/1 12:58
  */
-public class ForkJoinPoolDemo extends Demo {
+public class ForkJoinPoolDemo {
 
     public static void main(String[] args) {
         long[] numbers = LongStream.rangeClosed(1, 1_0000_0000L).toArray();

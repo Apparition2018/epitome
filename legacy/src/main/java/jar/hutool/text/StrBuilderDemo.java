@@ -1,7 +1,8 @@
 package jar.hutool.text;
 
 import cn.hutool.core.text.StrBuilder;
-import l.demo.Demo;
+
+import static com.ljh.commons.Demo.stopWatch;
 
 /**
  * <a href="https://doc.hutool.cn/pages/StrBuilder/">StrBuilder</a> 可复用字符串生成器
@@ -10,7 +11,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/5 2:20
  */
-public class StrBuilderDemo extends Demo {
+public class StrBuilderDemo {
 
     public static void main(String[] args) {
         stopWatch.start("JDK StringBuilder");
@@ -31,7 +32,7 @@ public class StrBuilderDemo extends Demo {
         }
         stopWatch.stop();
 
-        p(stopWatch.prettyPrint());
+        System.out.println(stopWatch.prettyPrint());
         // ---------------------------------------------
         // ns         %     Task name
         // ---------------------------------------------

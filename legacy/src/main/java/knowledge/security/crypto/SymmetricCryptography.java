@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-import static l.demo.Demo.HELLO_WORLD;
+import static com.ljh.commons.Demo.HELLO_WORLD;
 
 /**
  * 对称加密 (Symmetric Cryptography)

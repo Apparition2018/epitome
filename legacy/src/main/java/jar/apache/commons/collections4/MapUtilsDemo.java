@@ -5,7 +5,7 @@ import org.apache.commons.collections4.MapUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html">MapUtils</a>

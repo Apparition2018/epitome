@@ -1,10 +1,10 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ClassUtil;
-import l.demo.Person;
-import l.demo.Person.Student;
+import com.ljh.commons.Person;
+import com.ljh.commons.Person.Student;
 
-import static l.demo.Demo.p;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ClassUtil/">ClassUtil</a>

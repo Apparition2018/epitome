@@ -1,6 +1,6 @@
 package knowledge.security.digest;
 
-import l.demo.Demo;
+import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.DigestUtils;
 

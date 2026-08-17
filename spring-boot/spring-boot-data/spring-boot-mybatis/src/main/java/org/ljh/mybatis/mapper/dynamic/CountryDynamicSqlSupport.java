@@ -1,6 +1,6 @@
 package org.ljh.mybatis.mapper.dynamic;
 
-import org.ljh.mybatis.entity.Continent;
+import com.ljh.commons.Continent;
 import org.mybatis.dynamic.sql.AliasableSqlTable;
 import org.mybatis.dynamic.sql.SqlColumn;
 
