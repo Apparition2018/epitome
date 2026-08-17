@@ -13,9 +13,9 @@ public class RandomStringGeneratorDemo {
 
     public static void main(String[] args) {
         RandomStringGenerator generator = new RandomStringGenerator.Builder()
-            .withinRange('0', 'z')
-            .filteredBy(CharacterPredicates.LETTERS, CharacterPredicates.DIGITS)
-            .get();
+                .withinRange('0', 'z')
+                .filteredBy(CharacterPredicates.LETTERS, CharacterPredicates.DIGITS)
+                .get();
         System.out.println("随机字符串: " + generator.generate(6));
     }
 }

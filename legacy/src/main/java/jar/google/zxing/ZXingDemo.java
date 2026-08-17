@@ -79,19 +79,19 @@ public class ZXingDemo {
                 width = 300;
                 height = 300;
                 hints = Map.of(
-                    EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name(),
-                    // 纠错等级
-                    EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M,
-                    EncodeHintType.MARGIN, 2
+                        EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name(),
+                        // 纠错等级
+                        EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M,
+                        EncodeHintType.MARGIN, 2
                 );
                 break;
             // 条形码 (EAN-13)
             case EAN_13:
                 width = 3 +     // start guard
-                    (7 * 6) +   // left bars
-                    5 +         // middle guard
-                    (7 * 6) +   // right bars
-                    3;          // end guard
+                        (7 * 6) +   // left bars
+                        5 +         // middle guard
+                        (7 * 6) +   // right bars
+                        3;          // end guard
                 height = 30;
                 break;
             default:
@@ -122,13 +122,13 @@ public class ZXingDemo {
 
         try {
             BinaryBitmap binaryBitmap =
-                new BinaryBitmap(
-                    new HybridBinarizer(
-                        new BufferedImageLuminanceSource(
-                            ImageIO.read(new File(filePath))
-                        )
-                    )
-                );
+                    new BinaryBitmap(
+                            new HybridBinarizer(
+                                    new BufferedImageLuminanceSource(
+                                            ImageIO.read(new File(filePath))
+                                    )
+                            )
+                    );
 
             return new MultiFormatReader().decode(binaryBitmap, hints);
         } catch (NotFoundException | IOException e) {

@@ -35,8 +35,8 @@ public class JaveDemo extends Demo {
     public void testConvertToM4a() throws IOException {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
             stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac)$"))
-                .parallel()
-                .forEach(path -> convertToM4a(path.toFile(), buildOutputFile(path), BitRate.VBR.create(2f)));
+                    .parallel()
+                    .forEach(path -> convertToM4a(path.toFile(), buildOutputFile(path), BitRate.VBR.create(2f)));
         }
     }
 

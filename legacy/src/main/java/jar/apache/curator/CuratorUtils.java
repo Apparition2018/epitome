@@ -20,12 +20,12 @@ public final class CuratorUtils {
 
     public static CuratorFramework getCuratorFramework() {
         CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("localhost:2182,localhost:2183,localhost:2184")
-            .connectionTimeoutMs(5000)
-            .sessionTimeoutMs(5000)
-            .retryPolicy(new ExponentialBackoffRetry(1000, 5))
-            .namespace("test")
-            .build();
+                .connectString("localhost:2182,localhost:2183,localhost:2184")
+                .connectionTimeoutMs(5000)
+                .sessionTimeoutMs(5000)
+                .retryPolicy(new ExponentialBackoffRetry(1000, 5))
+                .namespace("test")
+                .build();
         client.getConnectionStateListenable().addListener((curatorFramework, newState) -> {
             if (newState == ConnectionState.CONNECTED) log.info("连接成功");
         });

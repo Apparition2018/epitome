@@ -37,12 +37,12 @@ public class TreeUtilDemo {
      */
     public static void main(String[] args) {
         List<TreeNode<String>> treeNodeList = List.of(
-            new TreeNode<>("1", "0", "系统管理", 5),
-            new TreeNode<>("11", "1", "用户管理", 10),
-            new TreeNode<>("111", "11", "添加用户", 11),
-            new TreeNode<>("2", "0", "店铺管理", 5),
-            new TreeNode<>("21", "2", "商品管理", 10),
-            new TreeNode<>("221", "2", "添加商品", 11)
+                new TreeNode<>("1", "0", "系统管理", 5),
+                new TreeNode<>("11", "1", "用户管理", 10),
+                new TreeNode<>("111", "11", "添加用户", 11),
+                new TreeNode<>("2", "0", "店铺管理", 5),
+                new TreeNode<>("21", "2", "商品管理", 10),
+                new TreeNode<>("221", "2", "添加商品", 11)
         );
 
         List<Tree<String>> treeList = TreeUtil.build(treeNodeList, "0");

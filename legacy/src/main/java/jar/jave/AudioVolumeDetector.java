@@ -29,8 +29,8 @@ public class AudioVolumeDetector {
     public static void main(String[] args) throws EncoderException, IOException, InterruptedException {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
             List<Path> audioFiles = stream
-                .filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac|wav|m4a)$"))
-                .toList();
+                    .filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac|wav|m4a)$"))
+                    .toList();
 
             System.out.println("=== 音频文件音量检测报告 ===");
             System.out.printf("检测到 %d 个音频文件%n%n", audioFiles.size());
@@ -55,15 +55,15 @@ public class AudioVolumeDetector {
 
             System.out.printf("文件: %s%n", source.getFileName());
             System.out.printf("  格式: %s, 时长: %d秒, 采样率: %d Hz, 声道: %d, 比特率: %d kbps%n",
-                getFileExtension(source), duration, samplingRate, channels, bitRate / 1000);
+                    getFileExtension(source), duration, samplingRate, channels, bitRate / 1000);
 
             // 构建 FFmpeg 音量检测命令
             List<String> cmd = List.of(
-                "ffmpeg",
-                "-i", source.toString(),
-                "-af", "volumedetect",
-                "-f", "null",
-                "-"
+                    "ffmpeg",
+                    "-i", source.toString(),
+                    "-af", "volumedetect",
+                    "-f", "null",
+                    "-"
             );
 
             ProcessBuilder pb = new ProcessBuilder(cmd);
@@ -183,11 +183,11 @@ public class AudioVolumeDetector {
     public static void detectLoudness(Path source) {
         try {
             List<String> cmd = List.of(
-                "ffmpeg",
-                "-i", source.toString(),
-                "-af", "ebur128=peak=true",
-                "-f", "null",
-                "-"
+                    "ffmpeg",
+                    "-i", source.toString(),
+                    "-af", "ebur128=peak=true",
+                    "-f", "null",
+                    "-"
             );
 
             ProcessBuilder pb = new ProcessBuilder(cmd);

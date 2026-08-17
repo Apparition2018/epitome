@@ -27,7 +27,7 @@ public class ArrayUtilDemo extends Demo {
         // 将新元素添加到已有数组中，添加新元素会生成一个新的数组，不影响原数组
         p(ArrayUtil.append(arr, 10));                   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         // static <T> T[]	    setOrAppend(T[] buffer, int index, T value)
-        //将元素值设置为数组的某个位置，当给定的index大于数组长度，则追加
+        // 将元素值设置为数组的某个位置，当给定的index大于数组长度，则追加
         p(ArrayUtil.setOrAppend(arr.clone(), 8, 0));    // [1, 2, 3, 4, 5, 6, 7, 8, 0]
         p(ArrayUtil.setOrAppend(arr.clone(), 9, 0));    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 

@@ -24,7 +24,7 @@ import static com.ljh.commons.Demo.HU_DEMO_DIR_PATH;
  * @author ljh
  * @since 2020/11/21 17:37
  */
-public class CaptchaDemo{
+public class CaptchaDemo {
 
     private static final int WIDTH = 80;
     private static final int HEIGHT = 30;

@@ -92,13 +92,13 @@ public final class HttpClientUtils {
     static {
         // 连接 Socket 工厂的注册表
         Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
-            .register("http", PlainConnectionSocketFactory.INSTANCE)
-            .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
-            .build();
+                .register("http", PlainConnectionSocketFactory.INSTANCE)
+                .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
+                .build();
 
         // 连接管理器
         PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(
-            socketFactoryRegistry, PoolConcurrencyPolicy.STRICT, PoolReusePolicy.LIFO, TimeValue.ofMinutes(5));
+                socketFactoryRegistry, PoolConcurrencyPolicy.STRICT, PoolReusePolicy.LIFO, TimeValue.ofMinutes(5));
         connManager.setDefaultSocketConfig(SocketConfig.custom().setSoTimeout(30, TimeUnit.SECONDS).setTcpNoDelay(true).build());
         connManager.setValidateAfterInactivity(TimeValue.ofSeconds(10));
         connManager.setMaxTotal(100);
@@ -113,24 +113,24 @@ public final class HttpClientUtils {
 
         // 全局请求配置
         RequestConfig requestConfig = RequestConfig.custom()
-            .setCookieSpec(StandardCookieSpec.STRICT)
-            .setExpectContinueEnabled(true)
-            .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
-            .setProxyPreferredAuthSchemes(Collections.singletonList(StandardAuthScheme.BASIC))
-            .setConnectTimeout(5, TimeUnit.SECONDS)
-            .setResponseTimeout(5, TimeUnit.SECONDS)
-            .setConnectionRequestTimeout(5, TimeUnit.SECONDS)
-            .build();
+                .setCookieSpec(StandardCookieSpec.STRICT)
+                .setExpectContinueEnabled(true)
+                .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
+                .setProxyPreferredAuthSchemes(Collections.singletonList(StandardAuthScheme.BASIC))
+                .setConnectTimeout(5, TimeUnit.SECONDS)
+                .setResponseTimeout(5, TimeUnit.SECONDS)
+                .setConnectionRequestTimeout(5, TimeUnit.SECONDS)
+                .build();
 
         // HttpClient
         httpClient = HttpClients.custom()
-            .setConnectionManager(connManager)
-            .setDefaultCookieStore(cookieStore)
-            .setDefaultCredentialsProvider(basicCredentialsProvider)
-            .setDefaultRequestConfig(requestConfig)
-            .evictExpiredConnections()
-            .evictIdleConnections(TimeValue.ofMinutes(3))
-            .build();
+                .setConnectionManager(connManager)
+                .setDefaultCookieStore(cookieStore)
+                .setDefaultCredentialsProvider(basicCredentialsProvider)
+                .setDefaultRequestConfig(requestConfig)
+                .evictExpiredConnections()
+                .evictIdleConnections(TimeValue.ofMinutes(3))
+                .build();
 
         // JVM 停止或重启时，关闭连接池释放掉连接
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -197,7 +197,7 @@ public final class HttpClientUtils {
         HttpPost httpPost = new HttpPost(url);
         if (params != null) {
             List<BasicNameValuePair> nameValuePairList = params.entrySet().stream().map(
-                entry -> new BasicNameValuePair(entry.getKey(), entry.getValue())).collect(Collectors.toList());
+                    entry -> new BasicNameValuePair(entry.getKey(), entry.getValue())).collect(Collectors.toList());
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
         }

@@ -69,19 +69,19 @@ public class ImgUtilDemo extends Demo {
 
         // 文字水印
         ImgUtil.pressText(IMG, new File(HU_DEMO_DIR_PATH + "capture_pressText.jpg"),
-            "版权所有", Color.PINK, // 文字
-            new Font("黑体", Font.ITALIC, 36), // 字体
-            0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
-            0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
-            0.8f    // 透明度：alpha 必须是范围 [0.0, 1.0] 之内（包含边界值）的一个浮点数字
+                "版权所有", Color.PINK, // 文字
+                new Font("黑体", Font.ITALIC, 36), // 字体
+                0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
+                0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
+                0.8f    // 透明度：alpha 必须是范围 [0.0, 1.0] 之内（包含边界值）的一个浮点数字
         );
 
         // 图片水印
         ImgUtil.pressImage(IMG, new File(HU_DEMO_DIR_PATH + "capture_pressImage.jpg"),
-            ImgUtil.read(new File(XIAO_XIN_PNG)), // 水印图片
-            0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
-            0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
-            0.1f
+                ImgUtil.read(new File(XIAO_XIN_PNG)), // 水印图片
+                0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
+                0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
+                0.1f
         );
     }
 
@@ -115,6 +115,6 @@ public class ImgUtilDemo extends Demo {
     @Test
     public void createImage() throws IOException {
         ImgUtil.createImage("ABC", new Font("黑体", Font.PLAIN, 28), Color.WHITE, Color.BLACK,
-            new FileImageOutputStream(new File(HU_DEMO_DIR_PATH + "createImage.jpg")));
+                new FileImageOutputStream(new File(HU_DEMO_DIR_PATH + "createImage.jpg")));
     }
 }

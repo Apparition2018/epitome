@@ -62,8 +62,8 @@ public final class ZipUtils {
                 try {
                     String relativePath = srcPath.relativize(path).toString();
                     String entryName = relativePath.isEmpty() ?
-                        srcPath.getFileName().toString() :
-                        srcPath.getFileName().toString() + "/" + relativePath;
+                            srcPath.getFileName().toString() :
+                            srcPath.getFileName().toString() + "/" + relativePath;
                     entryName = entryName.replace("\\", "/");
                     if (Files.isDirectory(path) && !entryName.endsWith("/")) entryName += "/";
                     ZipArchiveEntry entry = new ZipArchiveEntry(entryName);
@@ -124,7 +124,7 @@ public final class ZipUtils {
 
     public static boolean notEndsWithZip(String path) {
         return path == null
-            || path.isBlank()
-            || !path.toLowerCase(Locale.ENGLISH).endsWith(".zip");
+                || path.isBlank()
+                || !path.toLowerCase(Locale.ENGLISH).endsWith(".zip");
     }
 }

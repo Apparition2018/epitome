@@ -27,9 +27,9 @@ public class FFmpegCliConverter {
     public static void main(String[] args) throws EncoderException, IOException, InterruptedException {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
             stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac|wav)$"))
-                .parallel()
-                // .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.OBR.create()));
-                .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.CBR.ULTRA));
+                    .parallel()
+                    // .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.OBR.create()));
+                    .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.CBR.ULTRA));
         }
     }
 
@@ -57,13 +57,13 @@ public class FFmpegCliConverter {
             List<String> inputFileCmd = List.of("-i", source.toString());
             // ④Output Options  -c:a, -b:a, -q:a,
             List<String> outputOptionsCmd = new ArrayList<>(List.of(
-                "-ar", String.valueOf(Math.min(samplingRate, 96000)),   // 采样率
-                "-ac", String.valueOf(channels),                        // 声道数
-                // "-af", "volume=4dB",                                    // 音量提升4dB
-                "-c:v", "copy",                                         // 视频处理方式：复制（视频或封面）
-                "-movflags", "+faststart",                              // 文件结构优化：将元数据从文件的末尾移动到开头，使得无需下载整个文件就能开始播放
-                "-map_metadata", "0",                                   // 元数据映射：复制输入文件（索引0）中的所有全局元数据
-                "-map_chapters", "0"                                    // 章节信息映射：复制输入文件（索引 0）中的所有章节信息
+                    "-ar", String.valueOf(Math.min(samplingRate, 96000)),   // 采样率
+                    "-ac", String.valueOf(channels),                        // 声道数
+                    // "-af", "volume=4dB",                                    // 音量提升4dB
+                    "-c:v", "copy",                                         // 视频处理方式：复制（视频或封面）
+                    "-movflags", "+faststart",                              // 文件结构优化：将元数据从文件的末尾移动到开头，使得无需下载整个文件就能开始播放
+                    "-map_metadata", "0",                                   // 元数据映射：复制输入文件（索引0）中的所有全局元数据
+                    "-map_chapters", "0"                                    // 章节信息映射：复制输入文件（索引 0）中的所有章节信息
             ));
             if (targetBitRate instanceof BitRate.CBR || targetBitRate instanceof BitRate.OBR) {
                 outputOptionsCmd.add("-b:a");           // 恒定比特率 (CBR)

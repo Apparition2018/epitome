@@ -40,10 +40,10 @@ public class IoDemo extends Demo {
 
         p("\nCount distinct word occurrences in a file");
         Multiset<String> wordOccurrences = HashMultiset.create(
-            Splitter.on(CharMatcher.whitespace())
-                .trimResults()
-                .omitEmptyStrings()
-                .split(Files.asCharSource(file, Charsets.UTF_8).read()));
+                Splitter.on(CharMatcher.whitespace())
+                        .trimResults()
+                        .omitEmptyStrings()
+                        .split(Files.asCharSource(file, Charsets.UTF_8).read()));
         wordOccurrences.forEach(Demo::p);
 
         p("\nSHA-256 a file");

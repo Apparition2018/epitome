@@ -31,17 +31,17 @@ public class JoinerDemo {
     @Test
     public void null_() {
         String join = Joiner.on("-")
-            // Joiner	skipNulls()
-            // 用于过滤集合中为null的元素，然后返回一个新的Joiner对象实例
-            .skipNulls()
-            .join(listWithNull);
+                // Joiner	skipNulls()
+                // 用于过滤集合中为null的元素，然后返回一个新的Joiner对象实例
+                .skipNulls()
+                .join(listWithNull);
         p(join); // A-B-C
 
         join = Joiner.on("-")
-            // Joiner	useForNull(String nullText)
-            // 连接器做join连接操作时用nullText替换null元素值
-            .useForNull("D")
-            .join(listWithNull);
+                // Joiner	useForNull(String nullText)
+                // 连接器做join连接操作时用nullText替换null元素值
+                .useForNull("D")
+                .join(listWithNull);
         p(join); // A-B-C-D
     }
 
@@ -76,7 +76,7 @@ public class JoinerDemo {
     @Test
     public void joining() {
         String collect = listWithNull.stream().filter(s -> null != s && !s.isEmpty())
-            .collect(Collectors.joining("-"));
+                .collect(Collectors.joining("-"));
         p(collect); // A-B-C
     }
 }
