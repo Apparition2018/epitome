@@ -1,7 +1,6 @@
 package knowledge.data.structure.collections.framework.map;
 
 import com.google.common.collect.Maps;
-import com.ljh.commons.Demo;
 import knowledge.data.structure.collections.framework.collection.SetDemo;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -9,6 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.Serial;
 import java.util.*;
+
+import static com.ljh.commons.Demo.map;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Map.html">Map</a>
@@ -22,10 +24,10 @@ import java.util.*;
  * HashMap              null        null        AbstractMap     线程不安全       数组 + 链表 + 红黑树
  * LinkedHashMap        null        null        HashMap         线程不安全       数组 + 链表 + 双向链表（维护插入/访问顺序）
  * 注：①HashMap 怎么解决哈希冲突？
- *      a.落到同一个桶（数组位），链表解决
- *      b.扩容稀释冲突
- *    ②当数组长度 ≥ 64，且链表长度 ≥ 8，则将链表转为红黑树
- *    ③ConcurrentHashMap：空桶用 CAS 插入，非空桶用 synchronized 锁该桶（即链表头或树根节点）
+ * a.落到同一个桶（数组位），链表解决
+ * b.扩容稀释冲突
+ * ②当数组长度 ≥ 64，且链表长度 ≥ 8，则将链表转为红黑树
+ * ③ConcurrentHashMap：空桶用 CAS 插入，非空桶用 synchronized 锁该桶（即链表头或树根节点）
  * </pre>
  * <p>************************************************************
  * <p>HashMap
@@ -33,10 +35,10 @@ import java.util.*;
  * 1 底层实现是数组链表，JDK8 加上了红黑树
  * 2 允许空键和空值（但空键只有一个，且放在第一位）
  * 3 两个关键因子：初始容量16、加载因子0.75
- *   3.1 扩容总是原来的2倍，即容量始终为2的幂次方
- *   3.2 遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
- *   3.3 加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
- *   3.4 建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
+ * 3.1 扩容总是原来的2倍，即容量始终为2的幂次方
+ * 3.2 遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
+ * 3.3 加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
+ * 3.4 建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
  * </pre>
  * <p>************************************************************
  * <pre>
@@ -55,7 +57,7 @@ import java.util.*;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class MapDemo extends Demo {
+public class MapDemo {
 
     /** 返回一个不可修改的 Map，JDK9 引入 */
     @Test
@@ -65,9 +67,9 @@ public class MapDemo extends Demo {
         // 返回一个不可修改的 Map，JDK9 引入
         Map<Integer, String> map = Map.of(1, "A", 2, "B", 3, "C");
         map = Map.ofEntries(
-            new AbstractMap.SimpleEntry<>(1, "A"),
-            new AbstractMap.SimpleEntry<>(2, "B"),
-            new AbstractMap.SimpleEntry<>(3, "C")
+                new AbstractMap.SimpleEntry<>(1, "A"),
+                new AbstractMap.SimpleEntry<>(2, "B"),
+                new AbstractMap.SimpleEntry<>(3, "C")
         );
 
         // Map<K, V>    copyOf(Map<? extends K, ? extends V> map)
@@ -119,12 +121,12 @@ public class MapDemo extends Demo {
         }
 
         List<Student> studentList = List.of(
-            new Student().setId(1).setSubject("chinese").setScore(99),
-            new Student().setId(1).setSubject("math").setScore(100),
-            new Student().setId(1).setSubject("english").setScore(98),
-            new Student().setId(2).setSubject("chinese").setScore(85),
-            new Student().setId(2).setSubject("math").setScore(60),
-            new Student().setId(2).setSubject("english").setScore(100)
+                new Student().setId(1).setSubject("chinese").setScore(99),
+                new Student().setId(1).setSubject("math").setScore(100),
+                new Student().setId(1).setSubject("english").setScore(98),
+                new Student().setId(2).setSubject("chinese").setScore(85),
+                new Student().setId(2).setSubject("math").setScore(60),
+                new Student().setId(2).setSubject("english").setScore(100)
         );
         Map<Integer, Integer> studentMap = new HashMap<>();
         studentList.forEach(student -> studentMap.merge(student.getId(), student.getScore(), Integer::sum));

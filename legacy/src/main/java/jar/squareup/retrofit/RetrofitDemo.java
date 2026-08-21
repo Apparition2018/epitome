@@ -1,6 +1,5 @@
 package jar.squareup.retrofit;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import com.squareup.moshi.FromJson;
 import com.squareup.moshi.Moshi;
@@ -13,13 +12,15 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://square.github.io/retrofit/">Retrofit</a>
  *
  * @author ljh
  * @since 2021/8/3 17:49
  */
-public class RetrofitDemo extends Demo {
+public class RetrofitDemo {
 
     public static void main(String[] args) throws IOException {
         Moshi moshi = new Moshi.Builder().add(new CustomDateAdapter()).build();

@@ -17,26 +17,18 @@
         <commons-beanutils.version>1.11.0</commons-beanutils.version>
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
         <commons-cli.version>1.11.0</commons-cli.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-        <commons-configuration2.version>2.15.1</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <commons-csv.version>1.14.1</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email2-jakarta -->
         <commons-email2.version>2.0.0-M1</commons-email2.version>
-        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
-        <commons-net.version>3.13.0</commons-net.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
         <commons-rng.version>1.7</commons-rng.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <poi.version>5.5.1</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
         <tika.version>3.3.1</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.22.2</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
         <minio.version>9.0.3</minio.version>
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
-        <itext.version>9.7.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>10.9.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
@@ -67,18 +59,12 @@
         <byte-buddy.version>1.17.8</byte-buddy.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
-        <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
-        <jsch.version>2.28.4</jsch.version>
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
-        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
-        <zxing.version>3.5.4</zxing.version>
         <!-- https://mvnrepository.com/artifact/QRCode/QRCode -->
         <QRCode.version>3.0.0</QRCode.version>
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.4</lucene-analyzers.version>
-        <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>7.4.0</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
@@ -180,12 +166,6 @@
             <artifactId>commons-cli</artifactId>
             <version>${commons-cli.version}</version>
         </dependency>
-        <!-- commons-configuration2：读取各种格式的 configuration/preferences 文件 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-configuration2</artifactId>
-            <version>${commons-configuration2.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
@@ -201,21 +181,9 @@
             <version>${commons-email2.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${commons-net.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-rng-simple</artifactId>
             <version>${commons-rng.version}</version>
-        </dependency>
-
-        <!-- poi -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
         </dependency>
 
         <dependency>
@@ -249,11 +217,6 @@
             <artifactId>itext-core</artifactId>
             <version>${itext.version}</version>
             <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>bouncy-castle-adapter</artifactId>
-            <version>${itext.version}</version>
         </dependency>
 
         <dependency>
@@ -317,16 +280,6 @@
         <dependency>
             <groupId>tools.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
         </dependency>
 
         <dependency>
@@ -398,13 +351,6 @@
             <version>${easy-captcha.version}</version>
         </dependency>
 
-        <!-- hutool：https://www.hutool.cn/docs/#/ -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
-        </dependency>
-
         <!-- cglib：Code 生成，动态代理 -->
         <dependency>
             <groupId>cglib</groupId>
@@ -418,23 +364,10 @@
             <version>${emoji.version}</version>
         </dependency>
 
-        <!-- jsch：SSH2 的 Java 实现 -->
-        <dependency>
-            <groupId>com.github.mwiede</groupId>
-            <artifactId>jsch</artifactId>
-            <version>${jsch.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>io.github.biezhi</groupId>
             <artifactId>TinyPinyin</artifactId>
             <version>${TinyPinyin.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>${zxing.version}</version>
         </dependency>
 
         <dependency>
@@ -458,13 +391,6 @@
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-smartcn</artifactId>
             <version>${lucene-analyzers.version}</version>
-        </dependency>
-
-        <!-- oshi：获取系统和硬件信息工具 -->
-        <dependency>
-            <groupId>com.github.oshi</groupId>
-            <artifactId>oshi-core</artifactId>
-            <version>${oshi.version}</version>
         </dependency>
 
         <!-- 内存可视化工具 -->

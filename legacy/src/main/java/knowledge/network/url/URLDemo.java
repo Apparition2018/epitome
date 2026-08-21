@@ -1,6 +1,5 @@
 package knowledge.network.url;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -15,6 +14,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URL.html">URL</a>
  * <pre>
@@ -25,7 +26,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class URLDemo extends Demo {
+public class URLDemo {
 
     @Test
     public void testURL() throws IOException {

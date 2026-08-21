@@ -3,12 +3,13 @@ package jar.jackson.annotataion;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ljh.commons.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.assertj.core.util.Lists;
 
 import java.util.List;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * {@code @JsonIdentityInfo} 解决循环依赖序列化和反序列化问题
@@ -16,7 +17,7 @@ import java.util.List;
  * @author ljh
  * @since 2021/7/24 17:04
  */
-public class JsonIdentityInfoDemo extends Demo {
+public class JsonIdentityInfoDemo {
 
     public static void main(String[] args) throws JsonProcessingException {
         Employee e1 = new Employee().setName("mary");

@@ -1,6 +1,5 @@
 package knowledge.security;
 
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.BadPaddingException;
@@ -18,6 +17,8 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * 数字证书
@@ -50,7 +51,7 @@ import java.util.Objects;
  * @see <a href="https://blog.csdn.net/meng564764406/article/details/79427687">Keytool 或 Keystore 使用及证书转换</a>
  * @since 2021/7/7 17:09
  */
-public class CertificateDemo extends Demo {
+public class CertificateDemo {
 
     private static final String KEY_PATH = DESKTOP + "ljh.pfx";
     private static final String KEY_PASSWORD = "123123";

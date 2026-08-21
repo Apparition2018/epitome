@@ -1,7 +1,6 @@
 package jar.google.guava.io;
 
 import com.google.common.base.CharMatcher;
-import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableList;
@@ -15,6 +14,9 @@ import com.ljh.commons.Demo;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://github.com/google/guava/wiki/IOExplained">IO</a>
@@ -29,13 +31,13 @@ import java.net.URL;
  * @see <a href="https://github.com/google/guava/wiki/ClosingResourcesExplained">ClosingResourcesExplained</a>
  * @since 2023/1/10 9:48
  */
-public class IoDemo extends Demo {
+public class IoDemo {
 
     public static void main(String[] args) throws IOException {
         File file = new File(DEMO_FILE_PATH);
 
         p("Read the lines of a UTF-8 text file");
-        ImmutableList<String> lines = Files.asCharSource(file, Charsets.UTF_8).readLines();
+        ImmutableList<String> lines = Files.asCharSource(file, StandardCharsets.UTF_8).readLines();
         lines.forEach(Demo::p);
 
         p("\nCount distinct word occurrences in a file");
@@ -43,7 +45,7 @@ public class IoDemo extends Demo {
                 Splitter.on(CharMatcher.whitespace())
                         .trimResults()
                         .omitEmptyStrings()
-                        .split(Files.asCharSource(file, Charsets.UTF_8).read()));
+                        .split(Files.asCharSource(file, StandardCharsets.UTF_8).read()));
         wordOccurrences.forEach(Demo::p);
 
         p("\nSHA-256 a file");

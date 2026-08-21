@@ -7,7 +7,8 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Customer — 客户实体。
@@ -18,8 +19,8 @@ import java.util.Date;
  *         通过 {@code pkColumnName}/{@code valueColumnName}/{@code pkColumnValue}/{@code allocationSize}
  *         指定表结构与步长；与 {@link Order} 的 SEQUENCE、{@link Customer2} 的 AUTO 形成对照。</li>
  *     <li><b>序号 2（字段映射注解）</b>：{@code @Basic}（是否可选/懒加载）、
- *         {@code @Enumerated}（{@code STRING} 存枚举名 vs {@code ORDINAL} 存下标）、
- *         {@code @Temporal}（{@code DATE} 仅日期 vs {@code TIMESTAMP} 含时间）。</li>
+ *         {@code @Enumerated}（{@code STRING} 存枚举名 vs {@code ORDINAL} 存下标）。
+ *         日期时间字段用 {@code java.time} 类型（{@code LocalDate}/{@code LocalDateTime}）。</li>
  *     <li><b>序号 5（关联删除行为）</b>：本实体不声明一对多集合（保持纯被引用端），
  *         {@link Order} 通过多对一引用本实体且外键列 {@code NOT NULL}，删除被订单引用的本实体
  *         即触发外键约束异常。</li>
@@ -51,7 +52,7 @@ public class Customer implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    /** @Basic 显式声明：默认 EAGER + 非可选（可写可不写，此处显式以作演示） */
+    /** {@code @Basic } 显式声明：默认 EAGER + 非可选（可写可不写，此处显式以作演示） */
     @Basic
     @Column(name = "name", length = 50)
     private String name;
@@ -66,15 +67,13 @@ public class Customer implements Serializable {
     @Column(name = "status_ordinal")
     private CustomerStatus statusOrdinal;
 
-    /** {@code @Temporal(DATE)}：仅存日期部分（yyyy-MM-dd） */
-    @Temporal(TemporalType.DATE)
+    /** 仅存日期部分（yyyy-MM-dd），对应原 {@code @Temporal(DATE)} */
     @Column(name = "birth_date")
-    private Date birthDate;
+    private LocalDate birthDate;
 
-    /** {@code @Temporal(TIMESTAMP)}：日期 + 时间 */
-    @Temporal(TemporalType.TIMESTAMP)
+    /** 日期 + 时间，对应原 {@code @Temporal(TIMESTAMP)} */
     @Column(name = "created_at")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     /** {@code @Basic(fetch = LAZY)}：声明懒加载的普通字段，访问时才取（需字节码增强才真正生效） */
     @Basic(fetch = FetchType.LAZY)

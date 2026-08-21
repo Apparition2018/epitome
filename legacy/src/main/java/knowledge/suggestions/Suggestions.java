@@ -1,6 +1,5 @@
 package knowledge.suggestions;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import knowledge.suggestions.Family.Daughter;
 import knowledge.suggestions.Family.Son;
@@ -22,6 +21,8 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://www.cnblogs.com/selene/category/876189.html">编写高质量代码 改善java程序的151个建议</a>
@@ -105,7 +106,7 @@ import java.util.stream.IntStream;
  */
 @Slf4j
 @SuppressWarnings("unchecked")
-public class Suggestions extends Demo {
+public class Suggestions {
 
     /* 第一章：Java 开发中通用的方法和准则 */
 

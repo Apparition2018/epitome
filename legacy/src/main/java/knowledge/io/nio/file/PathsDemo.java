@@ -1,12 +1,13 @@
 package knowledge.io.nio.file;
 
 import cn.hutool.core.util.StrUtil;
-import com.ljh.commons.Demo;
 
 import java.io.File;
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html">Paths</a>
@@ -14,7 +15,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/11/5 10:06
  */
-public class PathsDemo extends Demo {
+public class PathsDemo {
 
     public static void main(String[] args) {
         // static Path	    get(String first, String... more)       pathStr... → Path

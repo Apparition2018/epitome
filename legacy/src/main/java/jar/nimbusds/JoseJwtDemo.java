@@ -1,7 +1,6 @@
 package jar.nimbusds;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ljh.commons.Demo;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
@@ -17,6 +16,8 @@ import java.text.ParseException;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * JoseJwt
@@ -44,7 +45,7 @@ import java.util.List;
  * @see <a href="https://mp.weixin.qq.com/s/Jo3PZoa7nL99c8UCxPiTTA">nimbus-jose-jwt 使用介绍</a>
  * @since 2021/8/27 8:59
  */
-public class JoseJwtDemo extends Demo {
+public class JoseJwtDemo {
 
     private static final String SECRET = DigestUtils.md5DigestAsHex("test".getBytes(StandardCharsets.UTF_8));
 

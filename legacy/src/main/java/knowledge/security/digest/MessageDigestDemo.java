@@ -1,6 +1,5 @@
 package knowledge.security.digest;
 
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.DigestUtils;
 
@@ -10,6 +9,8 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/security/MessageDigest.html">MessageDigest</a>    消息摘要
@@ -24,7 +25,7 @@ import java.security.NoSuchAlgorithmException;
  * @see <a href="https://www.cnblogs.com/oumyye/p/4593592.html">Java Base64 和消息摘要</a>
  * @since 2020/11/8 19:04
  */
-public class MessageDigestDemo extends Demo {
+public class MessageDigestDemo {
 
     private static MessageDigest md5;
 
@@ -139,14 +140,13 @@ public class MessageDigestDemo extends Demo {
      *
      * @see <a href="https://blog.csdn.net/iblade/article/details/73288822">Java MD5</a>
      */
-    private static class MD5Demo extends Demo {
+    private static class MD5Demo {
 
         public static void main(String[] args) throws NoSuchAlgorithmException {
             testMessageDigest("MD5");
             p("Spring MD5：" + DigestUtils.md5DigestAsHex(HELLO_WORLD.getBytes()));
             p("commons-codec MD5：" + org.apache.commons.codec.digest.DigestUtils.md5Hex(HELLO_WORLD));
         }
-
     }
 
     /**

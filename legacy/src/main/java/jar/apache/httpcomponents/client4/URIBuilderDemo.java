@@ -1,6 +1,5 @@
 package jar.apache.httpcomponents.client4;
 
-import com.ljh.commons.Demo;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.junit.jupiter.api.Test;
@@ -9,13 +8,15 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * URIBuilder
  *
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class URIBuilderDemo extends Demo {
+public class URIBuilderDemo {
 
     @Test
     public void get() throws URISyntaxException {

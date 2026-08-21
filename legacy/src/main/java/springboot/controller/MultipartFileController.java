@@ -3,11 +3,11 @@ package springboot.controller;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.net.HttpHeaders;
 import com.ljh.commons.Person;
+import com.ljh.commons.util.ExcelUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jar.apache.poi.ExcelUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -65,9 +65,9 @@ public class MultipartFileController {
              OutputStream outputStream = response.getOutputStream()) {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
             response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="
-                // 防止文件名有中文时显示为下划线
-                + URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+", "%20"));
-                // + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+                    // 防止文件名有中文时显示为下划线
+                    + URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+", "%20"));
+            // + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             IOUtils.copy(inputStream, outputStream);
             outputStream.flush();
         } catch (Exception e) {

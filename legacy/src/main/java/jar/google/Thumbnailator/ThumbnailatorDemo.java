@@ -1,7 +1,6 @@
 package jar.google.Thumbnailator;
 
 import cn.hutool.core.img.ImgUtil;
-import com.ljh.commons.Demo;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import org.apache.commons.io.FilenameUtils;
@@ -10,13 +9,16 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
+import static com.ljh.commons.Demo.DESKTOP;
+import static com.ljh.commons.Demo.XIAO_XIN_PNG;
+
 /**
  * Thumbnailator
  *
  * @author ljh
  * @since 2023/2/23 11:53
  */
-public class ThumbnailatorDemo extends Demo {
+public class ThumbnailatorDemo {
 
     public static void main(String[] args) throws IOException {
         Thumbnails.of(XIAO_XIN_PNG)

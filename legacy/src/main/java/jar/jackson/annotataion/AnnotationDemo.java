@@ -5,12 +5,13 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.ljh.commons.Demo;
 import jar.jackson.custom.CustomFilter;
 import jar.jackson.entity.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * Annotation
@@ -33,7 +34,7 @@ import java.util.Date;
  * @author ljh
  * @since 2021/7/19 23:44
  */
-public class AnnotationDemo extends Demo {
+public class AnnotationDemo {
 
     /**
      * {@code @JsonInclude}

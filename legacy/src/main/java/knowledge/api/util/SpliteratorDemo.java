@@ -1,9 +1,10 @@
 package knowledge.api.util;
 
-import com.ljh.commons.Demo;
-
 import java.util.Arrays;
 import java.util.Spliterator;
+
+import static com.ljh.commons.Demo.arr;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html">Spliterator</a>
@@ -19,7 +20,7 @@ import java.util.Spliterator;
  * @author ljh
  * @since 2020/11/7 1:08
  */
-public class SpliteratorDemo extends Demo {
+public class SpliteratorDemo {
 
     public static void main(String[] args) {
         Spliterator<Integer> spliterator = Arrays.spliterator(arr);

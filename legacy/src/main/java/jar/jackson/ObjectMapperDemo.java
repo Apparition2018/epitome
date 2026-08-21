@@ -3,7 +3,6 @@ package jar.jackson;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.ljh.commons.Demo;
 import jar.jackson.custom.CustomDeserializer;
 import jar.jackson.custom.CustomSerializer;
 import jar.jackson.entity.Person;
@@ -23,6 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.SimpleTimeZone;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * ObjectMapper
  * ObjectMapper 是 jackson-databind 模块最为重要的一个类，它完成了 coder 对数据绑定的几乎所有功能。
@@ -39,7 +40,7 @@ import java.util.SimpleTimeZone;
  * @author ljh
  * @since 2021/7/18 12:59
  */
-public class ObjectMapperDemo extends Demo {
+public class ObjectMapperDemo {
 
     /** JsonMapper 为 ObjectMapper 的子类 */
     @Test

@@ -1,9 +1,10 @@
 package jar.jakarta.activation;
 
-import com.ljh.commons.Demo;
 import jakarta.activation.MimetypesFileTypeMap;
 
 import java.io.File;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * MimetypesFileTypeMap
@@ -11,7 +12,7 @@ import java.io.File;
  * @author ljh
  * @since 2021/4/25 17:38
  */
-public class MimetypesFileTypeMapDemo extends Demo {
+public class MimetypesFileTypeMapDemo {
 
     public static void main(String[] args) {
         p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN_PNG)));           // image/png

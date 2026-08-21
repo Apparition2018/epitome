@@ -1,6 +1,5 @@
 package knowledge.concurrent.util;
 
-import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 
@@ -9,6 +8,9 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static com.ljh.commons.Demo.MyThreadFactory;
+import static com.ljh.commons.Demo.p;
 
 /**
  * Condition
@@ -20,7 +22,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author ljh
  * @since 2020/11/15 11:30
  */
-public class ConditionDemo extends Demo {
+public class ConditionDemo {
 
     private static volatile boolean isProducing = true;
     private static final boolean[] isAllConsumerStop = new boolean[]{false, false};

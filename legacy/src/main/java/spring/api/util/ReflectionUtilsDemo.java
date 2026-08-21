@@ -1,6 +1,5 @@
 package spring.api.util;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import org.springframework.util.ReflectionUtils;
 
@@ -8,13 +7,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * ReflectionUtils
  *
  * @author ljh
  * @since 2021/9/8 11:32
  */
-public class ReflectionUtilsDemo extends Demo {
+public class ReflectionUtilsDemo {
 
     public static void main(String[] args) {
         // Field handling

@@ -1,6 +1,5 @@
 package jar.apache.commons.io;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.junit.jupiter.api.Test;
@@ -14,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-io/description.html#IOUtils">IOUtils</a>
@@ -42,7 +43,7 @@ import java.util.List;
  * @see <a href="https://www.cnblogs.com/xing901022/p/5978989.html">IOUtils 总结</a>
  * @since 2019/8/8 19:39
  */
-public class IOUtilsDemo extends Demo {
+public class IOUtilsDemo {
 
     @Test
     public void constant() {

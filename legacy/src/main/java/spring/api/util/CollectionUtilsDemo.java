@@ -9,13 +9,15 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * CollectionUtils
  *
  * @author ljh
  * @since 2021/9/9 11:56
  */
-public class CollectionUtilsDemo extends Demo {
+public class CollectionUtilsDemo {
 
     public static void main(String[] args) throws IOException {
         p("判断是否为空：" + CollectionUtils.isEmpty(list));

@@ -1,10 +1,11 @@
 package knowledge.concurrent.pool;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a>
@@ -29,7 +30,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class ThreadPoolExecutorDemo extends Demo {
+public class ThreadPoolExecutorDemo {
 
     public static void main(String[] args) {
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 5, 10, TimeUnit.SECONDS,

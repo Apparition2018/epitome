@@ -1,9 +1,9 @@
 package knowledge.concurrent.future;
 
-import com.ljh.commons.Demo;
-
 import java.util.Map;
 import java.util.concurrent.*;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * CompletionService
@@ -15,7 +15,7 @@ import java.util.concurrent.*;
  * @author ljh
  * @since 2020/10/26 10:44
  */
-public class CompletionServiceDemo extends Demo {
+public class CompletionServiceDemo {
 
     private final static int NUM_OF_TASK = 5;
 

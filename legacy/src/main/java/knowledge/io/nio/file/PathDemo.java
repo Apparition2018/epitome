@@ -1,6 +1,5 @@
 package knowledge.io.nio.file;
 
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -8,6 +7,8 @@ import java.nio.file.FileSystems;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html">Path</a>
@@ -26,7 +27,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/9/26 2:51
  */
-public class PathDemo extends Demo {
+public class PathDemo {
 
     // 使用 FileSystem.getDefault().getPath(...) 创建 Path
     private final Path p1 = FileSystems.getDefault().getPath(DEMO_DIR_PATH);

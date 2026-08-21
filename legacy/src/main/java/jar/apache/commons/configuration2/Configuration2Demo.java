@@ -1,6 +1,5 @@
 package jar.apache.commons.configuration2;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.XMLConfiguration;
 import org.apache.commons.configuration2.builder.fluent.Configurations;
@@ -10,13 +9,15 @@ import org.apache.commons.configuration2.tree.DefaultExpressionEngineSymbols;
 
 import java.io.File;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://commons.apache.org/proper/commons-configuration/">Commons Configuration</a>
  *
  * @author ljh
  * @since 2020/11/15 1:06
  */
-public class Configuration2Demo extends Demo {
+public class Configuration2Demo {
 
     public static void main(String[] args) throws ConfigurationException {
         Configurations configs = new Configurations();

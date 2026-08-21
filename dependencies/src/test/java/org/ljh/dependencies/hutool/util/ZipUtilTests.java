@@ -1,0 +1,50 @@
+package org.ljh.dependencies.hutool.util;
+
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.ZipUtil;
+import org.junit.jupiter.api.Test;
+
+import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.DEMO_DIR_ABSOLUTE_PATH;
+import static com.ljh.commons.Demo.DEMO_FILE_ABSOLUTE_PATH;
+
+/**
+ * <a href="https://doc.hutool.cn/pages/ZipUtil/">ZipUtil</a>   压缩工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ZipUtil.html">ZipUtil api</a>
+ *
+ * @author ljh
+ * @since 2020/11/7 17:56
+ */
+public class ZipUtilTests {
+
+    /**
+     * static byte[]	    gzip(File file)
+     * static byte[]	    zlib(File file, int level)
+     */
+    @Test
+    public void zip() {
+        // static File      zip([String srcPath, ]String zipPath[, Charset, withSrcDir])
+        // 将单个文件或单个目录压缩到 zipPath
+        ZipUtil.zip(DEMO_DIR_ABSOLUTE_PATH + "a/", DEMO_DIR_ABSOLUTE_PATH + "a.zip",
+                StandardCharsets.UTF_8, true);
+
+        // static File      zip(File zipFile[, Charset], withSrcDir[, FileFilter], File... srcFiles)
+        // 将缩多个文件或多个目录压缩到 zipFile
+        ZipUtil.zip(FileUtil.file(DEMO_DIR_ABSOLUTE_PATH + "a2.zip"), StandardCharsets.UTF_8, true,
+                FileUtil.file(DEMO_DIR_ABSOLUTE_PATH + "a/"),
+                FileUtil.file(DEMO_FILE_ABSOLUTE_PATH)
+        );
+    }
+
+    /**
+     * static File	        unzip(File zipFile[, Charset charset])
+     * static byte[]	    unZlib(InputStream in[, int length])
+     */
+    @Test
+    public void unzip() {
+        // static File      unzip(String zipFilePath[, String outFileDir, Charset charset])
+        // 解压
+        ZipUtil.unzip(DEMO_DIR_ABSOLUTE_PATH + "a2.zip", DEMO_DIR_ABSOLUTE_PATH, StandardCharsets.UTF_8);
+    }
+}

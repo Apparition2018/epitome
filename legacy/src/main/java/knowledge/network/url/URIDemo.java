@@ -1,9 +1,9 @@
 package knowledge.network.url;
 
-import com.ljh.commons.Demo;
-
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URI.html">URI</a>
@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
  * @author ljh
  * @since 2020/9/16 10:46
  */
-public class URIDemo extends Demo {
+public class URIDemo {
 
     public static void main(String[] args) throws URISyntaxException {
         // URI(String str)                  通过解析给定的字符串构造一个 URI

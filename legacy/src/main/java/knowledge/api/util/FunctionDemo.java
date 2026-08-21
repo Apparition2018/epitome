@@ -1,6 +1,5 @@
 package knowledge.api.util;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Nested;
@@ -10,13 +9,16 @@ import java.util.List;
 import java.util.function.*;
 import java.util.stream.Stream;
 
+import static com.ljh.commons.Demo.list;
+import static com.ljh.commons.Demo.p;
+
 /**
  * Function
  *
  * @author ljh
  * @since 2020/9/9 15:13
  */
-public class FunctionDemo extends Demo {
+public class FunctionDemo {
 
     /**
      * Function<T, R>

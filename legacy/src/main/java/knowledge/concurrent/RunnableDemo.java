@@ -1,9 +1,10 @@
 package knowledge.concurrent;
 
-import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Runnable.html">Runnable</a>
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class RunnableDemo extends Demo {
+public class RunnableDemo {
 
     public static void main(String[] args) throws InterruptedException {
         setCountDownLatch(3);

@@ -1,11 +1,12 @@
 package jar.apache.commons.collections4;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html">ListUtils</a>
@@ -13,7 +14,7 @@ import java.util.List;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class ListUtilsDemo extends Demo {
+public class ListUtilsDemo {
 
     @Test
     public void testListUtils() {

@@ -1,9 +1,10 @@
 package knowledge.data.structure.collections.framework;
 
-import com.ljh.commons.Demo;
-
 import java.util.Iterator;
 import java.util.Map;
+
+import static com.ljh.commons.Demo.map;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Iterator.html">Iterator</a>
@@ -12,7 +13,7 @@ import java.util.Map;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class IteratorDemo extends Demo {
+public class IteratorDemo {
 
     public static void main(String[] args) {
         Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();

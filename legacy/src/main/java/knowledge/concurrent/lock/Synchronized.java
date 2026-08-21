@@ -1,11 +1,12 @@
 package knowledge.concurrent.lock;
 
-import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * Synchronized     内置锁/同步锁<br/>
@@ -33,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  * @see <a href="https://www.imooc.com/video/23603">查看 monitor 指令</a>
  * @since 2020/11/17 19:09
  */
-public class Synchronized extends Demo {
+public class Synchronized {
 
     @Nested
     class SynchronizedDemo1 {

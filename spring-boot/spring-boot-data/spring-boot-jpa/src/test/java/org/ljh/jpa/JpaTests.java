@@ -20,7 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -205,8 +206,8 @@ class JpaTests {
         c.setName("Mapping");
         c.setStatus(CustomerStatus.ACTIVE);
         c.setStatusOrdinal(CustomerStatus.INACTIVE);
-        c.setBirthDate(new Date());
-        c.setCreatedAt(new Date());
+        c.setBirthDate(LocalDate.now());
+        c.setCreatedAt(LocalDateTime.now());
         advancedDao.saveCustomer(c);
         // flush + clear 强制从库重新读取，验证各映射还原
         entityManager.flush();
@@ -218,7 +219,7 @@ class JpaTests {
         assertThat(found.getStatus()).isEqualTo(CustomerStatus.ACTIVE);
         // ORDINAL：库值为下标，读回仍映射为对应枚举
         assertThat(found.getStatusOrdinal()).isEqualTo(CustomerStatus.INACTIVE);
-        // @Temporal 还原为日期/时间
+        // 日期/时间字段还原
         assertThat(found.getBirthDate()).isNotNull();
         assertThat(found.getCreatedAt()).isNotNull();
     }

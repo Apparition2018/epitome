@@ -1,11 +1,13 @@
 package knowledge.annotation;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
+import com.ljh.commons.annotation.Apple;
+import com.ljh.commons.annotation.Apple.FruitColor;
+import com.ljh.commons.annotation.Apple.FruitName;
+import com.ljh.commons.annotation.Apple.FruitProvider;
+import com.ljh.commons.annotation.Description;
 import org.junit.jupiter.api.Test;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -51,7 +53,7 @@ public class CustomAnnotation {
                 strFruitName += fruitName.value();
                 p(strFruitName);
             } else if (field.isAnnotationPresent(FruitColor.class)) {
-                FruitColor fruitColor = field.getAnnotation(FruitColor.class);
+                FruitColor fruitColor = field.getAnnotation(Apple.FruitColor.class);
                 strFruitColor += fruitColor.fruitColor().toString();
                 p(strFruitColor);
             } else if (field.isAnnotationPresent(FruitProvider.class)) {
@@ -101,88 +103,5 @@ public class CustomAnnotation {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /** 使用自定义注解 */
-    @Getter
-    @Setter
-    @Description(desc = "Apple")
-    public static class Apple {
-        @FruitName("Apple")
-        private String appleName;
-
-        @FruitColor(fruitColor = FruitColor.Color.RED)
-        private String appleColor;
-
-        @FruitProvider(id = 1, name = "陕西红富士集团", address = "陕西省西安市延安路89号红富士大厦")
-        private String appleProvider;
-
-        @Description(desc = "displayName")
-        public void displayName() {
-            p("水果名称是：苹果");
-        }
-    }
-
-    /**
-     * 水果名称注解
-     * <pre>
-     * 使用 @interface 关键字定义注解
-     * 注解类可以没有成员，没有成员的注解成为标识注解
-     * </pre>
-     * 元注解：
-     * <pre>
-     * 1 @Documented 注解是否包含在 JavaDoc 中
-     * 2 @Retention 生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解
-     * 3 @Target 作用域，注解用于什么地方
-     * 4 @Inherited 是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用
-     * 5 @Repeatable 可重复注释，JDK8 引入
-     * </pre>
-     */
-    @Target(ElementType.FIELD)
-    @Retention(RetentionPolicy.RUNTIME)
-    @interface FruitName {
-        /**
-         * <pre>
-         * 成员以无参无异常方式声明
-         * 合法的成员类型包括 String，Class，Annotation，Enumeration，原始类型
-         * 如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号(=)
-         * 可以使用 default 为成员指定一个默认值
-         * </pre>
-         */
-        String value() default StringUtils.EMPTY;
-    }
-
-    /** 水果颜色注解 */
-    @Target(ElementType.FIELD)
-    @Retention(RetentionPolicy.RUNTIME)
-    @interface FruitColor {
-        // 颜色枚举
-        enum Color {
-            BLUE, RED, GREEN
-        }
-
-        // 颜色属性
-        Color fruitColor() default Color.GREEN;
-    }
-
-    /** 水果供应商注解 */
-    @Target(ElementType.FIELD)
-    @Retention(RetentionPolicy.RUNTIME)
-    @interface FruitProvider {
-        // 供应商编号
-        int id() default -1;
-
-        // 供应商名称
-        String name() default StringUtils.EMPTY;
-
-        // 供应商地址
-        String address() default StringUtils.EMPTY;
-    }
-
-    @Target({ElementType.METHOD, ElementType.TYPE})
-    @Retention(RetentionPolicy.RUNTIME)
-    @Documented
-    public @interface Description {
-        String desc();
     }
 }

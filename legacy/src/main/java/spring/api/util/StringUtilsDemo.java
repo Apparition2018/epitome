@@ -1,52 +1,20 @@
 package spring.api.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * StringUtils
- * <pre>
- * static boolean   hasLength(CharSequence/String str)                          判断是否长度大于1
- * static boolean   hasText(CharSequence/String str)                            判断是否长度大于1且不为空格
- * static boolean   containsWhitespace(CharSequence/String str)                 判断是否包含空格
- * static boolean   matchesCharacter(String str, char singleCharacter)          判断字符串和字符是否匹配
- * static boolean   startsWithIgnoreCase(String str, String prefix)             判断开头是否匹配，大小写不敏感
- * static boolean   endsWithIgnoreCase(String str, String suffix)               判断结尾是否匹配，大小写不敏感
- * static boolean   substringMatch(CharSequence str, int index, CharSequence substring) 判断从指定字符开始是否匹配
- *
- * static int       countOccurrencesOf(String str, String sub)                  计算出现次数
- *
- * static String    trimWhitespace(String str)                                  trim 空格
- * static String    trimAllWhitespace(String str)                               trim 所有空格
- * static String    trimLeadingWhitespace(String str)                           trim 开头空格
- * static String    trimTrailingWhitespace(String str)                          trim 结尾空格
- * static String    trimLeadingCharacter(String str, char leadingCharacter)     trim 开头指定字符
- * static String    trimTrailingCharacter(String str, char trailingCharacter)   trim 结尾指定字符
- * static String    replace(String inString, String oldPattern, String newPattern)  替换
- * static String    quote(String str)                                           给字符串前后添加''
- * static Object    quoteIfString(Object obj)                                   如果对象是字符串在前后添加''
- * static String    capitalize(String str)                                      首字母大写
- * static String    uncapitalize(String str)                                    首字母小写
- *
- * static Locale    parseLocale(String localeValue)                             解析为 Locale
- * static Locale    parseLocaleString(String localeString)                      解析为 Locale
- *
- * static String[]  toStringArray(Enumeration/Collection<String> e)             转换成数组
- * static String[]  addStringToArray(String[] array, String str)                数据添加元素
- * static String[]  concatenateStringArrays(String[] array1, String[] array2)   数组合并
- * static String[]  sortStringArray(String[] array)                             数组排序
- * static String[]  trimArrayElements(String[] array)                           数组 trim 元素
- * static String[]  removeDuplicateStrings(String[] array)                      数组去重
- * </pre>
  *
  * @author ljh
  * @since 2020/12/9 14:26
  */
-public class StringUtilsDemo extends Demo {
+public class StringUtilsDemo {
 
     @Test
     public void testStringUtils() {

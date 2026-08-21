@@ -1,10 +1,11 @@
 package knowledge.concurrent;
 
-import com.ljh.commons.Demo;
 import knowledge.suggestions.Suggestions;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Thread.html">Thread</a>
@@ -56,7 +57,7 @@ import java.util.concurrent.TimeUnit;
  * @see <a href="https://zhuanlan.zhihu.com/p/240281836">如何使用 JUnit 测试异步代码</a>
  * @since 2020/11/17 19:09
  */
-public class ThreadDemo extends Demo {
+public class ThreadDemo {
 
     @Test
     public void testThread() {

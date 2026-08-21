@@ -1,11 +1,12 @@
 package knowledge.io.stream;
 
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * 节点流：
@@ -25,7 +26,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/9/7 1:28
  */
-public class IoStreamDemo extends Demo {
+public class IoStreamDemo {
 
     /** 使用缓冲流复制文件 */
     @Test

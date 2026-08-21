@@ -3,8 +3,9 @@ package jar.jackson.annotataion;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ljh.commons.Demo;
 import lombok.Data;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * {@code @JsonCreator}<br/>
@@ -14,7 +15,7 @@ import lombok.Data;
  * @author ljh
  * @since 2021/7/24 17:00
  */
-public class JsonCreatorDemo extends Demo {
+public class JsonCreatorDemo {
 
     public static void main(String[] args) throws JsonProcessingException {
         Person person = jsonMapper.readValue("{\"name\":\"ljh\",\"age\":31}", Person.class);

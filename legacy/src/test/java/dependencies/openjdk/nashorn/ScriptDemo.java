@@ -2,7 +2,6 @@ package dependencies.openjdk.nashorn;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +11,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * Script
@@ -27,7 +28,7 @@ import java.util.Map;
  * @see <a href="https://blog.didispace.com/books/java8-tutorial/ch3.html">JDK8 Nashorn 教程</a>
  * @since 2021/8/10 15:52
  */
-public class ScriptDemo extends Demo {
+public class ScriptDemo {
 
     private final ScriptEngine engine = new ScriptEngineManager().getEngineByName("Nashorn");
 

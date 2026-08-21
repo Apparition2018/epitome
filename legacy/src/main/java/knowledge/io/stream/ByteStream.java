@@ -1,6 +1,5 @@
 package knowledge.io.stream;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +7,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * ByteStream 字节流
@@ -22,7 +23,7 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/9/14 11:02
  */
-public class ByteStream extends Demo {
+public class ByteStream {
 
     /**
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/InputStream.html">InputStream</a>
@@ -175,7 +176,7 @@ public class ByteStream extends Demo {
              * 	2）持久化：将这组字节码写入文件（磁盘中）长久保存
              */
             // void	        writeObject(Object obj)     将指定的对象写入 ObjectOutputStream
-            oos.writeObject(personList.get(0));
+            oos.writeObject(personList.getFirst());
             p("对象写出完毕！");
 
             // Object	    readObject()                从 ObjectInputStream 读取对象

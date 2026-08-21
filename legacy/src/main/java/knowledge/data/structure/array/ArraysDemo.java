@@ -1,11 +1,13 @@
 package knowledge.data.structure.array;
 
 import com.google.common.primitives.Ints;
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.ljh.commons.Demo.arr;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Arrays</a>
@@ -23,7 +25,7 @@ import java.util.List;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class ArraysDemo extends Demo {
+public class ArraysDemo {
 
     @Test
     public void testArrays() {

@@ -1,6 +1,5 @@
 package jar.apache.commons.collections4;
 
-import com.ljh.commons.Demo;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
@@ -8,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import static com.ljh.commons.Demo.map;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-collections/userguide.html#Maps">Maps</a>
@@ -34,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/14 14:19
  */
-public class MapsDemo extends Demo {
+public class MapsDemo {
 
     /**
      * CaseInsensitiveMap           键大小写不敏感

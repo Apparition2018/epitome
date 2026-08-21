@@ -2,13 +2,14 @@ package knowledge.data.structure.collections.framework;
 
 import com.ljh.commons.Animal.Cat;
 import com.ljh.commons.Animal.Chicken;
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Collections.html">Collections</a>
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class CollectionsDemo extends Demo {
+public class CollectionsDemo {
 
     /**
      * static int	        indexOfSubList(List<?> source, List<?> target)

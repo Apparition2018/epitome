@@ -5,13 +5,15 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.*;
-import com.ljh.commons.Demo;
 import jar.jackson.entity.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+
+import static com.ljh.commons.Demo.MY_NAME;
+import static com.ljh.commons.Demo.jsonMapper;
 
 /**
  * JsonNode
@@ -31,7 +33,7 @@ import java.io.IOException;
  * @since 2021/7/18 16:55
  */
 @Slf4j
-public class JsonNodeDemo extends Demo {
+public class JsonNodeDemo {
     public static final String PERSON_JSON_FILE = System.getProperty("user.dir") + "/src/main/java/jar/fasterxml/jackson/person.json";
 
     @Test

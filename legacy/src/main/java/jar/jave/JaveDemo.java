@@ -1,7 +1,6 @@
 package jar.jave;
 
 import cn.hutool.core.img.ImgUtil;
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 import ws.schild.jave.Encoder;
 import ws.schild.jave.EncoderException;
@@ -19,6 +18,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://github.com/a-schild/jave2">Jave</a>
  * <p><a href="https://www.cnblogs.com/rchao/p/10282144.html">Jave 简单使用</a>
@@ -26,7 +27,7 @@ import java.util.stream.Stream;
  * @author ljh
  * @since 2021/10/20 9:30
  */
-public class JaveDemo extends Demo {
+public class JaveDemo {
 
     /**
      * flac/mp3 → m4a

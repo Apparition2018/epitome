@@ -4,13 +4,14 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps">Maps</a>
@@ -33,7 +34,7 @@ import java.util.Objects;
  * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html">Maps api</a>
  * @since 2019/8/8 19:39
  */
-public class MapsDemo extends Demo {
+public class MapsDemo {
 
     @Test
     public void testMaps() {

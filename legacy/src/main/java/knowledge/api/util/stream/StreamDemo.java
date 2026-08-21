@@ -1,6 +1,5 @@
 package knowledge.api.util.stream;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import knowledge.api.util.FunctionDemo;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static com.ljh.commons.Demo.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @see <a href="https://blog.csdn.net/u011001723/article/details/52794455">深入浅出 parallelStream</a>
  * @since 2019/8/8 19:39
  */
-public class StreamDemo extends Demo {
+public class StreamDemo {
 
     /** 创建 */
     @Test

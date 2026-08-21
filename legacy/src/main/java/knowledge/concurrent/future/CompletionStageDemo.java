@@ -1,6 +1,5 @@
 package knowledge.concurrent.future;
 
-import com.ljh.commons.Demo;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +11,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static com.ljh.commons.Demo.*;
+
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html">CompletionStage</a>
@@ -20,7 +21,7 @@ import java.util.concurrent.Executors;
  * @author ljh
  * @since 2020/12/1 14:08
  */
-public class CompletionStageDemo extends Demo {
+public class CompletionStageDemo {
 
     private final static int NUM_OF_TASK = 5;
     private final static ExecutorService threadPool = Executors.newFixedThreadPool(5, new MyThreadFactory());
@@ -35,7 +36,7 @@ public class CompletionStageDemo extends Demo {
 
         try {
             CompletableFuture<Void> completableFuture = CompletableFuture.allOf(completableFutureList.stream()
-                .filter(Objects::nonNull).toList().toArray(new CompletableFuture[completableFutureList.size()]));
+                    .filter(Objects::nonNull).toList().toArray(new CompletableFuture[completableFutureList.size()]));
             completableFuture.get();
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);

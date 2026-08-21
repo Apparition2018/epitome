@@ -1,11 +1,11 @@
 package knowledge.api.awt;
 
-import com.ljh.commons.Demo;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/Desktop.html">Desktop</a>
@@ -14,7 +14,7 @@ import java.net.URI;
  * @author ljh
  * @since 2020/9/25 17:42
  */
-public class DesktopDemo extends Demo {
+public class DesktopDemo {
 
     public static void main(String[] args) throws IOException {
         // static boolean	    isDesktopSupported()        测试当前平台是否支持此类

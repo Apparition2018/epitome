@@ -1,0 +1,34 @@
+package org.ljh.dependencies.hutool.thread;
+
+import cn.hutool.core.lang.Console;
+import cn.hutool.core.thread.ConcurrencyTester;
+import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.core.util.RandomUtil;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+/**
+ * <a href="https://doc.hutool.cn/pages/ConcurrencyTester/">ConcurrencyTester</a>   高并发测试
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/thread/ConcurrencyTester.html">ConcurrencyTester api</a>
+ *
+ * @author ljh
+ * @since 2020/11/19 15:30
+ */
+public class ConcurrencyTesterTests {
+
+    @Test
+    public void test() {
+        try (ConcurrencyTester tester = ThreadUtil.concurrencyTest(100, () -> {
+            // 测试的逻辑内容
+            long delay = RandomUtil.randomLong(100, 1000);
+            ThreadUtil.sleep(delay);
+            Console.log("{} test finished, delay: {}", Thread.currentThread().getName(), delay);
+        })) {
+            // 获取总的执行时间，单位毫秒
+            Console.log(tester.getInterval());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

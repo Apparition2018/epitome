@@ -1,6 +1,5 @@
 package knowledge.design.pattern.other.concurrency;
 
-import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Objects;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.ljh.commons.Demo.MyThreadFactory;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 工作密取
@@ -26,7 +28,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @see <a href="https://blog.csdn.net/hxpjava1/article/details/44245593">LinkedBlockingDeque 工作密取</a>
  * @since 2020/10/19 16:17
  */
-public class WorkStealingDemo extends Demo {
+public class WorkStealingDemo {
 
     public static volatile boolean isProducing = true;
     private static final boolean[] isAllStop = new boolean[]{false, false, false, false};

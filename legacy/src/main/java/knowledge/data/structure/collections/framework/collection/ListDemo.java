@@ -1,6 +1,5 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import com.ljh.commons.Demo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html">List</a>
@@ -38,7 +39,7 @@ import java.util.Vector;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public class ListDemo extends Demo {
+public class ListDemo {
 
     @Test
     public void testList() {

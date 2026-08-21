@@ -1,9 +1,10 @@
 package jar.google.guava.collect;
 
 import com.google.common.collect.Lists;
-import com.ljh.commons.Demo;
 
 import java.util.List;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists">Lists</a>
@@ -13,7 +14,7 @@ import java.util.List;
  * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html">Lists api</a>
  * @since 2019/8/8 19:39
  */
-public class ListsDemo extends Demo {
+public class ListsDemo {
 
     public static void main(String[] args) {
         List<Integer> guavaList;

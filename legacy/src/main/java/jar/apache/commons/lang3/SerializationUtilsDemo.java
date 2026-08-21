@@ -1,6 +1,5 @@
 package jar.apache.commons.lang3;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import com.ljh.commons.Person.Home;
 import org.apache.commons.lang3.SerializationUtils;
@@ -15,13 +14,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SerializationUtils.html">SerializationUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class SerializationUtilsDemo extends Demo {
+public class SerializationUtilsDemo {
 
     private Person person;
 

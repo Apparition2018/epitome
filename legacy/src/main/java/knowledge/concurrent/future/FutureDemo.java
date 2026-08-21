@@ -1,6 +1,5 @@
 package knowledge.concurrent.future;
 
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * Future
@@ -22,11 +23,10 @@ import java.util.concurrent.*;
  *  4 ScheduledFuture                   延迟/周期任务的 Future         延迟执行一次或周期性执行
  * </pre>
  *
- *
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class FutureDemo extends Demo {
+public class FutureDemo {
 
     private final static int NUM_OF_TASK = 5;
     private final static ExecutorService threadPool = Executors.newFixedThreadPool(NUM_OF_TASK, new MyThreadFactory());

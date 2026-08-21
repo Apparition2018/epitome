@@ -1,12 +1,13 @@
 package knowledge.io.file;
 
 import cn.hutool.core.util.StrUtil;
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/File.html">File</a>
@@ -38,7 +39,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class FileDemo extends Demo {
+public class FileDemo {
 
     private static final File FILE;
 

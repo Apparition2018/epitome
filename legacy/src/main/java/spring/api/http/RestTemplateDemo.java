@@ -1,6 +1,5 @@
 package spring.api.http;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import com.ljh.commons.Person.Student;
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +20,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * RestTemplate
  * <p><a href="https://www.baeldung.com/rest-template">A Guide to the RestTemplate</a>
@@ -28,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/13 1:35
  */
-public class RestTemplateDemo extends Demo {
+public class RestTemplateDemo {
 
     private static final RestTemplate restTemplate;
     private static final HttpHeaders requestHeaders = new HttpHeaders();

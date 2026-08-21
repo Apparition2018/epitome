@@ -14,6 +14,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html">Files</a>
  * <p>该类包含操作文件、目录或其他类型文件的静态方法
@@ -21,7 +23,7 @@ import java.util.stream.Stream;
  * @author ljh
  * @since 2020/9/26 2:51
  */
-public class FilesDemo extends Demo {
+public class FilesDemo {
 
     private Path dirPath;
     private Path filePath;

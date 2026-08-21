@@ -1,8 +1,9 @@
 package knowledge.data.structure.collections.framework;
 
-import com.ljh.commons.Demo;
-
 import java.util.ListIterator;
+
+import static com.ljh.commons.Demo.list;
+import static com.ljh.commons.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ListIterator.html">ListIterator</a>
@@ -16,7 +17,7 @@ import java.util.ListIterator;
  * @author ljh
  * @since 2020/10/16 15:22
  */
-public class ListIteratorDemo extends Demo {
+public class ListIteratorDemo {
 
     public static void main(String[] args) {
         p(list);

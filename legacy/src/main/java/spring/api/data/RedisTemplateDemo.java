@@ -1,6 +1,5 @@
 package spring.api.data;
 
-import com.ljh.commons.Demo;
 import jakarta.annotation.Resource;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.jetbrains.annotations.NotNull;
@@ -15,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * RedisTemplate
  *
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2021/5/26 15:05
  */
 @SpringBootTest(classes = EpitomeApplication.class)
-public class RedisTemplateDemo extends Demo {
+public class RedisTemplateDemo {
 
     private static final String LIST_KEY = "List";
     private static final String MAP_KEY = "Map:%s";

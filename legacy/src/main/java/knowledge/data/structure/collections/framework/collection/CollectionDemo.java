@@ -1,7 +1,8 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Collection.html">Collection</a>
@@ -50,7 +51,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class CollectionDemo extends Demo {
+public class CollectionDemo {
 
     @Test
     public void testCollection() {

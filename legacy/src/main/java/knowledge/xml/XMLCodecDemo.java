@@ -1,6 +1,5 @@
 package knowledge.xml;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +11,15 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * XMLCodec
  *
  * @author ljh
  * @since 2020/11/9 14:07
  */
-public class XMLCodecDemo extends Demo {
+public class XMLCodecDemo {
 
     private static final File FILE = new File(DEMO_DIR_PATH + "person.xml");
 

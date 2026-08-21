@@ -2,9 +2,10 @@ package jar.jackson.annotataion;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.ljh.commons.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * {@code @JsonValue} 序列化只返回这个字段的值
@@ -12,7 +13,7 @@ import lombok.experimental.Accessors;
  * @author ljh
  * @since 2021/7/24 17:02
  */
-public class JsonValueDemo extends Demo {
+public class JsonValueDemo {
 
     public static void main(String[] args) throws JsonProcessingException {
         Person person = new Person().setName(MY_NAME).setAge(31);

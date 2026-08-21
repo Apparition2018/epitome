@@ -1,11 +1,12 @@
 package spring.api.util;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import org.springframework.util.FastByteArrayOutputStream;
 
 import java.io.*;
 import java.util.stream.IntStream;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * FastByteArrayOutputStream
@@ -17,7 +18,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2021/9/8 0:56
  */
-public class FastByteArrayOutputStreamDemo extends Demo {
+public class FastByteArrayOutputStreamDemo {
 
     public static void main(String[] args) {
         stopWatch.start("ByteArrayOutputStream");

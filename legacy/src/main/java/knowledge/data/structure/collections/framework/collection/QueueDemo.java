@@ -1,6 +1,5 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import com.ljh.commons.Demo;
 import com.ljh.commons.Person;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -14,6 +13,9 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.*;
 
+import static com.ljh.commons.Demo.list;
+import static com.ljh.commons.Demo.p;
+
 /**
  * Queue
  *
@@ -21,7 +23,7 @@ import java.util.concurrent.*;
  * @see <a href="https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg">Java 常见队列</a>
  * @since 2020/10/9 14:38
  */
-public class QueueDemo extends Demo {
+public class QueueDemo {
 
     /**
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Queue.html">Queue</a> 队列

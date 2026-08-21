@@ -2,12 +2,13 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.Range;
 import com.google.common.collect.Sets;
-import com.ljh.commons.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets">Sets</a>
@@ -17,7 +18,7 @@ import java.util.TreeSet;
  * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Sets.html">Sets api</a>
  * @since 2019/8/8 19:39
  */
-public class SetsDemo extends Demo {
+public class SetsDemo {
 
     @Test
     public void testSets() {

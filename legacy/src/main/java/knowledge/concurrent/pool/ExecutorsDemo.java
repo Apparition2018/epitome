@@ -1,11 +1,12 @@
 package knowledge.concurrent.pool;
 
-import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.concurrent.*;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * Executors
@@ -13,7 +14,7 @@ import java.util.concurrent.*;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class ExecutorsDemo extends Demo {
+public class ExecutorsDemo {
 
     /**
      * static ExecutorService	        newFixedThreadPool(int nThreads[, ThreadFactory threadFactory])
@@ -129,9 +130,9 @@ public class ExecutorsDemo extends Demo {
     public void invoke() throws InterruptedException, ExecutionException {
         ExecutorService threadPool = Executors.newWorkStealingPool();
         List<Callable<String>> callableList = List.of(
-            this.callable("task1", 1),
-            this.callable("task2", 2),
-            this.callable("task3", 3)
+                this.callable("task1", 1),
+                this.callable("task2", 2),
+                this.callable("task3", 3)
         );
         p("--- invokeAll ---");
         // <T> List<Future<T>>  invokeAll(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])

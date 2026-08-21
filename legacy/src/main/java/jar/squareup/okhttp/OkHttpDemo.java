@@ -1,6 +1,5 @@
 package jar.squareup.okhttp;
 
-import com.ljh.commons.Demo;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import lombok.NonNull;
@@ -18,6 +17,8 @@ import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static com.ljh.commons.Demo.*;
+
 /**
  * <a href="https://square.github.io/okhttp/recipes/">OkHttp</a>
  *
@@ -25,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2021/8/3 9:10
  */
 @Slf4j
-public class OkHttpDemo extends Demo {
+public class OkHttpDemo {
     private static final String MARKDOWN_RAW_URL = "https://api.github.com/markdown/raw";
     private static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
     private static final MediaType MEDIA_TYPE_JPG = MediaType.parse("image/jpg");

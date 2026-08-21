@@ -1,11 +1,13 @@
 package knowledge.design.pattern.other.concurrency;
 
-import com.ljh.commons.Demo;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.ljh.commons.Demo.MyThreadFactory;
+import static com.ljh.commons.Demo.p;
 
 /**
  * 生产者-消费者 模式
@@ -17,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @see <a href="https://www.cnblogs.com/chentingk/p/6497107.html">生产者消费者模式</a>
  * @since 2020/10/9 13:53
  */
-public class ProducerConsumerDemo extends Demo {
+public class ProducerConsumerDemo {
     private static volatile boolean isProducing = true;
     private static final boolean[] isAllConsumerStop = new boolean[]{false, false};
 

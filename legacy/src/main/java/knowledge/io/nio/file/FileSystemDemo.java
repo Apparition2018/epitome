@@ -1,7 +1,6 @@
 package knowledge.io.nio.file;
 
 import cn.hutool.core.util.StrUtil;
-import com.ljh.commons.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,8 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.UserPrincipal;
 import java.nio.file.attribute.UserPrincipalLookupService;
+
+import static com.ljh.commons.Demo.*;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html">FileSystem</a>
@@ -28,7 +29,7 @@ import java.nio.file.attribute.UserPrincipalLookupService;
  * @author ljh
  * @since 2020/9/26 2:51
  */
-public class FileSystemDemo extends Demo {
+public class FileSystemDemo {
 
     /**
      * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileStore.html">FileStore</a>
