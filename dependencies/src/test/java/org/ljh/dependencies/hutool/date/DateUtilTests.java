@@ -16,9 +16,6 @@ import static com.ljh.commons.Demo.*;
 /**
  * <a href="https://doc.hutool.cn/pages/DateUtil/">DateUtil</a>
  * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/DateUtil.html">DateUtil api</a>
- * <pre>
- * static int       compare(Date date1, Date date2)
- * </pre>
  *
  * @author ljh
  * @since 2020/10/26 22:16

@@ -1,7 +1,7 @@
 package spring.api.util;
 
 import knowledge.api.lang.SystemDemo;
-import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
+import com.ljh.commons.util.PropertiesUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.SpringProperties;
 import org.springframework.core.io.ClassPathResource;

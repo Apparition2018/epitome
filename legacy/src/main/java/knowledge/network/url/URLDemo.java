@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -30,7 +31,7 @@ public class URLDemo {
 
     @Test
     public void testURL() throws IOException {
-        URL url = new URL(MOZILLA_DEMO_URL);
+        URL url = URI.create(MOZILLA_DEMO_URL).toURL();
 
         p(url);                     // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
         p(url.getProtocol());       // 协议名称：https
@@ -44,7 +45,7 @@ public class URLDemo {
         p(url.getRef());            // 锚点：search-results-close-container
         p(url.getContent());        // 内容：sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@704921a5
 
-        url = new URL("http://192.168.0.1:8080");
+        url = URI.create("http://192.168.0.1:8080").toURL();
         p(url.getAuthority());      // 192.168.0.1:8080
         p(url.getHost());           // 192.168.0.1
     }
@@ -54,7 +55,7 @@ public class URLDemo {
     public void testReadJarFile() throws IOException {
         /* 使用 URL 读取 jar 包里面的文件 */
         String path = "jar:file:/D:/.../test.jar!/com/ljh/template.xls";
-        URL url = new URL(path);
+        URL url = URI.create(path).toURL();
         // openConnection().getInputStream() 的简写
         InputStream inputStream = url.openStream();
         Workbook workbook = WorkbookFactory.create(inputStream);
@@ -65,7 +66,7 @@ public class URLDemo {
      */
     @Test
     public void openStream() throws IOException {
-        URL url = new URL(BAIDU_URL);
+        URL url = URI.create(BAIDU_URL).toURL();
         BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
@@ -88,7 +89,7 @@ public class URLDemo {
      */
     @Test
     public void openConnection() throws IOException {
-        URL url = new URL(BAIDU_URL);
+        URL url = URI.create(BAIDU_URL).toURL();
         URLConnection urlConn = url.openConnection();
         if (urlConn instanceof HttpsURLConnection httpsURLConnection) {
             p(httpsURLConnection);

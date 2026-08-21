@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class OnlineNumberListener implements HttpSessionListener, ServletRequest
         List<HostInfo> hostInfoList = (List<HostInfo>) servletContext.getAttribute("hostInfoList");
         if (hostInfoList != null) {
             for (HostInfo hostInfo : hostInfoList) {
-                if (StringUtils.equals(sessionId, hostInfo.getSessionId())) return;
+                if (Strings.CS.equals(sessionId, hostInfo.getSessionId())) return;
             }
         } else {
             hostInfoList = new ArrayList<>();
@@ -78,7 +78,7 @@ public class OnlineNumberListener implements HttpSessionListener, ServletRequest
         @SuppressWarnings("unchecked")
         List<HostInfo> hostInfoList = (List<HostInfo>) servletContext.getAttribute("hostInfoList");
         for (HostInfo hostInfo : hostInfoList) {
-            if (StringUtils.equals(sessionId, hostInfo.getSessionId())) {
+            if (Strings.CS.equals(sessionId, hostInfo.getSessionId())) {
                 hostInfoList.remove(hostInfo);
                 break;
             }

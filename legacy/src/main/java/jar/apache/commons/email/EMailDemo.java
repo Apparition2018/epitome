@@ -5,7 +5,7 @@ import org.apache.commons.mail2.jakarta.*;
 import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
 import static com.ljh.commons.Demo.BIRD_IMG;
@@ -55,7 +55,7 @@ public class EMailDemo {
         // 附件   EmailAttachment
         email.attach(attachment);
         // 附件   URL 定位的文件
-        email.attach(new URL(BIRD_IMG), "Bird", "a good-looking bird", "attachment");
+        email.attach(URI.create(BIRD_IMG).toURL(), "Bird", "a good-looking bird", "attachment");
         email.send();
     }
 
@@ -68,9 +68,9 @@ public class EMailDemo {
         HtmlEmail email = new HtmlEmail();
         common(email);
         // 嵌入，返回 Content-ID
-        String contentId = email.embed(new URL(BIRD_IMG), "Bird");
+        String contentId = email.embed(URI.create(BIRD_IMG).toURL(), "Bird");
         // HTML 内容
-        email.setHtmlMsg("<html>Arsenal - <img src=\"contentId:" + email.embed(new URL(BIRD_IMG), "Bird") + "\"></html>");
+        email.setHtmlMsg("<html>Arsenal - <img src=\"contentId:" + email.embed(URI.create(BIRD_IMG).toURL(), "Bird") + "\"></html>");
         // 文本内容
         email.setTextMsg("Arsenal Football Club");
         email.send();

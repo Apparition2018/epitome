@@ -1,11 +1,11 @@
 package springboot.util.converter;
 
-import com.google.common.collect.Maps;
 import com.ljh.commons.BaseEnum;
 import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Map;
 public class IntegerToEnumConverterFactory implements ConverterFactory<Integer, BaseEnum> {
 
     @SuppressWarnings("rawtypes")
-    private static final Map<Class<?>, Converter> CONVERTER_MAP = Maps.newHashMap();
+    private static final Map<Class<?>, Converter> CONVERTER_MAP = new HashMap<>();
 
     @Override
     @SuppressWarnings("unchecked")

@@ -34,23 +34,6 @@ public class StringUtilsDemo {
     }
 
     /**
-     * appendIfMissing / prependIfMissing
-     * <p>如果开头/结尾不是指定的 suffix / prefix，则拼接到开头/结果
-     */
-    @Test
-    public void ifMissing() {
-        p(StringUtils.appendIfMissing(null, null));                 //
-        p(StringUtils.appendIfMissing("abc", null));                // abc
-        p(StringUtils.appendIfMissing(StringUtils.EMPTY, "xyz"));   // xyz
-        p(StringUtils.appendIfMissing("abc", "xyz"));               // abcxyz
-        p(StringUtils.appendIfMissing("abcxyz", "xyz"));            // abcxyz
-        p(StringUtils.appendIfMissing("abcXYZ", "xyz"));            // abcXYZxyz
-        p(StringUtils.appendIfMissing("abc", "xyz", "mno"));        // abcxyz
-        p(StringUtils.appendIfMissing("abcmno", "xyz", "mno"));     // abcmno
-        p(StringUtils.appendIfMissing("abcXYZ", "xyz", "mno"));     // abcXYZxyz
-    }
-
-    /**
      * upperCase / lowerCase / swapCase / capitalize / unCapitalize
      * <p>大小写相关
      */
@@ -99,15 +82,6 @@ public class StringUtilsDemo {
         p(StringUtils.difference("abc", "ab"));     //
         p(StringUtils.difference("ab", "abxyz"));   // xyz
         p(StringUtils.difference("abcde", "bcd"));  // bcd
-    }
-
-    // equals / compare
-    @Test
-    public void equals() {
-        p(StringUtils.equalsAny("aaa", "aaa", "bbb", "ccc"));               // true
-        p(StringUtils.equalsAny("aaa", new String[]{"aaa", "bbb", "ccc"})); // true
-        p(StringUtils.equalsAny("abc", "aaa", "bbb", "ccc"));               // false
-        p(StringUtils.equalsAnyIgnoreCase("AAA", "aaa", "bbb", "ccc"));     // true
     }
 
     @Test
@@ -167,7 +141,6 @@ public class StringUtilsDemo {
 
     }
 
-    // indexOf / lastIndexOf / contains
     @Test
     public void indexOf() {
         p(StringUtils.indexOf("abcdabcd", 'b'));            // 1
@@ -210,7 +183,6 @@ public class StringUtilsDemo {
         p(StringUtils.containsWhitespace("abcd abcd"));             // true
     }
 
-    // leftPad / rightPad / center / repeat
     @Test
     public void pad() {
         p(StringUtils.leftPad("760", 4));       //  760
@@ -230,22 +202,11 @@ public class StringUtilsDemo {
         p(StringUtils.repeat("a", StrUtil.COMMA, 3));   // a,a,a
     }
 
-    // remove / delete
-    @Test
-    public void remove() {
-        p(StringUtils.remove("abcdabcd", "a"));                 // bcdbcd
-        p(StringUtils.removeStart("abcdabcd", "a"));            // bcdabcd
-        p(StringUtils.removeStartIgnoreCase("abcdabcd", "A"));  // bcdabcd
-        p(StringUtils.removeEnd("abcdabcd", "d"));              // abcdabc
-        p(StringUtils.removeEndIgnoreCase("abcdabcd", "D"));    // abcdabc
-    }
-
     @Test
     public void deleteWhitespace() {
         p(StringUtils.deleteWhitespace("abcd abcd")); // abcdabcd
     }
 
-    // replace / overlay
     @Test
     public void replace() {
         p(StringUtils.replace("AbcdAbcd", "A", "a"));           // abcdabcd
@@ -283,7 +244,6 @@ public class StringUtilsDemo {
         p(StringUtils.rotate("abcdefg", -9));   // cdefgab
     }
 
-    // split / join
     @Test
     public void split() {
         // 用空格分割
@@ -314,19 +274,6 @@ public class StringUtilsDemo {
         p(StringUtils.joinWith("-", "a", "b", "c", "d"));   // a-b-c-d
     }
 
-    /** startsWith / endsWith */
-    @Test
-    public void with() {
-        p(StringUtils.startsWith("abc", "A"));          // false
-        p(StringUtils.startsWithAny("abc", "a", "A"));  // true
-        p(StringUtils.startsWithIgnoreCase("abc", "A"));// true
-
-        p(StringUtils.endsWith("abc", "C"));            // false
-        p(StringUtils.endsWithAny("abc", "c", "C"));    // true
-        p(StringUtils.endsWithIgnoreCase("abc", "C"));  // true
-    }
-
-    // subString / left / right / mid
     @Test
     public void subString() {
         p(StringUtils.substring("abcdabcd", 2));                // cdabcd
@@ -353,7 +300,6 @@ public class StringUtilsDemo {
         p(StringUtils.mid("abcdabcd", 3, 3));   // cdabcd
     }
 
-    // trim / strip
     @Test
     public void trim() {
         // null, ""

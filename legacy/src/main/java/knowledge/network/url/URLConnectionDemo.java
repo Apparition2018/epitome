@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -30,7 +31,7 @@ public class URLConnectionDemo {
 
     @Test
     public void testURLConnection() throws IOException {
-        URL url = new URL(BAIDU_URL);
+        URL url = URI.create(BAIDU_URL).toURL();
         URLConnection conn = url.openConnection();
         // 设置连接超时时间
         conn.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(10));
@@ -70,7 +71,7 @@ public class URLConnectionDemo {
      */
     @Test
     public void getInputStream() throws IOException {
-        URL url = new URL(BAIDU_URL);
+        URL url = URI.create(BAIDU_URL).toURL();
         URLConnection conn = url.openConnection();
         if (conn instanceof HttpURLConnection httpConn) {
             p(httpConn);

@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import springboot.util.wrapper.HeaderMapRequestWrapper;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class HeaderMapFilter implements Filter {
         } else {
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
-                if (StringUtils.equalsIgnoreCase(cookie.getName(), HEAD_NAME)) {
+                if (Strings.CI.equals(cookie.getName(), HEAD_NAME)) {
                     requestWrapper.addHeader(HEAD_NAME, cookie.getValue());
                 }
             }

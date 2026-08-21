@@ -23,24 +23,16 @@
         <commons-email2.version>2.0.0-M1</commons-email2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
         <commons-rng.version>1.7</commons-rng.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.3.1</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.22.2</jsoup.version>
-        <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>9.0.3</minio.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>10.9.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <retrofit2.version>3.0.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
         <axis2.version>2.0.1</axis2.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-        <curator.version>5.9.0</curator.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
-        <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
-        <protostuff.version>1.8.0</protostuff.version>
         <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
         <jave2.version>3.5.0</jave2.version>
         <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
@@ -191,24 +183,10 @@
             <artifactId>netty-all</artifactId>
         </dependency>
 
-        <!-- tika：内容抽取的工具集合 -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tika.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>${jsoup.version}</version>
-        </dependency>
-
-        <!-- minio：包含 bcprov-jdk15on -->
-        <dependency>
-            <groupId>io.minio</groupId>
-            <artifactId>minio</artifactId>
-            <version>${minio.version}</version>
         </dependency>
 
         <!-- itextpdf：Java-PDF -->
@@ -244,35 +222,6 @@
             <artifactId>htmlunit</artifactId>
         </dependency>
 
-        <!-- axis2 -->
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-adb</artifactId>
-            <version>${axis2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-transport-local</artifactId>
-            <version>${axis2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-jaxws</artifactId>
-            <version>${axis2.version}</version>
-        </dependency>
-
-        <!-- curator：操作 zookeeper -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>tools.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
@@ -287,18 +236,6 @@
             <artifactId>taglibs-standard-impl</artifactId>
             <version>${tablibs-standard.version}</version>
             <scope>runtime</scope>
-        </dependency>
-
-        <!-- protostuff：基于 protobuf，序列化/反序列化 -->
-        <dependency>
-            <groupId>io.protostuff</groupId>
-            <artifactId>protostuff-core</artifactId>
-            <version>${protostuff.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.protostuff</groupId>
-            <artifactId>protostuff-runtime</artifactId>
-            <version>${protostuff.version}</version>
         </dependency>
 
         <!-- jave2：封装 FFmpeg -->

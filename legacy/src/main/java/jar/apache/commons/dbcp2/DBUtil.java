@@ -1,6 +1,6 @@
 package jar.apache.commons.dbcp2;
 
-import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
+import com.ljh.commons.util.PropertiesUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;

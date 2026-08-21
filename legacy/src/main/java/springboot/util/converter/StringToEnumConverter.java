@@ -1,10 +1,10 @@
 package springboot.util.converter;
 
-import com.google.common.collect.Maps;
 import com.ljh.commons.BaseEnum;
 import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class StringToEnumConverter<T extends BaseEnum> implements Converter<String, T> {
 
-    private final Map<String, T> ENUM_MAP = Maps.newHashMap();
+    private final Map<String, T> ENUM_MAP = new HashMap<>();
 
     public StringToEnumConverter(Class<T> enumType) {
         T[] enumConstants = enumType.getEnumConstants();

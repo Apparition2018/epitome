@@ -1,8 +1,10 @@
 package jar.apache.commons.collections4;
 
-import com.google.common.collect.Lists;
 import org.apache.commons.collections4.list.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.ljh.commons.Demo.list;
 import static com.ljh.commons.Demo.p;
@@ -66,7 +68,8 @@ public class ListDemo {
     public void testPredicatedList() {
         // org.apache.commons.collections4.functors 提供了一些 xxxPredicate 实现
         PredicatedList<Integer> predicatedList = PredicatedList.predicatedList(list, i -> i < 10);
-        predicatedList.add(10); // IllegalArgumentException: Cannot add Object '10' - Predicate 'jar.apache.commons.collections4.ListDemo$$Lambda$1/2470654@bbfa04' rejected it
+        predicatedList.add(10); // IllegalArgumentException: Cannot add Object '10' - Predicate 'jar.apache.commons.collections4
+        // .ListDemo$$Lambda$1/2470654@bbfa04' rejected it
     }
 
     /**
@@ -75,7 +78,7 @@ public class ListDemo {
      */
     @Test
     public void testSetUniqueList() {
-        SetUniqueList<Integer> setUniqueList = SetUniqueList.setUniqueList(Lists.newArrayList(1, 2, 2, 3, 3, 3));
+        SetUniqueList<Integer> setUniqueList = SetUniqueList.setUniqueList(new ArrayList<>(List.of(1, 2, 2, 3, 3, 3)));
         p(setUniqueList.add(4));// true
         p(setUniqueList.add(4));// false
         p(setUniqueList);       // [1, 2, 3, 4]

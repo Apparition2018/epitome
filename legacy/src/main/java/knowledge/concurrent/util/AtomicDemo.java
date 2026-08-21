@@ -1,11 +1,11 @@
 package knowledge.concurrent.util;
 
-import com.google.common.collect.Lists;
 import com.ljh.commons.Person;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -134,7 +134,7 @@ public class AtomicDemo {
     @SneakyThrows
     private void testLongAdder(int threadCount, int times) {
         LongAdder longAdder = new LongAdder();
-        List<Thread> threadList = Lists.newArrayList();
+        List<Thread> threadList = new ArrayList<>();
         StopWatch stopWatch = StopWatch.createStarted();
         for (int i = 0; i < threadCount; i++) {
             threadList.add(new Thread(() -> IntStream.rangeClosed(1, times).forEach(j -> longAdder.increment())));
@@ -152,7 +152,7 @@ public class AtomicDemo {
     @SneakyThrows
     private void testAtomicLong(int threadCount, int times) {
         AtomicLong atomicLong = new AtomicLong();
-        List<Thread> threadList = Lists.newArrayList();
+        List<Thread> threadList = new ArrayList<>();
         StopWatch stopWatch = StopWatch.createStarted();
         for (int i = 0; i < threadCount; i++) {
             threadList.add(new Thread(() -> {
@@ -180,8 +180,11 @@ public class AtomicDemo {
         LongAccumulator accumulator = new LongAccumulator(Long::sum, 0);
         ExecutorService threadPool = Executors.newFixedThreadPool(100);
         List<Callable<Void>> tasks = IntStream.rangeClosed(1, 1_000_000)
-            .mapToObj(i -> (Callable<Void>) () -> { accumulator.accumulate(i); return null; })
-            .toList();
+                .mapToObj(i -> (Callable<Void>) () -> {
+                    accumulator.accumulate(i);
+                    return null;
+                })
+                .toList();
         threadPool.invokeAll(tasks);
         assertThat(accumulator.getThenReset()).isEqualTo(500000500000L);
     }

@@ -1,6 +1,5 @@
 package jar.javacv;
 
-import com.google.common.net.MediaType;
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
@@ -25,8 +24,8 @@ public class FFmpegDemo {
     public static void main(String[] args) throws IOException {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
             stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.mp3$"))
-                .parallel()
-                .forEach(mp3Path -> mp3ToM4a(mp3Path, buildOutputPath(mp3Path)));
+                    .parallel()
+                    .forEach(mp3Path -> mp3ToM4a(mp3Path, buildOutputPath(mp3Path)));
         } catch (IOException e) {
             System.err.println("目录遍历异常: " + e.getMessage());
         }
@@ -52,9 +51,9 @@ public class FFmpegDemo {
 
     private static FFmpegFrameRecorder buildRecorder(FFmpegFrameGrabber grabber, Path output) {
         FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(output.toFile(),
-            // mp3 → m4a，无需处理视频流
-            // grabber.getImageWidth(), grabber.getImageHeight(),
-            grabber.getAudioChannels());
+                // mp3 → m4a，无需处理视频流
+                // grabber.getImageWidth(), grabber.getImageHeight(),
+                grabber.getAudioChannels());
 
         // mp3 → m4a，无需处理视频
         recorder.setVideoCodec(avcodec.AV_CODEC_ID_NONE);
@@ -67,7 +66,7 @@ public class FFmpegDemo {
         // 设置声道数
         recorder.setAudioChannels(grabber.getAudioChannels());
         // 设置输出格式为 mp4
-        recorder.setFormat(MediaType.MP4_AUDIO.subtype());
+        recorder.setFormat("mp4");
         // 流媒体优化
         recorder.setOption("movflags", "+faststart");
         // 高质量编码

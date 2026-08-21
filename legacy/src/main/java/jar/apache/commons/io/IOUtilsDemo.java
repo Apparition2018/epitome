@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -71,8 +71,8 @@ public class IOUtilsDemo {
      */
     @Test
     public void contentEquals() {
-        try (InputStream is = new URL(BAIDU_URL).openStream();
-             InputStream is2 = new URL(BAIDU_URL).openStream()) {
+        try (InputStream is = URI.create(BAIDU_URL).toURL().openStream();
+             InputStream is2 = URI.create(BAIDU_URL).toURL().openStream()) {
             p(IOUtils.contentEquals(is, is2)); // true
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -93,7 +93,7 @@ public class IOUtilsDemo {
      */
     @Test
     public void copy() throws IOException {
-        InputStream is = new URL(BAIDU_URL).openStream();
+        InputStream is = URI.create(BAIDU_URL).toURL().openStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         IOUtils.copy(is, baos); // 默认 bufferSize 就是 1024 * 4
         p(baos.size()); // 2443
@@ -108,10 +108,10 @@ public class IOUtilsDemo {
      */
     @Test
     public void lineIterator() throws IOException {
-        InputStream is = new URL(BAIDU_URL).openStream();
+        InputStream is = URI.create(BAIDU_URL).toURL().openStream();
         LineIterator lt = IOUtils.lineIterator(is, StandardCharsets.UTF_8.name());
         while (lt.hasNext()) {
-            String line = lt.nextLine();
+            String line = lt.next();
             p(line);
         }
     }

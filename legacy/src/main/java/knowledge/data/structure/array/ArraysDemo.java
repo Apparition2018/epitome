@@ -12,15 +12,6 @@ import static com.ljh.commons.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Arrays</a>
  * <p>Arrays 提供的所有方法都是静态的
- * <pre>
- * static void          sort(XXX[] a[, int fromIndex, int toIndex])                 对指定 XXX 型数组的指定范围按数字升序进行排序
- * static boolean       equals(XXX[] xxx, XXX[] xxx)                                如果两个指定的 XXX 型数组彼此相等，则返回 true
- * static void          fill(XXX[] a[, int fromIndex, int toIndex], XXX val)        将指定的 XXX 值分配给指定 XXX 节型数组的每个元素
- * static XXX           deepHashCode(Object[] a)                                    基于指定数组的“深层内容”返回哈希码
- *
- * static Stream        stream(XXX[] arr[, int startInclusive, int endExclusive])   返回 Stream
- * static Spliterator[.OfXXX]   spliterator(XXX[] array)                            返回 Spliterator
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
