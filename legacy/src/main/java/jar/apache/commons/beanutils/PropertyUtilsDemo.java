@@ -20,7 +20,7 @@ public class PropertyUtilsDemo {
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Person person = new Person();
         // JavaBean → JavaBean
-        PropertyUtils.copyProperties(person, personList.get(0));
+        PropertyUtils.copyProperties(person, personList.getFirst());
         p(person); // Person{id=1, name='张三'}
 
         // JavaBean → Map

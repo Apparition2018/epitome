@@ -1,8 +1,8 @@
 package knowledge.network.url;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +43,7 @@ public class URLConnectionDemo {
 
         // 响应状态信息
         String statusInfo = conn.getHeaderField(0);
-        if (null == statusInfo || statusInfo.contains(String.valueOf(HttpStatus.SC_OK))) {
+        if (null == statusInfo || statusInfo.contains(String.valueOf(HttpStatus.OK.value()))) {
             p("请求失败！");
         }
 

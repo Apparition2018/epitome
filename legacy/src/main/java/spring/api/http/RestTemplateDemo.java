@@ -67,7 +67,7 @@ public class RestTemplateDemo {
 
     @Test
     public void cookie() {
-        requestHeaders.add("Cookie", "cny=1");
+        requestHeaders.add(HttpHeaders.COOKIE, "cny=1");
         HttpEntity<?> httpEntity = new HttpEntity<>(map, requestHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange(COOKIE_URL, HttpMethod.POST, httpEntity, String.class);
         p(responseEntity.getBody());

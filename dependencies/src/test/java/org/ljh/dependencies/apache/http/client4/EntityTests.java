@@ -1,8 +1,7 @@
-package jar.apache.httpcomponents.client4;
+package org.ljh.dependencies.apache.http.client4;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.BufferedHttpEntity;
 import org.apache.http.entity.ContentType;
@@ -10,6 +9,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -31,9 +31,10 @@ import static com.ljh.commons.Demo.p;
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class EntityDemo {
+public class EntityTests {
 
-    public static void main(String[] args) throws ParseException, IOException {
+    @Test
+    public void test() throws IOException {
         // 当为一个传出报文创建实体时，这个元数据不得不通过实体创建器来提供。
         StringEntity myEntity = new StringEntity("important message", StandardCharsets.UTF_8);
         p(myEntity.getContentType());                   // Content-Type: text/plain; charset=UTF-8

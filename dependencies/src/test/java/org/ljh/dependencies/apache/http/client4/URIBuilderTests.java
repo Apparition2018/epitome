@@ -1,4 +1,4 @@
-package jar.apache.httpcomponents.client4;
+package org.ljh.dependencies.apache.http.client4;
 
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -16,7 +16,7 @@ import static com.ljh.commons.Demo.*;
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class URIBuilderDemo {
+public class URIBuilderTests {
 
     @Test
     public void get() throws URISyntaxException {

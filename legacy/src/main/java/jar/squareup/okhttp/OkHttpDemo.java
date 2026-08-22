@@ -6,9 +6,9 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okio.BufferedSink;
-import org.apache.hc.core5.http.HttpHeaders;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
 
 import java.io.File;
 import java.io.IOException;

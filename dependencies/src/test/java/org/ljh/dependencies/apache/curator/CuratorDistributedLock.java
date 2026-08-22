@@ -32,9 +32,7 @@ public class CuratorDistributedLock {
     private static final int REPETITIONS = QTY * 10;
     private static final String LOCK_PATH = "/lock";
 
-    /**
-     * <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/locking">Locking Example</a>
-     */
+    /** <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/locking">Locking Example</a> */
     public static void main(String[] args) throws Exception {
         FakeLimitedResource resource = new FakeLimitedResource();
         ExecutorService threadPool = Executors.newFixedThreadPool(QTY);
@@ -96,9 +94,7 @@ public class CuratorDistributedLock {
         }
     }
 
-    /**
-     * 模拟只能由一个进程访问的外部资源
-     */
+    /** 模拟只能由一个进程访问的外部资源 */
     private static class FakeLimitedResource {
         private final AtomicBoolean inUse = new AtomicBoolean(false);
 

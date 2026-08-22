@@ -2,7 +2,7 @@ package springboot.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.hc.core5.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 
 /**
  * ResultCode
@@ -30,19 +30,19 @@ import org.apache.hc.core5.http.HttpStatus;
 @AllArgsConstructor
 public enum ResultCode implements IResultCode {
 
-    SUCCESS(HttpStatus.SC_OK, "操作成功"),
-    FAILURE(HttpStatus.SC_BAD_REQUEST, "业务异常"),
-    UN_AUTHORIZED(HttpStatus.SC_UNAUTHORIZED, "请求未授权"),
-    NOT_FOUND(HttpStatus.SC_NOT_FOUND, "404 没找到请求"),
-    MSG_NOT_READABLE(HttpStatus.SC_BAD_REQUEST, "消息不能读取"),
-    METHOD_NOT_SUPPORTED(HttpStatus.SC_METHOD_NOT_ALLOWED, "不支持当前请求方法"),
-    MEDIA_TYPE_NOT_SUPPORTED(HttpStatus.SC_UNSUPPORTED_MEDIA_TYPE, "不支持当前媒体类型"),
-    REQ_REJECT(HttpStatus.SC_FORBIDDEN, "请求被拒绝"),
-    INTERNAL_SERVER_ERROR(HttpStatus.SC_INTERNAL_SERVER_ERROR, "服务器异常"),
-    PARAM_MISS(HttpStatus.SC_BAD_REQUEST, "缺少必要的请求参数"),
-    PARAM_TYPE_ERROR(HttpStatus.SC_BAD_REQUEST, "请求参数类型错误"),
-    PARAM_BIND_ERROR(HttpStatus.SC_BAD_REQUEST, "请求参数绑定错误"),
-    PARAM_VALID_ERROR(HttpStatus.SC_BAD_REQUEST, "参数校验失败");
+    SUCCESS(HttpStatus.OK.value(), "操作成功"),
+    FAILURE(HttpStatus.BAD_REQUEST.value(), "业务异常"),
+    UN_AUTHORIZED(HttpStatus.UNAUTHORIZED.value(), "请求未授权"),
+    NOT_FOUND(HttpStatus.NOT_FOUND.value(), "404 没找到请求"),
+    MSG_NOT_READABLE(HttpStatus.BAD_REQUEST.value(), "消息不能读取"),
+    METHOD_NOT_SUPPORTED(HttpStatus.METHOD_NOT_ALLOWED.value(), "不支持当前请求方法"),
+    MEDIA_TYPE_NOT_SUPPORTED(HttpStatus.UNSUPPORTED_MEDIA_TYPE.value(), "不支持当前媒体类型"),
+    REQ_REJECT(HttpStatus.FORBIDDEN.value(), "请求被拒绝"),
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "服务器异常"),
+    PARAM_MISS(HttpStatus.BAD_REQUEST.value(), "缺少必要的请求参数"),
+    PARAM_TYPE_ERROR(HttpStatus.BAD_REQUEST.value(), "请求参数类型错误"),
+    PARAM_BIND_ERROR(HttpStatus.BAD_REQUEST.value(), "请求参数绑定错误"),
+    PARAM_VALID_ERROR(HttpStatus.BAD_REQUEST.value(), "参数校验失败");
 
     final int code;
     final String msg;

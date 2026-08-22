@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
 
 import java.io.Serial;
 import java.net.HttpCookie;
@@ -53,7 +54,7 @@ public class ServletUtilTests extends HttpServlet {
         HttpResponse httpResponse = HttpRequest.post("http://localhost:8080/ServletUtil")
                 .form(params)
                 .body(JSONUtil.toJsonStr(params))
-                .cookie(new HttpCookie("cookie", "zero"))
+                .cookie(new HttpCookie(HttpHeaders.COOKIE, "zero"))
                 .execute();
     }
 }

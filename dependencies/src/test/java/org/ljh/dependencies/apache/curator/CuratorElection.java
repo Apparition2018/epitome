@@ -33,9 +33,7 @@ public class CuratorElection {
     private static final int CLIENT_QTY = 10;
     private static final String LEADER_PATH = "/leader";
 
-    /**
-     * <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/leader">LeaderSelector Example</a>
-     */
+    /** <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/leader">LeaderSelector Example</a> */
     public static void main(String[] args) throws Exception {
         List<CuratorFramework> clients = new ArrayList<>();
         List<ExampleClient> exampleClients = new ArrayList<>();

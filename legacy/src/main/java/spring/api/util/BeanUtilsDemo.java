@@ -2,7 +2,6 @@ package spring.api.util;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import cn.hutool.extra.cglib.CglibUtil;
 import com.ljh.commons.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
@@ -23,7 +22,7 @@ import static com.ljh.commons.Demo.stopWatch;
  */
 public class BeanUtilsDemo {
 
-    /** Cglib BeanCopier 和 Apache Beanutils 与 lombok 的 @Accessors(chain = true) 冲突 */
+    /** Cglib BeanCopier 和 Apache BeanUtils 与 lombok 的 @Accessors(chain = true) 冲突 */
     public static void main(String[] args) {
         User source = new User(new Date());
 
@@ -82,10 +81,11 @@ public class BeanUtilsDemo {
         }
         stopWatch.stop();
 
-        stopWatch.start("hutool CglibUtil");
-        for (int i = 0; i < 1_000_000; i++) {
-            CglibUtil.copy(source, target);
-        }
-        stopWatch.stop();
+        // JDK9+ 的模块化系统限制了 java.lang.ClassLoader.defineClass 等内部方法的访问
+        // stopWatch.start("hutool CglibUtil");
+        // for (int i = 0; i < 1_000_000; i++) {
+        //     CglibUtil.copy(source, target);
+        // }
+        // stopWatch.stop();
     }
 }

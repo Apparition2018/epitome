@@ -1,4 +1,4 @@
-package jar.lombok;
+package org.ljh.dependencies.lombok;
 
 import lombok.Cleanup;
 import lombok.Getter;
@@ -23,7 +23,7 @@ import static com.ljh.commons.Demo.p;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public class LombokDemo3 {
+public class Lombok3Tests {
 
     /**
      * var （已过时）

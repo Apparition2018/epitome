@@ -1,4 +1,4 @@
-package jar.apache.httpcomponents.client5;
+package org.ljh.dependencies.apache.http.client5;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -7,6 +7,7 @@ import org.apache.hc.client5.http.HttpRoute;
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.cookie.CookieStore;
@@ -17,12 +18,7 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
-import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
-import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
-import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
 import org.apache.hc.core5.http.*;
-import org.apache.hc.core5.http.config.Registry;
-import org.apache.hc.core5.http.config.RegistryBuilder;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import org.apache.hc.core5.http.io.SocketConfig;
 import org.apache.hc.core5.http.io.entity.BufferedHttpEntity;
@@ -31,9 +27,8 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.message.BasicHeader;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.apache.hc.core5.net.URIBuilder;
-import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
-import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
+import org.apache.hc.core5.util.Timeout;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -90,17 +85,13 @@ public final class HttpClientUtils {
     // HttpClient 配置
     // https://github.com/apache/httpcomponents-client/blob/5.1.x/httpclient5/src/test/java/org/apache/hc/client5/http/examples/ClientConfiguration.java
     static {
-        // 连接 Socket 工厂的注册表
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", PlainConnectionSocketFactory.INSTANCE)
-                .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
-                .build();
-
-        // 连接管理器
-        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(
-                socketFactoryRegistry, PoolConcurrencyPolicy.STRICT, PoolReusePolicy.LIFO, TimeValue.ofMinutes(5));
+        // 连接管理器：httpclient5 5.4 起使用默认 socket 工厂（http/https 自动处理），不再手动注册
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
         connManager.setDefaultSocketConfig(SocketConfig.custom().setSoTimeout(30, TimeUnit.SECONDS).setTcpNoDelay(true).build());
-        connManager.setValidateAfterInactivity(TimeValue.ofSeconds(10));
+        connManager.setDefaultConnectionConfig(ConnectionConfig.custom()
+                .setConnectTimeout(Timeout.ofSeconds(5))
+                .setValidateAfterInactivity(10, TimeUnit.SECONDS)
+                .build());
         connManager.setMaxTotal(100);
         connManager.setDefaultMaxPerRoute(10);
         connManager.setMaxPerRoute(new HttpRoute(new HttpHost("somehost", 80)), 20);
@@ -115,11 +106,10 @@ public final class HttpClientUtils {
         RequestConfig requestConfig = RequestConfig.custom()
                 .setCookieSpec(StandardCookieSpec.STRICT)
                 .setExpectContinueEnabled(true)
-                .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
+                .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.DIGEST))
                 .setProxyPreferredAuthSchemes(Collections.singletonList(StandardAuthScheme.BASIC))
-                .setConnectTimeout(5, TimeUnit.SECONDS)
-                .setResponseTimeout(5, TimeUnit.SECONDS)
-                .setConnectionRequestTimeout(5, TimeUnit.SECONDS)
+                .setResponseTimeout(Timeout.ofSeconds(5))
+                .setConnectionRequestTimeout(Timeout.ofSeconds(5))
                 .build();
 
         // HttpClient
@@ -206,7 +196,8 @@ public final class HttpClientUtils {
             httpPost.setEntity(stringEntity);
         }
         if (cookies != null) {
-            Header header = new BasicHeader("Cookie", cookies.entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&")));
+            Header header = new BasicHeader(HttpHeaders.COOKIE,
+                    cookies.entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&")));
             httpPost.addHeader(header);
         }
         return httpClient.execute(httpPost, responseHandler);

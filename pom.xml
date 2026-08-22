@@ -71,7 +71,7 @@
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
         <minio.version>9.0.3</minio.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.46</hutool.version>
+        <hutool.version>5.8.47</hutool.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.5.1</poi.version>
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
@@ -91,10 +91,12 @@
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
         <fastjson.version>2.0.62</fastjson.version>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-        <gson.version>2.14.0</gson.version>
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+        <jsoup.version>1.22.2</jsoup.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
         <zxing.version>3.5.4</zxing.version>
+        <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
+        <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>9.7.1</itext.version>
         <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client -->

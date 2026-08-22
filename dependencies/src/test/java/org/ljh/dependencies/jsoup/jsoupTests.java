@@ -1,4 +1,4 @@
-package jar.jsoup;
+package org.ljh.dependencies.jsoup;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static com.ljh.commons.Demo.BAIDU_URL;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <a href="https://jsoup.org/apidocs/">Jsoup</a>
@@ -21,7 +22,7 @@ import static com.ljh.commons.Demo.BAIDU_URL;
  * @author ljh
  * @since 2020/11/12 10:43
  */
-public class JsoupDemo {
+public class jsoupTests {
 
     public static void main(String[] args) throws IOException {
         // static Connection	connect(String url)
@@ -37,6 +38,6 @@ public class JsoupDemo {
         Element su = document.getElementById("su");
 
         // 获取一个表单元素的值 (input, textarea 等)
-        System.out.println(Objects.requireNonNull(su).val()); // 百度一下
+        assertThat(Objects.requireNonNull(su).val()).isEqualTo("百度一下");
     }
 }

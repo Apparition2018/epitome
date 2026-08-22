@@ -1,4 +1,4 @@
-package jar.lombok;
+package org.ljh.dependencies.lombok;
 
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -15,7 +15,7 @@ import static com.ljh.commons.Demo.p;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class LombokDemo2 {
+public class Lombok2Tests {
 
     /**
      * {@code @Accessors}

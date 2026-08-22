@@ -1,8 +1,9 @@
-package jar.apache.httpcomponents.client4;
+package org.ljh.dependencies.apache.http.client4;
 
 import org.apache.http.*;
 import org.apache.http.message.BasicHeaderElementIterator;
 import org.apache.http.message.BasicHttpResponse;
+import org.junit.jupiter.api.Test;
 
 import static com.ljh.commons.Demo.p;
 
@@ -13,9 +14,10 @@ import static com.ljh.commons.Demo.p;
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class HeaderDemo {
+public class HeaderTests {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         /*
          * HTTP 响应是由服务器在接收和解释请求报文之后返回发送给客户端的报文
          * 响应报文的第一行包含了协议版本，之后是数字状态码和相关联的文本段

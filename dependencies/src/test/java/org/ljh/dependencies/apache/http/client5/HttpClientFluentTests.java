@@ -1,4 +1,4 @@
-package jar.apache.httpcomponents.client5;
+package org.ljh.dependencies.apache.http.client5;
 
 import org.apache.hc.client5.http.ClientProtocolException;
 import org.apache.hc.client5.http.HttpResponseException;
@@ -8,6 +8,8 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.message.BasicHeader;
 import org.apache.hc.core5.util.Timeout;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -21,13 +23,14 @@ import static com.ljh.commons.Demo.COOKIE_URL;
  * @author ljh
  * @since 2021/8/2 10:35
  */
-public class HttpClientFluentDemo {
+public class HttpClientFluentTests {
 
-    public static void main(String[] args) throws IOException {
+    @Test
+    public void test() throws IOException {
         String result = Request.post(COOKIE_URL)
                 .connectTimeout(Timeout.of(5, TimeUnit.SECONDS))
                 .responseTimeout(Timeout.of(5, TimeUnit.SECONDS))
-                .addHeader(new BasicHeader("Cookie", "cny=1"))
+                .addHeader(new BasicHeader(HttpHeaders.COOKIE, "cny=1"))
                 .execute().handleResponse(response -> {
                     if (response.getCode() >= HttpStatus.SC_REDIRECTION) {
                         throw new HttpResponseException(response.getCode(), response.getReasonPhrase());

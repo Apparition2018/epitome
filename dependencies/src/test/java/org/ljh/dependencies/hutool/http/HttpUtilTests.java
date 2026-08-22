@@ -8,6 +8,7 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
 
 import java.io.File;
 import java.net.HttpCookie;
@@ -83,9 +84,9 @@ public class HttpUtilTests {
         HttpRequest request = HttpRequest.post(BAIDU_URL)
                 // 设置打开重定向（次数为2）
                 .setFollowRedirects(true)
-                .form(BeanUtil.beanToMap(personList.get(0)))
+                .form(BeanUtil.beanToMap(personList.getFirst()))
                 .body(HELLO_WORLD)
-                .cookie(new HttpCookie("cookie", "oreo"));
+                .cookie(new HttpCookie(HttpHeaders.COOKIE, "zero"));
         try (HttpResponse response = request.execute()) {
             if (response.getStatus() == HttpStatus.SC_OK) {
                 p("success");

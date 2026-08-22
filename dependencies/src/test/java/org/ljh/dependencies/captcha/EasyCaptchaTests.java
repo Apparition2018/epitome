@@ -1,7 +1,8 @@
-package jar.captcha;
+package org.ljh.dependencies.captcha;
 
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,9 +14,10 @@ import java.util.UUID;
  * @author ljh
  * @since 2019/12/20 10:07
  */
-public class EasyCaptchaDemo {
+public class EasyCaptchaTests {
 
-    public static void main(String[] args) throws IOException, FontFormatException {
+    @Test
+    public void test() throws IOException, FontFormatException {
         // 生成验证码：宽，高，验证码位数
         SpecCaptcha captcha = new SpecCaptcha(130, 50, 4);
         // 设置字体

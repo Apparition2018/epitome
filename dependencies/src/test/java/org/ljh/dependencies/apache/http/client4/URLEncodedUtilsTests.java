@@ -1,8 +1,9 @@
-package jar.apache.httpcomponents.client4;
+package org.ljh.dependencies.apache.http.client4;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,9 +19,10 @@ import static com.ljh.commons.Demo.p;
  * @author ljh
  * @since 2020/12/9 14:10
  */
-public class URLEncodedUtilsDemo {
+public class URLEncodedUtilsTests {
 
-    public static void main(String[] args) throws URISyntaxException {
+    @Test
+    public void test() throws URISyntaxException {
         URI uri = new URIBuilder(MOZILLA_DEMO_URL).build();
 
         // 返回 URI 查询参数 NameValuePair 列表

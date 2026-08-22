@@ -1,11 +1,11 @@
 package spring.controller;
 
-import cn.hutool.json.JSONUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static com.ljh.commons.Demo.jsonMapper;
 import static com.ljh.commons.Demo.personList;
 
 /**
@@ -22,7 +22,7 @@ public class DemoController {
     public String demo(HttpServletRequest request) {
         // Javascript 接收集合参数：http://localhost:3333/demo?name=javascriptReceiveCollection
         request.setAttribute("personList", personList);
-        request.setAttribute("personJsonArray", JSONUtil.parseArray(JSONUtil.toJsonStr(personList)));
+        request.setAttribute("personJsonArray", jsonMapper.valueToTree(personList));
         return "demo";
     }
 }

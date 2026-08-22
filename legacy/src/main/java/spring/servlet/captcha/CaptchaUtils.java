@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.hc.core5.http.HttpHeaders;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaTypeFactory;
 
 import javax.imageio.ImageIO;

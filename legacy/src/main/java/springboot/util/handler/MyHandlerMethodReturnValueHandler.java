@@ -2,10 +2,10 @@ package springboot.util.handler;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
-import org.apache.hc.core5.http.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.autoconfigure.error.BasicErrorController;
 import org.springframework.core.MethodParameter;
+import org.springframework.http.MediaType;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.AsyncHandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
@@ -43,7 +43,7 @@ public class MyHandlerMethodReturnValueHandler implements AsyncHandlerMethodRetu
         mavContainer.setRequestHandled(true);
         HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
         if (response != null) {
-            response.setContentType(ContentType.APPLICATION_JSON.toString());
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
             Result<?> result = Result.success(returnValue);
             response.getWriter().write(objectMapper.writeValueAsString(result));

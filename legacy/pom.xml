@@ -23,8 +23,6 @@
         <commons-email2.version>2.0.0-M1</commons-email2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
         <commons-rng.version>1.7</commons-rng.version>
-        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-        <jsoup.version>1.22.2</jsoup.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>10.9.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
@@ -43,8 +41,6 @@
         <nashorn.version>15.7</nashorn.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
         <jmh.version>1.37</jmh.version>
-        <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
-        <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent -->
@@ -184,28 +180,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>${jsoup.version}</version>
-        </dependency>
-
-        <!-- itextpdf：Java-PDF -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-core</artifactId>
-            <version>${itext.version}</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
             <version>${nimbus-jose-jwt.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5-fluent</artifactId>
         </dependency>
 
         <!-- retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 -->
@@ -213,13 +190,6 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
             <version>${retrofit2.version}</version>
-        </dependency>
-
-        <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
-            包含 httpclient 4 -->
-        <dependency>
-            <groupId>org.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
         </dependency>
 
         <dependency>
@@ -280,12 +250,6 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.whvcse</groupId>
-            <artifactId>easy-captcha</artifactId>
-            <version>${easy-captcha.version}</version>
         </dependency>
 
         <!-- cglib：Code 生成，动态代理 -->
