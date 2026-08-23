@@ -1,0 +1,44 @@
+package org.ljh.dependencies.group.apache.commons.collections4;
+
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.TreeBidiMap;
+import org.junit.jupiter.api.Test;
+
+import static com.ljh.commons.Demo.p;
+
+/**
+ * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/BidiMap.html">BidiMap</a>
+ * <p>BidMap 是一个接口，该接口要求值和键都不能重复，并允许键值双向查找
+ *
+ * @author ljh
+ * @since 2019/8/8 19:39
+ */
+public class BidiMapTests {
+
+    @Test
+    public void test() {
+        BidiMap<String, String> bidi = new TreeBidiMap<>();
+        bidi.put("One", "1");
+        bidi.put("Tow", "2");
+        bidi.put("Three", "3");
+        p(bidi);                // {One=1, Three=3, Tow=2}
+
+        // Set<V>	    values()
+        // 返回此映射中包含的值的 Set 视图
+        p(bidi.values());       // [1, 3, 2]
+
+        p(bidi.get("Three"));   // 3
+        // K	        getKey(Object value)
+        // 获取当前映射到指定值的键
+        p(bidi.getKey("3"));    // Three
+
+        // BidiMap<V,K>	inverseBidiMap()
+        // 获取相反 BidiMap
+        BidiMap<String, String> inverseBidi = bidi.inverseBidiMap();
+        p(inverseBidi);         // {1=One, 2=Tow, 3=Three}
+
+        // K	        removeValue(Object value)
+        // 删除当前映射到指定值的键值对
+        bidi.removeValue("2");
+    }
+}

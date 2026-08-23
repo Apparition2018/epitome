@@ -1,0 +1,60 @@
+package org.ljh.dependencies.group.google.guava;
+
+import com.google.common.base.CharMatcher;
+import com.google.common.base.Splitter;
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Multiset;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
+import com.google.common.io.Resources;
+import com.ljh.commons.Demo;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+
+import static com.ljh.commons.Demo.*;
+
+/**
+ * <a href="https://github.com/google/guava/wiki/IOExplained">IO</a>
+ * <pre>
+ * ByteSource 和 CharSource 分别表示二进制和字符的可读源
+ * ByteSink 和 CharSlink 分别表示二进制数字和字符的可写接收器
+ * 使用上面这些类的实现可以完全绕过打开和关闭流的问题
+ * </pre>
+ *
+ * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3339.html">Guava IO</a>
+ * @see <a href="https://github.com/google/guava/wiki/ClosingResourcesExplained">ClosingResourcesExplained</a>
+ * @since 2023/1/10 9:48
+ */
+public class IoTests {
+
+    @Test
+    public void test() throws IOException {
+        File file = new File(DEMO_FILE_PATH);
+
+        p("Read the lines of a UTF-8 text file");
+        ImmutableList<String> lines = Files.asCharSource(file, StandardCharsets.UTF_8).readLines();
+        lines.forEach(Demo::p);
+
+        p("\nCount distinct word occurrences in a file");
+        Multiset<String> wordOccurrences = HashMultiset.create(
+                Splitter.on(CharMatcher.whitespace())
+                        .trimResults()
+                        .omitEmptyStrings()
+                        .split(Files.asCharSource(file, StandardCharsets.UTF_8).read()));
+        wordOccurrences.forEach(Demo::p);
+
+        p("\nSHA-256 a file");
+        HashCode hash = Files.asByteSource(file).hash(Hashing.sha256());
+        p(hash);
+
+        p("\nCopy the data from a URL to a file");
+        Resources.asByteSource(URI.create(BAIDU_URL).toURL()).copyTo(Files.asByteSink(file));
+    }
+}

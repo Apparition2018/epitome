@@ -1130,7 +1130,8 @@ __marimo__/
 
 
 #####[ LJH ]#####
-!legacy/lib/*.jar
+!dependencies/lib/
+!dependencies/lib/*.jar
 #####[ HBuilderX ]#####
 .hbuilderx/
 unpackage/

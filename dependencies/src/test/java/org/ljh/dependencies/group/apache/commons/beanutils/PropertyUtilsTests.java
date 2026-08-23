@@ -1,0 +1,36 @@
+package org.ljh.dependencies.group.apache.commons.beanutils;
+
+import com.ljh.commons.Person;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
+
+import static com.ljh.commons.Demo.p;
+import static com.ljh.commons.Demo.personList;
+
+/**
+ * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/PropertyUtils.html">PropertyUtils</a>
+ *
+ * @author ljh
+ * @since 2020/11/14 21:29
+ */
+public class PropertyUtilsTests {
+
+    @Test
+    public void test() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Person person = new Person();
+        // JavaBean → JavaBean
+        PropertyUtils.copyProperties(person, personList.getFirst());
+        p(person); // Person{id=1, name='张三'}
+
+        // JavaBean → Map
+        Map<String, Object> map = PropertyUtils.describe(person);
+        p(map); // {otherInfo=null, gender=null, name=张三, id=1, age=null, home=null}
+
+        PropertyUtils.setProperty(person, "id", 2);
+        PropertyUtils.setProperty(person, "name", "李四");
+        p(person); // Person{id=2, name='李四'}
+    }
+}

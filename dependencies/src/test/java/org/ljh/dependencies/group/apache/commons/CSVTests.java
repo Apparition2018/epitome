@@ -1,0 +1,43 @@
+package org.ljh.dependencies.group.apache.commons;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVPrinter;
+import org.junit.jupiter.api.Test;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import static com.ljh.commons.Demo.DEMO_DIR_PATH;
+
+/**
+ * <a href="https://commons.apache.org/proper/commons-csv/">Commons CSV</a>
+ *
+ * @author ljh
+ * @since 2020/11/15 3:29
+ */
+public class CSVTests {
+
+    @Test
+    public void writeCSV() {
+        try (PrintWriter pw = new PrintWriter(DEMO_DIR_PATH + "demo.csv");
+             CSVPrinter csvPrinter = CSVFormat.Builder.create().setHeader("Name", "gender", "focus", "age").build().print(pw)) {
+            csvPrinter.printRecord("张三", "男", "无", 33);
+            csvPrinter.printRecord("李四", "男", "好对象", 23);
+            csvPrinter.printRecord("王妹妹", "女", "特别关注", 33);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void readCSV() {
+        try (FileReader fr = new FileReader(DEMO_DIR_PATH + "demo.csv");
+             CSVParser csvParser = CSVFormat.Builder.create().setHeader("Name", "gender", "focus", "age").build().parse(fr)) {
+            csvParser.forEach(System.out::println);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

@@ -1,0 +1,76 @@
+package org.ljh.dependencies.group.apache.commons.beanutils;
+
+import com.ljh.commons.User;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
+import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Map;
+
+import static com.ljh.commons.Demo.p;
+
+/**
+ * <a href="https://commons.apache.org/proper/commons-beanutils/">BeanUtils</a>
+ *
+ * @author ljh
+ * @since 2019/8/8 19:39
+ */
+public class BeanUtilsTests {
+
+    @Test
+    public void test() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        // JavaBean → JavaBean
+        User origin = new User("2000-01-01");
+        User user = new User();
+        // static void      copyProperties(Object dest, Object orig)
+        BeanUtils.copyProperties(user, origin);
+
+        // JavaBean → Map
+        Map<String, String> map = BeanUtils.describe(user);
+        p(map); // User{birthString='2000-01-01'}
+
+        // 注册本地日期转换器
+        ConvertUtils.register(new DateLocaleConverter(), Date.class);
+
+        // Map → JavaBean
+        BeanUtils.populate(user, map);
+        p(user); // User{birthString='2000-01-01'}
+
+        // 设置属性值
+        BeanUtils.setProperty(user, "birth", "2001-01-01");
+        p(user); // User{birthString='2001-01-01'}
+    }
+
+    /**
+     * HttpServletRequest → JavaBean
+     *
+     * @see <a href="https://www.cnblogs.com/vmax-tam/p/4159985.html">BeanUtils 工具类</a>
+     */
+    public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
+        T obj = null;
+        try {
+            obj = clazz.getConstructor().newInstance();
+        } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
+                 NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+
+        Enumeration<String> e = request.getParameterNames();
+        while (e.hasMoreElements()) {
+            String name = e.nextElement();
+            String value = request.getParameter(name);
+            try {
+                BeanUtils.setProperty(obj, name, value);
+            } catch (InvocationTargetException | IllegalAccessException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+
+        return obj;
+    }
+}

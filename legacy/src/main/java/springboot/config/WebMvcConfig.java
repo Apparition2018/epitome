@@ -1,7 +1,6 @@
 package springboot.config;
 
 import cn.hutool.core.util.StrUtil;
-import knowledge.xml.jaxb.JaxbDemo;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
@@ -258,7 +257,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * @see <a href="https://www.baeldung.com/spring-httpmessageconverter-rest">Spring HTTP 消息转换器</a>
      * @see <a href="https://www.baeldung.com/spring-rest-api-with-binary-data-formats">二进制数据格式</a>
      * @see <a href="https://www.baeldung.com/spring-mvc-image-media-data">返回图像/媒体数据</a>
-     * @see JaxbDemo
      */
     @Bean
     public List<HttpMessageConverter<Object>> customMessageConverters() {
