@@ -30,6 +30,7 @@
         <module name="spring-boot-quartz" />
         <module name="spring-boot-data-jpa" />
         <module name="spring-boot-validation" />
+        <module name="spring-boot-freemarker" />
         <module name="spring-boot-test" />
       </profile>
     </annotationProcessing>
@@ -47,6 +48,7 @@
       <module name="spring-boot-data-jpa" options="-parameters" />
       <module name="spring-boot-druid" options="-parameters" />
       <module name="spring-boot-flyway" options="-parameters" />
+      <module name="spring-boot-freemarker" options="-parameters" />
       <module name="spring-boot-hibernate" options="-parameters" />
       <module name="spring-boot-jpa" options="-parameters" />
       <module name="spring-boot-mqtt" options="-parameters" />

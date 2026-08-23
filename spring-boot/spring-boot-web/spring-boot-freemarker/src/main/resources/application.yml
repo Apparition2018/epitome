@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: spring-boot-freemarker
+
+  # FreeMarker 配置：https://docs.spring.io/spring-boot/reference/web/servlet.html#web.servlet.spring-mvc.template-engines
+  freemarker:
+    # 模板目录
+    template-loader-path: classpath:/templates/
+    # 模板后缀（.ftlh 表示 HTML 安全输出，对 < > & 自动转义）
+    suffix: .ftlh
+    # 请求属性是否暴露给模板
+    expose-request-attributes: false
+    # Session 属性是否暴露给模板
+    expose-session-attributes: false
+    # 开发环境缓存关闭，便于热更新；生产建议开启
+    cache: false
+    charset: UTF-8
+    content-type: text/html;charset=UTF-8
+    settings:
+      # 数据/时间格式：date、time、datetime 分别指定
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      # 数值格式：精确到分
+      number_format: 0.##
+      # 未定义变量时不抛出异常，输出空字符串（生产可改为 throw 以便尽早暴露问题）
+      template_exception_handler: html_debug
+      # 去空白
+      whitespace_stripping: true

@@ -1,4 +1,4 @@
-package jar.freemarker;
+package org.ljh.dependencies.group.freemarker;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-class Employer {
+public class Employer {
     private int id;
     private String name;
     private int age;

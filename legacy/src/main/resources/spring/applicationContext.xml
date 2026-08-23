@@ -21,30 +21,28 @@
             ENVIRONMENT 先在 System 属性查找，再在 properties 文件查找
             NEVER       只在 properties 文件查找，不在 System 属性查找
             FALLBACK    先在 properties 文件查找，再在 System 属性查找
-            OVERRIDE    Spring 3.1 之前的 ENVIRONMENT 
+            OVERRIDE    Spring 3.1 之前的 ENVIRONMENT
             -->
     <context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="FALLBACK"/>
 
-    <!-- Druid 数据源 -->
-    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <!-- 数据源 -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
-        <property name="url" value="${jdbc.url}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
-        <property name="initialSize" value="3"/>
-        <property name="minIdle" value="3"/>
-        <property name="maxActive" value="20"/>
-        <property name="maxWait" value="60000"/>
-        <property name="filters" value="stat,wall"/>
+        <property name="minimumIdle" value="3"/>
+        <property name="maximumPoolSize" value="20"/>
+        <property name="connectionTimeout" value="60000"/>
     </bean>
 
     <!-- Spring 整合 Mybatis -->
     <!-- SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 设置 JDBC 数据源 -->
-        <property name="dataSource" ref="druidDataSource"/>
+        <property name="dataSource" ref="dataSource"/>
         <!-- 设置 SqlSessionFactory 配置文件的位置 -->
-        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!-- <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/> -->
         <!-- 设置包别名 -->
         <property name="typeAliasesPackage" value="spring.bean"/>
         <!-- 设置映射文件的位置，这些文件将在运行时合并到 SqlSessionFactory 配置中 -->
@@ -61,7 +59,7 @@
     <!-- 数据源事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 注入数据源 -->
-        <property name="dataSource" ref="druidDataSource"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <!-- 基于注解的声明式事务：https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations
@@ -73,20 +71,10 @@
     <aop:aspectj-autoproxy/>
 
     <!-- JDBC -->
-    <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${jdbc.driver}"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-        <property name="initialSize" value="3"/>
-        <property name="minIdle" value="3"/>
-        <property name="maxTotal" value="20"/>
-        <property name="maxWaitMillis" value="60000"/>
-    </bean>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dbcpDataSource"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-        <constructor-arg ref="dbcpDataSource"/>
+        <constructor-arg ref="dataSource"/>
     </bean>
 </beans>
