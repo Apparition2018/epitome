@@ -1,11 +1,11 @@
-package springboot.repository.master.exam;
+package springboot.repository.exam;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import springboot.domain.master.exam.ExamSession;
+import springboot.domain.exam.ExamSession;
 
 /**
  * 考试场次 JPA Repository

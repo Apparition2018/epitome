@@ -10,8 +10,8 @@ import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
-import springboot.domain.master.Demo;
-import springboot.mapper.master.DemoMapper;
+import springboot.domain.Demo;
+import springboot.repository.DemoRepository;
 
 import java.io.Serial;
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ import static com.ljh.commons.Demo.pe;
 @AllArgsConstructor
 public class TransactionalService {
 
-    private final DemoMapper demoMapper;
+    private final DemoRepository demoRepository;
     private final ApplicationEventPublisher applicationEventPublisher;
 
     /**
@@ -40,7 +40,7 @@ public class TransactionalService {
      */
     @Transactional(rollbackFor = SQLException.class)
     public void rollbackCheckedException() throws SQLException {
-        demoMapper.insert(new Demo().setName("a"));
+        demoRepository.save(new Demo().setName("a"));
         throw new SQLException("Mock SQLException");
     }
 
@@ -50,7 +50,7 @@ public class TransactionalService {
     @Transactional
     public void transactionalEventListener() {
         applicationEventPublisher.publishEvent(new MyEvent(this));
-        demoMapper.insert(new Demo().setName("a"));
+        demoRepository.save(new Demo().setName("a"));
         throw new RuntimeException("Mock RuntimeException");
     }
 
@@ -88,7 +88,7 @@ public class TransactionalService {
                 }
             });
         }
-        demoMapper.insert(new Demo().setName("a"));
+        demoRepository.save(new Demo().setName("a"));
         throw new RuntimeException("Mock RuntimeException");
     }
 

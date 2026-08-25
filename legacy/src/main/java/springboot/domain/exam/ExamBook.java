@@ -1,4 +1,4 @@
-package springboot.domain.master.exam;
+package springboot.domain.exam;
 
 import jakarta.persistence.*;
 import lombok.Data;

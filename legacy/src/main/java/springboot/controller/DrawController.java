@@ -1,6 +1,7 @@
 package springboot.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
@@ -10,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springboot.domain.master.draw.Prize;
+import springboot.domain.draw.DrawPrize;
 import springboot.exception.ServiceException;
-import springboot.mapper.master.draw.PrizeMapper;
-import springboot.mapper.master.draw.UserMapper;
+import springboot.repository.draw.DrawPrizeRepository;
+import springboot.repository.draw.DrawUserRepository;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
@@ -30,22 +31,16 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/draw")
 @Tag(name = "Draw")
+@AllArgsConstructor
 public class DrawController {
 
     /** 抽奖活动 KEY */
     private static final String DRAW_KEY = "draw:%d";
 
-    private final UserMapper userMapper;
-    private final PrizeMapper prizeMapper;
+    private final DrawPrizeRepository drawPrizeRepository;
+    private final DrawUserRepository drawUserRepository;
     private final ObjectMapper objectMapper;
     private final RedisTemplate<String, Object> redisTemplate;
-
-    public DrawController(UserMapper userMapper, PrizeMapper prizeMapper, ObjectMapper objectMapper, RedisTemplate<String, Object> redisTemplate) {
-        this.userMapper = userMapper;
-        this.prizeMapper = prizeMapper;
-        this.objectMapper = objectMapper;
-        this.redisTemplate = redisTemplate;
-    }
 
     /**
      * <a href="http://localhost:3333/draw/test?userId=1">抽奖测试</a>
@@ -54,8 +49,8 @@ public class DrawController {
      * @return 奖品ID，0表示各种异常
      */
     @GetMapping("/test")
-    public Integer test(int userId) {
-        int drawId = 1;
+    public Long test(long userId) {
+        long drawId = 1;
         // 抽奖活动缓存
         Draw drawCache = this.getDrawCache(drawId);
 
@@ -63,28 +58,28 @@ public class DrawController {
             return ((DrawController) AopContext.currentProxy()).executeDraw(userId, drawCache);
         } catch (ServiceException e) {
             log.warn("用户{}抽奖失败: {}", userId, e.getMessage());
-            return 0;
+            return 0L;
         }
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public Integer executeDraw(int userId, Draw draw) {
+    public Long executeDraw(long userId, Draw draw) {
         // 1. 扣减积分
-        int userEffect = userMapper.deductScore(userId, draw.getScore());
+        int userEffect = drawUserRepository.deductScore(userId, draw.getScore());
         // 2. 积分不足
-        if (userEffect == 0) return 0;
+        if (userEffect == 0) return 0L;
         // 3. 抽奖
-        Integer winId = this.doDraw(draw.getPrizeList());
+        long winId = this.doDraw(draw.getPrizeList());
         // 4. 没中奖
-        if (winId == 0) return 0;
+        if (winId == 0) return 0L;
         // 5. 中奖，增加中奖数
-        int prizeEffect = prizeMapper.incrWinQty(winId);
+        int prizeEffect = drawPrizeRepository.incrWinQty(winId);
         // Cache Aside，删除缓存
         redisTemplate.delete(String.format(DRAW_KEY, draw.getId()));
         // 返回奖品ID
         if (prizeEffect != 0) return winId;
         // 6. 增加中奖数失败
-        return 0;
+        return 0L;
     }
 
     /**
@@ -93,10 +88,10 @@ public class DrawController {
      * @param prizeList 奖品列表
      * @return 奖品ID，0表示不中奖
      */
-    private Integer doDraw(List<Prize> prizeList) {
+    private long doDraw(List<DrawPrize> prizeList) {
         int random = ThreadLocalRandom.current().nextInt(10000);
         int threshold = 0;
-        for (Prize prize : prizeList) {
+        for (DrawPrize prize : prizeList) {
             if (random < (threshold += prize.getProbability())) return prize.getId();
         }
         return 0;
@@ -108,7 +103,7 @@ public class DrawController {
      * @param drawId 抽奖活动ID
      * @return 抽奖活动
      */
-    private Draw getDrawCache(Integer drawId) {
+    private Draw getDrawCache(long drawId) {
         String key = String.format(DRAW_KEY, drawId);
         Object cachedObj = redisTemplate.opsForValue().get(key);
         if (cachedObj != null) {
@@ -121,7 +116,7 @@ public class DrawController {
                 return objectMapper.readValue((String) cachedObj, Draw.class);
             }
 
-            List<Prize> prizeList = prizeMapper.listHasStockByDrawId(drawId);
+            List<DrawPrize> prizeList = drawPrizeRepository.findByDrawIdAndTotalQtyGreaterThanWinQty(drawId);
             Draw draw = new Draw().setId(drawId).setScore(1).setPrizeList(prizeList);
             redisTemplate.opsForValue().set(key, objectMapper.writeValueAsString(draw), 1, TimeUnit.DAYS);
             return draw;
@@ -131,9 +126,9 @@ public class DrawController {
     @Data
     @Accessors(chain = true)
     public static class Draw {
-        private int id;
+        private long id;
         /** 每次抽奖扣减的积分 */
         private int score;
-        List<Prize> prizeList;
+        List<DrawPrize> prizeList;
     }
 }
