@@ -24,7 +24,8 @@ public interface DrawPrizeRepository extends JpaRepository<DrawPrize, Long> {
      * @param drawId 抽奖活动ID
      * @return 奖品概率列表
      */
-    List<DrawPrize> findByDrawIdAndTotalQtyGreaterThanWinQty(Long drawId);
+    @Query("SELECT p FROM DrawPrize p WHERE p.drawId = :drawId AND p.totalQty > p.winQty")
+    List<DrawPrize> findByDrawIdAndTotalQtyGreaterThanWinQty(@Param("drawId") Integer drawId);
 
     /**
      * 中奖数 +1
@@ -34,5 +35,5 @@ public interface DrawPrizeRepository extends JpaRepository<DrawPrize, Long> {
      */
     @Modifying
     @Query("UPDATE DrawPrize d SET d.winQty = d.winQty + 1 WHERE d.id = :id AND d.totalQty > d.winQty")
-    int incrWinQty(@Param("id") Long id);
+    int incrWinQty(@Param("id") Integer id);
 }

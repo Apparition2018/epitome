@@ -25,5 +25,5 @@ public interface DrawUserRepository extends JpaRepository<DrawUser, Long> {
      */
     @Modifying
     @Query("UPDATE DrawUser d SET d.score = d.score - :score WHERE d.id = :id AND d.score >= :score")
-    int deductScore(@Param("id") Long id, @Param("score") Integer score);
+    int deductScore(@Param("id") Integer id, @Param("score") Integer score);
 }

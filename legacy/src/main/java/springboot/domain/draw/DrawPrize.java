@@ -17,10 +17,10 @@ import lombok.experimental.Accessors;
 public class DrawPrize {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     /** 抽奖活动 ID */
     @Column(name = "draw_id")
-    private Long drawId;
+    private Integer drawId;
     /** 概率（1表示万分之一） */
     @Column(name = "probability")
     private Integer probability;

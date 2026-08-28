@@ -49,8 +49,8 @@ public class DrawController {
      * @return 奖品ID，0表示各种异常
      */
     @GetMapping("/test")
-    public Long test(long userId) {
-        long drawId = 1;
+    public Integer test(int userId) {
+        int drawId = 1;
         // 抽奖活动缓存
         Draw drawCache = this.getDrawCache(drawId);
 
@@ -58,20 +58,20 @@ public class DrawController {
             return ((DrawController) AopContext.currentProxy()).executeDraw(userId, drawCache);
         } catch (ServiceException e) {
             log.warn("用户{}抽奖失败: {}", userId, e.getMessage());
-            return 0L;
+            return 0;
         }
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public Long executeDraw(long userId, Draw draw) {
+    public Integer executeDraw(int userId, Draw draw) {
         // 1. 扣减积分
         int userEffect = drawUserRepository.deductScore(userId, draw.getScore());
         // 2. 积分不足
-        if (userEffect == 0) return 0L;
+        if (userEffect == 0) return 0;
         // 3. 抽奖
-        long winId = this.doDraw(draw.getPrizeList());
+        int winId = this.doDraw(draw.getPrizeList());
         // 4. 没中奖
-        if (winId == 0) return 0L;
+        if (winId == 0) return 0;
         // 5. 中奖，增加中奖数
         int prizeEffect = drawPrizeRepository.incrWinQty(winId);
         // Cache Aside，删除缓存
@@ -79,7 +79,7 @@ public class DrawController {
         // 返回奖品ID
         if (prizeEffect != 0) return winId;
         // 6. 增加中奖数失败
-        return 0L;
+        return 0;
     }
 
     /**
@@ -88,7 +88,7 @@ public class DrawController {
      * @param prizeList 奖品列表
      * @return 奖品ID，0表示不中奖
      */
-    private long doDraw(List<DrawPrize> prizeList) {
+    private int doDraw(List<DrawPrize> prizeList) {
         int random = ThreadLocalRandom.current().nextInt(10000);
         int threshold = 0;
         for (DrawPrize prize : prizeList) {
@@ -103,7 +103,7 @@ public class DrawController {
      * @param drawId 抽奖活动ID
      * @return 抽奖活动
      */
-    private Draw getDrawCache(long drawId) {
+    private Draw getDrawCache(int drawId) {
         String key = String.format(DRAW_KEY, drawId);
         Object cachedObj = redisTemplate.opsForValue().get(key);
         if (cachedObj != null) {

@@ -23,17 +23,17 @@ import javax.sql.DataSource;
 @Profile("druid")
 @Configuration
 @EnableJpaRepositories(
-    basePackages = "springboot.repository.master",
+    basePackages = "springboot.repository",
     entityManagerFactoryRef = "jpaEntityManagerFactory",
     transactionManagerRef = "jpaTransactionManager"
 )
 public class JpaConfig {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean jpaEntityManagerFactory(@Qualifier("masterDataSource") DataSource dataSource, JpaProperties jpaProperties) {
+    public LocalContainerEntityManagerFactoryBean jpaEntityManagerFactory(@Qualifier("dataSource") DataSource dataSource, JpaProperties jpaProperties) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("springboot.domain.master");
+        em.setPackagesToScan("springboot.domain");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaPropertyMap(jpaProperties.getProperties());
         return em;

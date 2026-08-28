@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 public class DrawUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     /** 积分 */
     @Column(name = "score")
     private Integer score;

@@ -38,7 +38,7 @@ import java.util.List;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Value("${spring.mvc.static-path-pattern}")
+    @Value("${spring.web.resources.static-path-pattern}")
     private String staticPathPatterns;
 
     @Value("${spring.web.resources.static-locations}")

@@ -26,10 +26,10 @@ public class CacheConfig {
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("users");
         cacheManager.setCaffeine(Caffeine.newBuilder()
-            // 缓存最多 500 条
-            .maximumSize(500)
-            // 写入后 5 分钟过期
-            .expireAfterWrite(Duration.ofMinutes(5)));
+                // 缓存最多 500 条
+                .maximumSize(500)
+                // 写入后 5 分钟过期
+                .expireAfterWrite(Duration.ofMinutes(5)));
         return cacheManager;
     }
 }
